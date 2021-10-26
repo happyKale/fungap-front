@@ -1,4 +1,5 @@
 import React from 'react';
+
 import FlexBoxStyle from './style';
 
 const FlexBox = ({ children, ...rest }) => {
