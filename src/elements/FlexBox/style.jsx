@@ -6,9 +6,10 @@ const FlexBoxStyle = styled.div`
   justify-content: ${props =>
     props.justify ? `${props.justify}` : `flex-start`};
   align-items: ${props => (props.align ? `${props.align}` : `center`)};
-  ${props => (props.height ? `${props.height}` : ``)}
-  ${props => (props.width ? `${props.width}` : ``)}
-  background-color: ${props => (props.bg_color ? `${props.bg_color}` : ``)}
+  height: ${props => (props.height ? `${props.height}` : ``)};
+  width: ${props => (props.width ? `${props.width}` : ``)};
+  background-color: ${props => (props.bg_color ? `${props.bg_color}` : ``)};
+  padding: ${props => (props.padding ? `${props.padding}` : ``)};
 `;
 
 export default FlexBoxStyle;

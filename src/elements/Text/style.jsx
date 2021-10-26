@@ -8,7 +8,8 @@ const TextStyle = styled.p`
     margin: ${props => (props.margin ? `${props.margin}` : ``)};
     font-weight: ${props => (props.ft_weight ? `${props.ft_weight}` : ``)};
     font-style: ${props => (props.ft_style ? `${props.ft_style}` : ``)};
-    
+    padding: ${props => (props.padding ? `${props.padding}` : ``)};
+    text-align: ${props => (props.align ? `${props.align}` : ``)}
 
 `;
 
