@@ -3,6 +3,7 @@ import React from 'react';
 import { Select, Option } from '../../elements';
 
 const mbtiList = [
+  '유형',
   'INTJ',
   'INTP',
   'ENTJ',
