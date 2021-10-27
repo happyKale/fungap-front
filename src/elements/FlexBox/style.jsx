@@ -10,6 +10,8 @@ const FlexBoxStyle = styled.div`
   width: ${props => (props.width ? `${props.width}` : ``)};
   background-color: ${props => (props.bg_color ? `${props.bg_color}` : ``)};
   padding: ${props => (props.padding ? `${props.padding}` : ``)};
+  border: ${props => (props.border ? `${props.border}` : ``)};
+  margin: ${props => (props.margin ? `${props.margin}` : ``)};
 `;
 
 export default FlexBoxStyle;
