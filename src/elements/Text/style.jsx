@@ -9,6 +9,11 @@ const TextStyle = styled.p`
   font-style: ${props => (props.ftStyle ? `${props.ftStyle}` : ``)};
   padding: ${props => (props.padding ? `${props.padding}` : ``)};
   text-align: ${props => (props.align ? `${props.align}` : ``)};
+  text-overflow: ${props =>
+    props.textOverflow ? `${props.textOverflow}` : ``};
+  overflow: ${props => (props.overflow ? `${props.overflow}` : ``)};
+  width: ${props => (props.width ? `${props.width}` : ``)};
+  white-space: ${props => (props.whiteSpace ? `${props.whiteSpace}` : ``)};
 `;
 
 export default TextStyle;
