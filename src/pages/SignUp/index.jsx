@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { userActions } from '../redux/modules/user';
-import { Input, Button, Form, FlexBox } from '../elements';
-import { TypeOfMbti } from '../components';
+import { userActions } from '../../redux/modules/user';
+import { Input, Button, Form, FlexBox } from '../../elements';
+import { TypeOfMbti } from '../../components';
 
-const Signup = props => {
+const SignUp = props => {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
@@ -90,4 +90,4 @@ const Signup = props => {
   );
 };
 
-export default Signup;
+export default SignUp;
