@@ -8,7 +8,7 @@ const FlexBoxStyle = styled.div`
   align-items: ${props => (props.align ? `${props.align}` : `center`)};
   height: ${props => (props.height ? `${props.height}` : ``)};
   width: ${props => (props.width ? `${props.width}` : ``)};
-  background-color: ${props => (props.bg_color ? `${props.bg_color}` : ``)};
+  background-color: ${props => (props.bgColor ? `${props.bgColor}` : ``)};
   padding: ${props => (props.padding ? `${props.padding}` : ``)};
 `;
 
