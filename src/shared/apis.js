@@ -20,6 +20,9 @@ const apis = {
   signup: userinfo => instance.post('/user/signup', userinfo),
   checkEmail: email => instance.post('/user/email_check', email),
   checkNickname: nickname => instance.post('/user/nickname_check', nickname),
+
+  //게시물
+  getPost: () => instance.get('/board'),
 };
 
 export default apis;
