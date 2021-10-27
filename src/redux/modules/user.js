@@ -60,6 +60,22 @@ const signupDB = userinfo => {
   };
 };
 
+const signinDB = (id, pwd) => {
+  return async (dispatch, getState, { history }) => {
+    console.log('DB 로그인', id, pwd);
+
+    const userData = {
+      email: id,
+      password: pwd,
+    };
+
+    try {
+      const response = await apis.signin(userData);
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
@@ -82,4 +98,5 @@ export const userActions = {
   isEmailDB,
   isNicknameDB,
   signupDB,
+  signinDB,
 };
