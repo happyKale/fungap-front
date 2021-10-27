@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import { Image, Text, Button } from '../../elements';
+import {
+  Container,
+  StyledTitleBox,
+  StyledSlideOuter,
+  StyledSlideInner,
+  StyledPost,
+} from './style';
 
-const SituationList = props => {
-  const list = [0, 0, 0, 0, 0, 0, 0];
-
+const SituationList = ({ list }) => {
   React.useEffect(() => {
-    let slider = document.querySelector('.slider');
+    let slider = document.querySelector('.sliderOuter');
     let innerSlider = document.querySelector('.silderInner');
     let pressed = false;
     let startx;
@@ -54,19 +59,22 @@ const SituationList = props => {
     <Container>
       <StyledTitleBox>
         {/* 제목 */}
-        <p>상황별</p>
+        <Text>상황별</Text>
         {/* 더보기 버튼*/}
-        <button>더보기</button>
+        <Button>더보기</Button>
       </StyledTitleBox>
       {/* 게시글 목록 시작*/}
-      <StyledSlideOuter className='slider'>
+      <StyledSlideOuter className='sliderOuter'>
         {/* 게시글 */}
         <StyledSlideInner className='silderInner'>
           {list.map((item, idx) => {
             return (
               <StyledPost key={idx}>
-                <StyledImage src='http://www.visualdive.com/wp-content/uploads/2020/09/%EC%9E%91%EC%97%852-819x1024.jpg' />
-                <p>손절타이밍</p>
+                <Image
+                  src='http://www.visualdive.com/wp-content/uploads/2020/09/%EC%9E%91%EC%97%852-819x1024.jpg'
+                  width='100%'
+                />
+                <Text>손절타이밍</Text>
               </StyledPost>
             );
           })}
@@ -76,50 +84,5 @@ const SituationList = props => {
     </Container>
   );
 };
-
-const Container = styled.div`
-  width: 90%;
-  height: 450px;
-  border: 3px solid black;
-  margin: auto;
-`;
-const StyledTitleBox = styled.div`
-  border: 5px solid pink;
-  box-sizing: border-box;
-  height: 10%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 20px;
-`;
-const StyledSlideOuter = styled.div`
-  border: 5px solid skyblue;
-  box-sizing: border-box;
-  position: relative;
-  height: 90%;
-  overflow: hidden;
-`;
-const StyledSlideInner = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: auto;
-  display: grid;
-  display: flex;
-  pointer-events: none;
-`;
-
-const StyledPost = styled.div`
-  border: 3px solid blue;
-  box-sizing: border-box;
-  height: 80%;
-  width: 200px;
-  margin: 20px;
-`;
-
-const StyledImage = styled.img`
-  width: 100%;
-  height: 170px;
-`;
 
 export default SituationList;
