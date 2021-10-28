@@ -79,10 +79,10 @@ const signinDB = (id, pwd) => {
   };
 };
 
-const signinKakaoDB = authObj => {
+const signinKakaoDB = auth => {
   return async (dispatch, getState, { history }) => {
     const token = {
-      access_token: authObj.access_token,
+      access_token: auth.access_token,
     };
 
     console.log('DB 카카오 로그인', token);
@@ -98,12 +98,34 @@ const signinKakaoDB = authObj => {
   };
 };
 
-const signinNaverDB = token => {
+const signinGoogleDB = auth => {
   return async (dispatch, getState, { history }) => {
-    console.log(token);
+    const token = {
+      access_token: auth,
+    };
+
+    console.log('DB 구글 로그인', token);
+
     try {
-      const response = await apis.signinNaver(token);
+      const response = await apis.signinGoogle(token);
+
       console.log(response);
+      // history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+const signinNaverDB = auth => {
+  return async (dispatch, getState, { history }) => {
+    console.log('DB 네이버 로그인', auth);
+
+    try {
+      const response = await apis.signinNaver(auth);
+
+      console.log(response);
+      // history.push('/');
     } catch (error) {
       console.log(error);
     }
@@ -132,4 +154,5 @@ export const userActions = {
   signinDB,
   signinKakaoDB,
   signinNaverDB,
+  signinGoogleDB,
 };
