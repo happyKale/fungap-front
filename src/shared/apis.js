@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getToken, setToken, delToken } from './token';
 
 const instance = axios.create({
-  baseURL: 'http://3.36.105.156',
+  baseURL: 'http://stravinest.shop',
   // withCredentials: true,
 });
 
