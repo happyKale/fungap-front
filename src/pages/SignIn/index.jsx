@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { history } from '../../redux/configureStore';
 import { userActions } from '../../redux/modules/user';
 import { Input, Button } from '../../elements';
+import { KakaoSignIn } from '../';
 
 const SignIn = props => {
   const dispatch = useDispatch();
@@ -68,7 +69,7 @@ const SignIn = props => {
       </div>
       <div className='socialLogin' onClick={handleClick}>
         <Button className='btnGoogleSignIn'>구글로그인</Button>
-        <Button className='btnKakaoSignIn'>카카오로그인</Button>
+        <KakaoSignIn />
       </div>
     </form>
   );
