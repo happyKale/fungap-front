@@ -98,6 +98,18 @@ const signinKakaoDB = authObj => {
   };
 };
 
+const signinNaverDB = token => {
+  return async (dispatch, getState, { history }) => {
+    console.log(token);
+    try {
+      const response = await apis.signinNaver(token);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 // initial state
 const initialState = {
   is_email: false,
@@ -119,4 +131,5 @@ export const userActions = {
   signupDB,
   signinDB,
   signinKakaoDB,
+  signinNaverDB,
 };
