@@ -1,4 +1,5 @@
 import TypeOfMbti from './TypeOfMbti';
-import SituationList from './Situation';
+import TopPost from './TopPost';
+import Post from './Post';
 
-export { TypeOfMbti, SituationList };
+export { TypeOfMbti, TopPost, Post };
