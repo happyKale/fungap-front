@@ -2,8 +2,8 @@ import axios from 'axios';
 import { getToken, setToken, delToken } from './token';
 
 const instance = axios.create({
-  baseURL: 'http://stravinest.shop',
-  withCredentials: true,
+  baseURL: 'http://3.36.105.156',
+  // withCredentials: true,
 });
 
 instance.interceptors.request.use(config => {
@@ -17,6 +17,7 @@ instance.interceptors.request.use(config => {
 const apis = {
   // 로그인
   signin: userinfo => instance.post('/user/signin', userinfo),
+  signinKakao: token => instance.post('/user/signin/kakao', token),
   signup: userinfo => instance.post('/user/signup', userinfo),
   checkEmail: email => instance.post('/user/email_check', email),
   checkNickname: nickname => instance.post('/user/nickname_check', nickname),
