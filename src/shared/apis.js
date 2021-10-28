@@ -19,10 +19,10 @@ const apis = {
   signin: userinfo => instance.post('/user/signin', userinfo),
   signinKakao: token => instance.post('/user/signin/kakao', token),
   signinGoogle: token => instance.post('/user/signin/google', token),
+  signinNaver: token => instance.post('/user/signin/naver', token),
   signup: userinfo => instance.post('/user/signup', userinfo),
   checkEmail: email => instance.post('/user/email_check', email),
   checkNickname: nickname => instance.post('/user/nickname_check', nickname),
-  signinNaver: token => instance.post('/user/signin/naver', token),
 
   //게시물
   getPost: () => instance.get('/board'),
