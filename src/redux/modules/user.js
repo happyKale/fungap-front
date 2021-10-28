@@ -79,6 +79,25 @@ const signinDB = (id, pwd) => {
   };
 };
 
+const signinKakaoDB = authObj => {
+  return async (dispatch, getState, { history }) => {
+    const token = {
+      access_token: authObj.access_token,
+    };
+
+    console.log('DB 카카오 로그인', token);
+
+    try {
+      const response = await apis.signinKakao(token);
+
+      console.log(response);
+      // history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 // initial state
 const initialState = {
   is_email: false,
@@ -99,4 +118,5 @@ export const userActions = {
   isNicknameDB,
   signupDB,
   signinDB,
+  signinKakaoDB,
 };
