@@ -14,6 +14,7 @@ const TextStyle = styled.p`
   overflow: ${props => (props.overflow ? `${props.overflow}` : ``)};
   width: ${props => (props.width ? `${props.width}` : ``)};
   white-space: ${props => (props.whiteSpace ? `${props.whiteSpace}` : ``)};
+  cursor: ${props => (props.cursor ? `${props.cursor}` : ``)};
 `;
 
 export default TextStyle;
