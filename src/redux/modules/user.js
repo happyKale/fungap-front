@@ -119,15 +119,21 @@ const signinGoogleDB = auth => {
 
 const signinNaverDB = auth => {
   return async (dispatch, getState, { history }) => {
-    console.log('DB 네이버 로그인', auth);
+    const token = {
+      access_token: auth,
+    };
 
-    try {
-      const response = await apis.signinNaver(auth);
+    console.log('DB 네이버 로그인', token);
 
-      console.log(response);
-      // history.push('/');
-    } catch (error) {
-      console.log(error);
+    if (auth) {
+      try {
+        const response = await apis.signinNaver(token);
+
+        console.log(response);
+        // history.push('/');
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 };
