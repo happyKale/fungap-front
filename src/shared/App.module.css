@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  box-sizing: border-box;
+  background-color: #f7fbfe;
+}
+.container > div {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 0 20px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.container nav {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  border-bottom: 1px solid #eeeeee;
+}
