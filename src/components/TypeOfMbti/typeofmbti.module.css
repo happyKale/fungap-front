@@ -1,0 +1,13 @@
+.select {
+  width: 100%;
+  border: none;
+  padding: 20px 0 20px 5px;
+  box-shadow: 0 2px 6px 0 rgb(68 68 68 / 8%);
+  font-size: 17px;
+}
+.select option:first-child {
+  color: #757575;
+}
+.select:invalid {
+  color: grey;
+}
