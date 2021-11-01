@@ -7,6 +7,10 @@
   padding: 10px;
 }
 
+.rowFlex .textContent {
+  width: 240px;
+}
+
 .columnFlex {
   display: flex;
   flex-direction: column;
@@ -84,4 +88,5 @@
 .heartImage {
   top: 1.5px;
   position: relative;
+  margin-right: 2px;
 }
