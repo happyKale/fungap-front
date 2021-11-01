@@ -1,0 +1,11 @@
+.goback {
+  background: url('../../assets/goback.jpeg') no-repeat 20px center;
+  background-size: auto;
+  text-align: center;
+  cursor: pointer;
+}
+.title {
+  margin: 10px 0;
+  padding: 15px 0;
+  font-size: 18px;
+}
