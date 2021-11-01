@@ -1,6 +1,6 @@
 import TypeOfMbti from './TypeOfMbti';
 import TopPost from './TopPost';
 import Post from './Post';
-import Header from './Header';
+import Navigation from './Navigation';
 
-export { TypeOfMbti, TopPost, Post, Header };
+export { TypeOfMbti, TopPost, Post, Navigation };
