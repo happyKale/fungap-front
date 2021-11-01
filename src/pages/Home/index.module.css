@@ -1,0 +1,63 @@
+.grid {
+  width: 430px;
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bolder;
+  line-height: 42px;
+  margin: 20px 0px 20px 10px;
+}
+
+.banner {
+  width: 430px;
+  height: 264px;
+}
+
+.titleContent {
+  width: 430px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.titleContent > h2 {
+  margin: 18px 0px 3px 10px;
+  font-size: 20px;
+}
+
+.titleContent > span {
+  vertical-align: text-bottom;
+  margin: 30px 20px 0px 0px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.middleBanner {
+  width: 430px;
+  height: 116px;
+  margin: 60px 0px;
+  background-color: #c4c4c4;
+}
+
+.middleBanner > span {
+  font-weight: bolder;
+  font-size: 20px;
+  line-height: 116px;
+}
+
+.bottomBanner {
+  width: 430px;
+  height: 116px;
+  background-color: #c4c4c4;
+}
+
+.bottomBanner > span {
+  font-weight: bolder;
+  font-size: 20px;
+  line-height: 116px;
+}
