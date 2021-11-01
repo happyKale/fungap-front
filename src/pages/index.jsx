@@ -1,8 +1,8 @@
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import Detail from './Detail';
 import GoogleSignIn from './GoogleSignIn';
 import KakaoSignIn from './KakaoSignIn';
 import NaverSignIn from './NaverSignIn';
-import Home from './Home';
 
-export { SignIn, SignUp, KakaoSignIn, NaverSignIn, GoogleSignIn, Home };
+export { SignIn, SignUp, Detail, KakaoSignIn, NaverSignIn, GoogleSignIn };
