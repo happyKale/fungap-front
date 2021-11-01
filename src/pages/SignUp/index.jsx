@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import CheckIcon from '@mui/icons-material/Check';
 
 import { userActions } from '../../redux/modules/user';
 import { Input, Button, Form, FlexBox } from '../../elements';
 import { TypeOfMbti } from '../../components';
+import style from './signup.module.css';
+
+const icon = {
+  position: 'absolute',
+  left: '5px',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  color: '#555',
+};
 
 const SignUp = props => {
   const dispatch = useDispatch();
@@ -49,26 +61,31 @@ const SignUp = props => {
   };
 
   return (
-    <Form //
+    <form //
+      className={style.form}
       onSubmit={handleSubmit}
       onChange={handleChange}
     >
-      <FlexBox>
+      <p>
+        <PersonOutlineIcon style={icon} />
         <label htmlFor=''>이메일</label>
-        <Input
+        <input
           name='email'
-          defaultValue={email}
           type='text'
+          placeholder='이메일'
+          defaultValue={email}
           className='checkEmail'
           onBlur={handleBlur}
         />
-      </FlexBox>
+      </p>
       <p>
+        <CheckIcon style={icon} />
         <label htmlFor=''>닉네임</label>
-        <Input
+        <input
           name='nickname'
-          defaultValue={nickname}
           type='text'
+          placeholder='닉네임'
+          defaultValue={nickname}
           className='checkNickname'
           onBlur={handleBlur}
         />
@@ -78,15 +95,27 @@ const SignUp = props => {
         <TypeOfMbti name='mbti' defaultValue={mbti} />
       </p>
       <p>
+        <LockOpenIcon style={icon} />
         <label htmlFor=''>비밀번호</label>
-        <Input name='pwd' defaultValue={pwd} type='password' />
+        <input
+          name='pwd'
+          type='password'
+          placeholder='비밀번호'
+          defaultValue={pwd}
+        />
       </p>
       <p>
+        <LockOpenIcon style={icon} />
         <label htmlFor=''>비밀번호확인</label>
-        <Input name='pwdCheck' defaultValue={pwdCheck} type='password' />
+        <input
+          name='pwdCheck'
+          type='password'
+          placeholder='비밀번호확인'
+          defaultValue={pwdCheck}
+        />
       </p>
-      <Button className='signup'>회원가입</Button>
-    </Form>
+      <button className={style.btnSignUp}>회원가입</button>
+    </form>
   );
 };
 
