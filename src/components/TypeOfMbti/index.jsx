@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Select, Option } from '../../elements';
+import style from './typeofmbti.module.css';
 
 const mbtiList = [
   '유형',
@@ -25,11 +26,11 @@ const mbtiList = [
 const TypeOfMbti = ({ children, ...rest }) => {
   return (
     <>
-      <Select {...rest}>
+      <select className={style.select} {...rest}>
         {mbtiList.map((mbti, index) => {
           return <Option key={index}>{mbti}</Option>;
         })}
-      </Select>
+      </select>
     </>
   );
 };

@@ -1,0 +1,36 @@
+.comment {
+  position: relative;
+  display: flex;
+}
+.profileImg > img {
+  border-radius: 50%;
+}
+.user {
+  margin-left: 20px;
+}
+.userInfo {
+  display: flex;
+  align-items: center;
+}
+.nickname {
+  margin: 0;
+  margin-right: 10px;
+}
+.mbti {
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #ccc;
+}
+
+.handleComment {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.handleComment > svg {
+  cursor: pointer;
+}
+.handleComment > svg:first-child {
+  margin-right: 10px;
+}

@@ -1,0 +1,42 @@
+.title {
+  text-align: center;
+  font-size: 18px;
+}
+h3.title {
+  text-align: left;
+}
+.title > span {
+  display: inline-block;
+  width: 250px;
+  padding: 0 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  /* 멀티라인 글자 수 제한 */
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 10; 라인수
+  -webkit-box-orient: vertical;
+  word-wrap: break-word; */
+}
+.img {
+  width: 100%;
+  height: 400px;
+  background: url('https://mypetlife.co.kr/9989/kakaotalk_20180720_165306472')
+    no-repeat center;
+  background-size: cover;
+}
+.like {
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 5px 5px 5px 25px;
+  background: url('../../assets/heart_pink.png') no-repeat 8px center;
+  cursor: pointer;
+}
+.contents {
+  min-height: 200px;
+  max-height: 200px;
+  margin: 20px 0;
+}
