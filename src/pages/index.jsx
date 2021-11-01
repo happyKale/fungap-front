@@ -3,5 +3,6 @@ import SignUp from './SignUp';
 import GoogleSignIn from './GoogleSignIn';
 import KakaoSignIn from './KakaoSignIn';
 import NaverSignIn from './NaverSignIn';
+import Home from './Home';
 
-export { SignIn, SignUp, GoogleSignIn, KakaoSignIn, NaverSignIn };
+export { SignIn, SignUp, KakaoSignIn, NaverSignIn, GoogleSignIn, Home };
