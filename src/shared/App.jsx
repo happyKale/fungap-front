@@ -3,6 +3,7 @@ import { Route } from 'react-router';
 import { history } from '../redux/configureStore';
 import {
   Home,
+  Contents,
   Detail,
   SignUp,
   SignIn,
@@ -20,9 +21,10 @@ function App() {
         {/* <Navigation /> */}
         <ConnectedRouter history={history}>
           <Route path='/' exact component={Home} />
+          <Route path='/contents' exact component={Contents} />
+          <Route path='/detail' exact component={Detail} />
           <Route path='/signup' exact component={SignUp} />
           <Route path='/signin' exact component={SignIn} />
-          <Route path='/detail' exact component={Detail} />
           <Route path='/admin' exact component={Admin} />
           <Route path='/admin_write' exact component={AdminPostManage} />
           <Route path='/userpage' exact component={Setting} />
