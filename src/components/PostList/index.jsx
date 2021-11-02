@@ -10,14 +10,16 @@ const PostList = props => {
   return (
     <div>
       {/* 게시글 목록 (수정/삭제 버튼 추가) */}
-      {postList.map(post => {
+      {postList.map((post, idx) => {
         return (
           <Post
+            key={post.board_id}
+            boardImage={post.board_image}
             direction='row'
-            title={post.title}
+            boardTitle={post.board_title}
             viewCount={post.view_count}
             commentCount={post.comment_count}
-            heartCount={post.heart_count}
+            likeCount={post.like_count}
           ></Post>
         );
       })}
