@@ -14,10 +14,9 @@
 .columnFlex {
   display: flex;
   flex-direction: column;
-
   width: 191px;
   height: 230px;
-  padding: 10px;
+  margin-bottom: 5px;
 }
 
 .textContent {
@@ -72,7 +71,7 @@
 .rowImg {
   width: 160px;
   height: 109px;
-  /* padding: 8px; */
+
   border-radius: 8px;
   cursor: pointer;
 }
@@ -80,7 +79,7 @@
 .columnImg {
   width: 191px;
   height: 143px;
-  /* padding: 8px; */
+
   border-radius: 8px;
   cursor: pointer;
 }

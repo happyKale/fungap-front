@@ -1,0 +1,27 @@
+.userContent {
+  display: flex;
+}
+
+.userContent > div {
+  width: 250px;
+  height: 82px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.userContent > div > p {
+  margin: 0px;
+  font-weight: bolder;
+}
+
+.userContent > div > span {
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.userImage {
+  width: 82px;
+  height: 82px;
+  border-radius: 41px;
+}
