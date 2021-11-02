@@ -9,6 +9,7 @@ import Detail from './Detail';
 import Admin from './Admin';
 import AdminPostManage from './AdminPostManage';
 import Setting from './Setting';
+import ProfileEdit from './ProfileEdit';
 
 export {
   SignIn,
@@ -22,4 +23,5 @@ export {
   Admin,
   AdminPostManage,
   Setting,
+  ProfileEdit,
 };
