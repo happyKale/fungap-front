@@ -1,5 +1,7 @@
 import { ConnectedRouter } from 'connected-react-router';
 import { Route } from 'react-router';
+import { useSelector } from 'react-redux';
+
 import { history } from '../redux/configureStore';
 import {
   Home,
@@ -15,10 +17,17 @@ import { Navigation } from '../components';
 import style from './App.module.css';
 
 function App() {
+  const { pathname } = useSelector(state => state.router.location);
+
   return (
-    <div className={style.container}>
+    <div
+      className={
+        !pathname.includes('admin') ? style.container : style.wideContainer
+      }
+    >
       <div>
-        {/* <Navigation /> */}
+        {/* {pathname.includes('sign') ? '' : <Navigation />} */}
+        <Navigation />
         <ConnectedRouter history={history}>
           <Route path='/' exact component={Home} />
           <Route path='/contents' exact component={Contents} />
