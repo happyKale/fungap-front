@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { postActions } from '../../redux/modules/post';
 import { Post } from '../../components';
-import style from './index.module.css';
+import style from './home.module.css';
 
 const Home = props => {
   const dispatch = useDispatch();

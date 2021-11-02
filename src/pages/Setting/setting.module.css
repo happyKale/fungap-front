@@ -1,0 +1,65 @@
+.wrap {
+  margin-top: 20px;
+}
+
+.settingList {
+  height: 100vh;
+}
+
+.settingList > div > p {
+  cursor: pointer;
+  font-size: 15px;
+  margin: 0px;
+}
+
+.settingList > div {
+  display: flex;
+  margin-top: 15px;
+}
+
+.adminImage {
+  margin-right: 15px;
+  width: 19.4px;
+  height: 20px;
+}
+
+.notificationImage {
+  margin-right: 15px;
+  width: 20px;
+  height: 22px;
+}
+
+.alramImage {
+  margin-right: 12px;
+  position: relative;
+  right: 3px;
+  width: 24px;
+  height: 24px;
+}
+
+.contractImage {
+  margin-right: 12px;
+  position: relative;
+  right: 3px;
+  bottom: 2px;
+  width: 24px;
+  height: 24px;
+}
+
+.mailImage {
+  margin-right: 15px;
+  position: relative;
+  right: 1px;
+  top: 2px;
+  width: 19px;
+  height: 15px;
+}
+
+.btn > button {
+  border: none;
+  border-radius: 25px;
+  width: 50%;
+  height: 30px;
+  cursor: pointer;
+  margin-top: 30px;
+}
