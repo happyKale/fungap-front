@@ -1,31 +1,34 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
+import { commentActions } from '../../redux/modules/comment';
 import style from './comment.module.css';
 
-const Comment = props => {
+const Comment = ({ User, board_id, comment_id, comment }) => {
+  const { nickname, user_id, user_image, user_mbti } = User;
+  const dispatch = useDispatch();
+
   const editComment = () => {
-    console.log('수정버튼 클릭');
+    dispatch(commentActions.editCommentDB(board_id, comment_id, comment));
   };
   const deleteComment = () => {
-    console.log('삭제버튼 클릭');
+    dispatch(commentActions.deleteCommentDB(board_id, comment_id));
   };
 
   return (
     <li className={style.comment}>
       <div className={style.profileImg}>
+        {/* {user_image} */}
         <img src='http://placehold.it/40x40' alt='임시' />
       </div>
       <div className={style.user}>
         <div className={style.userInfo}>
-          <p className={style.nickname}>조성민</p>
-          <span className={style.mbti}>ENFJ</span>
+          <p className={style.nickname}>{nickname}</p>
+          <span className={style.mbti}>{user_mbti}</span>
         </div>
-        <p className={style.desc}>
-          왘ㅋㅋㅋ 진짜 공감... 엣티제 아무것도 안하면 오히려 피곤해지는 거 진짜
-          공 감... 아무것도 안하고 가만히 있으라고 하면 넘 힘듬
-        </p>
+        <p className={style.desc}>{comment}</p>
         <span className={style.date}>2시간</span>
       </div>
       <div className={style.handleComment}>

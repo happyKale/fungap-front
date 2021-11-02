@@ -2,3 +2,15 @@
   padding-left: 0;
   list-style: none;
 }
+.btnTotalCommentWrap {
+  margin: 40px 0;
+  text-align: center;
+}
+.btnTotalCommentWrap > button {
+  border: none;
+  padding: 10px 30px 10px 10px;
+  /* background-color: transparent; */
+  background: url('../../assets/btn_right.png') no-repeat 96% center;
+  font-size: 15px;
+  cursor: pointer;
+}
