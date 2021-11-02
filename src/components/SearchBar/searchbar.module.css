@@ -1,0 +1,24 @@
+.inputWrap {
+  position: relative;
+  margin: 30px 0;
+}
+.inputWrap > input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 16px;
+  outline: none;
+}
+.searchIcon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  width: 25px;
+  height: 25px;
+  border: none;
+  transform: translateY(-50%);
+  text-indent: -9999em;
+  background: transparent url('../../assets/icon_search.png') no-repeat center;
+}

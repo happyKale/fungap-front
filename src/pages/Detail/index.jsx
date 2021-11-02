@@ -7,7 +7,7 @@ const Detail = props => {
   return (
     <>
       <div className={style.detail}>
-        <Goback>무인도에 고립됐을 때, MBTI별 대처법</Goback>
+        <Goback page='/contents'>무인도에 고립됐을 때, MBTI별 대처법</Goback>
         <div className={style.img}></div>
         <h3 className={style.title}>무인도에 고립됐을 때, MBTI별 대처법</h3>
         <span className={style.like}>304</span>
