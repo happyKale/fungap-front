@@ -33,17 +33,7 @@ const Home = props => {
       </div>
       <div className={style.grid}>
         {new4.map((post, index) => {
-          return (
-            <Post
-              direction='column'
-              board_image={post.board_image}
-              board_title={post.board_title}
-              view_count={post.view_count}
-              comment_count={post.comment_count}
-              like_count={post.like_count}
-              key={index}
-            />
-          );
+          return <Post key={post.board_id} direction='column' {...post} />;
         })}
       </div>
       <div className={style.middleBanner}>
@@ -54,17 +44,7 @@ const Home = props => {
       </div>
       <div className={style.grid}>
         {top4.map((post, index) => {
-          return (
-            <Post
-              direction='column'
-              board_image={post.board_image}
-              board_title={post.board_title}
-              view_count={post.view_count}
-              comment_count={post.comment_count}
-              like_count={post.like_count}
-              key={index}
-            />
-          );
+          return <Post direction='column' key={post.board_id} {...post} />;
         })}
       </div>
       <div className={style.bottomBanner}>
