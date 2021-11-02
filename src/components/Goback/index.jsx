@@ -4,9 +4,9 @@ import style from './goback.module.css';
 
 import { history } from '../../redux/configureStore';
 
-const Goback = ({ children }) => {
+const Goback = ({ children, page }) => {
   const handleClick = () => {
-    history.goBack();
+    history.push(page);
   };
 
   return (
