@@ -1,6 +1,9 @@
 .comment {
   position: relative;
   display: flex;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #f7f7f7;
 }
 .profileImg > img {
   border-radius: 50%;

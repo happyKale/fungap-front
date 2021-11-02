@@ -1,6 +1,6 @@
 import React from 'react';
 
-import style from './index.module.css';
+import style from './navigation.module.css';
 import home from '../../assets/home.svg';
 import chat from '../../assets/chat.svg';
 import user from '../../assets/user.svg';

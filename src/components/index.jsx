@@ -5,6 +5,7 @@ import Navigation from './Navigation';
 import PostList from './PostList';
 import Comments from './Comments';
 import Comment from './Comment';
+import CommentInput from './CommentInput';
 import Counter from './Counter';
 import Goback from './Goback';
 import Chat from './Chat';
@@ -17,6 +18,7 @@ export {
   PostList,
   Comments,
   Comment,
+  CommentInput,
   Counter,
   Goback,
   Chat,

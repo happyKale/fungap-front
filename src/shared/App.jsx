@@ -8,7 +8,7 @@ import {
   SignIn,
   Admin,
   AdminPostManage,
-  AdminPostPreview,
+  Setting,
 } from '../pages';
 import { Navigation } from '../components';
 import style from './App.module.css';
@@ -25,7 +25,7 @@ function App() {
           <Route path='/detail' exact component={Detail} />
           <Route path='/admin' exact component={Admin} />
           <Route path='/admin_write' exact component={AdminPostManage} />
-          <Route path='/admin_preview' exact component={AdminPostPreview} />
+          <Route path='/userpage' exact component={Setting} />
         </ConnectedRouter>
       </div>
     </div>

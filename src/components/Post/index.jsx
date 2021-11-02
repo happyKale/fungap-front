@@ -1,6 +1,6 @@
 import React from 'react';
 import heart from '../../assets/heart.png';
-import style from './index.module.css';
+import style from './post.module.css';
 const Post = ({ children, ...rest }) => {
   const direction = rest.direction;
 

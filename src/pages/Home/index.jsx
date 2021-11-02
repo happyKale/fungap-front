@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { Post } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import { postActions } from '../../redux/modules/post';
-import style from './index.module.css';
 
-const Home = () => {
+import { postActions } from '../../redux/modules/post';
+import { Post } from '../../components';
+import style from './home.module.css';
+
+const Home = props => {
   const dispatch = useDispatch();
   const postList = useSelector(state => state.post.postList);
 
