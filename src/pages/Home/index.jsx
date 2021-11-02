@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Post } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { postActions } from '../../redux/modules/post';
-import style from './index.module.css';
+import style from './home.module.css';
 
 const Home = () => {
   const dispatch = useDispatch();
