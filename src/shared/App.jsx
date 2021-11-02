@@ -12,6 +12,7 @@ import {
   Admin,
   AdminPostManage,
   Setting,
+  ProfileEdit,
 } from '../pages';
 import { Navigation } from '../components';
 import style from './App.module.css';
@@ -37,6 +38,7 @@ function App() {
           <Route path='/admin' exact component={Admin} />
           <Route path='/admin_write' exact component={AdminPostManage} />
           <Route path='/userpage' exact component={Setting} />
+          <Route path='/useredit' exact component={ProfileEdit} />
         </ConnectedRouter>
       </div>
     </div>
