@@ -22,7 +22,7 @@ const CommentInput = props => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    // dispatch(commentActions.addCommentDB(boardId, comment));
+    dispatch(commentActions.addCommentDB(1, comment));
     setInput({
       comment: '',
     });

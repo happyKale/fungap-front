@@ -28,7 +28,7 @@ const getCommentDB = () => {
 
 const addCommentDB = (boardId, comment) => {
   return async (dispatch, getState, { history }) => {
-    console.log('댓글 전체조회', boardId, comment);
+    console.log('댓글 추가', boardId, comment);
     // try {
     //   const response = await apis.checkEmail(email);
 
