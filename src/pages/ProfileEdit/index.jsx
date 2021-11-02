@@ -1,7 +1,20 @@
 import React from 'react';
 import style from './profileedit.module.css';
+import userPlaceholer from '../../assets/userplaceholder.png';
 import { Goback } from '../../components';
 const ProfileEdit = () => {
+  const [previewImg, setPreviewImg] = React.useState(userPlaceholer);
+
+  const onChangeHandle = e => {
+    const reader = new FileReader();
+    const file = e.target.files[0];
+
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewImg(reader.result);
+    };
+  };
+
   const mbtiList = [
     'ISTJ',
     'ISFJ',
@@ -32,15 +45,9 @@ const ProfileEdit = () => {
             alt='수정아이콘'
           />
         </label>
-        <input type='file' id='inputfile' />
+        <input type='file' id='inputfile' onChange={onChangeHandle} />
       </div>
-
-      <img
-        src='https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg'
-        alt='유저이미지'
-        className={style.userImage}
-      />
-
+      <img src={previewImg} alt='유저이미지' className={style.userImage} />
       <div className={style.inputContent}>
         <p>닉네임</p>
         <input type='text' placeholder=' 닉네임을 입력해주세요' />
@@ -51,7 +58,6 @@ const ProfileEdit = () => {
           })}
         </select>
       </div>
-
       <div className={style.editBtn}>수정</div>
     </div>
   );
