@@ -1,5 +1,5 @@
 .grid {
-  width: 430px;
+  width: 100%;
   display: grid;
   grid-template-columns: 200px 200px;
   grid-template-columns: 1fr 1fr;
@@ -13,15 +13,16 @@
 }
 
 .banner {
-  width: 430px;
+  width: 100%;
   height: 264px;
 }
 
 .titleContent {
-  width: 430px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 .titleContent > h2 {
@@ -38,7 +39,7 @@
 }
 
 .middleBanner {
-  width: 430px;
+  width: 100%;
   height: 116px;
   margin: 60px 0px;
   background-color: #c4c4c4;
@@ -51,7 +52,7 @@
 }
 
 .bottomBanner {
-  width: 430px;
+  width: 100%;
   height: 116px;
   background-color: #c4c4c4;
 }

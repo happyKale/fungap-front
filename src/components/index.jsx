@@ -7,6 +7,7 @@ import Comments from './Comments';
 import Comment from './Comment';
 import Counter from './Counter';
 import Goback from './Goback';
+import Chat from './Chat';
 
 export {
   TypeOfMbti,
@@ -18,4 +19,5 @@ export {
   Comment,
   Counter,
   Goback,
+  Chat,
 };
