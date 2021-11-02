@@ -1,5 +1,15 @@
+.signupWrap {
+  height: calc(100vh - 120px);
+}
 .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
   padding: 0 20px;
+}
+.form > p:first-child {
+  margin-top: 0;
 }
 .form > p {
   position: relative;
@@ -29,6 +39,7 @@
   margin: 20px 0 10px 0;
   border: none;
   border-radius: 8px;
+  padding: 20px 0;
   height: 60px;
   font-size: 16px;
   font-weight: bold;

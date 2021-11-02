@@ -61,61 +61,63 @@ const SignUp = props => {
   };
 
   return (
-    <form //
-      className={style.form}
-      onSubmit={handleSubmit}
-      onChange={handleChange}
-    >
-      <p>
-        <PersonOutlineIcon style={icon} />
-        <label htmlFor=''>이메일</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='이메일'
-          defaultValue={email}
-          className='checkEmail'
-          onBlur={handleBlur}
-        />
-      </p>
-      <p>
-        <CheckIcon style={icon} />
-        <label htmlFor=''>닉네임</label>
-        <input
-          name='nickname'
-          type='text'
-          placeholder='닉네임'
-          defaultValue={nickname}
-          className='checkNickname'
-          onBlur={handleBlur}
-        />
-      </p>
-      <p>
-        <label htmlFor=''>MBTI</label>
-        <TypeOfMbti name='mbti' defaultValue={mbti} />
-      </p>
-      <p>
-        <LockOpenIcon style={icon} />
-        <label htmlFor=''>비밀번호</label>
-        <input
-          name='pwd'
-          type='password'
-          placeholder='비밀번호'
-          defaultValue={pwd}
-        />
-      </p>
-      <p>
-        <LockOpenIcon style={icon} />
-        <label htmlFor=''>비밀번호확인</label>
-        <input
-          name='pwdCheck'
-          type='password'
-          placeholder='비밀번호확인'
-          defaultValue={pwdCheck}
-        />
-      </p>
-      <button className={style.btnSignUp}>회원가입</button>
-    </form>
+    <div className={style.signupWrap}>
+      <form //
+        className={style.form}
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+      >
+        <p>
+          <PersonOutlineIcon style={icon} />
+          <label htmlFor=''>이메일</label>
+          <input
+            name='email'
+            type='text'
+            placeholder='이메일'
+            defaultValue={email}
+            className='checkEmail'
+            onBlur={handleBlur}
+          />
+        </p>
+        <p>
+          <CheckIcon style={icon} />
+          <label htmlFor=''>닉네임</label>
+          <input
+            name='nickname'
+            type='text'
+            placeholder='닉네임'
+            defaultValue={nickname}
+            className='checkNickname'
+            onBlur={handleBlur}
+          />
+        </p>
+        <p>
+          <label htmlFor=''>MBTI</label>
+          <TypeOfMbti name='mbti' defaultValue={mbti} />
+        </p>
+        <p>
+          <LockOpenIcon style={icon} />
+          <label htmlFor=''>비밀번호</label>
+          <input
+            name='pwd'
+            type='password'
+            placeholder='비밀번호'
+            defaultValue={pwd}
+          />
+        </p>
+        <p>
+          <LockOpenIcon style={icon} />
+          <label htmlFor=''>비밀번호확인</label>
+          <input
+            name='pwdCheck'
+            type='password'
+            placeholder='비밀번호확인'
+            defaultValue={pwdCheck}
+          />
+        </p>
+        <button className={style.btnSignUp}>회원가입</button>
+      </form>
+    </div>
   );
 };
 
