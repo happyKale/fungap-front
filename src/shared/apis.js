@@ -26,6 +26,11 @@ const apis = {
 
   //게시물
   getPost: () => instance.get('/board'),
+  getPosts: () => instance.get('/admin/board'),
+  addPost: postinfo => instance.post('/admin/board/write', postinfo),
+  editPost: board_id => instance.patch(`/admin/board/${board_id}/edit`),
+  deletePost: board_id => instance.delete(`/admin/board/${board_id}/delete`),
+  detailPost: board_id => instance.get(`/admin/board/${board_id}/detail`),
 };
 
 export default apis;

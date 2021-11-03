@@ -11,6 +11,7 @@ import {
   SignIn,
   Admin,
   AdminPostManage,
+  AdminPostPreview,
   Setting,
   ProfileEdit,
 } from '../pages';
@@ -36,9 +37,12 @@ function App() {
           <Route path='/signup' exact component={SignUp} />
           <Route path='/signin' exact component={SignIn} />
           <Route path='/admin' exact component={Admin} />
-          <Route path='/admin_write' exact component={AdminPostManage} />
           <Route path='/userpage' exact component={Setting} />
           <Route path='/useredit' exact component={ProfileEdit} />
+          <Route path='/admin_write' exact component={AdminPostManage} />
+          <Route path='/admin_write/:id' exact component={AdminPostManage} />
+          <Route path='/admin_preview' exact component={AdminPostPreview} />
+          <Route path='/admin_preview/:id' exact component={AdminPostPreview} />
         </ConnectedRouter>
       </div>
     </div>

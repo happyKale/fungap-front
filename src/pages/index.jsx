@@ -8,6 +8,7 @@ import Contents from './Contents';
 import Detail from './Detail';
 import Admin from './Admin';
 import AdminPostManage from './AdminPostManage';
+import AdminPostPreview from './AdminPostPreview';
 import Setting from './Setting';
 import ProfileEdit from './ProfileEdit';
 
@@ -22,6 +23,7 @@ export {
   Detail,
   Admin,
   AdminPostManage,
+  AdminPostPreview,
   Setting,
   ProfileEdit,
 };

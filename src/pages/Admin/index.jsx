@@ -1,33 +1,30 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { PostList } from '../../components';
+import { PostList, Goback } from '../../components';
 import style from './admin.module.css';
 import { history } from '../../redux/configureStore';
 
 const Admin = props => {
-  // 게시글 목록을 리덕스에서 가져온다.
-  const postList = useSelector(state => state.post.postList);
-  console.log('포스트 리스트: ', postList);
-
   return (
-    <div className={style.container}>
+    <React.Fragment>
       {/* 페이지 제목 */}
-      {/* 게시글 작성 버튼 */}
-      <div className={style.buttonBox}>
-        <button
-          className={style.button}
-          onClick={() => {
-            history.push('/admin_write');
-          }}
-        >
-          글작성
-        </button>
+      <Goback>관리자 페이지</Goback>
+      <div className={style.container}>
+        <div className={style.postListBox}>
+          <div className={style.buttonBox}>
+            <button
+              className={style.button}
+              onClick={() => {
+                history.push('/admin_write');
+              }}
+            >
+              글작성
+            </button>
+          </div>
+          <PostList isEdit />
+        </div>
       </div>
-      {/* 게시글 목록 (수정/삭제 버튼 추가) */}
-      <div className={style.postListBox}>
-        <PostList />
-      </div>
-    </div>
+    </React.Fragment>
   );
 };
 

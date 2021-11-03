@@ -1,0 +1,90 @@
+.container {
+  margin: 40px auto 100px;
+  display: flex;
+  flex-direction: column;
+  min-width: 430px;
+  max-width: 780px;
+}
+
+.title {
+  text-align: center;
+  font-size: 18px;
+}
+h3.title {
+  width: 100%;
+  text-align: left;
+}
+.title > span {
+  display: inline-block;
+  width: 250px;
+  padding: 0 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  /* 멀티라인 글자 수 제한 */
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 10; 라인수
+  -webkit-box-orient: vertical;
+  word-wrap: break-word; */
+}
+.img {
+  width: 100%;
+  height: 400px;
+  background: url('https://mypetlife.co.kr/9989/kakaotalk_20180720_165306472')
+    no-repeat center;
+  background-size: cover;
+}
+.like {
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 5px 5px 5px 25px;
+  background: url('../../assets/heart_pink.png') no-repeat 8px center;
+  cursor: pointer;
+  width: 20px;
+}
+.contents {
+  width: 100%;
+  min-height: 200px;
+  max-height: 200px;
+  margin: 20px 0;
+  line-height: 27px;
+}
+
+.mbtiBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+.mbtiName {
+  border: 2px solid #ffb74d;
+  background-color: #fff3e0;
+  border-radius: 4px;
+  width: 20%;
+  margin-right: 5%;
+  text-align: center;
+  font-size: 18px;
+  padding: 5px 0px;
+  box-sizing: border-box;
+}
+.mbtiDesc {
+  border: 2px solid #b0bec5;
+  border-radius: 4px;
+  width: 75%;
+  font-size: 18px;
+  padding: 5px 15px;
+  box-sizing: border-box;
+}
+.buttonBox {
+  display: flex;
+  justify-content: center;
+  margin: 50px auto 150px;
+}
+.button {
+  width: 200px;
+  height: 40px;
+}

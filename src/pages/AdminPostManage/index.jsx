@@ -4,10 +4,15 @@ import { history } from '../../redux/configureStore';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { postActions } from '../../redux/modules/post';
+import { Goback } from '../../components';
 
 const AdminPostManage = props => {
   const dispatch = useDispatch();
-
+  const postId = props.match.params.id;
+  // 주소창에 id값이 넘어오면 게시글 수정으로 바꾸기 위해서 변수를 만듦.
+  const isEdit = postId ? true : false;
+  const postList = useSelector(state => state.post.postList);
+  let post = postList.filter(post => post.board_id == postId);
   const titleRef = useRef('');
   const descRef = useRef('');
   const mbtiList = [
@@ -53,47 +58,60 @@ const AdminPostManage = props => {
       mbtiDescObject[mbti.key.toLowerCase()] = mbti.ref.current.value.trimEnd();
     });
 
-    // 리덕스에 저장하기
-    dispatch(postActions.setPostDB(title, img, desc, mbtiDescObject));
-    history.push('/admin_preview');
+    dispatch(postActions.addPost(title, img, desc, mbtiDescObject));
+    if (isEdit) {
+      history.push(`/admin_preview/${postId}`);
+    } else {
+      history.push('/admin_preview');
+    }
   };
 
   return (
-    <div className={style.container}>
+    <React.Fragment>
       {/* 페이지 제목 */}
-      <textarea
-        placeholder='게시글의 제목을 적으세요!'
-        className={style.title}
-        ref={titleRef}
-      />
-      <img
-        className={style.img}
-        src='https://i.pinimg.com/originals/b2/63/77/b2637760a3dbc1762d72ab99a83cb20f.jpg'
-        alt='게시글 이미지'
-      ></img>
-      <textarea
-        placeholder='게시글의 설명을 적으세요!'
-        rows='4'
-        className={style.desc}
-        ref={descRef}
-      />
-      {mbtiList.map((mbti, idx) => {
-        return (
-          <div key={idx} className={style.mbtiBox}>
-            <div className={style.mbtiName}>{mbti.key}</div>
-            <textarea
-              placeholder='해당 MBTI에 맞는 설명을 적으세요!'
-              rows='3'
-              ref={mbti.ref}
-              className={style.mbtiDesc}
-            />
-          </div>
-        );
-      })}
-      <button onClick={saveData} className={style.submitButton}>
-        작성하기
-      </button>
-    </div>
+      <Goback page='/admin'>
+        {isEdit ? `게시글 수정 페이지` : `게시글 작성 페이지`}
+      </Goback>
+      <div className={style.container}>
+        <textarea
+          placeholder='게시글의 제목을 적으세요!'
+          className={style.title}
+          ref={titleRef}
+          defaultValue={isEdit ? post[0].board_title : ''}
+        />
+        <img
+          className={style.img}
+          src='https://i.pinimg.com/originals/b2/63/77/b2637760a3dbc1762d72ab99a83cb20f.jpg'
+          alt='게시글 이미지'
+        ></img>
+        <textarea
+          placeholder='게시글의 설명을 적으세요!'
+          rows='4'
+          className={style.desc}
+          ref={descRef}
+          defaultValue={isEdit ? post[0].board_desc : ''}
+        />
+        {mbtiList.map((mbti, idx) => {
+          return (
+            <div key={idx} className={style.mbtiBox}>
+              <div className={style.mbtiName}>{mbti.key}</div>
+              <textarea
+                placeholder='해당 MBTI에 맞는 설명을 적으세요!'
+                rows='3'
+                ref={mbti.ref}
+                className={style.mbtiDesc}
+                defaultValue={
+                  isEdit ? post[0].board_content[mbti.key.toLowerCase()] : ''
+                }
+              />
+            </div>
+          );
+        })}
+        <button onClick={saveData} className={style.submitButton}>
+          {isEdit ? `수정하기` : `작성하기`}
+        </button>
+      </div>
+    </React.Fragment>
   );
 };
 
