@@ -12,6 +12,7 @@ import AdminPostPreview from './AdminPostPreview';
 import Setting from './Setting';
 import ProfileEdit from './ProfileEdit';
 import Notification from './Notification';
+import Alarm from './Alarm';
 
 export {
   SignIn,
@@ -28,4 +29,5 @@ export {
   Setting,
   ProfileEdit,
   Notification,
+  Alarm,
 };

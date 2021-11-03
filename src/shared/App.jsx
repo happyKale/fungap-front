@@ -17,6 +17,7 @@ import {
   Setting,
   ProfileEdit,
   Notification,
+  Alarm,
 } from '../pages';
 import { Navigation } from '../components';
 import style from './App.module.css';
@@ -51,6 +52,7 @@ function App() {
           <Route path='/admin_preview' exact component={AdminPostPreview} />
           <Route path='/admin_preview/:id' exact component={AdminPostPreview} />
           <Route path='/notification' exact component={Notification} />
+          <Route path='/alarm' exact component={Alarm} />
         </ConnectedRouter>
       </div>
     </div>
