@@ -1,7 +1,7 @@
 const getToken = () => {
   const token = sessionStorage.getItem('token');
   if (token) {
-    return `Bearer ${token}`;
+    return token;
   } else {
     return null;
   }
