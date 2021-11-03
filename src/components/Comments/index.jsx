@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { commentActions } from '../../redux/modules/comment';
 import { Comment, CommentInput } from '../';
 import style from './comments.module.css';
-import { useDispatch } from 'react-redux';
 
 const Comments = props => {
   const dispatch = useDispatch();

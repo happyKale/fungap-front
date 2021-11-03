@@ -11,6 +11,7 @@ import Goback from './Goback';
 import Chat from './Chat';
 import SearchBar from './SearchBar';
 import SortContents from './SortContents';
+import Modal from './Modal';
 
 export {
   TypeOfMbti,
@@ -26,4 +27,5 @@ export {
   Chat,
   SearchBar,
   SortContents,
+  Modal,
 };
