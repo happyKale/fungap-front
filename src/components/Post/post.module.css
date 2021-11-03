@@ -78,7 +78,7 @@
 
 .columnImg {
   width: 191px;
-  height: 143px;
+  min-height: 60%;
 
   border-radius: 8px;
   cursor: pointer;
