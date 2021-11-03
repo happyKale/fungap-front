@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './setting.module.css';
 import { Chat } from '../../components/';
 import adminicon from '../../assets/adminicon.png';
@@ -6,17 +6,26 @@ import notification from '../../assets/notification.png';
 import alram from '../../assets/alram.png';
 import contract from '../../assets/contract.png';
 import mail from '../../assets/mail.png';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { userActions } from '../../redux/modules/user';
+import { history } from '../../redux/configureStore';
 const Setting = () => {
-  const isLogin = true;
-  const isAdmin = true;
+  const dispatch = useDispatch();
+  const isLogin = useSelector(state => state.user.is_login);
+  const logOut = () => {
+    dispatch(userActions.logout());
+  };
+  const goSigninPage = () => {
+    history.push('/signin');
+  };
+  useEffect(() => {}, []);
 
   return (
     <div className={style.wrap}>
       <Chat />
       <div className={style.settingList}>
         <h2>설정</h2>
-        {isLogin && isAdmin ? (
+        {isLogin ? (
           <div>
             <img src={adminicon} alt='공지사항' className={style.adminImage} />
             <p>관리자페이지</p>
@@ -49,12 +58,12 @@ const Setting = () => {
         </div>
         {isLogin ? (
           <div className={style.btn}>
-            <button>로그아웃</button>
+            <button onClick={logOut}>로그아웃</button>
             <button>탈퇴하기</button>
           </div>
         ) : (
           <div className={style.btn}>
-            <button>로그인</button>
+            <button onClick={goSigninPage}>로그인</button>
           </div>
         )}
       </div>
