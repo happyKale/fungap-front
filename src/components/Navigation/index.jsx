@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { history } from '../../redux/configureStore';
 import style from './navigation.module.css';
 import home from '../../assets/home.svg';
 import chat from '../../assets/chat.svg';
@@ -7,31 +8,35 @@ import user from '../../assets/user.svg';
 
 const Navigation = props => {
   const handleClick = e => {
-    const { tagName } = e.target;
+    if (e.target === e.currentTarget) return false;
 
-    if (tagName !== 'UL') {
-      console.log('icon click');
-    }
+    const li = e.target.closest('li');
+    const page = li.dataset.name;
+
+    if (!li) return false;
+    if (page === 'home') history.push('/');
+    if (page === 'chat') history.push('/chat');
+    if (page === 'user') history.push('/userpage');
   };
 
   return (
     <nav>
       <ul className={style.btnList} onClick={handleClick}>
-        <li className={style.btn}>
+        <li data-name='home' className={style.btn}>
           <img //
             src={home}
             alt='홈'
           />
           <span>홈</span>
         </li>
-        <li className={style.btn}>
+        <li data-name='chat' className={style.btn}>
           <img //
             src={chat}
             alt='채팅'
           />
           <span>친구들</span>
         </li>
-        <li className={style.btn}>
+        <li data-name='user' className={style.btn}>
           <img //
             className={style.btnUser}
             src={user}

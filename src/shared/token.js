@@ -1,7 +1,13 @@
 const getToken = () => {
   const token = sessionStorage.getItem('token');
+
   if (token) {
-    return token;
+    const parseToken = JSON.parse(token);
+    const totalToken = `${parseToken.accessToken},${parseToken.refreshToken}`;
+
+    console.log(parseToken);
+
+    return totalToken;
   } else {
     return null;
   }
