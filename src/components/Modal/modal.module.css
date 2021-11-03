@@ -1,0 +1,74 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: block;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 15;
+}
+.outer {
+  position: fixed;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  overflow: auto;
+  outline: 0;
+  box-sizing: border-box;
+}
+.inner {
+  position: relative;
+  top: 50%;
+  max-width: 390px;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  transform: translateY(-50%);
+}
+.inner > h2 {
+  margin: 0;
+  border-bottom: 1px solid #ccc;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 18px;
+}
+.desc {
+  margin: 50px 0;
+  text-align: center;
+}
+.desc > p {
+  margin: 5px 0;
+}
+
+.btns {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+}
+.btns > li {
+  width: 50%;
+}
+.btn {
+  width: 100%;
+  padding: 20px 0;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+.btnClose {
+  background: #dfdfdf;
+  border-radius: 0 0 0 10px;
+}
+.btnSignin {
+  background-color: #ffeb60;
+  border-radius: 0 0 10px 0;
+}
