@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { userActions } from '../redux/modules/user';
 import { history } from '../redux/configureStore';
 import {
   Home,
@@ -19,7 +21,12 @@ import { Navigation } from '../components';
 import style from './App.module.css';
 
 function App() {
+  const dispatch = useDispatch();
   const { pathname } = useSelector(state => state.router.location);
+
+  useEffect(() => {
+    dispatch(userActions.signinCheckDB());
+  }, []);
 
   return (
     <div
@@ -28,7 +35,6 @@ function App() {
       }
     >
       <div>
-        {/* {pathname.includes('sign') ? '' : <Navigation />} */}
         <Navigation />
         <ConnectedRouter history={history}>
           <Route path='/' exact component={Home} />

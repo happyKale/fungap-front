@@ -2,12 +2,17 @@ import { createAction, handleActions } from 'redux-actions';
 import { produce } from 'immer';
 
 import apis from '../../shared/apis';
+import { setToken, getToken, delToken } from '../../shared/token';
 
 // action type
-const SIGNUP = 'SIGNUP';
+const SET_USER = 'SET_USER';
+const LOGOUT = 'LOGOUT';
 
 // action creator
-const signup = createAction(SIGNUP, nickname => ({ nickname }));
+const setUser = createAction(SET_USER, token => ({
+  token,
+}));
+const logout = createAction(LOGOUT, user => ({ user }));
 
 // middleware
 const isEmailDB = email => {
@@ -71,8 +76,11 @@ const signinDB = (id, pwd) => {
 
     try {
       const response = await apis.signin(userData);
+      const { accessToken, refreshToken } = response.data.token;
+      const totlaToken = `${accessToken},${refreshToken}`;
 
-      console.log(response);
+      dispatch(setUser(totlaToken));
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
@@ -89,9 +97,11 @@ const signinKakaoDB = auth => {
 
     try {
       const response = await apis.signinKakao(token);
+      const { accessToken, refreshToken } = response.data.token;
+      const totlaToken = `${accessToken},${refreshToken}`;
 
-      console.log(response);
-      // history.push('/');
+      dispatch(setUser(totlaToken));
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
@@ -108,9 +118,11 @@ const signinGoogleDB = auth => {
 
     try {
       const response = await apis.signinGoogle(token);
+      const { accessToken, refreshToken } = response.data.token;
+      const totlaToken = `${accessToken},${refreshToken}`;
 
-      console.log(response);
-      // history.push('/');
+      dispatch(setUser(totlaToken));
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
@@ -128,9 +140,11 @@ const signinNaverDB = auth => {
     if (auth) {
       try {
         const response = await apis.signinNaver(token);
+        const { accessToken, refreshToken } = response.data.token;
+        const totlaToken = `${accessToken},${refreshToken}`;
 
-        console.log(response);
-        // history.push('/');
+        dispatch(setUser(totlaToken));
+        history.push('/');
       } catch (error) {
         console.log(error);
       }
@@ -138,17 +152,39 @@ const signinNaverDB = auth => {
   };
 };
 
+const signinCheckDB = () => {
+  return (dispatch, getState, { history }) => {
+    const token = getToken('token');
+
+    if (!token) {
+      return false;
+    }
+
+    dispatch(setUser(token));
+  };
+};
+
 // initial state
 const initialState = {
   is_email: false,
   is_nickname: false,
+  is_login: false,
   user: {},
 };
 
 // reducer
 export default handleActions(
   {
-    [SIGNUP]: (state, action) => produce(state, draft => {}),
+    [SET_USER]: (state, action) =>
+      produce(state, draft => {
+        setToken(action.payload.token);
+        draft.is_login = true;
+      }),
+    [LOGOUT]: (state, action) =>
+      produce(state, draft => {
+        delToken('token');
+        draft.is_login = false;
+      }),
   },
   initialState,
 );
@@ -161,4 +197,6 @@ export const userActions = {
   signinKakaoDB,
   signinNaverDB,
   signinGoogleDB,
+  signinCheckDB,
+  logout,
 };
