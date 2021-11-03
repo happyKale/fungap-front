@@ -31,6 +31,10 @@ const apis = {
   editPost: board_id => instance.patch(`/admin/board/${board_id}/edit`),
   deletePost: board_id => instance.delete(`/admin/board/${board_id}/delete`),
   detailPost: board_id => instance.get(`/admin/board/${board_id}/detail`),
+
+  //마이페이지
+  getUserInfo: () => instance.get('/mypage'),
+  updateUserInfo: userInfo => instance.patch('/mypage/edit', userInfo),
 };
 
 export default apis;

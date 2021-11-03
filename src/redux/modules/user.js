@@ -8,14 +8,14 @@ import { FastRewindOutlined } from '@mui/icons-material';
 // action type
 const SET_USER = 'SET_USER';
 const LOGOUT = 'LOGOUT';
-
+const UPDATE_USER = 'UPDATE_USER';
 // action creator
 const setUser = createAction(SET_USER, (token, user) => ({
   token,
   user,
 }));
 const logout = createAction(LOGOUT, user => ({ user }));
-
+const updateUserInfo = createAction(UPDATE_USER, userinfo => ({ userinfo }));
 // middleware
 const isEmailDB = email => {
   return async (dispatch, getState, { history }) => {
@@ -165,6 +165,30 @@ const signinCheckDB = () => {
   };
 };
 
+const updateUserInfoDB = newinfo => {
+  return async (dispatch, getState, { history }) => {
+    console.log(newinfo);
+
+    // apis
+    //   .updateUserInfo(newinfo)
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+    try {
+      const response = await apis.updateUserInfo(newinfo);
+      console.log(response);
+      console.log(response.data.user);
+      // dispatch(updateUserInfo(response.data.user));
+      // history.push('/userpage');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 // initial state
 const initialState = {
   is_email: false,
@@ -188,6 +212,14 @@ export default handleActions(
         sessionStorage.removeItem('user');
         draft.is_login = false;
       }),
+    [UPDATE_USER]: (state, action) =>
+      produce(state, draft => {
+        console.log(action.payload.user);
+        return;
+        sessionStorage.setItem('user', JSON.stringify(action.payload.user));
+
+        draft.user = action.payload.userinfo;
+      }),
   },
   initialState,
 );
@@ -202,4 +234,5 @@ export const userActions = {
   signinGoogleDB,
   signinCheckDB,
   logout,
+  updateUserInfoDB,
 };
