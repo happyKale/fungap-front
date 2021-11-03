@@ -13,7 +13,7 @@ import Setting from './Setting';
 import ProfileEdit from './ProfileEdit';
 import Notification from './Notification';
 import Alarm from './Alarm';
-
+import TermsofUse from './TermsofUse';
 export {
   SignIn,
   SignUp,
@@ -30,4 +30,5 @@ export {
   ProfileEdit,
   Notification,
   Alarm,
+  TermsofUse,
 };
