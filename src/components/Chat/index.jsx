@@ -1,9 +1,12 @@
 import React from 'react';
 import style from './chat.module.css';
-
+import { useSelector } from 'react-redux';
+import { history } from '../../redux/configureStore';
 const Chat = ({ ...rest }) => {
-  const isLogin = false;
-
+  const isLogin = useSelector(state => state.user.is_login);
+  const goProfileEdit = () => {
+    history.push('/useredit');
+  };
   return (
     <React.Fragment>
       <div className={style.userContent}>
@@ -16,7 +19,7 @@ const Chat = ({ ...rest }) => {
           <div>
             <div className={style.userEdit}>
               <h3>임동건님</h3>
-              <button>수정</button>
+              <button onClick={goProfileEdit}>수정</button>
             </div>
 
             <p>즐거운 시간 되세요!</p>
