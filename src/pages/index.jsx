@@ -11,6 +11,7 @@ import AdminPostManage from './AdminPostManage';
 import AdminPostPreview from './AdminPostPreview';
 import Setting from './Setting';
 import ProfileEdit from './ProfileEdit';
+import Notification from './Notification';
 
 export {
   SignIn,
@@ -26,4 +27,5 @@ export {
   AdminPostPreview,
   Setting,
   ProfileEdit,
+  Notification,
 };
