@@ -3,14 +3,16 @@ import { produce } from 'immer';
 
 import apis from '../../shared/apis';
 import { setToken, getToken, delToken } from '../../shared/token';
+import { FastRewindOutlined } from '@mui/icons-material';
 
 // action type
 const SET_USER = 'SET_USER';
 const LOGOUT = 'LOGOUT';
 
 // action creator
-const setUser = createAction(SET_USER, token => ({
+const setUser = createAction(SET_USER, (token, user) => ({
   token,
+  user,
 }));
 const logout = createAction(LOGOUT, user => ({ user }));
 
@@ -76,10 +78,10 @@ const signinDB = (id, pwd) => {
 
     try {
       const response = await apis.signin(userData);
-      const { accessToken, refreshToken } = response.data.token;
-      const totlaToken = `${accessToken},${refreshToken}`;
+      const _token = response.data.token;
+      const user = response.data.user;
 
-      dispatch(setUser(totlaToken));
+      dispatch(setUser(_token, user));
       history.push('/');
     } catch (error) {
       console.log(error);
@@ -97,10 +99,10 @@ const signinKakaoDB = auth => {
 
     try {
       const response = await apis.signinKakao(token);
-      const { accessToken, refreshToken } = response.data.token;
-      const totlaToken = `${accessToken},${refreshToken}`;
+      const _token = response.data.token;
+      const user = response.data.user;
 
-      dispatch(setUser(totlaToken));
+      dispatch(setUser(_token, user));
       history.push('/');
     } catch (error) {
       console.log(error);
@@ -118,10 +120,10 @@ const signinGoogleDB = auth => {
 
     try {
       const response = await apis.signinGoogle(token);
-      const { accessToken, refreshToken } = response.data.token;
-      const totlaToken = `${accessToken},${refreshToken}`;
+      const _token = response.data.token;
+      const user = response.data.user;
 
-      dispatch(setUser(totlaToken));
+      dispatch(setUser(_token, user));
       history.push('/');
     } catch (error) {
       console.log(error);
@@ -137,30 +139,29 @@ const signinNaverDB = auth => {
 
     console.log('DB 네이버 로그인', token);
 
-    if (auth) {
-      try {
-        const response = await apis.signinNaver(token);
-        const { accessToken, refreshToken } = response.data.token;
-        const totlaToken = `${accessToken},${refreshToken}`;
+    if (!auth) return false;
 
-        dispatch(setUser(totlaToken));
-        history.push('/');
-      } catch (error) {
-        console.log(error);
-      }
+    try {
+      const response = await apis.signinNaver(token);
+      const _token = response.data.token;
+      const user = response.data.user;
+
+      dispatch(setUser(_token, user));
+      history.push('/');
+    } catch (error) {
+      console.log(error);
     }
   };
 };
 
 const signinCheckDB = () => {
   return (dispatch, getState, { history }) => {
-    const token = getToken('token');
+    const token = JSON.parse(sessionStorage.getItem('token'));
+    const user = JSON.parse(sessionStorage.getItem('user'));
 
-    if (!token) {
-      return false;
-    }
+    if (!token || !user) return false;
 
-    dispatch(setUser(token));
+    dispatch(setUser(token, user));
   };
 };
 
@@ -177,12 +178,14 @@ export default handleActions(
   {
     [SET_USER]: (state, action) =>
       produce(state, draft => {
-        setToken(action.payload.token);
+        setToken(JSON.stringify(action.payload.token));
+        sessionStorage.setItem('user', JSON.stringify(action.payload.user));
         draft.is_login = true;
       }),
     [LOGOUT]: (state, action) =>
       produce(state, draft => {
         delToken('token');
+        sessionStorage.removeItem('user');
         draft.is_login = false;
       }),
   },
