@@ -36,7 +36,7 @@ const ProfileEdit = () => {
 
   return (
     <div className={style.wrap}>
-      <Goback>프로필 수정</Goback>
+      <Goback page='/userpage'>프로필 수정</Goback>
       <div className={style.background} />
       <div className={style.editImage}>
         <label htmlFor='inputfile'>
