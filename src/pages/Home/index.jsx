@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { history } from '../../redux/configureStore';
 import { postActions } from '../../redux/modules/post';
-import { Post } from '../../components';
+import { Post, SearchBar } from '../../components';
 import style from './home.module.css';
 
 const Home = props => {
@@ -12,8 +12,8 @@ const Home = props => {
   const new4 = postList.slice(1, 5);
   const top4 = postList.slice(1, 5);
 
-  const goSituationPage = () => {
-    window.alert('상황별 페이지 이동');
+  const goContentsPage = () => {
+    history.push('/contents');
   };
   useEffect(() => {
     dispatch(postActions.getPostDB());
@@ -22,6 +22,7 @@ const Home = props => {
   return (
     <React.Fragment>
       <p className={style.logo}>LOGO</p>
+      <SearchBar />
       <img
         className={style.banner}
         src='https://cdn.crowdpic.net/list-thumb/thumb_l_9420675A44EC073FDA8AF00F765B411B.jpg'
@@ -29,7 +30,7 @@ const Home = props => {
       />
       <div className={style.titleContent}>
         <h2>새로나온 콘텐츠</h2>
-        <span onClick={goSituationPage}>모두 보기</span>
+        <span onClick={goContentsPage}>모두 보기</span>
       </div>
       <div className={style.grid}>
         {new4.map((post, index) => {
