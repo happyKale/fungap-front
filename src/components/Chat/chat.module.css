@@ -33,6 +33,7 @@
   width: 82px;
   height: 82px;
   border-radius: 41px;
+  object-fit: cover;
 }
 
 .userEdit {

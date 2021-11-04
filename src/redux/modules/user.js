@@ -4,11 +4,14 @@ import { produce } from 'immer';
 import apis from '../../shared/apis';
 import { setToken, getToken, delToken } from '../../shared/token';
 import { FastRewindOutlined } from '@mui/icons-material';
+import { imageListItemClasses } from '@mui/material';
 
 // action type
 const SET_USER = 'SET_USER';
 const LOGOUT = 'LOGOUT';
 const UPDATE_USER = 'UPDATE_USER';
+const SET_IMAGE = 'SET_IMAGE';
+
 // action creator
 const setUser = createAction(SET_USER, (token, user) => ({
   token,
@@ -16,6 +19,8 @@ const setUser = createAction(SET_USER, (token, user) => ({
 }));
 const logout = createAction(LOGOUT, user => ({ user }));
 const updateUserInfo = createAction(UPDATE_USER, userinfo => ({ userinfo }));
+const setUploadImage = createAction(SET_IMAGE, image => ({ image }));
+
 // middleware
 const isEmailDB = email => {
   return async (dispatch, getState, { history }) => {
@@ -193,6 +198,7 @@ const deleteUserInfoDB = () => {
 
 // initial state
 const initialState = {
+  uploadImage: '',
   is_email: false,
   is_nickname: false,
   is_login: false,
@@ -219,6 +225,10 @@ export default handleActions(
         sessionStorage.setItem('user', JSON.stringify(action.payload.userinfo));
         draft.user = action.payload.userinfo;
       }),
+    [SET_IMAGE]: (state, action) =>
+      produce(state, draft => {
+        draft.uploadImage = action.payload.image;
+      }),
   },
   initialState,
 );
@@ -233,6 +243,7 @@ export const userActions = {
   signinGoogleDB,
   signinCheckDB,
   logout,
+  setUploadImage,
   updateUserInfoDB,
   deleteUserInfoDB,
 };

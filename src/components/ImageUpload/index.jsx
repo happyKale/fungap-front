@@ -2,23 +2,26 @@ import React, { useState } from 'react';
 import style from './imageUpload.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import AWS from 'aws-sdk';
-
 import { postActions } from '../../redux/modules/post';
+import { userActions } from '../../redux/modules/user';
+import userPlaceholer from '../../assets/userplaceholder.png';
 
 const ImageUpload = props => {
   const dispatch = useDispatch();
   const url = useSelector(state => state.post.postImg);
   const isProfile = props.profile ? true : false;
-  const [imgUrl, setImgUrl] = useState(
-    'https://fungap-img.s3.ap-northeast-2.amazonaws.com/unnamed.png',
-  );
+  const [imgUrl, setImgUrl] = useState(userPlaceholer);
 
   React.useEffect(() => {
     let url = props.url ? props.url : false;
     if (url) {
       console.log('url넘어오는걸: ', url);
       setImgUrl(url);
-      dispatch(postActions.addImage(url));
+      if (isProfile) {
+        dispatch(userActions.setUploadImage(url));
+      } else {
+        dispatch(postActions.addImage(url));
+      }
     }
     console.log('수정 이미지: ', url);
   }, []);
@@ -69,6 +72,7 @@ const ImageUpload = props => {
         // 사용자 프로필 사진 변경일 때와 관리자 페이지 이미지 변경일 때로 나눔.
         if (isProfile) {
           // user모듈의 프로필이미지에 저장되도록
+          dispatch(userActions.setUploadImage(url));
         } else {
           dispatch(postActions.addImage(url));
         }
@@ -81,12 +85,27 @@ const ImageUpload = props => {
 
   return (
     <React.Fragment>
-      <div className={style.container}>
-        <div className={style.imgBox}>
-          <img className={style.img} src={imgUrl} alt='게시글 이미지'></img>
+      {isProfile ? (
+        <div>
+          <div className={style.editImage}>
+            <label htmlFor='upload'>
+              <img
+                src='https://cdn.iconscout.com/icon/free/png-256/edit-2653317-2202989.png'
+                alt='수정아이콘'
+              />
+            </label>
+            <input type='file' id='upload' onChange={addPhoto} />
+          </div>
+          <img src={imgUrl} alt='유저이미지' className={style.userImage} />
         </div>
-        <input type='file' id='upload' onChange={addPhoto} />
-      </div>
+      ) : (
+        <div className={style.container}>
+          <div className={style.imgBox}>
+            <img className={style.img} src={imgUrl} alt='게시글 이미지'></img>
+          </div>
+          <input type='file' id='upload' onChange={addPhoto} />
+        </div>
+      )}
     </React.Fragment>
   );
 };
