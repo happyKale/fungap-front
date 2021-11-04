@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './profileedit.module.css';
-import userPlaceholer from '../../assets/userplaceholder.png';
 import { Goback, ImageUpload } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../../redux/modules/user';
+
 const ProfileEdit = () => {
   const dispatch = useDispatch();
   const userInfo = JSON.parse(sessionStorage.getItem('user'));
@@ -45,7 +45,7 @@ const ProfileEdit = () => {
     <div className={style.wrap}>
       <Goback page='/userpage'>프로필 수정</Goback>
       <div className={style.background} />
-      <ImageUpload profile url={user_image} />
+      <ImageUpload profile url={userInfo.user_image} />
       <div className={style.inputContent}>
         <p>닉네임</p>
         <input type='text' value={nickname} onChange={changeNickname} />
