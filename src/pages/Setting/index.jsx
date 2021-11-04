@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import style from './setting.module.css';
-import { Chat } from '../../components/';
+import { Chat, Modal } from '../../components/';
 import adminicon from '../../assets/adminicon.png';
 import notification from '../../assets/notification.png';
 import alram from '../../assets/alram.png';
@@ -12,21 +12,38 @@ import { history } from '../../redux/configureStore';
 const Setting = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.user.is_login);
+  const [visible, setVisible] = React.useState(false);
 
   const logOut = () => {
     dispatch(userActions.logout());
   };
+
   const goSigninPage = () => {
     history.push('/signin');
   };
+
   const goNotificationPage = () => {
     history.push('/notification');
   };
+
   const goAlarmPage = () => {
     history.push('/alarm');
   };
+
   const goTermsofUsePage = () => {
     history.push('/termsofuse');
+  };
+
+  const openModal = () => {
+    setVisible(true);
+  };
+
+  const closeModal = () => {
+    setVisible(false);
+  };
+
+  const withdrawalMember = () => {
+    dispatch(userActions.deleteUserInfoDB());
   };
 
   return (
@@ -68,7 +85,7 @@ const Setting = () => {
         {isLogin ? (
           <div className={style.btn}>
             <button onClick={logOut}>로그아웃</button>
-            <button>탈퇴하기</button>
+            <button onClick={openModal}>탈퇴하기</button>
           </div>
         ) : (
           <div className={style.btn}>
@@ -76,6 +93,19 @@ const Setting = () => {
           </div>
         )}
       </div>
+      {visible && (
+        <Modal
+          title='회원 탈퇴'
+          visible={visible}
+          desc='정말 탈퇴하시겠어요?'
+          desc2='탈퇴 시 이전 정보는 복구되지 않습니다.'
+          onClose={closeModal}
+          btnLeft='취소'
+          btnRight='탈퇴하기'
+          clickBtnRight={withdrawalMember}
+          maskClosable
+        />
+      )}
     </div>
   );
 };
