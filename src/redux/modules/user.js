@@ -167,13 +167,24 @@ const signinCheckDB = () => {
 
 const updateUserInfoDB = newinfo => {
   return async (dispatch, getState, { history }) => {
-    console.log(newinfo);
-
     try {
       const response = await apis.updateUserInfo(newinfo);
-      console.log(response);
+
       dispatch(updateUserInfo(response.data.user));
       history.push('/userpage');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+const deleteUserInfoDB = () => {
+  return async (dispatch, getState, { history }) => {
+    try {
+      const response = await apis.deleteUserInfo();
+      console.log(response);
+      dispatch(userActions.logout());
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
@@ -205,7 +216,6 @@ export default handleActions(
       }),
     [UPDATE_USER]: (state, action) =>
       produce(state, draft => {
-        console.log(action.payload.userinfo);
         sessionStorage.setItem('user', JSON.stringify(action.payload.userinfo));
         draft.user = action.payload.userinfo;
       }),
@@ -224,4 +234,5 @@ export const userActions = {
   signinCheckDB,
   logout,
   updateUserInfoDB,
+  deleteUserInfoDB,
 };

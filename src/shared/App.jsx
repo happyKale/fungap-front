@@ -19,6 +19,7 @@ import {
   Notification,
   Alarm,
   TermsofUse,
+  Review,
 } from '../pages';
 import { Navigation } from '../components';
 import style from './App.module.css';
@@ -55,6 +56,7 @@ function App() {
           <Route path='/notification' exact component={Notification} />
           <Route path='/alarm' exact component={Alarm} />
           <Route path='/termsofuse' exact component={TermsofUse} />
+          <Route path='/review' exact component={Review} />
         </ConnectedRouter>
       </div>
     </div>

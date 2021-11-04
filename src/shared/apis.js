@@ -44,6 +44,7 @@ const apis = {
   //마이페이지
   getUserInfo: () => instance.get('/mypage'),
   updateUserInfo: userInfo => instance.patch('/mypage/edit', userInfo),
+  deleteUserInfo: () => instance.delete('/mypage/delete'),
 };
 
 export default apis;

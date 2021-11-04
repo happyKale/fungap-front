@@ -5,7 +5,7 @@ import { history } from '../../redux/configureStore';
 const Chat = ({ ...rest }) => {
   const isLogin = useSelector(state => state.user.is_login);
   const userInfo = JSON.parse(sessionStorage.getItem('user'));
-  console.log(userInfo);
+
   const goProfileEdit = () => {
     history.push('/useredit');
   };
