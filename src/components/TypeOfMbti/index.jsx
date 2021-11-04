@@ -9,7 +9,7 @@ const mbtiList = [
   'INTP',
   'ENTJ',
   'ENTP',
-  'INFA',
+  'INFJ',
   'INFP',
   'ENFJ',
   'ENFP',
