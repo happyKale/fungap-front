@@ -1,14 +1,18 @@
 .container {
+  /* border: 1px solid red; */
   margin: 40px auto 100px;
+  padding-bottom: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 430px;
-  max-width: 580px;
+  max-width: 780px;
 }
 .buttonBox {
   /* border: 1px solid black; */
   width: 100%;
+  min-width: 400px;
+  max-width: 500px;
   height: 60px;
   position: relative;
 }
@@ -18,6 +22,7 @@
   height: 35px;
   border: 1px solid lightgray;
   border-radius: 4px;
+  background-color: white;
   position: absolute;
   font-size: 18px;
   right: 14px;
@@ -25,8 +30,15 @@
 }
 
 .postListBox {
+  /* border: 1px solid blue; */
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.postListBox > div {
+  width: 100%;
+  min-width: 400px;
+  max-width: 500px;
 }

@@ -12,6 +12,7 @@ import Chat from './Chat';
 import SearchBar from './SearchBar';
 import SortContents from './SortContents';
 import Modal from './Modal';
+import ImageUpload from './ImageUpload';
 
 export {
   TypeOfMbti,
@@ -28,4 +29,5 @@ export {
   SearchBar,
   SortContents,
   Modal,
+  ImageUpload
 };
