@@ -4,39 +4,48 @@ import { history } from '../../redux/configureStore';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { postActions } from '../../redux/modules/post';
-import { Goback } from '../../components';
+import { Goback, ImageUpload } from '../../components';
 
 const AdminPostManage = props => {
   const dispatch = useDispatch();
-  const postId = props.match.params.id;
-  // 주소창에 id값이 넘어오면 게시글 수정으로 바꾸기 위해서 변수를 만듦.
-  const isEdit = postId ? true : false;
-  const postList = useSelector(state => state.post.postList);
-  let post = postList.filter(post => post.board_id == postId);
+  let postId = props.match.params.id;
+  // postId가 넘어오면 수정 페이지
+  let isEdit = postId ? true : false;
+  // image: 업로드한 이미지
+  const image = useSelector(state => state.post.postImg);
+
+  // defaultPost, defaultEditPost : 기본으로 보여줄 게시글
+  // 미리보기 페이지로 넘어갈 때 작성한 데이터는 post 모듈의 post에 저장되게 됨.
+  //                           수정한 데이터는 post 모듈의 editPost에 저장되게 됨.
+  // 미리보기 페이지에서 뒤로 돌아올 때 작성하는 중이었으면 defaultPost를 보여준다.
+  //                                 수정하는 중이었으면 defaultEditPost를 보여준다.
+  let defaultPost = useSelector(state => state.post.post);
+  let defaultEditPost = useSelector(state => state.post.editPost);
+
   const titleRef = useRef('');
   const descRef = useRef('');
   const mbtiList = [
-    { key: 'INFP', ref: useRef(''), bgColor: '#FFEBEE' },
-    { key: 'INFJ', ref: useRef(''), bgColor: '#FFEBEE' },
-    { key: 'INTP', ref: useRef(''), bgColor: '#FFEBEE' },
-    { key: 'INTJ', ref: useRef(''), bgColor: '#FFEBEE' },
-    { key: 'ISFP', ref: useRef(''), bgColor: '#FCE4EC' },
-    { key: 'ISFJ', ref: useRef(''), bgColor: '#FCE4EC' },
-    { key: 'ISTP', ref: useRef(''), bgColor: '#FCE4EC' },
-    { key: 'ISTJ', ref: useRef(''), bgColor: '#FCE4EC' },
-    { key: 'ENFP', ref: useRef(''), bgColor: '#E1F5FE' },
-    { key: 'ENFJ', ref: useRef(''), bgColor: '#E1F5FE' },
-    { key: 'ENTP', ref: useRef(''), bgColor: '#E1F5FE' },
-    { key: 'ENTJ', ref: useRef(''), bgColor: '#E1F5FE' },
-    { key: 'ESFP', ref: useRef(''), bgColor: '#E8F5E9' },
-    { key: 'ESFJ', ref: useRef(''), bgColor: '#E8F5E9' },
-    { key: 'ESTP', ref: useRef(''), bgColor: '#E8F5E9' },
-    { key: 'ESTJ', ref: useRef(''), bgColor: '#E8F5E9' },
+    { key: 'INFP', ref: useRef('') },
+    { key: 'INFJ', ref: useRef('') },
+    { key: 'INTP', ref: useRef('') },
+    { key: 'INTJ', ref: useRef('') },
+    { key: 'ISFP', ref: useRef('') },
+    { key: 'ISFJ', ref: useRef('') },
+    { key: 'ISTP', ref: useRef('') },
+    { key: 'ISTJ', ref: useRef('') },
+    { key: 'ENFP', ref: useRef('') },
+    { key: 'ENFJ', ref: useRef('') },
+    { key: 'ENTP', ref: useRef('') },
+    { key: 'ENTJ', ref: useRef('') },
+    { key: 'ESFP', ref: useRef('') },
+    { key: 'ESFJ', ref: useRef('') },
+    { key: 'ESTP', ref: useRef('') },
+    { key: 'ESTJ', ref: useRef('') },
   ];
 
   const saveData = () => {
     const title = titleRef.current.value.trimEnd();
-    const img = '임시이미지';
+    const img = image;
     const desc = descRef.current.value.trimEnd();
     const mbtiDescObject = {};
     // 제목과 설명이 없으면 경고문 띄우고 중지하기
@@ -45,6 +54,11 @@ const AdminPostManage = props => {
       return;
     } else if (desc === '') {
       window.alert('게시글 설명을 적어주세요!');
+      return;
+    }
+    // 게시글 작성일 때 이미지가 없으면 경고문 띄우고 중지하기
+    if (!isEdit && !image) {
+      window.alert('게시글 사진을 등록해주세요!');
       return;
     }
     // mbti별 내용을 mbtiDescObject 객체에 저장하기
@@ -58,10 +72,11 @@ const AdminPostManage = props => {
       mbtiDescObject[mbti.key.toLowerCase()] = mbti.ref.current.value.trimEnd();
     });
 
-    dispatch(postActions.addPost(title, img, desc, mbtiDescObject));
     if (isEdit) {
+      dispatch(postActions.addEditPost(title, img, desc, mbtiDescObject));
       history.push(`/admin_preview/${postId}`);
     } else {
+      dispatch(postActions.addPost(title, img, desc, mbtiDescObject));
       history.push('/admin_preview');
     }
   };
@@ -77,19 +92,28 @@ const AdminPostManage = props => {
           placeholder='게시글의 제목을 적으세요!'
           className={style.title}
           ref={titleRef}
-          defaultValue={isEdit ? post[0].board_title : ''}
+          defaultValue={
+            postId
+              ? defaultEditPost.board_title
+              : defaultPost && defaultPost.title
+          }
         />
-        <img
-          className={style.img}
-          src='https://i.pinimg.com/originals/b2/63/77/b2637760a3dbc1762d72ab99a83cb20f.jpg'
-          alt='게시글 이미지'
-        ></img>
+        {postId ? (
+          <ImageUpload url={defaultEditPost.board_image} />
+        ) : (
+          defaultPost && <ImageUpload url={defaultPost.img} />
+        )}
+
         <textarea
           placeholder='게시글의 설명을 적으세요!'
           rows='4'
           className={style.desc}
           ref={descRef}
-          defaultValue={isEdit ? post[0].board_desc : ''}
+          defaultValue={
+            isEdit
+              ? defaultEditPost.board_desc
+              : defaultPost && defaultPost.desc
+          }
         />
         {mbtiList.map((mbti, idx) => {
           return (
@@ -101,7 +125,9 @@ const AdminPostManage = props => {
                 ref={mbti.ref}
                 className={style.mbtiDesc}
                 defaultValue={
-                  isEdit ? post[0].board_content[mbti.key.toLowerCase()] : ''
+                  isEdit
+                    ? defaultEditPost.board_content[mbti.key.toLowerCase()]
+                    : defaultPost && defaultPost.mbti[mbti.key.toLowerCase()]
                 }
               />
             </div>
