@@ -34,6 +34,10 @@ const Setting = () => {
     history.push('/termsofuse');
   };
 
+  const goReviewpage = () => {
+    history.push('/review');
+  };
+
   const openModal = () => {
     setVisible(true);
   };
@@ -80,7 +84,7 @@ const Setting = () => {
         <div>
           <img src={mail} alt='리뷰남기기' className={style.mailImage} />
 
-          <p>리뷰남기기</p>
+          <p onClick={goReviewpage}>리뷰남기기</p>
         </div>
         {isLogin ? (
           <div className={style.btn}>
