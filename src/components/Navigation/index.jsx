@@ -20,7 +20,7 @@ const Navigation = props => {
   };
 
   return (
-    <nav>
+    <nav className={style.nav}>
       <ul className={style.btnList} onClick={handleClick}>
         <li data-name='home' className={style.btn}>
           <img //
