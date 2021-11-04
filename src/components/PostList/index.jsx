@@ -21,7 +21,7 @@ const PostList = props => {
     <div>
       {postList.map((post, index) => {
         return (
-          <React.Fragment>
+          <>
             <Post key={index} direction='row' {...post} />
             {/* props.isEdit이 true일때만 버튼이 보인다. */}
             {isEdit && (
@@ -44,7 +44,7 @@ const PostList = props => {
                 </button>
               </div>
             )}
-          </React.Fragment>
+          </>
         );
       })}
     </div>

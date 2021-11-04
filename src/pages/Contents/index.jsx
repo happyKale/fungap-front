@@ -12,7 +12,7 @@ const Contents = props => {
         <span className={style.commentCount}>16개의 게시글</span>
         <SortContents />
       </div>
-      <PostList></PostList>
+      <PostList />
     </>
   );
 };

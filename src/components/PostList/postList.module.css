@@ -7,7 +7,7 @@
   left: 440px;
   bottom: 80px;
 }
-button {
+.buttonBox > button {
   background-color: white;
   border: 1px solid lightgray;
   width: 60px;
