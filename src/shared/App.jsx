@@ -16,6 +16,9 @@ import {
   AdminPostPreview,
   Setting,
   ProfileEdit,
+  Notification,
+  Alarm,
+  TermsofUse,
 } from '../pages';
 import { Navigation } from '../components';
 import style from './App.module.css';
@@ -49,6 +52,9 @@ function App() {
           <Route path='/admin_write/:id' exact component={AdminPostManage} />
           <Route path='/admin_preview' exact component={AdminPostPreview} />
           <Route path='/admin_preview/:id' exact component={AdminPostPreview} />
+          <Route path='/notification' exact component={Notification} />
+          <Route path='/alarm' exact component={Alarm} />
+          <Route path='/termsofuse' exact component={TermsofUse} />
         </ConnectedRouter>
       </div>
     </div>

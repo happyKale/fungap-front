@@ -169,20 +169,11 @@ const updateUserInfoDB = newinfo => {
   return async (dispatch, getState, { history }) => {
     console.log(newinfo);
 
-    // apis
-    //   .updateUserInfo(newinfo)
-    //   .then(res => {
-    //     console.log(res);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
     try {
       const response = await apis.updateUserInfo(newinfo);
       console.log(response);
-      console.log(response.data.user);
-      // dispatch(updateUserInfo(response.data.user));
-      // history.push('/userpage');
+      dispatch(updateUserInfo(response.data.user));
+      history.push('/userpage');
     } catch (error) {
       console.log(error);
     }
@@ -214,10 +205,8 @@ export default handleActions(
       }),
     [UPDATE_USER]: (state, action) =>
       produce(state, draft => {
-        console.log(action.payload.user);
-        return;
-        sessionStorage.setItem('user', JSON.stringify(action.payload.user));
-
+        console.log(action.payload.userinfo);
+        sessionStorage.setItem('user', JSON.stringify(action.payload.userinfo));
         draft.user = action.payload.userinfo;
       }),
   },
