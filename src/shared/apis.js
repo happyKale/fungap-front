@@ -32,6 +32,15 @@ const apis = {
   deletePost: board_id => instance.delete(`/admin/board/${board_id}/delete`),
   detailPost: board_id => instance.get(`/admin/board/${board_id}/detail`),
 
+  //댓글
+  getComment: board_id => instance.get(`/comment/${board_id}`),
+  addComment: (board_id, comment) =>
+    instance.post(`/comment/${board_id}`, comment),
+  deleteComment: (board_id, comment_id) =>
+    instance.delete(`/comment/${board_id}/${comment_id}`),
+  editComment: (board_id, comment_id, comment) =>
+    instance.patch(`/comment/${board_id}/${comment_id}`, comment),
+
   //마이페이지
   getUserInfo: () => instance.get('/mypage'),
   updateUserInfo: userInfo => instance.patch('/mypage/edit', userInfo),

@@ -6,6 +6,8 @@
   border-bottom: 1px solid #f7f7f7;
 }
 .profileImg > img {
+  width: auto;
+  height: 40px;
   border-radius: 50%;
 }
 .user {
@@ -25,12 +27,24 @@
   background-color: #ccc;
 }
 
+.editForm {
+  margin: 15px 0;
+  text-align: right;
+}
+.editForm > button {
+  width: auto;
+  margin-top: 10px;
+  border: none;
+  padding: 7px 12px;
+  background-color: #f7de70;
+  color: #333333;
+}
+
 .handleComment {
   position: absolute;
   right: 0;
   top: 0;
 }
-
 .handleComment > svg {
   cursor: pointer;
 }

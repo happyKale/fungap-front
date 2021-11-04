@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { commentActions } from '../../redux/modules/comment';
 import { Modal } from '../';
 import style from './commentInput.module.css';
 import { history } from '../../redux/configureStore';
 
-const CommentInput = props => {
+const CommentInput = ({ boardId }) => {
   const dispatch = useDispatch();
-  const [visible, setVisible] = useState(false);
+  const isLogin = useSelector(state => state.user.is_login);
+  const [visible, setVisible] = useState(null);
   const [input, setInput] = useState({ comment: '' });
   const { comment } = input;
-  const isLogin = false;
   //
   const handleChange = e => {
     const { value, name } = e.target;
@@ -30,12 +30,12 @@ const CommentInput = props => {
     }
 
     if (!isLogin) {
-      setVisible(true);
+      setVisible(!isLogin);
 
       return false;
     }
 
-    dispatch(commentActions.addCommentDB(1, comment));
+    dispatch(commentActions.addCommentDB(boardId, comment));
     setInput({
       comment: '',
     });

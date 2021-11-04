@@ -15,11 +15,8 @@ const Comments = ({ boardId }) => {
   });
 
   useEffect(() => {
-    if (comments) {
-      return false;
-    }
-    dispatch(commentActions.getCommentDB());
-  }, [comments]);
+    dispatch(commentActions.getCommentDB(boardId));
+  }, []);
 
   const showTotalComment = () => {
     setCommentVisible(!commentVisible);
@@ -45,7 +42,7 @@ const Comments = ({ boardId }) => {
           </button>
         )}
       </div>
-      <CommentInput />
+      <CommentInput boardId={boardId} />
     </div>
   );
 };
