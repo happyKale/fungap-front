@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 import { commentActions } from '../../redux/modules/comment';
 import style from './comment.module.css';
+import { useSelector } from 'react-redux';
 
 const Comment = ({ User, board_id, comment_id, comment }) => {
   const { nickname, user_id, user_image, user_mbti } = User;
   const dispatch = useDispatch();
-  const [newComment, setNewComment] = useState(comment);
+  const newComment = useRef();
   const [editBox, setEditBox] = useState(false);
 
   const userNickname =
     sessionStorage.getItem('user') &&
     JSON.parse(sessionStorage.getItem('user')).nickname;
-
-  const handeChange = e => {
-    const { value } = e.target;
-
-    setNewComment(value);
-  };
 
   const toggleEditBox = () => {
     setEditBox(!editBox);
@@ -30,7 +25,13 @@ const Comment = ({ User, board_id, comment_id, comment }) => {
     e.preventDefault();
     setEditBox(!editBox);
 
-    dispatch(commentActions.editCommentDB(board_id, comment_id, newComment));
+    dispatch(
+      commentActions.editCommentDB(
+        board_id,
+        comment_id,
+        newComment.current.value,
+      ),
+    );
   };
   const deleteComment = () => {
     dispatch(commentActions.deleteCommentDB(board_id, comment_id));
@@ -53,11 +54,11 @@ const Comment = ({ User, board_id, comment_id, comment }) => {
         {editBox ? (
           <form className={style.editForm} onSubmit={editComment}>
             <textarea
+              ref={newComment}
               name=''
               id=''
               rows='3'
-              defaultValue={newComment}
-              onChange={handeChange}
+              defaultValue={comment}
             ></textarea>
             <button>댓글수정</button>
           </form>
