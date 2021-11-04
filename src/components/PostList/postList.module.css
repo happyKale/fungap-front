@@ -4,10 +4,10 @@
   flex-direction: row;
   justify-content: space-between;
   position: relative;
-  left: 440px;
+  left: 350px;
   bottom: 80px;
 }
-.buttonBox > button {
+.button {
   background-color: white;
   border: 1px solid lightgray;
   width: 60px;
