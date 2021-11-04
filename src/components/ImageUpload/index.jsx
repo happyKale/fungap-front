@@ -11,7 +11,6 @@ const ImageUpload = props => {
   const url = useSelector(state => state.post.postImg);
   const isProfile = props.profile ? true : false;
   const [imgUrl, setImgUrl] = useState(profilePlaceholer);
-  console.log(props);
   React.useEffect(() => {
     let url = props.url ? props.url : false;
     if (url) {
