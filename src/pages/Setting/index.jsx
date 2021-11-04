@@ -34,6 +34,10 @@ const Setting = () => {
     history.push('/termsofuse');
   };
 
+  const goAdminPage = () => {
+    history.push('/admin');
+  };
+
   const openModal = () => {
     setVisible(true);
   };
@@ -54,7 +58,7 @@ const Setting = () => {
         {isLogin ? (
           <div>
             <img src={adminicon} alt='공지사항' className={style.adminImage} />
-            <p>관리자페이지</p>
+            <p onClick={goAdminPage}>관리자페이지</p>
           </div>
         ) : (
           ''
