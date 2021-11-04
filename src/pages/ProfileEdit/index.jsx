@@ -1,14 +1,13 @@
 import React from 'react';
 import style from './profileedit.module.css';
 import userPlaceholer from '../../assets/userplaceholder.png';
-import { Goback } from '../../components';
-import { useDispatch } from 'react-redux';
+import { Goback, ImageUpload } from '../../components';
+import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../../redux/modules/user';
 const ProfileEdit = () => {
   const dispatch = useDispatch();
   const userInfo = JSON.parse(sessionStorage.getItem('user'));
-
-  const [previewImg, setPreviewImg] = React.useState(userPlaceholer);
+  const user_image = useSelector(state => state.user.uploadImage);
   const [nickname, setNickname] = React.useState(userInfo?.nickname);
   const [user_mbti, setUser_mbti] = React.useState(userInfo.user_mbti);
 
@@ -19,16 +18,6 @@ const ProfileEdit = () => {
     setUser_mbti(e.target.value);
   };
 
-  const onChangeHandle = e => {
-    const reader = new FileReader();
-    const file = e.target.files[0];
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setPreviewImg(reader.result);
-    };
-  };
-  const user_image =
-    'https://img.huffingtonpost.com/asset/5dd5f293250000ab11d2dbc4.jpeg?cache=A1ADNLUVMY&ops=scalefit_630_noupscale';
   const newinfo = { user_mbti, nickname, user_image };
   const updateUserInfo = () => {
     dispatch(userActions.updateUserInfoDB(newinfo));
@@ -56,16 +45,7 @@ const ProfileEdit = () => {
     <div className={style.wrap}>
       <Goback page='/userpage'>프로필 수정</Goback>
       <div className={style.background} />
-      <div className={style.editImage}>
-        <label htmlFor='inputfile'>
-          <img
-            src='https://cdn.iconscout.com/icon/free/png-256/edit-2653317-2202989.png'
-            alt='수정아이콘'
-          />
-        </label>
-        <input type='file' id='inputfile' onChange={onChangeHandle} />
-      </div>
-      <img src={previewImg} alt='유저이미지' className={style.userImage} />
+      <ImageUpload profile url={user_image} />
       <div className={style.inputContent}>
         <p>닉네임</p>
         <input type='text' value={nickname} onChange={changeNickname} />
