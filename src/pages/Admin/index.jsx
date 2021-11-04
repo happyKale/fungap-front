@@ -1,10 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { PostList, Goback } from '../../components';
 import style from './admin.module.css';
 import { history } from '../../redux/configureStore';
+import { postActions } from '../../redux/modules/post';
 
 const Admin = props => {
+  const dispatch = useDispatch();
+  let defaultPost = useSelector(state => state.post.post);
+  let result = true;
   return (
     <React.Fragment>
       {/* 페이지 제목 */}
@@ -15,13 +19,21 @@ const Admin = props => {
             <button
               className={style.button}
               onClick={() => {
+                if (defaultPost.title !== '') {
+                  result = window.confirm(
+                    '작성중인 글이 있습니다. 불러오시겠습니까?',
+                  );
+                  if (!result) {
+                    dispatch(postActions.resetPost());
+                  }
+                }
                 history.push('/admin_write');
               }}
             >
               글작성
             </button>
           </div>
-          <PostList isEdit />
+          <PostList isAdmin />
         </div>
       </div>
     </React.Fragment>
