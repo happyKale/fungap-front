@@ -12,13 +12,22 @@ import { history } from '../../redux/configureStore';
 const Setting = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.user.is_login);
+
   const logOut = () => {
     dispatch(userActions.logout());
   };
   const goSigninPage = () => {
     history.push('/signin');
   };
-  useEffect(() => {}, []);
+  const goNotificationPage = () => {
+    history.push('/notification');
+  };
+  const goAlarmPage = () => {
+    history.push('/alarm');
+  };
+  const goTermsofUsePage = () => {
+    history.push('/termsofuse');
+  };
 
   return (
     <div className={style.wrap}>
@@ -40,16 +49,16 @@ const Setting = () => {
             alt='공지사항'
             className={style.notificationImage}
           />
-          <p>공지사항</p>
+          <p onClick={goNotificationPage}>공지사항</p>
         </div>
         <div>
           <img src={alram} alt='알림설정' className={style.alramImage} />
-          <p>알림설정</p>
+          <p onClick={goAlarmPage}>알림설정</p>
         </div>
         <div>
           <img src={contract} alt='이용약관' className={style.contractImage} />
 
-          <p>이용약관</p>
+          <p onClick={goTermsofUsePage}>이용약관</p>
         </div>
         <div>
           <img src={mail} alt='리뷰남기기' className={style.mailImage} />

@@ -5,8 +5,6 @@ const getToken = () => {
     const parseToken = JSON.parse(token);
     const totalToken = `${parseToken.accessToken},${parseToken.refreshToken}`;
 
-    console.log(parseToken);
-
     return totalToken;
   } else {
     return null;
