@@ -82,6 +82,17 @@ const initialState = {
     {
       comment: 'ㅋㅋㅋㅋㅋ',
       board_id: 2,
+      comment_id: 1,
+      User: {
+        user_image: 'user_image',
+        user_id: 2,
+        user_mbti: 'ENFP',
+        nickname: '모찌오빠',
+      },
+    },
+    {
+      comment: '2번 게시글 댓글',
+      board_id: 2,
       comment_id: 2,
       User: {
         user_image: 'user_image',

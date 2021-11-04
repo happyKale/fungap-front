@@ -1,6 +1,9 @@
 import React from 'react';
 import heart from '../../assets/heart.png';
 import style from './post.module.css';
+
+import { history } from '../../redux/configureStore';
+
 const Post = ({
   board_id,
   board_title,
@@ -11,8 +14,15 @@ const Post = ({
   like_state,
   direction,
 }) => {
+  const movePostDetail = () => {
+    history.push(`/detail/${board_id}`);
+  };
+
   return (
-    <div className={direction === 'row' ? style.rowFlex : style.columnFlex}>
+    <div
+      className={direction === 'row' ? style.rowFlex : style.columnFlex}
+      onClick={movePostDetail}
+    >
       <img
         className={direction === 'row' ? style.rowImg : style.columnImg}
         src={board_image}

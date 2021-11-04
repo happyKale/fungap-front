@@ -5,11 +5,14 @@ import { commentActions } from '../../redux/modules/comment';
 import { Comment, CommentInput } from '../';
 import style from './comments.module.css';
 
-const Comments = props => {
+const Comments = ({ boardId }) => {
   const dispatch = useDispatch();
   const [commentVisible, setCommentVisible] = useState(false);
   const comments = useSelector(state => state.comment.list);
-  console.log(comments);
+
+  const comment = comments.filter(item => {
+    return item.board_id === boardId;
+  });
 
   useEffect(() => {
     if (comments) {
@@ -26,17 +29,21 @@ const Comments = props => {
     <div className={style.comments}>
       <ul className={style.commentList}>
         {!commentVisible
-          ? comments.slice(0, 2).map((item, index) => {
+          ? comment.slice(0, 2).map((item, index) => {
               return <Comment key={index} {...item} />;
             })
-          : comments.map((item, index) => {
+          : comment.map((item, index) => {
               return <Comment key={index} {...item} />;
             })}
       </ul>
       <div className={style.btnTotalCommentWrap}>
-        <button onClick={showTotalComment}>
-          {!commentVisible ? '5개의 댓글 전체보기' : '댓글 숨기기'}
-        </button>
+        {comment.length < 3 ? null : (
+          <button onClick={showTotalComment}>
+            {!commentVisible
+              ? `${comment.length}개의 댓글 전체보기`
+              : '댓글 숨기기'}
+          </button>
+        )}
       </div>
       <CommentInput />
     </div>

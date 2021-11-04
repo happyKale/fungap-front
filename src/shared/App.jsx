@@ -42,7 +42,7 @@ function App() {
         <ConnectedRouter history={history}>
           <Route path='/' exact component={Home} />
           <Route path='/contents' exact component={Contents} />
-          <Route path='/detail' exact component={Detail} />
+          <Route path='/detail/:id' exact component={Detail} />
           <Route path='/signup' exact component={SignUp} />
           <Route path='/signin' exact component={SignIn} />
           <Route path='/admin' exact component={Admin} />
