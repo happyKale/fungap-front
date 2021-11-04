@@ -1,10 +1,12 @@
 import React from 'react';
 import heart from '../../assets/heart.png';
 import style from './post.module.css';
-
+import { useDispatch } from 'react-redux';
+import { postActions } from '../../redux/modules/post';
 import { history } from '../../redux/configureStore';
 
 const Post = ({
+  isAdmin,
   board_id,
   board_title,
   board_image,
@@ -18,6 +20,7 @@ const Post = ({
     history.push(`/detail/${board_id}`);
   };
 
+  const dispatch = useDispatch();
   return (
     <div
       className={direction === 'row' ? style.rowFlex : style.columnFlex}
@@ -39,6 +42,30 @@ const Post = ({
           {like_count}
         </button>
       </div>
+      {isAdmin && (
+        <div className={style.buttonBox}>
+          <button
+            className={style.button}
+            onClick={() => {
+              console.log('수정함');
+              dispatch(postActions.setEditPost(board_id));
+              history.push(`/admin_write/${board_id}`);
+            }}
+          >
+            수정
+          </button>
+          <button
+            className={style.button}
+            onClick={() => {
+              console.log('삭제함');
+              console.log(board_id);
+              dispatch(postActions.deletePostDB(board_id));
+            }}
+          >
+            삭제
+          </button>
+        </div>
+      )}
     </div>
   );
 };

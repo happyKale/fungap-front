@@ -11,7 +11,7 @@ const Detail = props => {
   const post = postList.find(item => {
     return item.board_id === postId;
   });
-  console.log(post);
+
   const {
     board_id,
     board_title,
