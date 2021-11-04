@@ -17,3 +17,37 @@
 .img {
   width: 100%;
 }
+
+.editImage {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: auto;
+  position: relative;
+  left: 40px;
+  top: 15px;
+}
+.userImage {
+  width: 112px;
+  height: 112px;
+  border-radius: 56px;
+  display: block;
+  margin: auto;
+  position: relative;
+  object-fit: cover;
+  bottom: 94px;
+}
+.editImage > label {
+  cursor: pointer;
+}
+
+.editImage > label > img {
+  width: 30px;
+  border-radius: 50%;
+  background-color: #c4c4c4;
+  position: relative;
+  z-index: 1;
+}
+.editImage > input {
+  display: none;
+}
