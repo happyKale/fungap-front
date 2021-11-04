@@ -76,14 +76,15 @@
   height: auto;
   border-radius: 8px;
   cursor: pointer;
+  object-fit: cover;
 }
 
 .columnImg {
   width: 100%;
   min-height: 60%;
-
   border-radius: 8px;
   cursor: pointer;
+  object-fit: cover;
 }
 
 .heartImage {
@@ -98,9 +99,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  position: absolute;
-  top: 70px;
-  right: 30px;
+  position: relative;
+  bottom: 85px;
+  left: calc(100% - 150px);
+  box-sizing: border-box;
 }
 .button {
   background-color: white;
