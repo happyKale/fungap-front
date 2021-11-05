@@ -12,6 +12,9 @@ import { history } from '../../redux/configureStore';
 const Setting = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.user.is_login);
+  const isAdmin = JSON.parse(sessionStorage.getItem('user'))?.user_authority;
+
+  console.log(isAdmin);
   const [visible, setVisible] = React.useState(false);
 
   const logOut = () => {
@@ -55,7 +58,7 @@ const Setting = () => {
       <Chat />
       <div className={style.settingList}>
         <h2>설정</h2>
-        {isLogin ? (
+        {isLogin && isAdmin === 'admin' ? (
           <div>
             <img src={adminicon} alt='공지사항' className={style.adminImage} />
             <p onClick={goAdminPage}>관리자페이지</p>
