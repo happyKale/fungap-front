@@ -14,7 +14,7 @@ import ProfileEdit from './ProfileEdit';
 import Notification from './Notification';
 import Alarm from './Alarm';
 import TermsofUse from './TermsofUse';
-import Review from './Review';
+
 export {
   SignIn,
   SignUp,
@@ -32,5 +32,4 @@ export {
   Notification,
   Alarm,
   TermsofUse,
-  Review,
 };

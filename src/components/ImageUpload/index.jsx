@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import AWS from 'aws-sdk';
 import { postActions } from '../../redux/modules/post';
 import { userActions } from '../../redux/modules/user';
-import userPlaceholer from '../../assets/userplaceholder.png';
+import profilePlaceholer from '../../assets/profileplaceholder.png';
 
 const ImageUpload = props => {
   const dispatch = useDispatch();
   const url = useSelector(state => state.post.postImg);
   const isProfile = props.profile ? true : false;
-  const [imgUrl, setImgUrl] = useState(userPlaceholer);
-
+  const [imgUrl, setImgUrl] = useState(profilePlaceholer);
   React.useEffect(() => {
     let url = props.url ? props.url : false;
     if (url) {
