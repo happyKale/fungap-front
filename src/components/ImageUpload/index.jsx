@@ -10,7 +10,9 @@ const ImageUpload = props => {
   const dispatch = useDispatch();
   const url = useSelector(state => state.post.postImg);
   const isProfile = props.profile ? true : false;
-  const [imgUrl, setImgUrl] = useState(userPlaceholer);
+  const [imgUrl, setImgUrl] = useState(
+    'https://fungap-img.s3.ap-northeast-2.amazonaws.com/unnamed.png',
+  );
 
   React.useEffect(() => {
     let url = props.url ? props.url : false;
@@ -22,8 +24,11 @@ const ImageUpload = props => {
       } else {
         dispatch(postActions.addImage(url));
       }
+    } else {
+      if (isProfile) {
+        setImgUrl(userPlaceholer);
+      }
     }
-    console.log('수정 이미지: ', url);
   }, []);
 
   // AWS 업로드 부분 시작 ------------
