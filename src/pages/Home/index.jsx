@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { history } from '../../redux/configureStore';
 import { postActions } from '../../redux/modules/post';
-import { Post, SearchBar } from '../../components';
+import { Post, SearchBar, Carousel } from '../../components';
 import style from './home.module.css';
 
 const Home = props => {
@@ -23,11 +23,7 @@ const Home = props => {
     <React.Fragment>
       <p className={style.logo}>LOGO</p>
       <SearchBar />
-      <img
-        className={style.banner}
-        src='https://cdn.crowdpic.net/list-thumb/thumb_l_9420675A44EC073FDA8AF00F765B411B.jpg'
-        alt='배너이미지'
-      />
+      <Carousel />
       <div className={style.titleContent}>
         <h2>새로나온 콘텐츠</h2>
         <span onClick={goContentsPage}>모두 보기</span>

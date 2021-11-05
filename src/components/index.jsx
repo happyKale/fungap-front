@@ -13,6 +13,7 @@ import SearchBar from './SearchBar';
 import SortContents from './SortContents';
 import Modal from './Modal';
 import ImageUpload from './ImageUpload';
+import Carousel from './Carousel';
 import MbtiDescList from './MbtiDescList';
 
 export {
@@ -31,5 +32,6 @@ export {
   SortContents,
   Modal,
   ImageUpload,
+  Carousel,
   MbtiDescList,
 };
