@@ -11,6 +11,7 @@ const ImageUpload = props => {
   const url = useSelector(state => state.post.postImg);
   const isProfile = props.profile ? true : false;
   const [imgUrl, setImgUrl] = useState(profilePlaceholer);
+  
   React.useEffect(() => {
     let url = props.url ? props.url : false;
     if (url) {
@@ -21,8 +22,11 @@ const ImageUpload = props => {
       } else {
         dispatch(postActions.addImage(url));
       }
+    } else {
+      if (isProfile) {
+        setImgUrl(userPlaceholer);
+      }
     }
-    console.log('수정 이미지: ', url);
   }, []);
 
   // AWS 업로드 부분 시작 ------------

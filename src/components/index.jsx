@@ -14,6 +14,7 @@ import SortContents from './SortContents';
 import Modal from './Modal';
 import ImageUpload from './ImageUpload';
 import Carousel from './Carousel';
+import MbtiDescList from './MbtiDescList';
 
 export {
   TypeOfMbti,
@@ -32,4 +33,5 @@ export {
   Modal,
   ImageUpload,
   Carousel,
+  MbtiDescList,
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './adminPostPreview.module.css';
-import { Goback } from '../../components';
+import { Goback, MbtiDescList } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { postActions } from '../../redux/modules/post';
 
@@ -28,23 +28,11 @@ const AdminPostPreview = props => {
         <p className={style.contents}>
           {postId ? editPost.board_desc : post.desc}
         </p>
-        {postId
-          ? editMbtiList.map((mbti, idx) => {
-              return (
-                <div key={idx} className={style.mbtiBox}>
-                  <div className={style.mbtiName}>{mbti[0].toUpperCase()}</div>
-                  <div className={style.mbtiDesc}>{mbti[1]}</div>
-                </div>
-              );
-            })
-          : mbtiList.map((mbti, idx) => {
-              return (
-                <div key={idx} className={style.mbtiBox}>
-                  <div className={style.mbtiName}>{mbti[0].toUpperCase()}</div>
-                  <div className={style.mbtiDesc}>{mbti[1]}</div>
-                </div>
-              );
-            })}
+        {postId ? (
+          <MbtiDescList list={editMbtiList} />
+        ) : (
+          <MbtiDescList list={mbtiList} />
+        )}
         <div className={style.buttonBox}>
           <button
             className={style.button}
