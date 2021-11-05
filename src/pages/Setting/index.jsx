@@ -34,8 +34,8 @@ const Setting = () => {
     history.push('/termsofuse');
   };
 
-  const goReviewpage = () => {
-    history.push('/review');
+  const goAdminPage = () => {
+    history.push('/admin');
   };
 
   const openModal = () => {
@@ -58,7 +58,7 @@ const Setting = () => {
         {isLogin ? (
           <div>
             <img src={adminicon} alt='공지사항' className={style.adminImage} />
-            <p>관리자페이지</p>
+            <p onClick={goAdminPage}>관리자페이지</p>
           </div>
         ) : (
           ''
@@ -84,7 +84,7 @@ const Setting = () => {
         <div>
           <img src={mail} alt='리뷰남기기' className={style.mailImage} />
 
-          <p onClick={goReviewpage}>리뷰남기기</p>
+          <p>리뷰남기기</p>
         </div>
         {isLogin ? (
           <div className={style.btn}>

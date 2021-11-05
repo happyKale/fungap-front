@@ -347,30 +347,18 @@ const initialState = {
 };
 
 // middleware
-const getPostDB = isSort => {
+const getPostDB = () => {
   return async (dispatch, getState, { history }) => {
-    console.log('DB 메인페이지 포스트 가져오기', isSort);
-    // if (isSort) {
-    //   try {
-    //     const response = await apis.getPost();
-    //     console.log(response);
-    //     if (isSort) {
-    //       response.sort(function (a, b) {
-    //         if (a.view_count < b.view_count) {
-    //           return 1;
-    //         }
-    //         if (a.view_count > b.view.count) {
-    //           return -1;
-    //         }
-    //         return 0;
-    //       });
-    //     }
-    //     dispatch(getPosts(response));
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
+    console.log('DB 메인페이지 포스트 가져오기');
+    try {
+      const response = await apis.getPost();
+      console.log(response);
+      const boardlistDB = response.data.board_list;
 
-    // }
+      dispatch(getPosts(boardlistDB));
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
@@ -451,7 +439,7 @@ export default handleActions(
   {
     [GET_POST]: (state, action) =>
       produce(state, draft => {
-        // draft.postList = action.payload.posts;
+        draft.postList = action.payload.posts;
       }),
     [SET_POST]: (state, action) =>
       produce(state, draft => {
