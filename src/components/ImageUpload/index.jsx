@@ -11,7 +11,7 @@ const ImageUpload = props => {
   const url = useSelector(state => state.post.postImg);
   const isProfile = props.profile ? true : false;
   const [imgUrl, setImgUrl] = useState(profilePlaceholer);
-  
+
   React.useEffect(() => {
     let url = props.url ? props.url : false;
     if (url) {
@@ -24,7 +24,7 @@ const ImageUpload = props => {
       }
     } else {
       if (isProfile) {
-        setImgUrl(userPlaceholer);
+        setImgUrl(profilePlaceholer);
       }
     }
   }, []);
