@@ -13,6 +13,7 @@ import SearchBar from './SearchBar';
 import SortContents from './SortContents';
 import Modal from './Modal';
 import ImageUpload from './ImageUpload';
+import Carousel from './Carousel';
 
 export {
   TypeOfMbti,
@@ -29,5 +30,6 @@ export {
   SearchBar,
   SortContents,
   Modal,
-  ImageUpload
+  ImageUpload,
+  Carousel,
 };
