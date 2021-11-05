@@ -25,22 +25,22 @@ const AdminPostManage = props => {
   const titleRef = useRef('');
   const descRef = useRef('');
   const mbtiList = [
-    { key: 'INFP', ref: useRef('') },
     { key: 'INFJ', ref: useRef('') },
+    { key: 'INFP', ref: useRef('') },
+    { key: 'ENFJ', ref: useRef('') },
+    { key: 'ENFP', ref: useRef('') },
+    { key: 'ISTP', ref: useRef('') },
+    { key: 'ISFP', ref: useRef('') },
+    { key: 'ESTP', ref: useRef('') },
+    { key: 'ESFP', ref: useRef('') },
     { key: 'INTP', ref: useRef('') },
     { key: 'INTJ', ref: useRef('') },
-    { key: 'ISFP', ref: useRef('') },
-    { key: 'ISFJ', ref: useRef('') },
-    { key: 'ISTP', ref: useRef('') },
-    { key: 'ISTJ', ref: useRef('') },
-    { key: 'ENFP', ref: useRef('') },
-    { key: 'ENFJ', ref: useRef('') },
-    { key: 'ENTP', ref: useRef('') },
     { key: 'ENTJ', ref: useRef('') },
-    { key: 'ESFP', ref: useRef('') },
-    { key: 'ESFJ', ref: useRef('') },
-    { key: 'ESTP', ref: useRef('') },
+    { key: 'ENTP', ref: useRef('') },
+    { key: 'ISTJ', ref: useRef('') },
+    { key: 'ISFJ', ref: useRef('') },
     { key: 'ESTJ', ref: useRef('') },
+    { key: 'ESFJ', ref: useRef('') },
   ];
 
   const saveData = () => {
@@ -116,21 +116,32 @@ const AdminPostManage = props => {
           }
         />
         {mbtiList.map((mbti, idx) => {
+          let section = false;
+          const sectionName = ['외교형', '탐험가형', '분석형', '관리자형'];
+          const num = idx / 4;
+          if (num === 0 || num === 1 || num === 2 || num === 3) {
+            section = true;
+          }
           return (
-            <div key={idx} className={style.mbtiBox}>
-              <div className={style.mbtiName}>{mbti.key}</div>
-              <textarea
-                placeholder='해당 MBTI에 맞는 설명을 적으세요!'
-                rows='3'
-                ref={mbti.ref}
-                className={style.mbtiDesc}
-                defaultValue={
-                  isEdit
-                    ? defaultEditPost.board_content[mbti.key.toLowerCase()]
-                    : defaultPost && defaultPost.mbti[mbti.key.toLowerCase()]
-                }
-              />
-            </div>
+            <React.Fragment>
+              {section && (
+                <div className={style.section}>{sectionName[num]}</div>
+              )}
+              <div key={idx} className={style.mbtiBox}>
+                <div className={style.mbtiName}>{mbti.key}</div>
+                <textarea
+                  placeholder='해당 MBTI에 맞는 설명을 적으세요!'
+                  rows='3'
+                  ref={mbti.ref}
+                  className={style.mbtiDesc}
+                  defaultValue={
+                    isEdit
+                      ? defaultEditPost.board_content[mbti.key.toLowerCase()]
+                      : defaultPost && defaultPost.mbti[mbti.key.toLowerCase()]
+                  }
+                />
+              </div>
+            </React.Fragment>
           );
         })}
         <button onClick={saveData} className={style.submitButton}>
