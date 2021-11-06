@@ -9,8 +9,8 @@ const Home = props => {
   const dispatch = useDispatch();
   const postList = useSelector(state => state.post.postList);
 
-  const new4 = postList.slice(1, 5);
-  const top4 = postList.slice(1, 5);
+  const new4 = postList.slice(0, 5);
+  const top4 = postList.slice(0, 5);
 
   const goContentsPage = () => {
     history.push('/contents');
