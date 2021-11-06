@@ -26,6 +26,9 @@ const apis = {
 
   //게시물
   getPost: () => instance.get('/board'),
+  getOroderPopularPost: () => instance.get('/board/popularity'),
+  getOrderViewPost: () => instance.get('/board/view'),
+  getMorePost: page => instance.get(`/board/test?page=${page}`),
   getPosts: () => instance.get('/admin/board'),
   addPost: board_info => instance.post('/admin/board/write', board_info),
   editPost: (board_id, board_info) =>
