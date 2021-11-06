@@ -427,10 +427,15 @@ const editPostDB = (
 };
 const getAdminPostDB = () => {
   return (dispatch, getState, { history }) => {
-    apis.getPosts().then(res => {
-      console.log('어드민 데이터 가져오기: ', res.data);
-      dispatch(setPosts(res.data.board_list));
-    });
+    apis
+      .getPosts()
+      .then(res => {
+        console.log('어드민 데이터 가져오기: ', res.data);
+        dispatch(setPosts(res.data.board_list));
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 };
 
