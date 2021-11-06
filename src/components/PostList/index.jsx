@@ -12,9 +12,10 @@ const PostList = ({ isAdmin }) => {
 
   useEffect(() => {
     if (!isAdmin) {
-      return false;
+      dispatch(postActions.getPostDB());
+    } else {
+      dispatch(postActions.getAdminPostDB());
     }
-    dispatch(postActions.getAdminPostDB());
   }, []);
 
   return (
