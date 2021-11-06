@@ -29,7 +29,8 @@ const getCommentDB = boardId => {
 
       dispatch(setComment(comments));
     } catch (error) {
-      console.log(error);
+      const errMessage = error.response.data.errormessage;
+      console.log(errMessage);
     }
   };
 };
