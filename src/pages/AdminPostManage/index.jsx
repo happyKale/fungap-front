@@ -15,13 +15,12 @@ const AdminPostManage = props => {
   const image = useSelector(state => state.post.postImg);
 
   // defaultPost, defaultEditPost : 기본으로 보여줄 게시글
-  // 미리보기 페이지로 넘어갈 때 작성한 데이터는 post 모듈의 post에 저장되게 됨.
+  // 미리보기 페이지로 이동할 때 작성한 데이터는 post 모듈의 post에 저장되게 됨.
   //                           수정한 데이터는 post 모듈의 editPost에 저장되게 됨.
   // 미리보기 페이지에서 뒤로 돌아올 때 작성하는 중이었으면 defaultPost를 보여준다.
   //                                 수정하는 중이었으면 defaultEditPost를 보여준다.
   let defaultPost = useSelector(state => state.post.post);
   let defaultEditPost = useSelector(state => state.post.editPost);
-
   const titleRef = useRef('');
   const descRef = useRef('');
   const mbtiList = [
@@ -62,15 +61,17 @@ const AdminPostManage = props => {
       return;
     }
     // mbti별 내용을 mbtiDescObject 객체에 저장하기
-    mbtiList.map(mbti => {
-      console.log(mbti.ref.current.value);
+    for (let i = 0; i < mbtiList.length; i++) {
       // mbti별 내용이 없으면 경고문 띄우고 중지하기
-      if (mbti.ref.current.value.trimEnd() === '') {
-        window.alert(`${mbti.key}의 내용을 입력해주세요!`);
-        throw 'mbti 내용을 모두 입력해주세요!';
+      if (mbtiList[i].ref.current.value.trimEnd() === '') {
+        window.alert(`${mbtiList[i].key}의 내용을 입력해주세요!`);
+        return false;
+      } else {
+        mbtiDescObject[mbtiList[i].key.toLowerCase()] = mbtiList[
+          i
+        ].ref.current.value.trimEnd();
       }
-      mbtiDescObject[mbti.key.toLowerCase()] = mbti.ref.current.value.trimEnd();
-    });
+    }
 
     if (isEdit) {
       dispatch(postActions.addEditPost(title, img, desc, mbtiDescObject));
@@ -93,9 +94,7 @@ const AdminPostManage = props => {
           className={style.title}
           ref={titleRef}
           defaultValue={
-            postId
-              ? defaultEditPost.board_title
-              : defaultPost && defaultPost.title
+            postId ? defaultEditPost?.board_title : defaultPost?.title
           }
         />
         {postId ? (
@@ -110,9 +109,7 @@ const AdminPostManage = props => {
           className={style.desc}
           ref={descRef}
           defaultValue={
-            isEdit
-              ? defaultEditPost.board_desc
-              : defaultPost && defaultPost.desc
+            isEdit ? defaultEditPost?.board_desc : defaultPost?.desc
           }
         />
         {mbtiList.map((mbti, idx) => {
@@ -123,11 +120,11 @@ const AdminPostManage = props => {
             section = true;
           }
           return (
-            <React.Fragment>
+            <div key={idx} className={style.mbtiSection}>
               {section && (
                 <div className={style.section}>{sectionName[num]}</div>
               )}
-              <div key={idx} className={style.mbtiBox}>
+              <div className={style.mbtiBox}>
                 <div className={style.mbtiName}>{mbti.key}</div>
                 <textarea
                   placeholder='해당 MBTI에 맞는 설명을 적으세요!'
@@ -137,11 +134,11 @@ const AdminPostManage = props => {
                   defaultValue={
                     isEdit
                       ? defaultEditPost.board_content[mbti.key.toLowerCase()]
-                      : defaultPost && defaultPost.mbti[mbti.key.toLowerCase()]
+                      : defaultPost?.mbti[mbti.key.toLowerCase()]
                   }
                 />
               </div>
-            </React.Fragment>
+            </div>
           );
         })}
         <button onClick={saveData} className={style.submitButton}>
