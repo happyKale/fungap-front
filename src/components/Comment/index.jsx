@@ -5,13 +5,20 @@ import EditIcon from '@mui/icons-material/Edit';
 
 import { commentActions } from '../../redux/modules/comment';
 import style from './comment.module.css';
-import { useSelector } from 'react-redux';
+import { elapsedMin, elapsedHour, elapsedDate } from '../../shared/elapsed';
 
-const Comment = ({ User, board_id, comment_id, comment }) => {
-  const { nickname, user_id, user_image, user_mbti } = User;
+const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
+  const { nickname, user_image, user_mbti } = User;
   const dispatch = useDispatch();
   const newComment = useRef();
   const [editBox, setEditBox] = useState(false);
+
+  // 댓글 작성 분,시간,일 계산
+  const min = elapsedMin(createdAt);
+  const hour = elapsedHour(createdAt);
+  const date = elapsedDate(createdAt);
+  const elapsed =
+    min < 60 ? `${min}분전` : hour < 24 ? `${hour}시간전` : `${date}일전`;
 
   const userNickname =
     sessionStorage.getItem('user') &&
@@ -49,7 +56,7 @@ const Comment = ({ User, board_id, comment_id, comment }) => {
       <div className={style.user}>
         <div className={style.userInfo}>
           <p className={style.nickname}>{nickname}</p>
-          <span className={style.mbti}>{user_mbti}</span>
+          {user_mbti && <span className={style.mbti}>{user_mbti}</span>}
         </div>
         {editBox ? (
           <form className={style.editForm} onSubmit={editComment}>
@@ -65,7 +72,7 @@ const Comment = ({ User, board_id, comment_id, comment }) => {
         ) : (
           <p className={style.desc}>{comment}</p>
         )}
-        <span className={style.date}>2시간</span>
+        <span className={style.date}>{elapsed}</span>
       </div>
       {userNickname !== nickname ? null : (
         <div className={style.handleComment}>
