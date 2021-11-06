@@ -14,6 +14,9 @@ import ProfileEdit from './ProfileEdit';
 import Notification from './Notification';
 import Alarm from './Alarm';
 import TermsofUse from './TermsofUse';
+// import Review from './Review';
+import Chatting from './Chatting';
+import ChatRoom from './ChatRoom';
 
 export {
   SignIn,
@@ -32,4 +35,7 @@ export {
   Notification,
   Alarm,
   TermsofUse,
+  // Review,
+  Chatting,
+  ChatRoom,
 };
