@@ -10,7 +10,9 @@ const ImageUpload = props => {
   const dispatch = useDispatch();
   const url = useSelector(state => state.post.postImg);
   const isProfile = props.profile ? true : false;
-  const [imgUrl, setImgUrl] = useState(profilePlaceholer);
+  const [imgUrl, setImgUrl] = useState(
+    'https://fungap-img.s3.ap-northeast-2.amazonaws.com/unnamed.png',
+  );
 
   React.useEffect(() => {
     let url = props.url ? props.url : false;
@@ -66,8 +68,7 @@ const ImageUpload = props => {
 
     // 사진이 업로드 된 후
     promise
-      .then(function (data) {
-        alert('사진이 성공적으로 업로드 되었습니다!');
+      .then(function(data) {
         // 업로드한 이미지 url
         const url = data.Location;
         // 이미지 프리뷰로 보여주기
