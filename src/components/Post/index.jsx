@@ -40,7 +40,7 @@ const Post = ({
           </div>
           <button className={style.heartButton}>
             <img className={style.heartImage} src={heart} alt='좋아요' />
-            {like_count}
+            <span>{like_count}</span>
           </button>
         </div>
       </div>
