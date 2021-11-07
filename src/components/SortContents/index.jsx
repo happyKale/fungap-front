@@ -1,32 +1,36 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { postActions } from '../../redux/modules/post';
 
 import style from './sortcontents.module.css';
 
 const SortContents = props => {
-  const [input, setInput] = useState({ sort: '' });
-  const { sort } = input;
+  const dispatch = useDispatch();
 
   const handleChange = e => {
-    const { name, value } = e.target;
+    const { value } = e.target;
 
-    setInput({
-      ...input,
-      [name]: value,
-    });
+    if (value === 'date') {
+      dispatch(postActions.getPostDB());
+    }
+    if (value === 'like') {
+      dispatch(postActions.getPopularPostDB());
+    }
+    if (value === 'view') {
+      dispatch(postActions.getViewPostDB());
+    }
   };
-  console.log(`${sort}로 게시글 정렬!`);
 
   return (
     <form className={style.sortWrap}>
       <label htmlFor='sort'>게시글 분류</label>
       <select //
-        name='sort'
         id='sort'
         onChange={handleChange}
       >
         <option value='date'>최신순</option>
-        <option value='view'>조회수</option>
-        <option value='comment'>댓글순</option>
+        <option value='like'>인기순</option>
+        <option value='view'>조회순</option>
       </select>
     </form>
   );

@@ -25,15 +25,22 @@ h3.title {
   width: 100%;
   height: auto;
 }
-.like {
+.heart {
+  display: inline-block;
+  margin-bottom: 20px;
   border: 1px solid #333;
   border-radius: 20px;
   padding: 5px 5px 5px 25px;
-  background: url('../../assets/heart_pink.png') no-repeat 8px center;
   cursor: pointer;
 }
+.like {
+  background: url('../../assets/heart_pink.png') no-repeat 8px center;
+}
+.unlike {
+  background: url('../../assets/heart.png') no-repeat 8px center;
+}
+
 .contents {
   min-height: 200px;
-  max-height: 200px;
   margin: 20px 0;
 }
