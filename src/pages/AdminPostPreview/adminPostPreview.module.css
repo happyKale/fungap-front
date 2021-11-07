@@ -88,15 +88,3 @@ h3.title {
   text-align: center;
   margin: 30px 0px 20px;
 }
-.container > div:nth-child(5) {
-  background-color: #c5e1a5;
-}
-.container > div:nth-child(10) {
-  background-color: #fff59d;
-}
-.container > div:nth-child(15) {
-  background-color: #b39ddb;
-}
-.container > div:nth-child(20) {
-  background-color: #90caf9;
-}

@@ -9,7 +9,6 @@ const MbtiDescList = props => {
     [mbtiList[8], mbtiList[9], mbtiList[10], mbtiList[11]],
     [mbtiList[12], mbtiList[13], mbtiList[14], mbtiList[15]],
   ];
-  console.log(list);
 
   const sectionName = [
     { name: '외교형', color: style.green },
@@ -19,16 +18,16 @@ const MbtiDescList = props => {
   ];
   return (
     <React.Fragment>
-      {list.map((item, idx) => {
+      {list?.map((item, idx) => {
         return (
           <div key={idx} className={style.container}>
             <div className={sectionName[idx].color}>
               {sectionName[idx]?.name}
             </div>
-            {item.map(i => {
+            {item?.map(i => {
               return (
                 <div key={i[0]} className={style.mbtiBox}>
-                  <div className={style.mbtiName}>{i[0]?.toUpperCase()}</div>
+                  <div className={style.mbtiName}>{i[0].toUpperCase()}</div>
                   <div className={style.mbtiDesc}>{i[1]}</div>
                 </div>
               );
