@@ -72,11 +72,12 @@
 }
 
 .middleBanner {
-  width: 430px;
+  width: 100%;
   height: 116px;
-  margin: 40px 0px 0px;
+  margin-top: 30px;
+  padding: 20px;
   background-image: url('../../assets/banner4.png');
-  background-size: 430px;
+  background-size: contain;
   background-repeat: no-repeat;
   position: relative;
   right: 20px;
@@ -92,7 +93,7 @@
   width: 430px;
   height: 116px;
   background-image: url('../../assets/banner5.png');
-  background-size: 430px;
+  background-size: contain;
   background-repeat: no-repeat;
   position: relative;
   right: 20px;
