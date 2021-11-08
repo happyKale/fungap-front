@@ -35,7 +35,7 @@ const Home = props => {
           return <Post key={post.board_id} direction='column' {...post} />;
         })}
       </div>
-      <div className={style.middleBanner}></div>
+      <div className={style.middleBanner} />
       <div className={style.titleContent}>
         <h2>인기 콘텐츠</h2>
       </div>
@@ -44,7 +44,7 @@ const Home = props => {
           return <Post direction='column' key={post.board_id} {...post} />;
         })}
       </div>
-      <div className={style.bottomBanner}></div>
+      <div className={style.bottomBanner} />
     </React.Fragment>
   );
 };
