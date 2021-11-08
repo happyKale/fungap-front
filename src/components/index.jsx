@@ -16,6 +16,7 @@ import ImageUpload from './ImageUpload';
 import Carousel from './Carousel';
 import MbtiDescList from './MbtiDescList';
 import LikeButton from './LikeButton';
+import Loading from './Loading';
 
 export {
   TypeOfMbti,
@@ -36,4 +37,5 @@ export {
   Carousel,
   MbtiDescList,
   LikeButton,
+  Loading,
 };

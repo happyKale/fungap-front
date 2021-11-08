@@ -5,10 +5,13 @@ import apis from '../../shared/apis';
 
 // action type
 const GET_POST = 'GET_POST';
+const GET_MORE_POST = 'GET_MORE_POST';
 const SET_POST = 'SET_POST';
+const SET_HOME_POST = 'SET_HOME_POST';
 const ADD_POST = 'ADD_POST';
 const DELETE_POST = 'DELETE_POST';
 const EDIT_POST = 'EDIT_POST';
+const SEARCH_POST = 'SEARCH_POST';
 const ADD_IMAGE = 'ADD_IMAGE';
 const RESET_POST = 'RESET_POST';
 const RESET_EDIT_POST = 'RESET_EDIT_POST';
@@ -17,7 +20,14 @@ const ADD_EDIT_POST = 'ADD_EDIT_POST';
 
 // action creator
 const getPosts = createAction(GET_POST, posts => ({ posts }));
+const getMorePosts = createAction(GET_MORE_POST, posts => ({
+  posts,
+}));
 const setPosts = createAction(SET_POST, posts => ({ posts }));
+const setHomePosts = createAction(SET_HOME_POST, (new_posts, top_posts) => ({
+  new_posts,
+  top_posts,
+}));
 const addPost = createAction(ADD_POST, (title, img, desc, mbti) => ({
   title,
   img,
@@ -26,6 +36,7 @@ const addPost = createAction(ADD_POST, (title, img, desc, mbti) => ({
 }));
 const deletePost = createAction(DELETE_POST, posts => ({ posts }));
 const editPost = createAction(EDIT_POST, (postId, post) => ({ postId, post }));
+const searchPost = createAction(SEARCH_POST, posts => ({ posts }));
 const addImage = createAction(ADD_IMAGE, image => ({ image }));
 const resetPost = createAction(RESET_POST, () => ({}));
 const resetEditPost = createAction(RESET_EDIT_POST, () => ({}));
@@ -53,6 +64,12 @@ const initialState = {
     mbti: '',
   },
   postList: [],
+  isLoading: false,
+  newList: [],
+  topList: [],
+  is_searching: false,
+  list: [],
+  start: 1,
 };
 
 // middleware
@@ -64,6 +81,21 @@ const getPostDB = () => {
       const boardlistDB = response.data.board_list;
 
       dispatch(getPosts(boardlistDB));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+const getHomePostDB = () => {
+  return async (dispatch, getState, { history }) => {
+    console.log('DB 메인페이지 포스트 가져오기');
+    try {
+      const response = await apis.getHomePost();
+      const new_list = response.data.new_board_list;
+      const popularity_list = response.data.popularity_board_list;
+
+      dispatch(setHomePosts(new_list, popularity_list));
     } catch (error) {
       console.log(error);
     }
@@ -125,7 +157,6 @@ const deletePostDB = postId => {
     apis
       .deletePost(postId)
       .then(res => {
-        console.log(res);
         dispatch(deletePost(resultList));
       })
       .catch(err => {
@@ -165,7 +196,6 @@ const getAdminPostDB = () => {
     apis
       .getPosts()
       .then(res => {
-        console.log('어드민 데이터 가져오기: ', res.data);
         dispatch(setPosts(res.data.board_list));
       })
       .catch(err => {
@@ -174,16 +204,59 @@ const getAdminPostDB = () => {
   };
 };
 
+const searchPostDB = word => {
+  return async (dispatch, getState, { history }) => {
+    const keyword = word.replace(' ', '+');
+    console.log(keyword, typeof keyword);
+
+    try {
+      const response = await apis.searchPost(keyword);
+      const boardlistDB = response.data.search_board_list;
+
+      dispatch(searchPost(boardlistDB));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+const getMorePostDB = page => {
+  return async (dispatch, getState, { history }) => {
+    try {
+      const response = await apis.getMorePost(page);
+      const boardList = response?.data.board_list;
+
+      if (!boardList) return false;
+
+      dispatch(getMorePosts(boardList));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 // reducer
 export default handleActions(
   {
+    [GET_MORE_POST]: (state, action) =>
+      produce(state, draft => {
+        draft.list.push(...action.payload.posts);
+        draft.isLoading = false;
+        draft.start = action.payload.start;
+      }),
     [GET_POST]: (state, action) =>
       produce(state, draft => {
         draft.postList = action.payload.posts;
+        draft.is_searching = false;
       }),
     [SET_POST]: (state, action) =>
       produce(state, draft => {
         draft.postList = action.payload.posts;
+      }),
+    [SET_HOME_POST]: (state, action) =>
+      produce(state, draft => {
+        draft.newList = action.payload.new_posts;
+        draft.topList = action.payload.top_posts;
       }),
     [ADD_POST]: (state, action) =>
       produce(state, draft => {
@@ -205,6 +278,15 @@ export default handleActions(
           ...draft.postList[idx],
           ...action.payload.post,
         };
+      }),
+    [SEARCH_POST]: (state, action) =>
+      produce(state, draft => {
+        draft.postList = action.payload.posts;
+        draft.is_searching = true;
+      }),
+    [SORT_POST]: (state, action) =>
+      produce(state, draft => {
+        draft.sort = action.payload.sort;
       }),
     [ADD_IMAGE]: (state, action) =>
       produce(state, draft => {
@@ -246,6 +328,7 @@ export default handleActions(
 
 export const postActions = {
   getPosts,
+  getHomePostDB,
   getPopularPostDB,
   getViewPostDB,
   setPosts,
@@ -261,4 +344,6 @@ export const postActions = {
   deletePostDB,
   editPostDB,
   getAdminPostDB,
+  searchPostDB,
+  getMorePostDB,
 };
