@@ -19,7 +19,7 @@ const SET_EDIT_POST = 'SET_EDIT_POST';
 const ADD_EDIT_POST = 'ADD_EDIT_POST';
 
 // action creator
-const getPosts = createAction(GET_POST, posts => ({ posts }));
+const getPosts = createAction(GET_POST, (posts, sort) => ({ posts, sort }));
 const getMorePosts = createAction(GET_MORE_POST, posts => ({
   posts,
 }));
@@ -63,13 +63,12 @@ const initialState = {
     desc: '',
     mbti: '',
   },
+  list: [],
   postList: [],
-  isLoading: false,
   newList: [],
   topList: [],
   is_searching: false,
-  list: [],
-  start: 1,
+  sort: '',
 };
 
 // middleware
@@ -80,7 +79,7 @@ const getPostDB = () => {
       const response = await apis.getPost();
       const boardlistDB = response.data.board_list;
 
-      dispatch(getPosts(boardlistDB));
+      dispatch(getPosts(boardlistDB, 'date'));
     } catch (error) {
       console.log(error);
     }
@@ -105,10 +104,19 @@ const getHomePostDB = () => {
 const getPopularPostDB = () => {
   return async (dispatch, getState, { history }) => {
     try {
-      const response = await apis.getOroderPopularPost();
+      const response = await apis.getPost();
       const boardlistDB = response.data.board_list;
+      const boardList = boardlistDB.sort((a, b) => {
+        if (a.like_count > b.like_count) {
+          return -1;
+        }
+        if (a.like_count < b.like_count) {
+          return 1;
+        }
+        return 0;
+      });
 
-      dispatch(getPosts(boardlistDB));
+      dispatch(getPosts(boardList, 'like'));
     } catch (error) {
       console.log(error);
     }
@@ -118,10 +126,19 @@ const getPopularPostDB = () => {
 const getViewPostDB = () => {
   return async (dispatch, getState, { history }) => {
     try {
-      const response = await apis.getOrderViewPost();
+      const response = await apis.getPost();
       const boardlistDB = response.data.board_list;
+      const boardList = boardlistDB.sort((a, b) => {
+        if (a.view_count > b.view_count) {
+          return -1;
+        }
+        if (a.view_count < b.view_count) {
+          return 1;
+        }
+        return 0;
+      });
 
-      dispatch(getPosts(boardlistDB));
+      dispatch(getPosts(boardList, 'view'));
     } catch (error) {
       console.log(error);
     }
@@ -241,13 +258,12 @@ export default handleActions(
     [GET_MORE_POST]: (state, action) =>
       produce(state, draft => {
         draft.list.push(...action.payload.posts);
-        draft.isLoading = false;
-        draft.start = action.payload.start;
       }),
     [GET_POST]: (state, action) =>
       produce(state, draft => {
         draft.postList = action.payload.posts;
         draft.is_searching = false;
+        draft.sort = action.payload.sort;
       }),
     [SET_POST]: (state, action) =>
       produce(state, draft => {
@@ -283,10 +299,6 @@ export default handleActions(
       produce(state, draft => {
         draft.postList = action.payload.posts;
         draft.is_searching = true;
-      }),
-    [SORT_POST]: (state, action) =>
-      produce(state, draft => {
-        draft.sort = action.payload.sort;
       }),
     [ADD_IMAGE]: (state, action) =>
       produce(state, draft => {
