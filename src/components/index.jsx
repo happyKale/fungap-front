@@ -15,6 +15,7 @@ import Modal from './Modal';
 import ImageUpload from './ImageUpload';
 import Carousel from './Carousel';
 import MbtiDescList from './MbtiDescList';
+import LikeButton from './LikeButton';
 
 export {
   TypeOfMbti,
@@ -34,4 +35,5 @@ export {
   ImageUpload,
   Carousel,
   MbtiDescList,
+  LikeButton,
 };
