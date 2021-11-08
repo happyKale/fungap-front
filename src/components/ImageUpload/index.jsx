@@ -5,7 +5,7 @@ import AWS from 'aws-sdk';
 import { postActions } from '../../redux/modules/post';
 import { userActions } from '../../redux/modules/user';
 import profilePlaceholer from '../../assets/profileplaceholder.png';
-
+import editImage from '../../assets/camera.png';
 const ImageUpload = props => {
   const dispatch = useDispatch();
   const url = useSelector(state => state.post.postImg);
@@ -93,10 +93,7 @@ const ImageUpload = props => {
         <div>
           <div className={style.editImage}>
             <label htmlFor='upload'>
-              <img
-                src='https://cdn.iconscout.com/icon/free/png-256/edit-2653317-2202989.png'
-                alt='수정아이콘'
-              />
+              <img src={editImage} alt='수정아이콘' />
             </label>
             <input type='file' id='upload' onChange={addPhoto} />
           </div>
