@@ -21,7 +21,9 @@ const Home = props => {
 
   return (
     <React.Fragment>
-      <p className={style.logo}>LOGO</p>
+      <div className={style.header}>
+        <p>Fungap</p>
+      </div>
       <SearchBar />
       <Carousel />
       <div className={style.titleContent}>
@@ -33,9 +35,7 @@ const Home = props => {
           return <Post key={post.board_id} direction='column' {...post} />;
         })}
       </div>
-      <div className={style.middleBanner}>
-        <span>나와 맞는 MBTI궁합은?</span>
-      </div>
+      <div className={style.middleBanner}></div>
       <div className={style.titleContent}>
         <h2>인기 콘텐츠</h2>
       </div>
@@ -44,9 +44,7 @@ const Home = props => {
           return <Post direction='column' key={post.board_id} {...post} />;
         })}
       </div>
-      <div className={style.bottomBanner}>
-        <span>회원가입하고 더 많은 컨텐츠 보기</span>
-      </div>
+      <div className={style.bottomBanner}></div>
     </React.Fragment>
   );
 };
