@@ -27,10 +27,10 @@ const getCommentDB = boardId => {
       const response = await apis.getComment(boardId);
       const comments = response.data.comments;
 
+      if (!comments) return false;
       dispatch(setComment(comments));
     } catch (error) {
-      const errMessage = error.response.data.errormessage;
-      console.log(errMessage);
+      console.log(error);
     }
   };
 };
