@@ -86,8 +86,13 @@ const Setting = () => {
         </div>
         <div>
           <img src={mail} alt='리뷰남기기' className={style.mailImage} />
-
-          <p>리뷰남기기</p>
+          <p
+            onClick={() => {
+              window.open('https://forms.gle/HFRkJ96pPX5q71Jq8');
+            }}
+          >
+            리뷰남기기
+          </p>
         </div>
         {isLogin ? (
           <div className={style.btn}>
