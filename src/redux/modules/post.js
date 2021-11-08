@@ -108,8 +108,8 @@ const addPostDB = () => {
         board_content: post.mbti,
       })
       .then(res => {
-        dispatch(resetPost());
         history.push('/admin');
+        dispatch(resetPost());
       })
       .catch(error => {
         console.log(error);
@@ -152,7 +152,6 @@ const editPostDB = (
       .editPost(postId, result)
       .then(res => {
         dispatch(editPost(postId, result));
-        dispatch(resetEditPost());
         history.push('/admin');
       })
       .catch(err => {

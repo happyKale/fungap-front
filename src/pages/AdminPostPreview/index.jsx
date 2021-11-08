@@ -10,8 +10,9 @@ const AdminPostPreview = props => {
   const post = useSelector(state => state.post.post);
   const editPost = useSelector(state => state.post.editPost);
   const image = useSelector(state => state.post.postImg);
-  const mbtiList = Object.entries(post.mbti);
-  const editMbtiList = Object.entries(editPost.board_content);
+  const mbtiList = Object.entries(post?.mbti);
+  const editMbtiList = Object.entries(editPost?.board_content);
+
   return (
     <React.Fragment>
       {postId ? (
