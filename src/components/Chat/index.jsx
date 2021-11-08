@@ -19,17 +19,13 @@ const Chat = ({ chat, name, message, category, chatId }) => {
           <img
             className={style.userImage}
             alt='유저이미지'
-            src={
-              userInfo?.user_image
-                ? userInfo.user_image
-                : 'https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg'
-            }
+            src={userInfo?.user_image ? userInfo.user_image : profileImg}
           />
           {isLogin ? (
             <div>
               <div className={style.userEdit}>
                 <h3>{userInfo.nickname}님</h3>
-                <button onClick={goProfileEdit}>수정</button>
+                <button onClick={goProfileEdit}>></button>
               </div>
 
               <p>즐거운 시간 되세요!</p>

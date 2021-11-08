@@ -55,9 +55,9 @@ const Setting = () => {
 
   return (
     <div className={style.wrap}>
+      <div />
       <Chat />
       <div className={style.settingList}>
-        <h2>설정</h2>
         {isLogin && isAdmin === 'admin' ? (
           <div>
             <img src={adminicon} alt='공지사항' className={style.adminImage} />
