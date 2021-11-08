@@ -21,7 +21,9 @@ const Home = props => {
 
   return (
     <React.Fragment>
-      <p className={style.logo}>LOGO</p>
+      <div className={style.header}>
+        <p>Fungap</p>
+      </div>
       <SearchBar />
       <Carousel />
       <div className={style.titleContent}>

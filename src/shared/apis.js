@@ -49,6 +49,10 @@ const apis = {
   getUserInfo: () => instance.get('/mypage'),
   updateUserInfo: userInfo => instance.patch('/mypage/edit', userInfo),
   deleteUserInfo: () => instance.delete('/mypage/delete'),
+
+  //좋아용
+  clikeLikeButton: (board_id, like_state) =>
+    instance.post(`/board/${board_id}/like`, like_state),
 };
 
 export default apis;

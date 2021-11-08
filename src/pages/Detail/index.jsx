@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import classnames from 'classnames';
-
-import { Comments, Counter, Goback, MbtiDescList } from '../../components';
+import {
+  Comments,
+  Counter,
+  Goback,
+  MbtiDescList,
+  LikeButton,
+} from '../../components';
 import { postActions } from '../../redux/modules/post';
 import style from './detail.module.css';
 
@@ -11,6 +15,7 @@ const Detail = props => {
   const dispatch = useDispatch();
   const postId = parseInt(props.match.params.id);
   const postList = useSelector(state => state.post.postList);
+
   const post = postList?.find(item => {
     return item.board_id === postId;
   });
@@ -45,14 +50,12 @@ const Detail = props => {
           <div className={style.contents}>
             <MbtiDescList list={mbtiList} />
           </div>
-          <span
-            className={classnames(
-              style.heart,
-              like_state === 'true' ? style.like : style.unlike,
-            )}
-          >
-            {like_count}
-          </span>
+          <LikeButton
+            board_id={id}
+            like_count={like_count}
+            like_state={like_state}
+          />
+
           <Counter //
             commentCount={comment_count}
             viewCount={view_count}

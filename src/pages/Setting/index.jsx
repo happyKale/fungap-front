@@ -55,9 +55,9 @@ const Setting = () => {
 
   return (
     <div className={style.wrap}>
+      <div />
       <Chat />
       <div className={style.settingList}>
-        <h2>설정</h2>
         {isLogin && isAdmin === 'admin' ? (
           <div>
             <img src={adminicon} alt='공지사항' className={style.adminImage} />
@@ -86,8 +86,13 @@ const Setting = () => {
         </div>
         <div>
           <img src={mail} alt='리뷰남기기' className={style.mailImage} />
-
-          <p>리뷰남기기</p>
+          <p
+            onClick={() => {
+              window.open('https://forms.gle/HFRkJ96pPX5q71Jq8');
+            }}
+          >
+            리뷰남기기
+          </p>
         </div>
         {isLogin ? (
           <div className={style.btn}>
