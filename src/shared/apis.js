@@ -25,10 +25,13 @@ const apis = {
   checkNickname: nickname => instance.post('/user/nickname_check', nickname),
 
   //게시물
+  getHomePost: () => instance.get('/board/home'),
   getPost: () => instance.get('/board'),
-  getOroderPopularPost: () => instance.get('/board/popularity'),
-  getOrderViewPost: () => instance.get('/board/view'),
-  getMorePost: page => instance.get(`/board/test?page=${page}`),
+  getMorePost: page => instance.get(`/board?page=${page}`),
+  getOroderPopularPost: page => instance.get(`/board/popularity?page=${page}`),
+  getOrderViewPost: page => instance.get(`/board/view?page=${page}`),
+  searchPost: keyword => instance.post(`/board/search?keyword=${keyword}`),
+  // 게시물 - 관리자
   getPosts: () => instance.get('/admin/board'),
   addPost: board_info => instance.post('/admin/board/write', board_info),
   editPost: (board_id, board_info) =>

@@ -7,16 +7,16 @@ import style from './home.module.css';
 
 const Home = props => {
   const dispatch = useDispatch();
-  const postList = useSelector(state => state.post.postList);
-
-  const new4 = postList.slice(0, 4);
-  const top4 = postList.slice(0, 4);
+  const newPostList = useSelector(state => state.post.newList);
+  const topPostList = useSelector(state => state.post.topList);
+  const new4 = newPostList.slice(0, 4);
+  const top4 = topPostList.slice(0, 4);
 
   const goContentsPage = () => {
     history.push('/contents');
   };
   useEffect(() => {
-    dispatch(postActions.getPostDB());
+    dispatch(postActions.getHomePostDB());
   }, []);
 
   return (
