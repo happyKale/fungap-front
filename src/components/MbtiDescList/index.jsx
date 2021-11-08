@@ -3,12 +3,30 @@ import style from './mbtiDescList.module.css';
 
 const MbtiDescList = props => {
   const mbtiList = props.list;
-  const list = [
-    [mbtiList[0], mbtiList[1], mbtiList[2], mbtiList[3]],
-    [mbtiList[4], mbtiList[5], mbtiList[6], mbtiList[7]],
-    [mbtiList[8], mbtiList[9], mbtiList[10], mbtiList[11]],
-    [mbtiList[12], mbtiList[13], mbtiList[14], mbtiList[15]],
+  const mbti = [
+    'INFJ',
+    'INFP',
+    'ENFJ',
+    'ENFP',
+    'ISTP',
+    'ISFP',
+    'ESTP',
+    'ESFP',
+    'INTP',
+    'INTJ',
+    'ENTJ',
+    'ENTP',
+    'ISTJ',
+    'ISFJ',
+    'ESTJ',
+    'ESFJ',
   ];
+  const list = [[], [], [], []];
+  mbti.map((item, idx) => {
+    const num = parseInt(idx / 4);
+    const result = mbtiList.find(mbti => mbti[0] === item.toLowerCase());
+    list[num].push(result);
+  });
 
   const sectionName = [
     { name: '외교형', color: style.green },
