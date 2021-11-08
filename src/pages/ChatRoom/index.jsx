@@ -2294,7 +2294,7 @@ const ChatRoom = props => {
   ];
   return (
     <div>
-      <Goback>캐릭터</Goback>
+      <Goback page='/chatting'>캐릭터</Goback>
       <ThemeProvider theme={otherFontTheme}>
         <div className={style.chatBox}>
           <ChatBot steps={steps}></ChatBot>

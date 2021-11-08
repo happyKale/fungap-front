@@ -15,7 +15,7 @@ const Navigation = props => {
 
     if (!li) return false;
     if (page === 'home') history.push('/');
-    if (page === 'chat') history.push('/chat');
+    if (page === 'chat') history.push('/chatting');
     if (page === 'user') history.push('/userpage');
   };
 

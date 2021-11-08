@@ -9,10 +9,11 @@ const Admin = props => {
   const dispatch = useDispatch();
   let defaultPost = useSelector(state => state.post.post);
   let result = true;
+
   return (
     <React.Fragment>
       {/* 페이지 제목 */}
-      <Goback>관리자 페이지</Goback>
+      <Goback page='/userpage'>관리자 페이지</Goback>
       <div className={style.container}>
         <div className={style.postListBox}>
           <div className={style.buttonBox}>
