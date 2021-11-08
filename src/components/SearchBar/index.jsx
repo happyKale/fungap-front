@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { postActions } from '../../redux/modules/post';
 
 import style from './searchbar.module.css';
 
 const SearchBar = prop => {
-  //
+  const dispatch = useDispatch();
   const [input, setInput] = useState({ search: '' });
   const { search } = input;
 
@@ -14,15 +16,17 @@ const SearchBar = prop => {
       ...input,
       [name]: value,
     });
+
+    // 검색어 제거 시 전체 게시글 보여주기
+    if (value === '') {
+      dispatch(postActions.getPostDB());
+    }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    console.log(search);
-    setInput({
-      search: '',
-    });
+    dispatch(postActions.searchPostDB(search));
   };
 
   return (

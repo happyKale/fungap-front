@@ -19,9 +19,9 @@ import {
   Notification,
   Alarm,
   TermsofUse,
-  // Review,
   Chatting,
   ChatRoom,
+  Search,
 } from '../pages';
 import { Navigation } from '../components';
 import style from './App.module.css';
@@ -44,6 +44,7 @@ function App() {
         <Navigation />
         <ConnectedRouter history={history}>
           <Route path='/' exact component={Home} />
+          <Route path='/search' exact component={Search} />
           <Route path='/contents' exact component={Contents} />
           <Route path='/detail/:id' exact component={Detail} />
           <Route path='/signup' exact component={SignUp} />
