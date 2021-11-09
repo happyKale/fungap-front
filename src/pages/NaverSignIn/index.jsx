@@ -22,11 +22,21 @@ const NaverSignIn = () => {
     dispatch(userActions.signinNaverDB(naverLogin?.accessToken?.accessToken));
   };
 
+  const clickNaverLogin = () => {
+    const loginBtn = document.getElementById('naverIdLogin').firstChild;
+    loginBtn.click();
+  };
+
   useEffect(() => {
     initializeNaverLogin();
   }, []);
 
-  return <div id='naverIdLogin' className={style.btn}></div>;
+  return (
+    <>
+      <div className={style.btn} onClick={clickNaverLogin}></div>
+      <div id='naverIdLogin' className={style.fake}></div>
+    </>
+  );
 };
 
 export default NaverSignIn;
