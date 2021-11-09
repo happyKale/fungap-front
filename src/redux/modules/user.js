@@ -3,8 +3,6 @@ import { produce } from 'immer';
 
 import apis from '../../shared/apis';
 import { setToken, getToken, delToken } from '../../shared/token';
-import { FastRewindOutlined } from '@mui/icons-material';
-import { imageListItemClasses } from '@mui/material';
 
 // action type
 const SET_USER = 'SET_USER';
