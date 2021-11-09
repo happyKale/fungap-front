@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 import style from './kakao.module.css';
 import btn_kakao_share from '../../assets/btn_kakao_share.png';
-import logo_share from '../../assets/logo_share.png';
 
 const { Kakao } = window;
 
