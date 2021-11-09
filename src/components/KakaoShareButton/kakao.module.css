@@ -1,0 +1,9 @@
+.btnKakaoShare {
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+
+.btnKakaoShare > img {
+  width: 100%;
+}

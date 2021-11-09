@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   Comments,
   Counter,
   Goback,
   MbtiDescList,
   LikeButton,
+  KakaoShareButton,
 } from '../../components';
 import { postActions } from '../../redux/modules/post';
 import style from './detail.module.css';
@@ -50,12 +51,12 @@ const Detail = props => {
           <div className={style.contents}>
             <MbtiDescList list={mbtiList} />
           </div>
+          <KakaoShareButton postId={postId} />
           <LikeButton
             board_id={id}
             like_count={like_count}
             like_state={like_state}
           />
-
           <Counter //
             commentCount={comment_count}
             viewCount={view_count}

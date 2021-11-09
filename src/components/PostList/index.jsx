@@ -6,8 +6,8 @@ import Loading from '../Loading';
 import { Post } from '../../components';
 
 const PostList = ({ isAdmin }) => {
-  const is_searching = useSelector(state => state.post.is_searching);
-  const sort = useSelector(state => state.post.sort);
+  const isSearching = useSelector(state => state.post.isSearching);
+  const postSort = useSelector(state => state.post.postSort);
   const postList = useSelector(state => state.post.postList);
 
   const [pageNum, setPageNum] = useState(1);
@@ -34,7 +34,7 @@ const PostList = ({ isAdmin }) => {
   // 무한스크롤
   return (
     <div>
-      {is_searching || sort
+      {isSearching || postSort
         ? postList?.map((post, index) => {
             return (
               <Post

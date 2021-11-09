@@ -5,13 +5,12 @@ import apis from '../../shared/apis';
 
 // action type
 const GET_POST = 'GET_POST';
-const GET_MORE_POST = 'GET_MORE_POST';
 const SET_POST = 'SET_POST';
 const SET_HOME_POST = 'SET_HOME_POST';
+const SEARCH_POST = 'SEARCH_POST';
 const ADD_POST = 'ADD_POST';
 const DELETE_POST = 'DELETE_POST';
 const EDIT_POST = 'EDIT_POST';
-const SEARCH_POST = 'SEARCH_POST';
 const ADD_IMAGE = 'ADD_IMAGE';
 const RESET_POST = 'RESET_POST';
 const RESET_EDIT_POST = 'RESET_EDIT_POST';
@@ -20,14 +19,12 @@ const ADD_EDIT_POST = 'ADD_EDIT_POST';
 
 // action creator
 const getPosts = createAction(GET_POST, (posts, sort) => ({ posts, sort }));
-const getMorePosts = createAction(GET_MORE_POST, posts => ({
-  posts,
-}));
 const setPosts = createAction(SET_POST, posts => ({ posts }));
 const setHomePosts = createAction(SET_HOME_POST, (new_posts, top_posts) => ({
   new_posts,
   top_posts,
 }));
+const searchPost = createAction(SEARCH_POST, posts => ({ posts }));
 const addPost = createAction(ADD_POST, (title, img, desc, mbti) => ({
   title,
   img,
@@ -36,7 +33,6 @@ const addPost = createAction(ADD_POST, (title, img, desc, mbti) => ({
 }));
 const deletePost = createAction(DELETE_POST, posts => ({ posts }));
 const editPost = createAction(EDIT_POST, (postId, post) => ({ postId, post }));
-const searchPost = createAction(SEARCH_POST, posts => ({ posts }));
 const addImage = createAction(ADD_IMAGE, image => ({ image }));
 const resetPost = createAction(RESET_POST, () => ({}));
 const resetEditPost = createAction(RESET_EDIT_POST, () => ({}));
@@ -63,12 +59,11 @@ const initialState = {
     desc: '',
     mbti: '',
   },
-  list: [],
   postList: [],
   newList: [],
   topList: [],
-  is_searching: false,
-  sort: '',
+  isSearching: false,
+  postSort: '',
 };
 
 // middleware
@@ -139,6 +134,22 @@ const getViewPostDB = () => {
       });
 
       dispatch(getPosts(boardList, 'view'));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+const searchPostDB = word => {
+  return async (dispatch, getState, { history }) => {
+    const keyword = word.replace(' ', '+');
+    console.log(keyword, typeof keyword);
+
+    try {
+      const response = await apis.searchPost(keyword);
+      const boardlistDB = response.data.search_board_list;
+
+      dispatch(searchPost(boardlistDB));
     } catch (error) {
       console.log(error);
     }
@@ -221,49 +232,14 @@ const getAdminPostDB = () => {
   };
 };
 
-const searchPostDB = word => {
-  return async (dispatch, getState, { history }) => {
-    const keyword = word.replace(' ', '+');
-    console.log(keyword, typeof keyword);
-
-    try {
-      const response = await apis.searchPost(keyword);
-      const boardlistDB = response.data.search_board_list;
-
-      dispatch(searchPost(boardlistDB));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
-
-const getMorePostDB = page => {
-  return async (dispatch, getState, { history }) => {
-    try {
-      const response = await apis.getMorePost(page);
-      const boardList = response?.data.board_list;
-
-      if (!boardList) return false;
-
-      dispatch(getMorePosts(boardList));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
-
 // reducer
 export default handleActions(
   {
-    [GET_MORE_POST]: (state, action) =>
-      produce(state, draft => {
-        draft.list.push(...action.payload.posts);
-      }),
     [GET_POST]: (state, action) =>
       produce(state, draft => {
         draft.postList = action.payload.posts;
-        draft.is_searching = false;
-        draft.sort = action.payload.sort;
+        draft.isSearching = false;
+        draft.postSort = action.payload.sort;
       }),
     [SET_POST]: (state, action) =>
       produce(state, draft => {
@@ -273,6 +249,11 @@ export default handleActions(
       produce(state, draft => {
         draft.newList = action.payload.new_posts;
         draft.topList = action.payload.top_posts;
+      }),
+    [SEARCH_POST]: (state, action) =>
+      produce(state, draft => {
+        draft.postList = action.payload.posts;
+        draft.isSearching = true;
       }),
     [ADD_POST]: (state, action) =>
       produce(state, draft => {
@@ -288,17 +269,12 @@ export default handleActions(
     [EDIT_POST]: (state, action) =>
       produce(state, draft => {
         let idx = draft.postList.findIndex(
-          post => post.board_id == action.payload.postId,
+          post => post.board_id === action.payload.postId,
         );
         draft.postList[idx] = {
           ...draft.postList[idx],
           ...action.payload.post,
         };
-      }),
-    [SEARCH_POST]: (state, action) =>
-      produce(state, draft => {
-        draft.postList = action.payload.posts;
-        draft.is_searching = true;
       }),
     [ADD_IMAGE]: (state, action) =>
       produce(state, draft => {
@@ -321,7 +297,7 @@ export default handleActions(
     [SET_EDIT_POST]: (state, action) =>
       produce(state, draft => {
         let idx = draft.postList.findIndex(
-          post => post.board_id == action.payload.postId,
+          post => post.board_id === action.payload.postId,
         );
         draft.editPost = {
           ...draft.postList[idx],
@@ -344,6 +320,7 @@ export const postActions = {
   getPopularPostDB,
   getViewPostDB,
   setPosts,
+  searchPostDB,
   editPost,
   addPost,
   addImage,
@@ -356,6 +333,4 @@ export const postActions = {
   deletePostDB,
   editPostDB,
   getAdminPostDB,
-  searchPostDB,
-  getMorePostDB,
 };
