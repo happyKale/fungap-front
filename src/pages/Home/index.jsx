@@ -23,8 +23,11 @@ const Home = props => {
     <React.Fragment>
       <div className={style.header}>
         <p>Fungap</p>
+        <div>
+          <div className={style.searchIcon} h></div>
+          <div className={style.alramIcon}></div>
+        </div>
       </div>
-      <SearchBar />
       <Carousel />
       <div className={style.titleContent}>
         <h2>새로나온 콘텐츠</h2>
@@ -35,7 +38,12 @@ const Home = props => {
           return <Post key={post.board_id} direction='column' {...post} />;
         })}
       </div>
-      <div className={style.middleBanner} />
+      <div
+        className={style.middleBanner}
+        onClick={() => {
+          history.push('/compatibility');
+        }}
+      />
       <div className={style.titleContent}>
         <h2>인기 콘텐츠</h2>
       </div>
