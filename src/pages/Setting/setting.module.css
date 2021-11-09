@@ -61,3 +61,49 @@
   cursor: pointer;
   margin-top: 30px;
 }
+
+.logOutIcon {
+  background: url(../../assets/logOutIcon.png);
+  width: 32px;
+  height: 32px;
+  margin-right: 1px;
+
+  position: relative;
+  right: 5px;
+}
+
+.logoutBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  position: relative;
+  bottom: 4px;
+
+  cursor: pointer;
+}
+
+.withdrawalBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  position: relative;
+  bottom: 11px;
+
+  cursor: pointer;
+}
+
+.withdrawalIcon {
+  background: url(../../assets/withdrawalIcon.png);
+  width: 32px;
+  height: 32px;
+  margin-right: 1px;
+
+  position: relative;
+  right: 7px;
+}
+
+.withdrawalIcon > div {
+  cursor: pointer;
+}
