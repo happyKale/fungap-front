@@ -17,6 +17,7 @@ import Carousel from './Carousel';
 import MbtiDescList from './MbtiDescList';
 import LikeButton from './LikeButton';
 import Loading from './Loading';
+import KakaoShareButton from './KakaoShareButton';
 
 export {
   TypeOfMbti,
@@ -38,4 +39,5 @@ export {
   MbtiDescList,
   LikeButton,
   Loading,
+  KakaoShareButton,
 };
