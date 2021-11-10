@@ -22,12 +22,9 @@ h3.title {
   -webkit-box-orient: vertical;
   word-wrap: break-word; */
 }
-.image {
-  position: relative;
-  padding-bottom: 330px;
-}
+
 .image > img {
-  position: absolute;
+  position: relative;
   left: -20px;
   top: 0;
   width: calc(100% + 40px);
