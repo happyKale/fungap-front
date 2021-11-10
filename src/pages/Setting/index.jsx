@@ -95,10 +95,16 @@ const Setting = () => {
           </p>
         </div>
         {isLogin ? (
-          <div className={style.btn}>
-            <button onClick={logOut}>로그아웃</button>
-            <button onClick={openModal}>탈퇴하기</button>
-          </div>
+          <>
+            <div className={style.logoutBox}>
+              <div className={style.logOutIcon}></div>
+              <div onClick={logOut}>로그아웃</div>
+            </div>
+            <div className={style.withdrawalBox}>
+              <div className={style.withdrawalIcon}></div>
+              <div onClick={openModal}>회원탈퇴</div>
+            </div>
+          </>
         ) : (
           <div className={style.btn}>
             <button onClick={goSigninPage}>로그인</button>

@@ -40,7 +40,7 @@
 }
 
 .userImage {
-  width: 82px;
+  min-width: 82px;
   height: 82px;
   border-radius: 41px;
   object-fit: cover;
