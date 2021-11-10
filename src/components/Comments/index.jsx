@@ -23,19 +23,19 @@ const Comments = ({ boardId }) => {
   };
 
   return (
-    <div className={style.comments}>
+    <div>
       <CommentInput boardId={boardId} />
-      <ul className={style.commentList}>
+      <ul className={style.list}>
         {!commentVisible
-          ? comment.slice(0, 2).map((item, index) => {
+          ? comment.slice(0, 5).map((item, index) => {
               return <Comment key={index} {...item} />;
             })
           : comment.map((item, index) => {
               return <Comment key={index} {...item} />;
             })}
       </ul>
-      <div className={style.btnTotalCommentWrap}>
-        {comment.length < 3 ? null : (
+      <div className={style.btnTotal}>
+        {comment.length < 5 ? null : (
           <button onClick={showTotalComment}>
             {!commentVisible
               ? `${comment.length}개의 댓글 전체보기`
