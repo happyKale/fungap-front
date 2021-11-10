@@ -30,21 +30,19 @@
 
 .background {
   width: calc(100% + 40px);
-  height: 97px;
-
-  text-align: center;
+  height: 105px;
 
   background-color: #f7de6f;
 
   position: relative;
-  bottom: 20px;
+
   right: 20px;
 
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
+  z-index: 1;
+}
 
-  padding-bottom: 8px;
+.background > Goback {
+  z-index: 2;
 }
 
 .background > div:nth-child(1) {
@@ -149,4 +147,11 @@
 
 .inputContent {
   padding-top: 50px;
+}
+
+.goback {
+  position: relative;
+  bottom: 80px;
+
+  z-index: 2;
 }

@@ -62,16 +62,11 @@ const ProfileEdit = () => {
 
   return (
     <div className={style.wrap}>
-      <div className={style.background}>
-        <div
-          name='뒤로가기이미지'
-          onClick={() => {
-            history.push('/userpage');
-          }}
-        ></div>
-        <p>프로필 수정</p>
-        <div />
+      <div className={style.background}></div>
+      <div className={style.goback}>
+        <Goback page='/userpage'>프로필 수정</Goback>
       </div>
+
       <ImageUpload profile url={userInfo.user_image} />
       <div className={style.inputContent}>
         <p>닉네임</p>
