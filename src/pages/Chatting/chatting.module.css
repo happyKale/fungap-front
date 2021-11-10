@@ -2,5 +2,19 @@
   width: 100%;
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 30px;
+  position: relative;
+  width: 430px;
+  right: 20px;
+  box-sizing: border-box;
+  background-color: #f7de6f;
+  height: 110px;
+  margin: 0px;
+  text-align: center;
+  padding-top: 65px;
+}
+.container {
+  position: relative;
+  width: 430px;
+  right: 20px;
+  box-sizing: border-box;
 }
