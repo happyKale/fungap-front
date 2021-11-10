@@ -83,11 +83,10 @@ const CommentInput = ({ boardId }) => {
       </form>
       {visible && (
         <Modal
-          title='로그인'
-          desc='댓글은 로그인 해야만 쓸 수 있어요!'
-          desc2='로그인 하루 가시겠어요?'
+          title='로그인하면 댓글쓰기가 가능해요!'
+          desc='로그인하러 가시겠어요?'
           btnLeft='닫기'
-          btnRight='로그인 하러가기'
+          btnRight='로그인하기'
           clickBtnRight={() => history.replace('/signin')}
           visible={visible}
           maskClosable

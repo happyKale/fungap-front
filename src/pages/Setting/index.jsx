@@ -115,13 +115,13 @@ const Setting = () => {
       </div>
       {visible && (
         <Modal
-          title='회원 탈퇴'
+          title='정말 탈퇴하시겠어요?'
           visible={visible}
-          desc='정말 탈퇴하시겠어요?'
-          desc2='탈퇴 시 이전 정보는 복구되지 않습니다.'
+          desc='탈퇴 시 이전 정보는 복구되지 않습니다.'
           onClose={closeModal}
           btnLeft='취소'
           btnRight='탈퇴하기'
+          btnRightType='leave'
           clickBtnRight={withdrawalMember}
           maskClosable
         />
