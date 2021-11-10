@@ -16,9 +16,12 @@ const RESET_POST = 'RESET_POST';
 const RESET_EDIT_POST = 'RESET_EDIT_POST';
 const SET_EDIT_POST = 'SET_EDIT_POST';
 const ADD_EDIT_POST = 'ADD_EDIT_POST';
+const GET_MORE_POST = 'GET_MORE_POST';
+const SET_LOADING = 'SET_LOADING';
+const CLEAR_LIST = 'CLEAR_LIST';
 
 // action creator
-const getPosts = createAction(GET_POST, (posts, sort) => ({ posts, sort }));
+const getPosts = createAction(GET_POST, posts => ({ posts }));
 const setPosts = createAction(SET_POST, posts => ({ posts }));
 const setHomePosts = createAction(SET_HOME_POST, (new_posts, top_posts) => ({
   new_posts,
@@ -43,6 +46,17 @@ const addEditPost = createAction(ADD_EDIT_POST, (title, img, desc, mbti) => ({
   desc,
   mbti,
 }));
+const getMorePost = createAction(
+  GET_MORE_POST,
+  (posts, hasMore, page, sort) => ({
+    posts,
+    hasMore,
+    page,
+    sort,
+  }),
+);
+const setLoading = createAction(SET_LOADING, isLoading => ({ isLoading }));
+const clearList = createAction(CLEAR_LIST, () => ({}));
 
 // initial state
 const initialState = {
@@ -63,10 +77,65 @@ const initialState = {
   newList: [],
   topList: [],
   isSearching: false,
-  postSort: '',
+  sort: 'date',
+  list: [],
+  start: 1,
+  isLoading: false,
+  hasMore: true,
 };
 
 // middleware
+const getMorePostDB = sort => {
+  return async (dispatch, getState, { history }) => {
+    let _start = getState().post.start;
+
+    dispatch(setLoading(true));
+    if (_start === 1) {
+      dispatch(clearList());
+    }
+
+    // 최신순 무한스크롤
+    if (sort === 'date') {
+      try {
+        const response = await apis.getMorePost(sort, _start);
+        const boardlistDB = response.data.board_list;
+        const hasMore = boardlistDB.length !== 0 ? true : false;
+        const next = boardlistDB.length !== 0 ? _start + 1 : 1;
+
+        dispatch(getMorePost(boardlistDB, hasMore, next, sort));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    // 인기순 무한스크롤
+    if (sort === 'like') {
+      try {
+        const response = await apis.getMorePost('popularity', _start);
+        const boardlistDB = response.data.board_list;
+        const hasMore = boardlistDB.length !== 0 ? true : false;
+        const next = boardlistDB.length !== 0 ? _start + 1 : 1;
+
+        dispatch(getMorePost(boardlistDB, hasMore, next, sort));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    // // 조회순 무한스크롤
+    if (sort === 'view') {
+      try {
+        const response = await apis.getMorePost(sort, _start);
+        const boardlistDB = response.data.board_list;
+        const hasMore = boardlistDB.length !== 0 ? true : false;
+        const next = boardlistDB.length !== 0 ? _start + 1 : 1;
+
+        dispatch(getMorePost(boardlistDB, hasMore, next, sort));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+};
+
 const getPostDB = () => {
   return async (dispatch, getState, { history }) => {
     console.log('DB 메인페이지 포스트 가져오기');
@@ -74,7 +143,7 @@ const getPostDB = () => {
       const response = await apis.getPost();
       const boardlistDB = response.data.board_list;
 
-      dispatch(getPosts(boardlistDB, 'date'));
+      dispatch(getPosts(boardlistDB));
     } catch (error) {
       console.log(error);
     }
@@ -96,22 +165,22 @@ const getHomePostDB = () => {
   };
 };
 
-const getPopularPostDB = () => {
+const getPopularPostDB = page => {
   return async (dispatch, getState, { history }) => {
     try {
-      const response = await apis.getPost();
+      const response = await apis.getOroderPopularPost(page);
       const boardlistDB = response.data.board_list;
       const boardList = boardlistDB.sort((a, b) => {
-        if (a.like_count > b.like_count) {
+        if (a.view_count > b.view_count) {
           return -1;
         }
-        if (a.like_count < b.like_count) {
+        if (a.view_count < b.view_count) {
           return 1;
         }
         return 0;
       });
 
-      dispatch(getPosts(boardList, 'like'));
+      dispatch(getMorePost(boardList, 'like'));
     } catch (error) {
       console.log(error);
     }
@@ -143,7 +212,6 @@ const getViewPostDB = () => {
 const searchPostDB = word => {
   return async (dispatch, getState, { history }) => {
     const keyword = word.replace(' ', '+');
-    console.log(keyword, typeof keyword);
 
     try {
       const response = await apis.searchPost(keyword);
@@ -235,11 +303,27 @@ const getAdminPostDB = () => {
 // reducer
 export default handleActions(
   {
+    [CLEAR_LIST]: (state, action) =>
+      produce(state, draft => {
+        draft.list = [];
+      }),
+    [SET_LOADING]: (state, action) =>
+      produce(state, draft => {
+        draft.isLoading = action.payload.isLoading;
+      }),
+    //
+    [GET_MORE_POST]: (state, action) =>
+      produce(state, draft => {
+        draft.list.push(...action.payload.posts);
+        draft.start = action.payload.page;
+        draft.hasMore = action.payload.hasMore;
+        draft.sort = action.payload.sort;
+        draft.isLoading = false;
+      }),
+    //
     [GET_POST]: (state, action) =>
       produce(state, draft => {
         draft.postList = action.payload.posts;
-        draft.isSearching = false;
-        draft.postSort = action.payload.sort;
       }),
     [SET_POST]: (state, action) =>
       produce(state, draft => {
@@ -333,4 +417,5 @@ export const postActions = {
   deletePostDB,
   editPostDB,
   getAdminPostDB,
+  getMorePostDB,
 };

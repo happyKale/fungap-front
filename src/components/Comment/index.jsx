@@ -14,11 +14,15 @@ const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
   const [editBox, setEditBox] = useState(false);
 
   // 댓글 작성 분,시간,일 계산
-  const min = elapsedMin(createdAt);
+  const min = elapsedMin(createdAt) < 0 ? 0 : elapsedMin(createdAt);
   const hour = elapsedHour(createdAt);
   const date = elapsedDate(createdAt);
   const elapsed =
-    min < 60 ? `${min}분전` : hour < 24 ? `${hour}시간전` : `${date}일전`;
+    min < 60
+      ? `${min === 0 ? '조금전' : `${min}분전`}`
+      : hour < 24
+      ? `${hour}시간전`
+      : `${date}일전`;
 
   const userNickname =
     sessionStorage.getItem('user') &&
