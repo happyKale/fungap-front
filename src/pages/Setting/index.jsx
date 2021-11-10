@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import style from './setting.module.css';
 import { Chat, Modal } from '../../components/';
-import adminicon from '../../assets/adminicon.png';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../../redux/modules/user';
 import { history } from '../../redux/configureStore';
+
 const Setting = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.user.is_login);
@@ -16,10 +15,6 @@ const Setting = () => {
 
   const logOut = () => {
     dispatch(userActions.logout());
-  };
-
-  const goSigninPage = () => {
-    history.push('/signin');
   };
 
   const goNotificationPage = () => {
@@ -57,9 +52,10 @@ const Setting = () => {
 
       <div className={style.settingList}>
         {isLogin && isAdmin === 'admin' ? (
-          <div>
-            <img src={adminicon} alt='공지사항' className={style.adminImage} />
-            <p onClick={goAdminPage}>관리자페이지</p>
+          <div className={style.content}>
+            <div name='이미지' className={style.adminIcon} />
+            <p onClick={goAdminPage}>관리자 페이지</p>
+            <div />
           </div>
         ) : (
           ''
