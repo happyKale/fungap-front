@@ -4,7 +4,6 @@ import { Goback, Scenario } from '../../components';
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { chatbotActions } from '../../redux/modules/chatbot';
 
 import profile from '../../assets/profileplaceholder.png';
 import jinro from '../../assets/friend_jinro.png';
@@ -13,7 +12,6 @@ const ChatRoom = props => {
   const dispatch = useDispatch();
   const chatId = props.match.params.id;
   // Goback의 children은 친구들 리스트에서 chatId에 해당하는 친구의 이름을 가져오면 될 듯.
-  const step = useSelector(state => state.chatbot.step);
   const userImg = JSON.parse(sessionStorage.getItem('user'));
   const mbtiList = [
     'INFJ',
@@ -48,7 +46,21 @@ const ChatRoom = props => {
   };
 
   const steps = [
-    ...step,
+    {
+      id: '1',
+      message: '안녕~ 나는 상담이야!',
+      trigger: '2',
+    },
+    {
+      id: '2',
+      message: '너의 성격유형에 맞는 직업을 추천해줄게~!',
+      trigger: '3',
+    },
+    {
+      id: '3',
+      message: 'MBTI 유형을 입력해줘!',
+      trigger: 'mbti',
+    },
     {
       id: 'mbti',
       user: true,
