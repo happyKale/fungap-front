@@ -5,48 +5,29 @@
   justify-content: space-between;
   grid-template-columns: 200px 200px;
   grid-template-columns: 1fr 1fr;
+  position: relative;
+  padding-bottom: 130px;
 }
 
 .header {
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 102px;
-  background: #ffffff;
-  padding: 0px 20px 0px 20px;
-  position: relative;
-  right: 20px;
-  bottom: 20px;
-
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-.header > p {
-  position: absolute;
-  width: 116px;
+.logo {
+  background: url(../../assets/Logo.png) no-repeat;
+  width: 100%;
   height: 36px;
-  font-size: 32px;
-  font-weight: 700;
-
-  /* font-family: ONE Mobile POP;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 32px;
-  line-height: 36px; */
-  /* identical to box height, or 112% */
-
-  text-align: center;
-  letter-spacing: -0.04em;
-
-  color: #ff5823;
-
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.header > div {
+.icon {
   display: flex;
-  height: 120px;
+  width: 100%;
   flex-direction: row;
   justify-content: right;
-  align-items: center;
 }
 
 .searchIcon {
@@ -63,24 +44,16 @@
   cursor: pointer;
 }
 
-.banner {
-  width: 100%;
-  height: 264px;
-}
-
 .titleContent {
   width: 100%;
+  margin: 20px 0px 5px 0px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 25px 0px 18px 0px;
-}
-.titleContent:nth-of-type(2) {
-  margin-top: 50px;
 }
 
 .titleContent > h2 {
-  margin: 18px 0px 0px 0px;
   font-size: 20px;
   font-weight: 700;
 }
@@ -95,33 +68,31 @@
 }
 
 .middleBanner {
-  width: 100%;
+  width: calc(100% + 40px);
   height: 116px;
-  margin-top: 30px;
-  padding: 20px;
-  background-image: url('../../assets/banner4.png');
+
+  background: url('../../assets/middleBanner.png') no-repeat center;
   background-size: contain;
-  background-repeat: no-repeat;
-  position: relative;
-  right: 20px;
+
+  position: absolute;
+  bottom: 0px;
+  left: -20px;
+
   cursor: pointer;
 }
 
-.middleBanner > span {
-  font-weight: bolder;
-  font-size: 20px;
-  line-height: 116px;
-}
-
 .bottomBanner {
-  width: 430px;
+  width: calc(100% + 40px);
   height: 116px;
-  background-image: url('../../assets/banner5.png');
+
+  background: url('../../assets/bottomBanner.png') no-repeat center;
   background-size: contain;
-  background-repeat: no-repeat;
-  position: relative;
-  right: 20px;
-  margin: 30px 0px 0px 0px;
+
+  position: absolute;
+  bottom: 0px;
+  left: -20px;
+
+  cursor: pointer;
 }
 
 .bottomBanner > span {
