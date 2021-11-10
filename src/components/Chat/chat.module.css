@@ -47,6 +47,13 @@
   object-fit: cover;
   margin-right: 20px;
 }
+.chatUserImage {
+  max-width: 62px;
+  height: 62px;
+  border-radius: 41px;
+  object-fit: cover;
+  margin-right: 20px;
+}
 
 .userEdit {
   display: flex;
@@ -69,12 +76,13 @@
 
 .chatContent {
   display: flex;
+  padding: 15px 20px;
   flex-direction: row;
-  margin-bottom: 30px;
+  border-bottom: 1px solid lightgray;
 }
 .chatDesc {
   width: 100%;
-  padding: 0px 15px;
+  padding: 0px;
   box-sizing: border-box;
 }
 .chatName {
@@ -87,7 +95,7 @@
 .chatMessage {
   margin: 0;
   position: relative;
-  top: 24px;
+  top: 14px;
   font-size: 13px;
   color: #979797;
 }
