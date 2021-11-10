@@ -44,9 +44,11 @@ const MbtiDescList = props => {
             </div>
             {item?.map(i => {
               return (
-                <div key={i[0]} className={style.mbtiBox}>
-                  <div className={style.mbtiName}>{i[0].toUpperCase()}</div>
-                  <div className={style.mbtiDesc}>{i[1]}</div>
+                <div className={style.mbtiContentBox}>
+                  <div key={i[0]} className={style.mbtiBox}>
+                    <div className={style.mbtiName}>{i[0].toUpperCase()}</div>
+                    <div className={style.mbtiDesc}>{i[1]}</div>
+                  </div>
                 </div>
               );
             })}

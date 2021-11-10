@@ -6,6 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { commentActions } from '../../redux/modules/comment';
 import style from './comment.module.css';
 import { elapsedMin, elapsedHour, elapsedDate } from '../../shared/elapsed';
+import MbtiTag from '../MbtiTag';
 
 const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
   const { nickname, user_image, user_mbti, user_id } = User;
@@ -49,7 +50,7 @@ const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
   };
 
   return (
-    <li className={style.comment}>
+    <li className={style.item}>
       <div className={style.profileImg}>
         {user_image ? (
           <img src={user_image} alt='임시' />
@@ -57,10 +58,11 @@ const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
           <img src='http://placehold.it/40x40' alt='임시' />
         )}
       </div>
-      <div className={style.user}>
+      <div>
         <div className={style.userInfo}>
           <p className={style.nickname}>{nickname}</p>
-          {user_mbti && <span className={style.mbti}>{user_mbti}</span>}
+          {/* {user_mbti && <span className={style.mbti}>{user_mbti}</span>} */}
+          {user_mbti && <MbtiTag mbti={user_mbti}>{user_mbti}</MbtiTag>}
         </div>
         {editBox ? (
           <form className={style.editForm} onSubmit={editComment}>
@@ -80,8 +82,8 @@ const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
       </div>
       {userId !== user_id ? null : (
         <div className={style.handleComment}>
-          <DeleteIcon onClick={deleteComment} />
-          <EditIcon onClick={toggleEditBox} />
+          <DeleteIcon style={{ color: '#999999' }} onClick={deleteComment} />
+          <EditIcon style={{ color: '#999999' }} onClick={toggleEditBox} />
         </div>
       )}
     </li>

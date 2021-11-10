@@ -6,7 +6,7 @@ import Post from './Post';
 import Comments from './Comments';
 import Comment from './Comment';
 import CommentInput from './CommentInput';
-import Counter from './Counter';
+import ContentFt from './ContentFt';
 import Goback from './Goback';
 import Chat from './Chat';
 import SearchBar from './SearchBar';
@@ -28,7 +28,7 @@ export {
   Comments,
   Comment,
   CommentInput,
-  Counter,
+  ContentFt,
   Goback,
   Chat,
   SearchBar,

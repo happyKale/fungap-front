@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { history } from '../../redux/configureStore';
 import { postActions } from '../../redux/modules/post';
-import { Post, SearchBar, Carousel } from '../../components';
+import { Post, Carousel } from '../../components';
 import style from './home.module.css';
 
 const Home = props => {

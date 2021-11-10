@@ -1,5 +1,7 @@
 .bg {
-  width: auto;
+  position: relative;
+  left: -40px;
+  width: calc(100% + 80px);
   height: 400px;
   background: url('../../assets/login_bg.png') no-repeat center;
   background-size: contain;

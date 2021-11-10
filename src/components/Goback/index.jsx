@@ -10,7 +10,7 @@ const Goback = ({ children, page }) => {
   };
 
   return (
-    <div className={style.goback} onClick={handleClick}>
+    <div className={style.wrap} onClick={handleClick}>
       <h2 className={style.title}>{children}</h2>
     </div>
   );

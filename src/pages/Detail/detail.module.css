@@ -4,6 +4,7 @@
 }
 h3.title {
   text-align: left;
+  font-size: 20px;
 }
 .title > span {
   display: inline-block;
@@ -21,9 +22,16 @@ h3.title {
   -webkit-box-orient: vertical;
   word-wrap: break-word; */
 }
+
 .image > img {
-  width: 100%;
+  position: relative;
+  left: -20px;
+  top: 0;
+  width: calc(100% + 40px);
   height: auto;
+}
+.desc {
+  font-size: 16px;
 }
 .heart {
   display: inline-block;
@@ -42,5 +50,5 @@ h3.title {
 
 .contents {
   min-height: 200px;
-  margin: 20px 0;
+  margin: 40px 0 100px 0;
 }

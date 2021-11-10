@@ -1,0 +1,56 @@
+.mbti {
+  margin-left: 15px;
+  border-radius: 15px;
+  padding: 3px 10px;
+  background-color: #cccccc;
+  color: #333333;
+  font-size: 13px;
+}
+.infj {
+  background-color: #00d672;
+}
+.infp {
+  background-color: #58ff9a;
+}
+.enfj {
+  background-color: #6aae8b;
+}
+.enfp {
+  background-color: #5aff31;
+}
+.istp {
+  background-color: #ffb803;
+}
+.isfp {
+  background-color: #ffd400;
+}
+.estp {
+  background-color: #e5ae1e;
+}
+.esfp {
+  background-color: #ffe462;
+}
+.intp {
+  background-color: #eabad5;
+}
+.intj {
+  background-color: #e6c3fd;
+}
+.entj {
+  background-color: #d2c5fb;
+}
+.entp {
+  background-color: #f1bde6;
+}
+.istp {
+  background-color: #88c7cb;
+}
+.isfp {
+  background-color: #88e1e1;
+}
+.estj {
+  background-color: #7fd6bd;
+}
+.esfj {
+  background-color: #9ce7e4;
+}

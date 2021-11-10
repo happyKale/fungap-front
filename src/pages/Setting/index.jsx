@@ -1,16 +1,16 @@
 import React from 'react';
-import style from './setting.module.css';
-import { Chat, Modal } from '../../components/';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { userActions } from '../../redux/modules/user';
 import { history } from '../../redux/configureStore';
+import { Chat, Modal } from '../../components/';
+import style from './setting.module.css';
 
 const Setting = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.user.is_login);
   const isAdmin = JSON.parse(sessionStorage.getItem('user'))?.user_authority;
 
-  console.log(isAdmin);
   const [visible, setVisible] = React.useState(false);
 
   const logOut = () => {
@@ -107,13 +107,13 @@ const Setting = () => {
       </div>
       {visible && (
         <Modal
-          title='회원 탈퇴'
+          title='정말 탈퇴하시겠어요?'
           visible={visible}
-          desc='정말 탈퇴하시겠어요?'
-          desc2='탈퇴 시 이전 정보는 복구되지 않습니다.'
+          desc='탈퇴 시 이전 정보는 복구되지 않습니다.'
           onClose={closeModal}
           btnLeft='취소'
           btnRight='탈퇴하기'
+          btnRightType='leave'
           clickBtnRight={withdrawalMember}
           maskClosable
         />

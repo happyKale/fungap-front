@@ -13,12 +13,10 @@ const KakaoSignIn = props => {
     e.preventDefault();
 
     Kakao.Auth.login({
-      success: function (authObj) {
-        console.log(authObj);
-
+      success: function(authObj) {
         dispatch(userActions.signinKakaoDB(authObj));
       },
-      fail: function (err) {
+      fail: function(err) {
         console.log(JSON.stringify(err));
       },
     });

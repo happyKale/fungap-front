@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import apis from '../../shared/apis';
+import { history } from '../../redux/configureStore';
+import { Modal } from '../../components';
 import style from './likebutton.module.css';
 import likeImage from '../../assets/heart.png';
 import unlikeImage from '../../assets/heart_pink.png';
-import { useSelector, useDispatch } from 'react-redux';
-import { Modal } from '../../components';
-import { history } from '../../redux/configureStore';
-import apis from '../../shared/apis';
 
 const LikeButton = props => {
   const postId = props.board_id;

@@ -1,28 +1,41 @@
-.section {
+.container {
   width: 100%;
-  height: 40px;
-  color: #37474f;
-  line-height: 40px;
-  border: none;
-  font-size: 20px;
-  font-weight: 700;
-  border-radius: 2px;
-  text-align: center;
-  margin: 30px 0px 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 45px;
+  position: relative;
 }
-
-.mbtiSection {
-  border: 1px solid lightgray;
-  padding: 10px 20px;
+.container > div:first-child {
+  width: 100%;
+  border: none;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-radius: 10px 10px 0 0;
+  padding: 20px 0;
+  color: #000000;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+}
+.container > div:nth-child(1) > div:nth-child(2) {
+  position: relative;
+  margin-top: 70px;
+}
+.mbtiContentBox {
+  padding: 16px;
+  padding-bottom: 0;
+}
+.mbtiContentBox:last-child > div {
+  border-bottom: none;
 }
 .mbtiBox {
   width: 100%;
-  padding-bottom: 8px;
   border-bottom: 1px solid #dfdfdf;
+  padding-bottom: 15px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 15px;
+  box-sizing: border-box;
 }
 .mbtiBox:nth-child(5n) {
   border: none;
@@ -30,46 +43,18 @@
   margin-bottom: 10px;
 }
 .mbtiName {
-  border-radius: 4px;
-  width: 24%;
-  text-align: center;
+  width: 50px;
   font-weight: 700;
   font-size: 20px;
-  padding: 5px 0px;
+  text-align: center;
   box-sizing: border-box;
+  line-height: 30px;
 }
 .mbtiDesc {
-  border-radius: 4px;
-  width: 76%;
-  font-size: 18px;
-  padding: 5px 15px;
+  width: calc(100% - 60px);
+  font-size: 15px;
   box-sizing: border-box;
 }
-
-.writeMbtiBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  margin: 0px 0px 15px 0px;
-}
-.writeMbtiName {
-  border: 1px solid #dfdfdf;
-  width: 15%;
-  height: 30px;
-  line-height: 26px;
-  text-align: center;
-  padding: 3px 0px;
-  border-radius: 4px;
-}
-.writeMbtiDesc {
-  width: 80%;
-  border: 1px solid #dfdfdf;
-  border-radius: 4px;
-  outline-color: #dfdfdf;
-}
-
 .green {
   background-color: #daebe3;
 }
@@ -81,30 +66,4 @@
 }
 .blue {
   background-color: #dce9ef;
-}
-
-/* 다시 시작하는 부분 */
-.container {
-  width: 100%;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  margin-bottom: 45px;
-  position: relative;
-}
-.container > div:first-child {
-  width: 100%;
-  height: 50px;
-  color: #37474f;
-  border: none;
-  margin-bottom: 10px;
-  font-size: 16px;
-  border-radius: 10px;
-  line-height: 45px;
-  text-align: center;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-}
-.container > div:nth-child(1) > div:nth-child(2) {
-  position: relative;
-  margin-top: 70px;
 }

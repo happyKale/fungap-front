@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
 import classnames from 'classnames';
 
-import { history } from '../../redux/configureStore';
 import style from './modal.module.css';
 
 const Modal = ({
   title,
   desc,
-  desc2,
   btnLeft,
   btnRight,
+  btnRightType,
   clickBtnRight,
   maskClosable,
   onClose,
@@ -40,10 +39,9 @@ const Modal = ({
       <div className={style.overlay}></div>
       <div className={style.outer} onClick={maskClosable ? onMaskClick : null}>
         <div className={style.inner}>
-          <h2>{title}</h2>
-          <div className={style.desc}>
-            <p>{desc}</p>
-            {desc2 && <p>{desc2}</p>}
+          <div className={style.contents}>
+            <h2 className={style.title}>{title}</h2>
+            <p className={style.desc}>{desc}</p>
           </div>
           <ul className={style.btns}>
             <li>
@@ -56,7 +54,11 @@ const Modal = ({
             </li>
             <li>
               <button
-                className={classnames(style.btn, style.btnSignin)}
+                className={
+                  btnRightType === 'leave'
+                    ? classnames(style.btn, style.btnLeave)
+                    : classnames(style.btn, style.btnSignin)
+                }
                 onClick={clickBtnRight}
               >
                 {btnRight}
