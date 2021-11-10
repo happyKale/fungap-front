@@ -8,7 +8,7 @@ import style from './comment.module.css';
 import { elapsedMin, elapsedHour, elapsedDate } from '../../shared/elapsed';
 
 const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
-  const { nickname, user_image, user_mbti } = User;
+  const { nickname, user_image, user_mbti, user_id } = User;
   const dispatch = useDispatch();
   const newComment = useRef();
   const [editBox, setEditBox] = useState(false);
@@ -24,9 +24,9 @@ const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
       ? `${hour}시간전`
       : `${date}일전`;
 
-  const userNickname =
+  const userId =
     sessionStorage.getItem('user') &&
-    JSON.parse(sessionStorage.getItem('user')).nickname;
+    JSON.parse(sessionStorage.getItem('user')).user_id;
 
   const toggleEditBox = () => {
     setEditBox(!editBox);
@@ -78,7 +78,7 @@ const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
         )}
         <span className={style.date}>{elapsed}</span>
       </div>
-      {userNickname !== nickname ? null : (
+      {userId !== user_id ? null : (
         <div className={style.handleComment}>
           <DeleteIcon onClick={deleteComment} />
           <EditIcon onClick={toggleEditBox} />
