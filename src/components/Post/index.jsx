@@ -1,4 +1,5 @@
 import React from 'react';
+import pinkheart from '../../assets/heart_pink.png';
 import heart from '../../assets/heart.png';
 import style from './post.module.css';
 import { useDispatch } from 'react-redux';
@@ -39,7 +40,11 @@ const Post = ({
             <p className={style.commentCount}>댓글 {comment_count}</p>
           </div>
           <button className={style.heartButton}>
-            <img className={style.heartImage} src={heart} alt='좋아요' />
+            {JSON.parse(like_state) ? (
+              <img className={style.heartImage} src={pinkheart} alt='좋아요' />
+            ) : (
+              <img className={style.heartImage} src={heart} alt='좋아요' />
+            )}
             <span>{like_count}</span>
           </button>
         </div>
