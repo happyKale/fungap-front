@@ -211,7 +211,7 @@ const getViewPostDB = () => {
 
 const searchPostDB = word => {
   return async (dispatch, getState, { history }) => {
-    const keyword = word.replace(' ', '+');
+    const keyword = word.split(' ').join('+');
 
     try {
       const response = await apis.searchPost(keyword);
