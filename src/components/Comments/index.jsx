@@ -24,6 +24,7 @@ const Comments = ({ boardId }) => {
 
   return (
     <div className={style.comments}>
+      <CommentInput boardId={boardId} />
       <ul className={style.commentList}>
         {!commentVisible
           ? comment.slice(0, 2).map((item, index) => {
@@ -42,7 +43,6 @@ const Comments = ({ boardId }) => {
           </button>
         )}
       </div>
-      <CommentInput boardId={boardId} />
     </div>
   );
 };

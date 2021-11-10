@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { commentActions } from '../../redux/modules/comment';
+import { history } from '../../redux/configureStore';
 import { Modal } from '../';
 import style from './commentInput.module.css';
-import { history } from '../../redux/configureStore';
+import defatulImg from '../../assets/profileplaceholder.png';
 
 const CommentInput = ({ boardId }) => {
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.user.is_login);
+  const { user_image, nickname } =
+    isLogin && JSON.parse(sessionStorage.getItem('user'));
   const [visible, setVisible] = useState(null);
   const [input, setInput] = useState({ comment: '' });
   const { comment } = input;
@@ -20,6 +23,10 @@ const CommentInput = ({ boardId }) => {
       ...input,
       [name]: value,
     });
+    if (value.length >= 100) {
+      alert('댓글 작성은 100글자 까지 가능합니다.');
+      return false;
+    }
   };
 
   const handleSubmit = e => {
@@ -31,7 +38,9 @@ const CommentInput = ({ boardId }) => {
 
     if (!isLogin) {
       setVisible(!isLogin);
-
+      setInput({
+        comment: '',
+      });
       return false;
     }
 
@@ -46,24 +55,31 @@ const CommentInput = ({ boardId }) => {
   };
 
   return (
-    <>
-      <form //
-        className={style.inputWrap}
-        onClick={handleSubmit}
-      >
+    <div className={style.wrap}>
+      <img
+        className={style.img}
+        src={user_image ? user_image : defatulImg}
+        alt={nickname ? `${nickname}님의 프로필 이미지` : '기본 이미지'}
+      />
+      <form className={style.form} onClick={handleSubmit}>
         <label //
           className={style.label}
           htmlFor=''
         ></label>
-        <input //
+        <input
           name='comment'
           value={comment}
           className={style.input}
           type='text'
-          placeholder='댓글을 입력해주세요.'
+          placeholder={
+            isLogin
+              ? '댓글을 입력해주세요.'
+              : '댓글은 로그인 후 이용 가능합니다.'
+          }
           onChange={handleChange}
         />
-        <button className={style.write}>작성</button>
+        <button className={style.btn}>등록</button>
+        <span className={style.limit}>{comment.length}/100</span>
       </form>
       {visible && (
         <Modal
@@ -78,7 +94,7 @@ const CommentInput = ({ boardId }) => {
           onClose={closeModal}
         />
       )}
-    </>
+    </div>
   );
 };
 
