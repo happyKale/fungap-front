@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import { postActions } from '../../redux/modules/post';
 
+import { postActions } from '../../redux/modules/post';
 import style from './sortcontents.module.css';
 
 const SortContents = props => {
@@ -10,14 +10,15 @@ const SortContents = props => {
   const handleChange = e => {
     const { value } = e.target;
 
-    if (value === 'date') {
-      dispatch(postActions.getPostDB());
+    // API 하나로 무한스크롤 (query이용)
+    if (value === 'date' || value === '') {
+      dispatch(postActions.getMorePostDB(value));
     }
     if (value === 'like') {
-      dispatch(postActions.getPopularPostDB());
+      dispatch(postActions.getMorePostDB(value));
     }
     if (value === 'view') {
-      dispatch(postActions.getViewPostDB());
+      dispatch(postActions.getMorePostDB(value));
     }
   };
 

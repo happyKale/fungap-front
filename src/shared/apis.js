@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getToken, setToken, delToken } from './token';
 
 const instance = axios.create({
-  baseURL: 'https://stravinest.shop',
+  baseURL: 'http://ozam.shop',
   // withCredentials: true,
 });
 
@@ -27,10 +27,11 @@ const apis = {
   //게시물
   getHomePost: () => instance.get('/board/home'),
   getPost: () => instance.get('/board'),
-  getMorePost: page => instance.get(`/board?page=${page}`),
+  getMorePost: (sort, page) => instance.get(`/board?sort=${sort}&page=${page}`),
   getOroderPopularPost: page => instance.get(`/board/popularity?page=${page}`),
   getOrderViewPost: page => instance.get(`/board/view?page=${page}`),
   searchPost: keyword => instance.post(`/board/search?keyword=${keyword}`),
+
   // 게시물 - 관리자
   getPosts: () => instance.get('/admin/board'),
   addPost: board_info => instance.post('/admin/board/write', board_info),
