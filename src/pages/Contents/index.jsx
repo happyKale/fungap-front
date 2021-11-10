@@ -11,7 +11,7 @@ const Contents = props => {
     <>
       <Goback page='/'>상황별 콘텐츠</Goback>
       <div className={style.wrapper}>
-        <span className={style.commentCount}>{postList.length}의 게시글</span>
+        <span className={style.commentCount}>{postList.length}개의 게시글</span>
         <SortContents />
       </div>
       <PostList />
