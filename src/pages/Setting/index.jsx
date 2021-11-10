@@ -2,10 +2,7 @@ import React, { useEffect } from 'react';
 import style from './setting.module.css';
 import { Chat, Modal } from '../../components/';
 import adminicon from '../../assets/adminicon.png';
-import notification from '../../assets/notification.png';
-import alram from '../../assets/alram.png';
-import contract from '../../assets/contract.png';
-import mail from '../../assets/mail.png';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../../redux/modules/user';
 import { history } from '../../redux/configureStore';
@@ -57,6 +54,7 @@ const Setting = () => {
     <div className={style.wrap}>
       <div />
       <Chat />
+
       <div className={style.settingList}>
         {isLogin && isAdmin === 'admin' ? (
           <div>
@@ -67,48 +65,48 @@ const Setting = () => {
           ''
         )}
 
-        <div>
-          <img
-            src={notification}
-            alt='공지사항'
-            className={style.notificationImage}
-          />
+        <div className={style.content}>
+          <div name='이미지' className={style.notificationIcon} />
           <p onClick={goNotificationPage}>공지사항</p>
+          <div />
         </div>
-        <div>
-          <img src={alram} alt='알림설정' className={style.alramImage} />
+        <div className={style.content}>
+          <div name='이미지' className={style.alramIcon} />
           <p onClick={goAlarmPage}>알림설정</p>
+          <div />
         </div>
-        <div>
-          <img src={contract} alt='이용약관' className={style.contractImage} />
-
+        <div className={style.content}>
+          <div name='이미지' className={style.contractIcon} />
           <p onClick={goTermsofUsePage}>이용약관</p>
+          <div />
         </div>
-        <div>
-          <img src={mail} alt='리뷰남기기' className={style.mailImage} />
+        <div className={style.content}>
+          <div name='이미지' className={style.reviewIcon} />
           <p
             onClick={() => {
               window.open('https://forms.gle/HFRkJ96pPX5q71Jq8');
             }}
           >
-            리뷰남기기
+            리뷰 남기기
           </p>
+          <div />
         </div>
+
         {isLogin ? (
           <>
-            <div className={style.logoutBox}>
-              <div className={style.logOutIcon}></div>
-              <div onClick={logOut}>로그아웃</div>
+            <div className={style.content}>
+              <div name='이미지' className={style.logoutIcon} />
+              <p onClick={logOut}>로그아웃</p>
+              <div />
             </div>
-            <div className={style.withdrawalBox}>
-              <div className={style.withdrawalIcon}></div>
-              <div onClick={openModal}>회원탈퇴</div>
+            <div className={style.content}>
+              <div name='이미지' className={style.withdrawalIcon} />
+              <p onClick={openModal}>회원탈퇴</p>
+              <div />
             </div>
           </>
         ) : (
-          <div className={style.btn}>
-            <button onClick={goSigninPage}>로그인</button>
-          </div>
+          ''
         )}
       </div>
       {visible && (

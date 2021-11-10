@@ -11,6 +11,9 @@ const Chat = ({ chat, name, message, category, chatId }) => {
   const goProfileEdit = () => {
     history.push('/useredit');
   };
+  const goSigninPage = () => {
+    history.push('/signin');
+  };
 
   if (!chat) {
     return (
@@ -22,19 +25,18 @@ const Chat = ({ chat, name, message, category, chatId }) => {
             src={userInfo?.user_image ? userInfo.user_image : profileImg}
           />
           {isLogin ? (
-            <div>
-              <div className={style.userEdit}>
+            <div className={style.box} onClick={goProfileEdit}>
+              <div>
                 <h3>{userInfo.nickname}님</h3>
-                <button onClick={goProfileEdit}>></button>
+                <span>{userInfo.user_mbti}</span>
               </div>
 
-              <p>즐거운 시간 되세요!</p>
-              <span>{userInfo.user_mbti}</span>
+              <div className={style.btn}></div>
             </div>
           ) : (
-            <div>
+            <div className={style.box} onClick={goSigninPage}>
               <h3>로그인 하러가기</h3>
-              <p>로그인 후 더 많은 이야기를 나눠 보세요</p>
+              <div className={style.btn}></div>
             </div>
           )}
         </div>

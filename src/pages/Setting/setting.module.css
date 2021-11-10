@@ -12,45 +12,12 @@
 
 .settingList > div {
   display: flex;
-  margin-top: 15px;
 }
 
 .adminImage {
   margin-right: 15px;
   width: 19.4px;
   height: 20px;
-}
-
-.notificationImage {
-  margin-right: 15px;
-  width: 20px;
-  height: 22px;
-}
-
-.alramImage {
-  margin-right: 12px;
-  position: relative;
-  right: 3px;
-  width: 24px;
-  height: 24px;
-}
-
-.contractImage {
-  margin-right: 12px;
-  position: relative;
-  right: 3px;
-  bottom: 2px;
-  width: 24px;
-  height: 24px;
-}
-
-.mailImage {
-  margin-right: 15px;
-  position: relative;
-  right: 1px;
-  top: 2px;
-  width: 19px;
-  height: 15px;
 }
 
 .btn > button {
@@ -62,48 +29,54 @@
   margin-top: 30px;
 }
 
-.logOutIcon {
+.content {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content > div:nth-child(3) {
+  width: 60%;
+}
+
+.notificationIcon {
+  background: url(../../assets/notification.png);
+  width: 32px;
+  height: 32px;
+}
+
+.alramIcon {
+  background: url(../../assets/alram.png);
+  width: 32px;
+  height: 32px;
+}
+
+.contractIcon {
+  background: url(../../assets/contract.png);
+  width: 32px;
+  height: 32px;
+}
+
+.reviewIcon {
+  background: url(../../assets/mailIcon.png);
+  width: 32px;
+  height: 32px;
+}
+
+.logoutIcon {
   background: url(../../assets/logOutIcon.png);
   width: 32px;
   height: 32px;
-  margin-right: 1px;
-
-  position: relative;
-  right: 5px;
-}
-
-.logoutBox {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  position: relative;
-  bottom: 4px;
-
-  cursor: pointer;
-}
-
-.withdrawalBox {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  position: relative;
-  bottom: 11px;
-
-  cursor: pointer;
 }
 
 .withdrawalIcon {
   background: url(../../assets/withdrawalIcon.png);
   width: 32px;
   height: 32px;
-  margin-right: 1px;
-
-  position: relative;
-  right: 7px;
 }
 
-.withdrawalIcon > div {
-  cursor: pointer;
+.settingList > div > p {
+  width: 20%;
 }
