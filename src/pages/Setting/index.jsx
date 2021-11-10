@@ -1,20 +1,22 @@
-import React, { useEffect } from 'react';
-import style from './setting.module.css';
-import { Chat, Modal } from '../../components/';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import adminicon from '../../assets/adminicon.png';
 import notification from '../../assets/notification.png';
 import alram from '../../assets/alram.png';
 import contract from '../../assets/contract.png';
 import mail from '../../assets/mail.png';
-import { useDispatch, useSelector } from 'react-redux';
-import { userActions } from '../../redux/modules/user';
+
 import { history } from '../../redux/configureStore';
+import { userActions } from '../../redux/modules/user';
+import { Chat, Modal } from '../../components/';
+import style from './setting.module.css';
+
 const Setting = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.user.is_login);
   const isAdmin = JSON.parse(sessionStorage.getItem('user'))?.user_authority;
 
-  console.log(isAdmin);
   const [visible, setVisible] = React.useState(false);
 
   const logOut = () => {
