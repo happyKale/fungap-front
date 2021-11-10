@@ -7,6 +7,7 @@
   margin-bottom: 30px;
   box-sizing: border-box;
   position: relative;
+  border-bottom: 1px solid #efefef;
 }
 
 .rowFlex .textContent {
@@ -39,8 +40,8 @@
 }
 
 .title {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   width: 100%;
   margin: 0 0 10px 0;
   text-overflow: ellipsis;
@@ -51,15 +52,17 @@
 
 .viewCount {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
   margin: 0px 10px 0px 0px;
   width: auto;
+  line-height: 18px;
 }
 
 .commentCount {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
   margin: 0px;
+  line-height: 18px;
 }
 
 .heartButton {
@@ -69,7 +72,7 @@
   font-size: 12px;
   line-height: 16px;
   background-color: #ffffff;
-  margin: 8px 0px 0px 0px;
+  margin: 16px 0px 0px 0px;
   display: flex;
   justify-content: space-evenly;
 }
@@ -77,8 +80,8 @@
   text-align: right;
 }
 .rowImg {
-  width: 40%;
-  height: auto;
+  width: 41%;
+  height: 104px;
   border-radius: 8px;
   cursor: pointer;
   object-fit: cover;

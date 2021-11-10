@@ -12,10 +12,12 @@
 
 .userContent > div {
   width: 100%;
-  /* height: 82px; */
+  height: 82px;
+
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .userContent > div > h3 {
@@ -34,13 +36,12 @@
   line-height: 24px;
   text-align: center;
   border-radius: 16px;
-  position: relative;
-  top: 10px;
+
   background-color: #ffffff;
 }
 
 .userImage {
-  min-width: 82px;
+  max-width: 82px;
   height: 82px;
   border-radius: 41px;
   object-fit: cover;
@@ -50,10 +51,6 @@
 .userEdit {
   display: flex;
   justify-content: space-between;
-}
-
-.userEdit > h3 {
-  margin: 0px;
 }
 
 .userEdit > button {
@@ -103,4 +100,39 @@
   border-radius: 8px;
   margin-left: 10px;
   box-sizing: border-box;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+
+  width: 100%;
+  cursor: pointer;
+}
+
+.box > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.box > div > span {
+  font-size: 14px;
+  font-weight: 700;
+  width: 57px;
+  line-height: 22px;
+  text-align: center;
+  border-radius: 16px;
+
+  background-color: #ffffff;
+
+  margin-left: 5px;
+  margin-top: 3px;
+}
+
+.btn {
+  background: url(../../assets/btn_right.png) no-repeat center;
+  background-size: contain;
+  width: 32px;
+  height: 16px;
 }

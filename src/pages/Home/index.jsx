@@ -22,13 +22,15 @@ const Home = props => {
   return (
     <React.Fragment>
       <div className={style.header}>
-        <p>Fungap</p>
-        <div>
-          <div className={style.searchIcon}></div>
-          <div className={style.alramIcon}></div>
+        <div className={style.logo} />
+        <div className={style.icon}>
+          <div className={style.searchIcon} />
+          <div className={style.alramIcon} />
         </div>
       </div>
+
       <Carousel />
+
       <div className={style.titleContent}>
         <h2>새로나온 콘텐츠</h2>
         <span onClick={goContentsPage}>모두 보기</span>
@@ -37,13 +39,14 @@ const Home = props => {
         {new4.map((post, index) => {
           return <Post key={post.board_id} direction='column' {...post} />;
         })}
+        <div
+          className={style.middleBanner}
+          onClick={() => {
+            history.push('/compatibility');
+          }}
+        />
       </div>
-      <div
-        className={style.middleBanner}
-        onClick={() => {
-          history.push('/compatibility');
-        }}
-      />
+
       <div className={style.titleContent}>
         <h2>인기 콘텐츠</h2>
       </div>
@@ -51,8 +54,8 @@ const Home = props => {
         {top4.map((post, index) => {
           return <Post direction='column' key={post.board_id} {...post} />;
         })}
+        <div className={style.bottomBanner} />
       </div>
-      <div className={style.bottomBanner} />
     </React.Fragment>
   );
 };

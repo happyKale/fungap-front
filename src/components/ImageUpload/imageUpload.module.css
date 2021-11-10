@@ -35,7 +35,6 @@
   margin: auto;
   position: relative;
   object-fit: cover;
-  bottom: 94px;
 }
 .editImage > label {
   cursor: pointer;
@@ -46,6 +45,7 @@
   border-radius: 50%;
   background-color: #c4c4c4;
   position: relative;
+  top: 100px;
   z-index: 1;
 }
 .editImage > input {
