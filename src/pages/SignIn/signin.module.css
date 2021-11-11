@@ -1,3 +1,6 @@
+.container {
+  padding-top: 20px;
+}
 .bg {
   position: relative;
   left: -40px;
@@ -7,11 +10,19 @@
   background-size: contain;
 }
 .logo {
-  margin: 0;
+  margin: 20px 0 40px 0;
   height: 40px;
   background-color: #ccc;
   text-indent: -9999em;
   background: url('../../assets/logo.svg') no-repeat center;
+}
+
+.or {
+  text-align: center;
+  color: #8b8b8b;
+}
+.socialLogin {
+  padding: 0 20px 20px 20px;
 }
 
 .form {
@@ -56,7 +67,4 @@
   cursor: pointer;
   background-color: #fff;
   box-shadow: 0 2px 6px 0 rgb(68 68 68 / 8%);
-}
-.socialLogin {
-  padding: 0 20px 20px 20px;
 }

@@ -19,6 +19,7 @@ import LikeButton from './LikeButton';
 import Loading from './Loading';
 import KakaoShareButton from './KakaoShareButton';
 import Scenario from './Scenario';
+import EmailSignIn from './EmailSignIn';
 
 export {
   TypeOfMbti,
@@ -42,4 +43,5 @@ export {
   Loading,
   KakaoShareButton,
   Scenario,
+  EmailSignIn,
 };
