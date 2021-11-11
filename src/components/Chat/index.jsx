@@ -3,8 +3,9 @@ import style from './chat.module.css';
 import { useSelector } from 'react-redux';
 import { history } from '../../redux/configureStore';
 import profileImg from '../../assets/profileplaceholder.png';
+import friendDefault from '../../assets/friend_default.png';
 
-const Chat = ({ chat, name, message, category, chatId }) => {
+const Chat = ({ chat, image, name, message, category, chatId }) => {
   const isLogin = useSelector(state => state.user.is_login);
   const userInfo = JSON.parse(sessionStorage.getItem('user'));
 
@@ -51,7 +52,11 @@ const Chat = ({ chat, name, message, category, chatId }) => {
             history.push(`/chatroom/${chatId}`);
           }}
         >
-          <img src={profileImg} className={style.userImage} alt='캐릭터' />
+          <img
+            src={image ? image : friendDefault}
+            className={style.chatUserImage}
+            alt='캐릭터'
+          />
           <div className={style.chatDesc}>
             <h3 className={style.chatName}>
               {name} <span className={style.chatCategory}>{category}</span>
