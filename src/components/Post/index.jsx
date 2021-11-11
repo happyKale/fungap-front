@@ -24,17 +24,17 @@ const Post = ({
   const dispatch = useDispatch();
   return (
     <React.Fragment>
-      <div
-        className={direction === 'row' ? style.rowFlex : style.columnFlex}
-        onClick={movePostDetail}
-      >
+      <div className={direction === 'row' ? style.rowFlex : style.columnFlex}>
         <img
           className={direction === 'row' ? style.rowImg : style.columnImg}
           src={board_image}
           alt='임시이미지'
+          onClick={movePostDetail}
         />
         <div className={style.textContent}>
-          <p className={style.title}>{board_title}</p>
+          <p className={style.title} onClick={movePostDetail}>
+            {board_title}
+          </p>
           <div className={style.content}>
             <p className={style.viewCount}>조회수 {view_count}</p>
             <p className={style.commentCount}>댓글 {comment_count}</p>
