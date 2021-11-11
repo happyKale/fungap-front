@@ -1,9 +1,10 @@
 .wrap {
-  background: url('../../assets/goback.jpeg') no-repeat 10px 65%;
+  background: url('../../assets/btn_left.png') no-repeat 10px 65%;
   background-size: auto;
   text-align: center;
   cursor: pointer;
 }
+
 .title {
   margin: 0;
   /* border-bottom: 1px solid #ccc; */

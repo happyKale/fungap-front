@@ -39,7 +39,11 @@ const ProfileEdit = () => {
 
   const newinfo = { user_mbti, nickname, user_image };
   const updateUserInfo = () => {
-    dispatch(userActions.updateUserInfoDB(newinfo));
+    if (change == true) {
+      dispatch(userActions.updateUserInfoDB(newinfo));
+    } else {
+      window.alert('프로필 수정을 해주시기 바랍니다.');
+    }
   };
   const mbtiList = [
     'ISTJ',
@@ -62,16 +66,11 @@ const ProfileEdit = () => {
 
   return (
     <div className={style.wrap}>
-      <div className={style.background}>
-        <div
-          name='뒤로가기이미지'
-          onClick={() => {
-            history.push('/userpage');
-          }}
-        ></div>
-        <p>프로필 수정</p>
-        <div />
+      <div className={style.background}></div>
+      <div className={style.goback}>
+        <Goback page='/userpage'>프로필 수정</Goback>
       </div>
+
       <ImageUpload profile url={userInfo.user_image} />
       <div className={style.inputContent}>
         <p>닉네임</p>

@@ -24,7 +24,12 @@ const Home = props => {
       <div className={style.header}>
         <div className={style.logo} />
         <div className={style.icon}>
-          <div className={style.searchIcon} />
+          <div
+            className={style.searchIcon}
+            onClick={() => {
+              history.push('/search');
+            }}
+          />
           <div className={style.alramIcon} />
         </div>
       </div>
@@ -54,7 +59,12 @@ const Home = props => {
         {top4.map((post, index) => {
           return <Post direction='column' key={post.board_id} {...post} />;
         })}
-        <div className={style.bottomBanner} />
+        <div
+          className={style.bottomBanner}
+          onClick={() => {
+            history.push('/signin');
+          }}
+        />
       </div>
     </React.Fragment>
   );
