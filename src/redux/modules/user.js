@@ -184,8 +184,11 @@ const updateUserInfoDB = newinfo => {
   return async (dispatch, getState, { history }) => {
     try {
       const response = await apis.updateUserInfo(newinfo);
+      const oldUserinfo = getState().user.user;
 
-      dispatch(updateUserInfo(response.data.user));
+      const newUserInfo = { ...oldUserinfo, ...response.data.user };
+
+      dispatch(updateUserInfo(newUserInfo));
       history.push('/userpage');
     } catch (error) {
       console.log(error);
@@ -223,6 +226,7 @@ export default handleActions(
         setToken(JSON.stringify(action.payload.token));
         sessionStorage.setItem('user', JSON.stringify(action.payload.user));
         draft.is_login = true;
+        draft.user = action.payload.user;
       }),
     [LOGOUT]: (state, action) =>
       produce(state, draft => {
@@ -233,6 +237,7 @@ export default handleActions(
     [UPDATE_USER]: (state, action) =>
       produce(state, draft => {
         sessionStorage.setItem('user', JSON.stringify(action.payload.userinfo));
+
         draft.user = action.payload.userinfo;
       }),
     [SET_IMAGE]: (state, action) =>
