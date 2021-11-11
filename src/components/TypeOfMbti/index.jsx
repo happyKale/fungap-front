@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Select, Option } from '../../elements';
 import style from './typeofmbti.module.css';
 
 const mbtiList = [
-  '유형',
+  'MBTI를 선택해주세요',
   'INTJ',
   'INTP',
   'ENTJ',
@@ -23,12 +22,18 @@ const mbtiList = [
   'ESFP',
 ];
 
-const TypeOfMbti = ({ children, ...rest }) => {
+const TypeOfMbti = ({ id, name, color, ...rest }) => {
   return (
     <>
-      <select className={style.select} {...rest}>
+      <select
+        id={id}
+        name={name}
+        className={style.select}
+        style={{ color: color }}
+        {...rest}
+      >
         {mbtiList.map((mbti, index) => {
-          return <Option key={index}>{mbti}</Option>;
+          return <option key={index}>{mbti}</option>;
         })}
       </select>
     </>

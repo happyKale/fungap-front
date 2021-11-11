@@ -9,6 +9,8 @@ const SET_USER = 'SET_USER';
 const LOGOUT = 'LOGOUT';
 const UPDATE_USER = 'UPDATE_USER';
 const SET_IMAGE = 'SET_IMAGE';
+const CHECK_EMAIL = 'CHECK_EMAIL';
+const CHECK_NICKNAME = 'CHECK_NICKNAME';
 
 // action creator
 const setUser = createAction(SET_USER, (token, user) => ({
@@ -18,33 +20,43 @@ const setUser = createAction(SET_USER, (token, user) => ({
 const logout = createAction(LOGOUT, user => ({ user }));
 const updateUserInfo = createAction(UPDATE_USER, userinfo => ({ userinfo }));
 const setUploadImage = createAction(SET_IMAGE, image => ({ image }));
+const checkDuplEmail = createAction(CHECK_EMAIL, status => ({ status }));
+const checkDuplNickname = createAction(CHECK_NICKNAME, status => ({
+  status,
+}));
 
 // middleware
+// 아이디(이메일) 중복 체크
 const isEmailDB = email => {
   return async (dispatch, getState, { history }) => {
-    console.log('DB 중복 이메일 체크', email);
+    try {
+      const response = await apis.checkEmail({ email });
+      const isEmail = response.data.is_Email;
+      console.log(response);
+      response && console.log('중복된 아이디가 없습니다.');
+      dispatch(checkDuplEmail(isEmail));
+    } catch (error) {
+      const isEmailMsg = error.response.data.errormessage;
 
-    // try {
-    //   const response = await apis.checkEmail(email);
-
-    //   console.log(response);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+      dispatch(checkDuplEmail(isEmailMsg));
+    }
   };
 };
 
+// 닉네임 중복 체크
 const isNicknameDB = nickname => {
   return async (dispatch, getState, { history }) => {
-    console.log('DB 중복 닉네임 체크', nickname);
+    try {
+      const response = await apis.checkNickname({ nickname });
+      const isNickname = response.data.is_nickname;
 
-    // try {
-    //   const response = await apis.checkEmail(nickname);
+      response && console.log('사용 가능한 닉네임입니다.');
+      dispatch(checkDuplNickname(isNickname));
+    } catch (error) {
+      const isNicknameMsg = error.response.data.errormessage;
 
-    //   console.log(response);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+      dispatch(checkDuplNickname(isNicknameMsg));
+    }
   };
 };
 
@@ -61,9 +73,9 @@ const signupDB = userinfo => {
     };
 
     try {
-      await apis.signup(userData);
+      const response = await apis.signup(userData);
 
-      history.push('/signin');
+      response && history.push('/signin');
     } catch (error) {
       console.log(error);
     }
@@ -197,8 +209,8 @@ const deleteUserInfoDB = () => {
 // initial state
 const initialState = {
   uploadImage: '',
-  is_email: false,
-  is_nickname: false,
+  is_email: null,
+  is_nickname: null,
   is_login: false,
   user: {},
 };
@@ -226,6 +238,16 @@ export default handleActions(
     [SET_IMAGE]: (state, action) =>
       produce(state, draft => {
         draft.uploadImage = action.payload.image;
+      }),
+    [CHECK_EMAIL]: (state, action) =>
+      produce(state, draft => {
+        console.log(action.payload.status);
+        draft.is_email = action.payload.status;
+      }),
+    [CHECK_NICKNAME]: (state, action) =>
+      produce(state, draft => {
+        console.log(action.payload.status);
+        draft.is_nickname = action.payload.status;
       }),
   },
   initialState,
