@@ -1,6 +1,6 @@
-/* .settingList {
-  height: 100vh;
-} */
+.settingList {
+  margin-top: 20px;
+}
 
 .settingList > div > p {
   cursor: pointer;
