@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { chatbotActions } from '../../redux/modules/chatbot';
 import style from './scenario.module.css';
 import ChatBot from 'react-simple-chatbot';
 import data from './data.js';
