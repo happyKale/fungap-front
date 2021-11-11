@@ -66,6 +66,7 @@ const Scenario = props => {
             right: '0px',
             height: 'auto',
             width: '410px',
+            padding: '0px 20px 0px 0px',
           }}
           botAvatar={jinro}
           userAvatar={userImg?.user_image ? userImg?.user_image : profile}
