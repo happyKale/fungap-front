@@ -25,7 +25,7 @@ const Search = props => {
       <Goback page='/'>검색</Goback>
       <SearchBar />
 
-      {searchList.length < '6' ? (
+      {searchList.length < '20' ? (
         <div className={style.grid}>
           {searchResult.map((post, index) => {
             return <Post direction='column' key={post.board_id} {...post} />;
@@ -35,15 +35,30 @@ const Search = props => {
         <>
           <h3>펀캡 추천 검색어</h3>
           <div>
-            <div className={style.recommendList}>
+            <div
+              className={style.recommendList}
+              onClick={() => {
+                history.push('/detail/21');
+              }}
+            >
               <div name='아이콘이미지' />
-              <p>MBTI 유형별 궁합</p>
+              <p>MBTI 유형별 내가 해리포터 캐릭터라면?</p>
             </div>
-            <div className={style.recommendList}>
+            <div
+              className={style.recommendList}
+              onClick={() => {
+                history.push('/detail/12');
+              }}
+            >
               <div name='아이콘이미지' />
               <p>MBTI 유형별 반려견 추천</p>
             </div>
-            <div className={style.recommendList}>
+            <div
+              className={style.recommendList}
+              onClick={() => {
+                history.push('/detail/19');
+              }}
+            >
               <div name='아이콘이미지' />
               <p>MBTI 유형별 무인도에 고립되었을 때</p>
             </div>
