@@ -6,6 +6,7 @@ import { postActions } from '../../redux/modules/post';
 import { userActions } from '../../redux/modules/user';
 import profilePlaceholer from '../../assets/profileplaceholder.png';
 import editImage from '../../assets/camera.png';
+
 const ImageUpload = props => {
   const dispatch = useDispatch();
   const url = useSelector(state => state.post.postImg);
@@ -47,18 +48,23 @@ const ImageUpload = props => {
   // 사진 업로드
   function addPhoto() {
     const files = document.getElementById('upload').files;
+    // 파일 이름 중복일 때에도 중복되지 않게 하기 위해!
+    const date = new Date();
+
     if (!files.length) {
       return alert('Please choose a file to upload first.');
     }
     const file = files[0];
-    const fileName = file.name;
-    console.log(file);
+    const fileName = file.name.split('.')[0];
 
     // Use S3 ManagedUpload class as it supports multipart uploads
     const upload = new AWS.S3.ManagedUpload({
       params: {
         Bucket: albumBucketName,
-        Key: fileName,
+        // key 값이 파일이름 지정하는 것.
+        // 업로드할 파일명 (*확장자를 추가해야 합니다!)
+        // key: file.name + date.getTime() + '.jpg'
+        Key: fileName + date.getTime() + '.jpg',
         Body: file,
         ContentType: file.type,
       },
