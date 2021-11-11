@@ -7,37 +7,53 @@ import style from './search.module.css';
 
 const Search = props => {
   const dispatch = useDispatch();
-  const postList = useSelector(state => state.post.postList);
   const is_searching = useSelector(state => state.post.is_searching);
-  const top6 = postList.slice(0, 6);
+
+  const searchList = useSelector(state => state.post.postList);
+  const hotPostList = useSelector(state => state.post.topList);
+
+  const top6 = hotPostList.slice(0, 6);
+  const searchResult = searchList.slice(0, 6);
 
   useEffect(() => {
     dispatch(postActions.getPostDB());
+    dispatch(postActions.getHomePostDB());
   }, []);
 
   return (
     <>
       <Goback page='/'>검색</Goback>
       <SearchBar />
-      <h3>펀캡 추천 검색어</h3>
-      <div>
-        <div className={style.recommendList}>
-          <div name='아이콘이미지' />
-          <p>MBTI 유형별 궁합</p>
+
+      {searchList.length < '6' ? (
+        <div className={style.grid}>
+          {searchResult.map((post, index) => {
+            return <Post direction='column' key={post.board_id} {...post} />;
+          })}
         </div>
-        <div className={style.recommendList}>
-          <div name='아이콘이미지' />
-          <p>MBTI 유형별 반려견 추천</p>
-        </div>
-        <div className={style.recommendList}>
-          <div name='아이콘이미지' />
-          <p>MBTI 유형별 무인도에 고립되었을 때</p>
-        </div>
-      </div>
-      <div className={style.list4}>
-        <div name='아이콘이미지' />
-        <p>펀갭 서비스 런칭!</p>
-      </div>
+      ) : (
+        <>
+          <h3>펀캡 추천 검색어</h3>
+          <div>
+            <div className={style.recommendList}>
+              <div name='아이콘이미지' />
+              <p>MBTI 유형별 궁합</p>
+            </div>
+            <div className={style.recommendList}>
+              <div name='아이콘이미지' />
+              <p>MBTI 유형별 반려견 추천</p>
+            </div>
+            <div className={style.recommendList}>
+              <div name='아이콘이미지' />
+              <p>MBTI 유형별 무인도에 고립되었을 때</p>
+            </div>
+          </div>
+          <div className={style.list4}>
+            <div name='아이콘이미지' />
+            <p>펀갭 서비스 런칭!</p>
+          </div>
+        </>
+      )}
 
       <div
         className={style.banner}
