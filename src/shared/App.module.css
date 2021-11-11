@@ -31,6 +31,12 @@
   margin: 0 auto;
   background-color: rgba(249, 250, 251, 15);
 }
+.logo {
+  display: none;
+}
+.adminlogo {
+  display: none;
+}
 
 @media screen and (min-width: 1024px) {
   .container {
@@ -48,5 +54,17 @@
   }
   .container nav {
     margin-left: 11%;
+  }
+  .logo {
+    display: block;
+    position: fixed;
+    left: 6%;
+    top: 30px;
+    width: 80px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .logo {
+    left: 20%;
   }
 }

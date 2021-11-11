@@ -25,6 +25,7 @@ import {
 } from '../pages';
 import { Navigation } from '../components';
 import style from './App.module.css';
+import logo from '../assets/logo_yellow.png';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,11 @@ function App() {
         !pathname.includes('admin') ? style.container : style.wideContainer
       }
     >
+      <img
+        src={logo}
+        className={!pathname.includes('admin') ? style.logo : style.adminlogo}
+        alt='로고'
+      />
       <div>
         <Navigation />
         <ConnectedRouter history={history}>
