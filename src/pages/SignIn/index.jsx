@@ -6,6 +6,7 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { history } from '../../redux/configureStore';
 import { userActions } from '../../redux/modules/user';
 import { GoogleSignIn, KakaoSignIn, NaverSignIn } from '../';
+import { EmailSignIn } from '../../components';
 import style from './signin.module.css';
 
 const icon = {
@@ -50,10 +51,17 @@ const SignIn = props => {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <div className={style.bg}></div>
       <h2 className={style.logo}>logo</h2>
-      <form className={style.form}>
+      <div className={style.socialLogin} onClick={handleClick}>
+        <KakaoSignIn />
+        <NaverSignIn />
+        <GoogleSignIn />
+        <p className={style.or}>또는</p>
+        <EmailSignIn />
+      </div>
+      {/* <form className={style.form}>
         <p>
           <PersonOutlineIcon style={icon} />
           <label htmlFor='id'>아이디</label>
@@ -81,12 +89,7 @@ const SignIn = props => {
           <button className='btnSignIn'>로그인</button>
           <button className='btnSignUp'>회원가입</button>
         </div>
-      </form>
-      <div className={style.socialLogin} onClick={handleClick}>
-        <KakaoSignIn />
-        <NaverSignIn />
-        <GoogleSignIn />
-      </div>
+      </form> */}
     </div>
   );
 };
