@@ -39,7 +39,11 @@ const ProfileEdit = () => {
 
   const newinfo = { user_mbti, nickname, user_image };
   const updateUserInfo = () => {
-    dispatch(userActions.updateUserInfoDB(newinfo));
+    if (change == true) {
+      dispatch(userActions.updateUserInfoDB(newinfo));
+    } else {
+      window.alert('프로필 수정을 해주시기 바랍니다.');
+    }
   };
   const mbtiList = [
     'ISTJ',
