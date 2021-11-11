@@ -49,7 +49,11 @@ const Chat = ({ chat, image, name, message, category, chatId }) => {
         <div
           className={style.chatContent}
           onClick={() => {
-            history.push(`/chatroom/${chatId}`);
+            if (category === '준비중') {
+              window.alert('아직 준비중인 컨텐츠입니다~!');
+            } else {
+              history.push(`/chatroom/${chatId}`);
+            }
           }}
         >
           <img
@@ -61,7 +65,11 @@ const Chat = ({ chat, image, name, message, category, chatId }) => {
             <h3 className={style.chatName}>
               {name} <span className={style.chatCategory}>{category}</span>
             </h3>
-            <p className={style.chatMessage}>{message}</p>
+            <p className={style.chatMessage}>
+              {category !== '준비중'
+                ? message
+                : '준비중입니다. 조금만 기다려주세요.'}
+            </p>
           </div>
         </div>
       </React.Fragment>
