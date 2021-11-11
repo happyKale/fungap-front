@@ -352,11 +352,11 @@ export default handleActions(
       }),
     [EDIT_POST]: (state, action) =>
       produce(state, draft => {
-        let idx = draft.postList.findIndex(
+        let idx = draft.list.findIndex(
           post => post.board_id === action.payload.postId,
         );
         draft.postList[idx] = {
-          ...draft.postList[idx],
+          ...draft.list[idx],
           ...action.payload.post,
         };
       }),
@@ -380,11 +380,11 @@ export default handleActions(
       }),
     [SET_EDIT_POST]: (state, action) =>
       produce(state, draft => {
-        let idx = draft.postList.findIndex(
+        let idx = draft.list.findIndex(
           post => post.board_id === action.payload.postId,
         );
         draft.editPost = {
-          ...draft.postList[idx],
+          ...draft.list[idx],
         };
       }),
     [ADD_EDIT_POST]: (state, action) =>
