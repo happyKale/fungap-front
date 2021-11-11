@@ -6,7 +6,7 @@ import { history } from '../../redux/configureStore';
 
 const Goback = ({ children, page }) => {
   const handleClick = () => {
-    history.push(page);
+    history.goBack();
   };
 
   return (
