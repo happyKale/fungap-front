@@ -41,7 +41,11 @@ function App() {
         !pathname.includes('admin') ? style.container : style.wideContainer
       }
     >
-      <img src={logo} className={style.logo} alt='로고' />
+      <img
+        src={logo}
+        className={!pathname.includes('admin') ? style.logo : style.adminlogo}
+        alt='로고'
+      />
       <div>
         <Navigation />
         <ConnectedRouter history={history}>
