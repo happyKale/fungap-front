@@ -6,7 +6,7 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { history } from '../../redux/configureStore';
 import { userActions } from '../../redux/modules/user';
 import { GoogleSignIn, KakaoSignIn, NaverSignIn } from '../';
-import { EmailSignIn } from '../../components';
+import { EmailSignIn, EmailSignUp } from '../../components';
 import style from './signin.module.css';
 
 const icon = {
@@ -60,6 +60,7 @@ const SignIn = props => {
         <GoogleSignIn />
         <p className={style.or}>또는</p>
         <EmailSignIn />
+        <EmailSignUp />
       </div>
       {/* <form className={style.form}>
         <p>

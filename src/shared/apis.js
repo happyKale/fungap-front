@@ -3,7 +3,7 @@ import { getToken } from './token';
 
 const instance = axios.create({
   baseURL: 'http://nyannyan.shop',
-  // withCredentials: true,
+  withCredentials: true,
 });
 
 instance.interceptors.request.use(config => {
