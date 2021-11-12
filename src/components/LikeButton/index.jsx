@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import apis from '../../shared/apis';
@@ -12,11 +12,11 @@ const LikeButton = props => {
   const postId = props?.board_id;
   const isLogin = useSelector(state => state.user.is_login);
 
-  const [likeCount, setLikeCount] = useState(props.like_count);
-  const [likeState, setLikeState] = useState(props.like_state);
+  const [likeCount, setLikeCount] = useState(null);
+  const [likeState, setLikeState] = useState(null);
   const [visible, setVisible] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLikeCount(props?.like_count);
     setLikeState(props?.like_state);
   }, [props]);
