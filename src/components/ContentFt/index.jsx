@@ -3,14 +3,21 @@ import React from 'react';
 import { LikeButton, KakaoShareButton } from '..';
 import style from './contentFt.module.css';
 
-const ContentFt = ({
-  boardId,
-  commentCount,
-  viewCount,
-  likeCount,
-  likeState,
-  postId,
-}) => {
+const ContentFt = ({ post }) => {
+  const {
+    comment_count: commentCount,
+    view_count: viewCount,
+    board_id: boardId,
+    like_count: likeCount,
+    like_state: likeState,
+    board_title: boardTitle,
+  } = post;
+  const data = {
+    title: boardTitle,
+    likeCount,
+    commentCount,
+  };
+
   return (
     <div className={style.counter}>
       <div className={style.counts}>
@@ -23,7 +30,7 @@ const ContentFt = ({
           like_count={likeCount}
           like_state={likeState}
         />
-        <KakaoShareButton postId={boardId} />
+        <KakaoShareButton kakaoData={data} />
       </div>
     </div>
   );
