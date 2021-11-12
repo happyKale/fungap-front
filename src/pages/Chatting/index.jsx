@@ -11,7 +11,7 @@ const Chatting = () => {
       name: '상담이',
       image: jinro,
       category: '진로상담',
-      message: '오늘 상담 즐거웠어~!',
+      message: 'mbti유형에 따라 직업을 추천해줄게!',
       chatId: '1',
     },
     {
