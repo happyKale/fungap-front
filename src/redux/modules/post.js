@@ -104,13 +104,17 @@ const getDetailPostDB = board_id => {
   };
 };
 
+//무한스크롤 1차 배포 제외
 const getMorePostDB = sort => {
   return async (dispatch, getState, { history }) => {
     let _start = getState().post.start;
+    const prevSort = getState().post.sort;
+    const curSort = sort;
 
     dispatch(setLoading(true));
 
-    if (_start === 1) {
+    if (prevSort !== curSort) {
+      _start = 1;
       dispatch(clearList());
     }
 
@@ -185,22 +189,22 @@ const getHomePostDB = () => {
   };
 };
 
-const getPopularPostDB = page => {
+const getPopularPostDB = () => {
   return async (dispatch, getState, { history }) => {
     try {
-      const response = await apis.getOroderPopularPost(page);
+      const response = await apis.getPost();
       const boardlistDB = response.data.board_list;
       const boardList = boardlistDB.sort((a, b) => {
-        if (a.view_count > b.view_count) {
+        if (a.like_count > b.like_count) {
           return -1;
         }
-        if (a.view_count < b.view_count) {
+        if (a.like_count < b.like_count) {
           return 1;
         }
         return 0;
       });
 
-      dispatch(getMorePost(boardList, 'like'));
+      dispatch(getPosts(boardList));
     } catch (error) {
       console.log(error);
     }
@@ -222,7 +226,7 @@ const getViewPostDB = () => {
         return 0;
       });
 
-      dispatch(getPosts(boardList, 'view'));
+      dispatch(getPosts(boardList));
     } catch (error) {
       console.log(error);
     }
@@ -267,7 +271,7 @@ const addPostDB = () => {
 
 const deletePostDB = postId => {
   return (dispatch, getState, { history }) => {
-    const postList = getState().post.postList;
+    const postList = getState().post.list;
     const resultList = postList.filter(post => post.board_id !== postId);
 
     apis
@@ -334,9 +338,6 @@ export default handleActions(
     //
     [GET_MORE_POST]: (state, action) =>
       produce(state, draft => {
-        if (draft.sort !== action.payload.sort) {
-          draft.list = [];
-        }
         draft.list.push(...action.payload.posts);
         draft.start = action.payload.page;
         draft.hasMore = action.payload.hasMore;
@@ -354,7 +355,7 @@ export default handleActions(
       }),
     [SET_POST]: (state, action) =>
       produce(state, draft => {
-        draft.postList = action.payload.posts;
+        draft.list = action.payload.posts;
       }),
     [SET_HOME_POST]: (state, action) =>
       produce(state, draft => {
@@ -375,7 +376,7 @@ export default handleActions(
       }),
     [DELETE_POST]: (state, action) =>
       produce(state, draft => {
-        draft.postList = action.payload.posts;
+        draft.list = action.payload.posts;
       }),
     [EDIT_POST]: (state, action) =>
       produce(state, draft => {

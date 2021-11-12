@@ -11,14 +11,15 @@ const SortContents = props => {
     const { value } = e.target;
 
     // API 하나로 무한스크롤 (query이용)
+    // 1차 배포 무한스크롤 제외
     if (value === 'date' || value === '') {
-      dispatch(postActions.getMorePostDB(value));
+      dispatch(postActions.getPostDB());
     }
     if (value === 'like') {
-      dispatch(postActions.getMorePostDB(value));
+      dispatch(postActions.getPopularPostDB());
     }
     if (value === 'view') {
-      dispatch(postActions.getMorePostDB(value));
+      dispatch(postActions.getViewPostDB());
     }
   };
 

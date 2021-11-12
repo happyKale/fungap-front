@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import apis from '../../shared/apis';
 import { history } from '../../redux/configureStore';
 import { Modal } from '../../components';
 import style from './likebutton.module.css';
-import likeImage from '../../assets/heart.png';
-import unlikeImage from '../../assets/heart_pink.png';
+import unlikeImage from '../../assets/heart.png';
+import likeImage from '../../assets/heart_pink.png';
 
 const LikeButton = props => {
-  const postId = props.board_id;
+  const postId = props?.board_id;
   const isLogin = useSelector(state => state.user.is_login);
 
-  const [likeCount, setLikeCount] = useState(props.like_count);
-  const [likeState, setLikeState] = useState(props.like_state);
+  const [likeCount, setLikeCount] = useState(null);
+  const [likeState, setLikeState] = useState(null);
   const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setLikeCount(props?.like_count);
+    setLikeState(props?.like_state);
+  }, [props]);
 
   const openModal = () => {
     setVisible(true);
@@ -44,7 +49,7 @@ const LikeButton = props => {
         <img
           className={style.heartImage}
           alt='하트이미지'
-          src={likeState === 'false' ? likeImage : unlikeImage}
+          src={likeState === 'false' ? unlikeImage : likeImage}
         />
         {likeCount}
       </button>

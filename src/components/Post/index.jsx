@@ -2,7 +2,7 @@ import React from 'react';
 import pinkheart from '../../assets/heart_pink.png';
 import heart from '../../assets/heart.png';
 import style from './post.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { postActions } from '../../redux/modules/post';
 import { history } from '../../redux/configureStore';
 
