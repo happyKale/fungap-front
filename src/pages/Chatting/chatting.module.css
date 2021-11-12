@@ -1,9 +1,8 @@
 .title {
-  width: 100%;
+  width: calc(100% + 40px);
   font-size: 20px;
   font-weight: 700;
   position: relative;
-  width: 430px;
   right: 20px;
   box-sizing: border-box;
   background-color: #f7de6f;
@@ -14,7 +13,7 @@
 }
 .container {
   position: relative;
-  width: 430px;
+  width: calc(100% + 40px);
   right: 20px;
   box-sizing: border-box;
 }
