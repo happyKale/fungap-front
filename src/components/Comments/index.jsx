@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { history } from '../../redux/configureStore';
 import { commentActions } from '../../redux/modules/comment';
 import { Comment, CommentInput } from '../';
 import style from './comments.module.css';
 
 const Comments = ({ boardId }) => {
+  const postId = parseInt(history.location.pathname.split('/')[2]);
   const dispatch = useDispatch();
   const [commentVisible, setCommentVisible] = useState(false);
   const comments = useSelector(state => state.comment.list);
-
   const comment = comments.filter(item => {
     return item.board_id === boardId;
   });
 
   useEffect(() => {
-    dispatch(commentActions.getCommentDB(boardId));
+    dispatch(commentActions.getCommentDB(postId));
   }, []);
 
   const showTotalComment = () => {

@@ -23,7 +23,7 @@ const ContentFt = ({
           like_count={likeCount}
           like_state={likeState}
         />
-        <KakaoShareButton postId={postId} />
+        <KakaoShareButton postId={boardId} />
       </div>
     </div>
   );

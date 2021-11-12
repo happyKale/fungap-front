@@ -24,7 +24,7 @@ const MbtiDescList = props => {
   const list = [[], [], [], []];
   mbti.map((item, idx) => {
     const num = parseInt(idx / 4);
-    const result = mbtiList.find(mbti => mbti[0] === item.toLowerCase());
+    const result = mbtiList?.find(mbti => mbti[0] === item.toLowerCase());
     list[num].push(result);
   });
 
@@ -42,14 +42,21 @@ const MbtiDescList = props => {
             <div className={sectionName[idx].color}>
               {sectionName[idx]?.name}
             </div>
+            {/* <div>{item}</div> */}
             {item?.map(i => {
               return (
-                <div key={i[0]} className={style.mbtiContentBox}>
-                  <div className={style.mbtiBox}>
-                    <div className={style.mbtiName}>{i[0].toUpperCase()}</div>
-                    <div className={style.mbtiDesc}>{i[1]}</div>
-                  </div>
-                </div>
+                <>
+                  {i && (
+                    <div key={i[0]} className={style.mbtiContentBox}>
+                      <div className={style.mbtiBox}>
+                        <div className={style.mbtiName}>
+                          {i[0].toUpperCase()}
+                        </div>
+                        <div className={style.mbtiDesc}>{i[1]}</div>
+                      </div>
+                    </div>
+                  )}
+                </>
               );
             })}
           </div>

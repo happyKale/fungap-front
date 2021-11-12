@@ -8,14 +8,10 @@ import style from './detail.module.css';
 const Detail = props => {
   const dispatch = useDispatch();
   const postId = parseInt(props.match.params.id);
-  const postList = useSelector(state => state.post.postList);
-
-  const post = postList?.find(item => {
-    return item.board_id === postId;
-  });
+  const post = useSelector(state => state.post.board);
 
   useEffect(() => {
-    dispatch(postActions.getPostDB());
+    dispatch(postActions.getDetailPostDB(postId));
   }, []);
 
   if (post) {
@@ -30,7 +26,7 @@ const Detail = props => {
       like_state,
       view_count,
     } = post;
-    const mbtiList = Object.entries(content);
+    const mbtiList = content && Object.entries(content);
 
     return (
       <>
@@ -57,7 +53,6 @@ const Detail = props => {
       </>
     );
   }
-
   return <></>;
 };
 
