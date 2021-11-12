@@ -90,9 +90,8 @@ const ChatRoom = props => {
               <ChatBot
                 bubbleStyle={{ borderRadius: '8px', marginBottom: '10px' }}
                 contentStyle={{
-                  height: '80vh',
-                  width: '410px',
-                  overflowY: 'scroll',
+                  height: 'calc(100% - 70px)',
+                  width: 'calc(100%)',
                   boxsizing: 'border-box',
                   border: 'none',
                   padding: '0px 20px 0px 0px',
