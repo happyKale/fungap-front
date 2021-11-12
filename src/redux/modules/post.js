@@ -5,6 +5,7 @@ import apis from '../../shared/apis';
 
 // action type
 const GET_POST = 'GET_POST';
+const GET_DETAIL_POST = 'GET_DETAIL_POST';
 const SET_POST = 'SET_POST';
 const SET_HOME_POST = 'SET_HOME_POST';
 const SEARCH_POST = 'SEARCH_POST';
@@ -22,6 +23,9 @@ const CLEAR_LIST = 'CLEAR_LIST';
 
 // action creator
 const getPosts = createAction(GET_POST, posts => ({ posts }));
+const getDetailPost = createAction(GET_DETAIL_POST, board => ({
+  board,
+}));
 const setPosts = createAction(SET_POST, posts => ({ posts }));
 const setHomePosts = createAction(SET_HOME_POST, (new_posts, top_posts) => ({
   new_posts,
@@ -82,9 +86,24 @@ const initialState = {
   start: 1,
   isLoading: false,
   hasMore: true,
+  board: {},
 };
 
 // middleware
+const getDetailPostDB = board_id => {
+  return async (dispatch, getState, { history }) => {
+    try {
+      const response = await apis.getDetailPost(board_id);
+      const board = response.data.board;
+      const comments = response.data.comments;
+
+      dispatch(getDetailPost(board, comments));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 const getMorePostDB = sort => {
   return async (dispatch, getState, { history }) => {
     let _start = getState().post.start;
@@ -325,6 +344,10 @@ export default handleActions(
       produce(state, draft => {
         draft.postList = action.payload.posts;
       }),
+    [GET_DETAIL_POST]: (state, action) =>
+      produce(state, draft => {
+        draft.board = action.payload.board;
+      }),
     [SET_POST]: (state, action) =>
       produce(state, draft => {
         draft.postList = action.payload.posts;
@@ -352,11 +375,11 @@ export default handleActions(
       }),
     [EDIT_POST]: (state, action) =>
       produce(state, draft => {
-        let idx = draft.postList.findIndex(
+        let idx = draft.list.findIndex(
           post => post.board_id === action.payload.postId,
         );
         draft.postList[idx] = {
-          ...draft.postList[idx],
+          ...draft.list[idx],
           ...action.payload.post,
         };
       }),
@@ -380,11 +403,11 @@ export default handleActions(
       }),
     [SET_EDIT_POST]: (state, action) =>
       produce(state, draft => {
-        let idx = draft.postList.findIndex(
+        let idx = draft.list.findIndex(
           post => post.board_id === action.payload.postId,
         );
         draft.editPost = {
-          ...draft.postList[idx],
+          ...draft.list[idx],
         };
       }),
     [ADD_EDIT_POST]: (state, action) =>
@@ -400,6 +423,7 @@ export default handleActions(
 
 export const postActions = {
   getPosts,
+  getDetailPostDB,
   getHomePostDB,
   getPopularPostDB,
   getViewPostDB,

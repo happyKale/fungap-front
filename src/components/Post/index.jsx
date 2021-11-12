@@ -64,9 +64,14 @@ const Post = ({
           <button
             className={style.button}
             onClick={() => {
-              console.log('삭제함');
-              console.log(board_id);
-              dispatch(postActions.deletePostDB(board_id));
+              const result = window.confirm(
+                `'${board_title}' 게시글을 삭제하시겠습니까?`,
+              );
+              if (result) {
+                dispatch(postActions.deletePostDB(board_id));
+              } else {
+                return;
+              }
             }}
           >
             삭제

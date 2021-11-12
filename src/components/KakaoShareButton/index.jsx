@@ -7,11 +7,7 @@ import btn_kakao_share from '../../assets/btn_kakao_share.png';
 const { Kakao } = window;
 
 const KakaoShareButton = ({ postId }) => {
-  const postList = useSelector(state => state.post.postList);
-  const post = postList.find(item => {
-    return item.board_id === postId;
-  });
-  console.log(post);
+  const post = useSelector(state => state.post.board);
 
   useEffect(() => {
     createKakaoButton();

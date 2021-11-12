@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken, setToken, delToken } from './token';
+import { getToken } from './token';
 
 const instance = axios.create({
   baseURL: 'http://nyannyan.shop',
@@ -25,9 +25,10 @@ const apis = {
   checkNickname: nickname => instance.post('/user/nickname_check', nickname),
 
   //게시물
-  getHomePost: () => instance.get('/board/home'),
   getPost: () => instance.get('/board'),
   getMorePost: (sort, page) => instance.get(`/board?sort=${sort}&page=${page}`),
+  getHomePost: () => instance.get('/board/home'),
+  getDetailPost: board_id => instance.get(`/board/${board_id}`),
   getOroderPopularPost: page => instance.get(`/board/popularity?page=${page}`),
   getOrderViewPost: page => instance.get(`/board/view?page=${page}`),
   searchPost: keyword => instance.post(`/board/search?keyword=${keyword}`),
