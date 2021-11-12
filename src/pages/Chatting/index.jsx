@@ -15,18 +15,32 @@ const Chatting = () => {
       chatId: '1',
     },
     {
-      name: '토탁이',
+      name: '토닥이',
       image: '',
-      category: '공감',
-      message: '잘 할 수 있어. 우리 같이 힘내보자!',
+      category: '준비중',
+      message: '',
       chatId: '2',
     },
     {
       name: '점쟁이',
       image: '',
       category: '준비중',
-      message: '다음에도 놀러와~',
+      message: '',
       chatId: '3',
+    },
+    {
+      name: '연애코치',
+      image: '',
+      category: '준비중',
+      message: '',
+      chatId: '4',
+    },
+    {
+      name: '음악이',
+      image: '',
+      category: '준비중',
+      message: '',
+      chatId: '5',
     },
   ];
 

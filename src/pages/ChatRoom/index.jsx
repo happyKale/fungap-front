@@ -90,10 +90,18 @@ const ChatRoom = props => {
               <ChatBot
                 bubbleStyle={{ borderRadius: '8px', marginBottom: '10px' }}
                 contentStyle={{
-                  height: 'calc(100vh - 250px)',
+                  height: '80vh',
                   width: '410px',
                   overflowY: 'scroll',
                   boxsizing: 'border-box',
+                  border: 'none',
+                  padding: '0px 20px 0px 0px',
+                  border: 'none',
+                }}
+                footerStyle={{
+                  margin: '0px 20px 0px 0px',
+                  borderTop: 'none',
+                  borderColor: 'white',
                 }}
                 botAvatar={jinro}
                 userAvatar={userImg?.user_image ? userImg?.user_image : profile}
