@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Goback } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
-import { history } from '../../redux/configureStore';
-import style from './emailSignIn.module.css';
 
+import { history } from '../../redux/configureStore';
 import { userActions } from '../../redux/modules/user';
+import { Goback } from '../../components';
+import style from './emailSignIn.module.css';
 
 const EmailSignIn = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,6 @@ const EmailSignIn = () => {
 
   const [checkEmail, setCheckEmail] = useState(true);
   const [checkPwd, setCheckPwd] = useState(true);
-  const [textColor, setTextColor] = useState('#c1c1c1');
   const [input, setInput] = useState({
     email: '',
     pwd: '',
@@ -28,11 +27,6 @@ const EmailSignIn = () => {
       ...input,
       [name]: value,
     });
-
-    // select box 폰트 컬로 변경
-    if (name === 'mbti' && e.target.value !== null) {
-      setTextColor('#000000');
-    }
   };
 
   const handleBlur = e => {
@@ -59,7 +53,6 @@ const EmailSignIn = () => {
         setCheckPwd(false);
         return false;
       } else {
-        // dispatch(userActions.isNicknameDB(nickname));
         setCheckPwd(true);
       }
     }
