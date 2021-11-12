@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { history } from '../../redux/configureStore';
-import style from './emailSignIn.module.css';
+import style from './emailSignUp.module.css';
 
-const EmailSignIn = props => {
+const EmailSignUp = props => {
   const handleClick = e => {
-    history.push('/signin_email');
+    history.push('/signup');
   };
 
   return (
@@ -17,4 +17,4 @@ const EmailSignIn = props => {
   );
 };
 
-export default EmailSignIn;
+export default EmailSignUp;
