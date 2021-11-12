@@ -4,6 +4,10 @@
   text-align: center;
   cursor: pointer;
 }
+.colorWrap {
+  background: #f7de70 url('../../assets/btn_left.png') no-repeat 10px 65%;
+  background-size: auto;
+}
 
 .title {
   margin: 0;
