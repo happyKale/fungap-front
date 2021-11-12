@@ -29,18 +29,13 @@ const checkDuplNickname = createAction(CHECK_NICKNAME, status => ({
 // 아이디(이메일) 중복 체크
 const changePwdDB = (email, password) => {
   return async (dispatch, getState, { history }) => {
-    console.log(email, password);
-
     const authData = { email, password };
-
-    console.log(authData);
 
     try {
       const response = await apis.authPassword(authData);
 
-      console.log(response);
       alert('비밀번호가 재설정 되었습니다.');
-      history.replace('/signin_email');
+      response && history.replace('/signin_email');
     } catch (error) {
       alert('비밀번호 재설정에 실패하였습니다.');
       console.log(error);
