@@ -80,7 +80,7 @@ const Compatibility = () => {
 
         <div name='플러스이미지' className={style.plusIcon} />
 
-        <h2>상대방의 MBTI</h2>
+        <h2 className={style.otherMbtiTitle}>상대방의 MBTI</h2>
         <select className={style.otherMbti} onChange={changeOtherMbti}>
           {mbtiList.map((list, index) => {
             return <option key={index}>{list}</option>;

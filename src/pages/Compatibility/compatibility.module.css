@@ -26,6 +26,9 @@
   font-size: 16px;
   font-weight: 400;
 }
+.selectBox > .otherMbtiTitle {
+  margin-top: 0;
+}
 
 .selectBox > select {
   width: 100%;
