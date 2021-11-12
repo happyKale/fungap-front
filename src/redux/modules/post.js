@@ -271,7 +271,7 @@ const addPostDB = () => {
 
 const deletePostDB = postId => {
   return (dispatch, getState, { history }) => {
-    const postList = getState().post.list;
+    const postList = getState().post.postList;
     const resultList = postList.filter(post => post.board_id !== postId);
 
     apis
@@ -376,11 +376,11 @@ export default handleActions(
       }),
     [DELETE_POST]: (state, action) =>
       produce(state, draft => {
-        draft.list = action.payload.posts;
+        draft.postList = action.payload.posts;
       }),
     [EDIT_POST]: (state, action) =>
       produce(state, draft => {
-        let idx = draft.list.findIndex(
+        let idx = draft.postList.findIndex(
           post => post.board_id === action.payload.postId,
         );
         draft.postList[idx] = {
@@ -408,11 +408,11 @@ export default handleActions(
       }),
     [SET_EDIT_POST]: (state, action) =>
       produce(state, draft => {
-        let idx = draft.list.findIndex(
+        let idx = draft.postList.findIndex(
           post => post.board_id === action.payload.postId,
         );
         draft.editPost = {
-          ...draft.list[idx],
+          ...draft.postList[idx],
         };
       }),
     [ADD_EDIT_POST]: (state, action) =>

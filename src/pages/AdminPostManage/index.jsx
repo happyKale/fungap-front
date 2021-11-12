@@ -112,7 +112,7 @@ const AdminPostManage = props => {
             isEdit ? defaultEditPost?.board_desc : defaultPost?.desc
           }
         />
-        {mbtiList.map((mbti, idx) => {
+        {mbtiList?.map((mbti, idx) => {
           let section = false;
           const sectionName = ['외교형', '탐험가형', '분석형', '관리자형'];
           const num = idx / 4;
@@ -133,7 +133,7 @@ const AdminPostManage = props => {
                   className={style.mbtiDesc}
                   defaultValue={
                     isEdit
-                      ? defaultEditPost.board_content[mbti.key.toLowerCase()]
+                      ? defaultEditPost?.board_content[mbti.key.toLowerCase()]
                       : defaultPost?.mbti[mbti.key.toLowerCase()]
                   }
                 />
