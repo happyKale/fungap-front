@@ -23,6 +23,8 @@ const apis = {
   signup: userinfo => instance.post('/user/signup', userinfo),
   checkEmail: email => instance.post('/user/email_check', email),
   checkNickname: nickname => instance.post('/user/nickname_check', nickname),
+  authEmail: email => instance.post('/auth/email', email),
+  authPassword: data => instance.patch('/auth/password', data),
 
   //게시물
   getPost: () => instance.get('/board'),
