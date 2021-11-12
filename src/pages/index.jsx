@@ -20,6 +20,8 @@ import Search from './Search';
 import EmailSignIn from './EmailSignIn';
 import FindPwd from './FindPwd';
 
+import Compatibility from './Compatibility';
+import CompatibilityResult from './CompatibilityResult';
 export {
   SignIn,
   SignUp,
@@ -42,4 +44,6 @@ export {
   Search,
   EmailSignIn,
   FindPwd,
+  Compatibility,
+  CompatibilityResult,
 };

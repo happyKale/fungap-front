@@ -3,7 +3,10 @@ import { getToken } from './token';
 
 const instance = axios.create({
   baseURL: 'http://nyannyan.shop',
-  withCredentials: true,
+  // withCredentials: true,
+  // https://stravinest.shop,
+  // http://nyannyan.shop
+  // http://ozam.shop
 });
 
 instance.interceptors.request.use(config => {
@@ -60,6 +63,9 @@ const apis = {
   //좋아용
   clikeLikeButton: (board_id, like_state) =>
     instance.post(`/board/${board_id}/like`, like_state),
+
+  //궁합 페이지
+  getTestResult: info => instance.post('/mbti/test', info),
 };
 
 export default apis;

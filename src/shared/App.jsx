@@ -24,6 +24,8 @@ import {
   Chatting,
   ChatRoom,
   Search,
+  Compatibility,
+  CompatibilityResult,
 } from '../pages';
 import { Navigation } from '../components';
 import style from './App.module.css';
@@ -71,6 +73,12 @@ function App() {
           <Route path='/termsofuse' exact component={TermsofUse} />
           <Route path='/chatting' exact component={Chatting} />
           <Route path='/chatroom/:id' exact component={ChatRoom} />
+          <Route path='/compatibility' exact component={Compatibility} />
+          <Route
+            path='/compatibility/result/:id'
+            exact
+            component={CompatibilityResult}
+          />
         </ConnectedRouter>
       </div>
     </div>
