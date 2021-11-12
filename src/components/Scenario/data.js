@@ -806,7 +806,7 @@ export default [
     options: [
       { value: 1, label: '기자', trigger: 'ESTP-기자-1' },
       { value: 2, label: '경찰', trigger: 'ESTP-경찰-1' },
-      { value: 3, label: '빅데이터 전문가', trigger: 'ESTP-빅데이터전문가-1' },
+      { value: 3, label: '빅데이터전문가', trigger: 'ESTP-빅데이터전문가-1' },
       { value: 4, label: '요리사', trigger: 'ESTP-요리사-1' },
     ],
   },
@@ -1294,26 +1294,14 @@ export default [
   {
     id: 'INFJ-12',
     options: [
-      { value: 1, label: '물리치료사', trigger: 'INFJ-물리치료사' },
-      { value: 2, label: '보건 교사', trigger: 'INFJ-보건 교사' },
-      { value: 3, label: '번역가', trigger: 'INFJ-번역가' },
-      { value: 4, label: '디자이너', trigger: 'INFJ-디자이너' },
+      { value: 1, label: '물리치료사', trigger: 'INFJ-물리치료사-1' },
+      { value: 2, label: '보건교사', trigger: 'INFJ-보건교사-1' },
+      { value: 3, label: '번역가', trigger: 'INFJ-번역가-1' },
+      { value: 4, label: '디자이너', trigger: 'INFJ-디자이너-1' },
     ],
   },
   {
-    id: 'INFJ',
-    message: '다른 직업도 확인해봐!',
-    trigger: 'INFJ-13',
-  },
-  {
-    id: 'INFJ-13',
-    options: [
-      { value: 1, label: '응 좋아!', trigger: 'INFJ-12' },
-      { value: 2, label: '아니 그만할래', trigger: '1' },
-    ],
-  },
-  {
-    id: 'INFJ-물리치료사',
+    id: 'INFJ-물리치료사-1',
     message: ' 물리치료사에 관심이 있구나!!',
     trigger: 'INFJ-물리치료사-2',
   },
@@ -1368,52 +1356,52 @@ export default [
     ],
   },
   {
-    id: 'INFJ-보건 교사',
+    id: 'INFJ-보건교사-1',
     message: '보건 교사에 관심이 있구나!!',
-    trigger: 'INFJ-보건 교사-2',
+    trigger: 'INFJ-보건교사-2',
   },
   {
-    id: 'INFJ-보건 교사-2',
+    id: 'INFJ-보건교사-2',
     message: '좋은 직업이지!',
-    trigger: 'INFJ-보건 교사-3',
+    trigger: 'INFJ-보건교사-3',
   },
   {
-    id: 'INFJ-보건 교사-3',
+    id: 'INFJ-보건교사-3',
     message:
       '보건교사는 학생과 교직원의 건강상태와 학교의 보건활동 진행상태를 평가하기 위해 정기적인 건강 진단 또는 검사를 실시하시고. 응급처치, 가정간호, 질병 및 전염병에 대한 보건교육과 건강상담을 담당하며 예방접종을 시행하시는 분이야!',
-    trigger: 'INFJ-보건 교사-4',
+    trigger: 'INFJ-보건교사-4',
   },
   {
-    id: 'INFJ-보건 교사-4',
+    id: 'INFJ-보건교사-4',
     message:
       '보건교사가 되기 위해서는 간호학사를 취득하고 각 시·도 교육청에서 실시하는 보건교사 임용시험에 합격해야해',
-    trigger: 'INFJ-보건 교사-5',
+    trigger: 'INFJ-보건교사-5',
   },
   {
-    id: 'INFJ-보건 교사-5',
+    id: 'INFJ-보건교사-5',
     message:
       '교육부는 비교과 분야의 보건·영양 등의 교원이 2018년도 법정정원에 현저히 미달되어 있어 이 분야 인력을 대규모로 채용하겠다고 발표했으며 실제로 2021년도엔 보건교사 모집이 역대 최대 수치로 이루어졌어!',
-    trigger: 'INFJ-보건 교사-6',
+    trigger: 'INFJ-보건교사-6',
   },
   {
-    id: 'INFJ-보건 교사-6',
+    id: 'INFJ-보건교사-6',
     message: '하위(25%) 3,488만 원, 중위값 4,078만 원, 상위(25%) 5,305만 원',
-    trigger: 'INFJ',
+    trigger: 'INFJ-보건교사-7',
   },
   {
-    id: 'INFJ-보건 교사-7',
+    id: 'INFJ-보건교사-7',
     message: '다른 직업들도 다시 볼래?',
-    trigger: 'INFJ-보건 교사-8',
+    trigger: 'INFJ-보건교사-8',
   },
   {
-    id: 'INFJ-보건 교사-8',
+    id: 'INFJ-보건교사-8',
     options: [
       { value: 1, label: '응 좋아!', trigger: 'INFJ-12' },
       { value: 2, label: '아니~ 괜찮아!', end: true },
     ],
   },
   {
-    id: 'INFJ-번역가',
+    id: 'INFJ-번역가-1',
     message: '번역가에 관심이 있구나!!',
     trigger: 'INFJ-번역가-2',
   },
@@ -1443,7 +1431,7 @@ export default [
   {
     id: 'INFJ-번역가-6',
     message: '번역가로 유명한 사람으로는  안정효 님 류시화 시인님 등이 있어!',
-    trigger: 'INFJ',
+    trigger: 'INFJ-번역가-7',
   },
 
   {
@@ -1459,7 +1447,7 @@ export default [
     ],
   },
   {
-    id: 'INFJ-디자이너',
+    id: 'INFJ-디자이너-1',
     message: '디자이너에 관심이 있구나!!',
     trigger: 'INFJ-디자이너-2',
   },
@@ -1490,7 +1478,7 @@ export default [
     id: 'INFJ-디자이너-6',
     message:
       '디자이너로 유명한 사람으로는 레이먼드 로위,가브리엘 샤넬,TBWA,알렉세이 브로도비치 등이 있어!',
-    trigger: 'INFJ',
+    trigger: 'INFJ-디자이너-7',
   },
   {
     id: 'INFJ-디자이너-7',
@@ -1823,7 +1811,7 @@ export default [
       { value: 1, label: '변호사', trigger: 'ENTJ-변호사-1' },
       { value: 2, label: '공인중개사', trigger: 'ENTJ-공인중개사-1' },
       { value: 3, label: '정치인', trigger: 'ENTJ-정치인-1' },
-      { value: 4, label: '장교(군인)', trigger: 'ENTJ-장교-1' },
+      { value: 4, label: '장교(군인)', trigger: 'ENTJ-장교(군인)-1' },
     ],
   },
   {
@@ -1979,58 +1967,58 @@ export default [
     ],
   },
   {
-    id: 'ENTJ-장교-1',
+    id: 'ENTJ-장교(군인)-1',
     message: '장교는 육군, 해군, 공군으로 나뉘는데~',
-    trigger: 'ENTJ-장교-2',
+    trigger: 'ENTJ-장교(군인)-2',
   },
   {
-    id: 'ENTJ-장교-2',
+    id: 'ENTJ-장교(군인)-2',
     message:
       '육군 장교는 지상방위, 해군장교는 해양수호, 공군장교는 영공수호를 위한 지휘관으로서',
-    trigger: 'ENTJ-장교-3',
+    trigger: 'ENTJ-장교(군인)-3',
   },
   {
-    id: 'ENTJ-장교-3',
+    id: 'ENTJ-장교(군인)-3',
     message:
       '일반 병사를 지휘·통솔하거나 혹은 참모로서 지휘관 보좌 및 전술연구 등의 역할을 수행해!',
-    trigger: 'ENTJ-장교-4',
+    trigger: 'ENTJ-장교(군인)-4',
   },
   {
-    id: 'ENTJ-장교-4',
+    id: 'ENTJ-장교(군인)-4',
     message: '통솔력 있고 성실한 너에게 딱인 것 같아!',
-    trigger: 'ENTJ-장교-5',
+    trigger: 'ENTJ-장교(군인)-5',
   },
   {
-    id: 'ENTJ-장교-5',
+    id: 'ENTJ-장교(군인)-5',
     message: '연봉은 평균 3640만원 정도야!',
-    trigger: 'ENTJ-장교-6',
+    trigger: 'ENTJ-장교(군인)-6',
   },
   {
-    id: 'ENTJ-장교-6',
+    id: 'ENTJ-장교(군인)-6',
     message:
       '정부의 국방개혁으로 병력의 양적 성장보다는 질적 관리에 대한 요청이 커지고 있어서',
-    trigger: 'ENTJ-장교-7',
+    trigger: 'ENTJ-장교(군인)-7',
   },
   {
-    id: 'ENTJ-장교-7',
+    id: 'ENTJ-장교(군인)-7',
     message:
       '단계적으로 병력규모를 축소·조정하되 전문적이고 특수화된 업무 중심으로 군 병력을 유지할 계획이야!',
-    trigger: 'ENTJ-장교-8',
+    trigger: 'ENTJ-장교(군인)-8',
   },
   {
-    id: 'ENTJ-장교-8',
+    id: 'ENTJ-장교(군인)-8',
     message: '그래서 장교의 고용은 현 상태를 유지할 전망이라네!',
-    trigger: 'ENTJ-장교-9',
+    trigger: 'ENTJ-장교(군인)-9',
   },
   {
-    id: 'ENTJ-장교-9',
+    id: 'ENTJ-장교(군인)-9',
     message: ' 다른 직업들도 다시 볼래? ',
-    trigger: 'ENTJ-장교-10',
+    trigger: 'ENTJ-장교(군인)-10',
   },
   {
-    id: 'ENTJ-장교-10',
+    id: 'ENTJ-장교(군인)-10',
     options: [
-      { value: 1, label: '응 좋아!', trigger: 'ISTP-11' },
+      { value: 1, label: '응 좋아!', trigger: 'ENTJ-11' },
       { value: 2, label: '아니~ 괜찮아!', end: true },
     ],
   },
@@ -2108,7 +2096,7 @@ export default [
         trigger: 'ISTP-소프트웨어개발자-1',
       },
       { value: 3, label: '경제학자', trigger: 'ISTP-경제학자-1' },
-      { value: 4, label: '항공기 정비원', trigger: 'ISTP-항공기정비원-1' },
+      { value: 4, label: '항공기정비원', trigger: 'ISTP-항공기정비원-1' },
     ],
   },
   {
@@ -2361,7 +2349,7 @@ export default [
       { value: 1, label: '방송프로듀서', trigger: 'ENFP-방송프로듀서-1' },
       { value: 2, label: '드라마작가', trigger: 'ENFP-드라마작가-1' },
       { value: 3, label: '광고기획자', trigger: 'ENFP-광고기획자-1' },
-      { value: 4, label: '기자 ', trigger: 'ENFP-기자-1' },
+      { value: 4, label: '기자', trigger: 'ENFP-기자-1' },
     ],
   },
   {
@@ -2867,7 +2855,7 @@ export default [
       { value: 1, label: '일러스트레이터', trigger: 'ESFP-일러스트레이터-1' },
       { value: 2, label: '승무원', trigger: 'ESFP-승무원-1' },
       { value: 3, label: '배우', trigger: 'ESFP-배우-1' },
-      { value: 4, label: '애니메이터 ', trigger: 'ESFP-애니메이터-1' },
+      { value: 4, label: '애니메이터', trigger: 'ESFP-애니메이터-1' },
     ],
   },
   {
@@ -3134,7 +3122,7 @@ export default [
       { value: 1, label: '정치가', trigger: 'ISTJ-정치가-1' },
       { value: 2, label: '운동선수', trigger: 'ISTJ-운동선수-1' },
       { value: 3, label: '투자자', trigger: 'ISTJ-투자자-1' },
-      { value: 4, label: '경영관리자 ', trigger: 'ISTJ-경영관리자-1' },
+      { value: 4, label: '경영관리자', trigger: 'ISTJ-경영관리자-1' },
     ],
   },
   {
@@ -3443,7 +3431,7 @@ export default [
       { value: 1, label: '사업가', trigger: 'ESTJ-사업가-1' },
       { value: 2, label: '프로젝트매니저', trigger: 'ESTJ-프로젝트매니저-1' },
       { value: 3, label: '정치가', trigger: 'ESTJ-정치가-1' },
-      { value: 4, label: '경영가 ', trigger: 'ESTJ-경영가-1' },
+      { value: 4, label: '경영가', trigger: 'ESTJ-경영가-1' },
     ],
   },
   {
@@ -4094,7 +4082,7 @@ export default [
       { value: 1, label: '회계사', trigger: 'INTJ-회계사-1' },
       { value: 2, label: '경제학자', trigger: 'INTJ-경제학자-1' },
       { value: 3, label: '파일럿', trigger: 'INTJ-파일럿-1' },
-      { value: 4, label: '경영컨설턴트 ', trigger: 'INTJ-경영컨설턴트-1' },
+      { value: 4, label: '경영컨설턴트', trigger: 'INTJ-경영컨설턴트-1' },
     ],
   },
   {

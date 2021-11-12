@@ -11,7 +11,7 @@
 .chatBox > div > div {
   border-radius: 0px;
   width: 100%;
-  height: calc(100vh - 190px);
+  height: calc(100vh - 180px);
   border: none;
   box-shadow: none;
   background-color: white;

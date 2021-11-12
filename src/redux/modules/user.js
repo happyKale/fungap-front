@@ -2,7 +2,7 @@ import { createAction, handleActions } from 'redux-actions';
 import { produce } from 'immer';
 
 import apis from '../../shared/apis';
-import { setToken, getToken, delToken } from '../../shared/token';
+import { setToken, delToken } from '../../shared/token';
 
 // action type
 const SET_USER = 'SET_USER';
@@ -27,6 +27,27 @@ const checkDuplNickname = createAction(CHECK_NICKNAME, status => ({
 
 // middleware
 // 아이디(이메일) 중복 체크
+const changePwdDB = (email, password) => {
+  return async (dispatch, getState, { history }) => {
+    console.log(email, password);
+
+    const authData = { email, password };
+
+    console.log(authData);
+
+    try {
+      const response = await apis.authPassword(authData);
+
+      console.log(response);
+      alert('비밀번호가 재설정 되었습니다.');
+      history.replace('/signin_email');
+    } catch (error) {
+      alert('비밀번호 재설정에 실패하였습니다.');
+      console.log(error);
+    }
+  };
+};
+
 const isEmailDB = email => {
   return async (dispatch, getState, { history }) => {
     try {
@@ -216,6 +237,7 @@ const initialState = {
   is_nickname: null,
   is_login: false,
   user: {},
+  message: '',
 };
 
 // reducer
@@ -246,12 +268,10 @@ export default handleActions(
       }),
     [CHECK_EMAIL]: (state, action) =>
       produce(state, draft => {
-        console.log(action.payload.status);
         draft.is_email = action.payload.status;
       }),
     [CHECK_NICKNAME]: (state, action) =>
       produce(state, draft => {
-        console.log(action.payload.status);
         draft.is_nickname = action.payload.status;
       }),
   },
@@ -261,6 +281,7 @@ export default handleActions(
 export const userActions = {
   isEmailDB,
   isNicknameDB,
+  changePwdDB,
   signupDB,
   signinDB,
   signinKakaoDB,

@@ -69,7 +69,6 @@ const SignUp = props => {
         setCheckPwd(false);
         return false;
       } else {
-        // dispatch(userActions.isNicknameDB(nickname));
         setCheckPwd(true);
       }
     }
@@ -97,7 +96,7 @@ const SignUp = props => {
 
   return (
     <div className={style.wrap}>
-      <Goback>로그인</Goback>
+      <Goback>이메일로 회원가입</Goback>
       <form //
         className={style.form}
         onChange={handleChange}

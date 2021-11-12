@@ -3,19 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import style from './scenario.module.css';
 import ChatBot from 'react-simple-chatbot';
 import data from './data.js';
+import { history } from '../../redux/configureStore';
 
 import profile from '../../assets/profileplaceholder.png';
 import jinro from '../../assets/friend_jinro.png';
 
 const Scenario = props => {
   const mbti = props.previousStep.message.toUpperCase();
-  console.log(data);
   const list = data.filter(item => item.id.split('-')[0] === mbti);
-
   // imgPosition-1 인덱스가 직업 선택하는 option있는 인덱스.
   const imgPosition = list.findIndex(item => item.id.split('-').length === 3);
   const imgPositionList = [];
   const jobList = [];
+  console.log(list, imgPosition);
 
   list[imgPosition - 1].options.forEach(item => {
     jobList.push(item.label);
@@ -25,6 +25,7 @@ const Scenario = props => {
   jobList.forEach(job => {
     imgPositionList.push(list.findIndex(item => item.id.split('-')[1] === job));
   });
+
   for (let i = 0; i < 4; i++) {
     list.splice(imgPositionList[i] + i, 0, {
       id: jobList[i] + 'img',
@@ -41,14 +42,54 @@ const Scenario = props => {
     });
   }
 
+  // 새로운 step 추가를 위해서 마지막 step의 트리거를 변경함
+  list.map((item, idx) => {
+    if (item.hasOwnProperty('options')) {
+      item.options.forEach(i => {
+        if (i.hasOwnProperty('end')) {
+          delete i.end;
+          i.trigger = 'last';
+        }
+      });
+    }
+  });
+  // 새로 추가한 step
+  const lastStep = [
+    {
+      id: 'last',
+      message: '그랭! >.< 다음에 또 찾아와줘~',
+      trigger: 'link',
+    },
+    {
+      id: 'link',
+      component: (
+        <React.Fragment>
+          <button
+            className={style.button}
+            onClick={() => {
+              history.push('/');
+            }}
+          >
+            홈으로 가기
+          </button>
+          <button
+            className={style.button}
+            onClick={() => {
+              history.push('/chatting');
+            }}
+          >
+            뒤로가기
+          </button>
+        </React.Fragment>
+      ),
+      end: true,
+    },
+  ];
+  list.push(...lastStep);
+
   const userImg = JSON.parse(sessionStorage.getItem('user'));
 
   const otherFontTheme = {
-    background: '#f5f8fb',
-    fontFamily: 'Helvetica Neue',
-    headerBgColor: '#3441EC',
-    headerFontColor: '#fff',
-    headerFontSize: '16px',
     botBubbleColor: '#F3F3F3',
     botFontColor: '#000',
     userBubbleColor: '#F7DE6F',
@@ -65,8 +106,9 @@ const Scenario = props => {
             position: 'relative',
             right: '0px',
             height: 'auto',
-            width: '410px',
-            padding: '0px 20px 0px 0px',
+            width: 'calc(100%)',
+            padding: '0px 0px 0px 0px',
+            overflow: 'hidden',
           }}
           botAvatar={jinro}
           userAvatar={userImg?.user_image ? userImg?.user_image : profile}
