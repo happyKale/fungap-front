@@ -1,0 +1,57 @@
+.form {
+  height: 100%;
+  border-top: 1px solid #dfdfdf;
+  padding-top: 30px;
+}
+.inputBox {
+  position: relative;
+  margin-bottom: 40px;
+}
+.inputBox > label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+.inputBox > input {
+  width: 100%;
+  border: 1px solid #dfdfdf;
+  border-radius: 12px;
+  padding: 15px 0 15px 10px;
+  font-size: 17px;
+  box-sizing: border-box;
+  outline: none;
+}
+.inputBox > .error {
+  border: 1px solid red;
+  background: url('../../assets/icon_error.png') no-repeat 95% center;
+}
+.errorMeg {
+  color: red;
+}
+.inputBox > input::placeholder {
+  font-size: 13px;
+  color: #c1c1c1;
+}
+.pwdcheck {
+  position: relative;
+  left: calc(100% - 120px);
+  border-bottom: 1px solid lightgray;
+  color: #8b8b8b;
+  cursor: pointer;
+}
+.btn {
+  width: 100%;
+  margin-top: 32vh;
+  border: none;
+  border-radius: 100px;
+  padding: 15px 0;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: #dfdfdf;
+  color: #a5a5a5;
+  transition: all 0.3s ease-in;
+}
+.active {
+  background-color: #f7de70;
+  color: #000;
+}

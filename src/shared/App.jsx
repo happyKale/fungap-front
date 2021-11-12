@@ -11,6 +11,8 @@ import {
   Detail,
   SignUp,
   SignIn,
+  EmailSignIn,
+  FindPwd,
   Admin,
   AdminPostManage,
   AdminPostPreview,
@@ -55,6 +57,8 @@ function App() {
           <Route path='/detail/:id' exact component={Detail} />
           <Route path='/signup' exact component={SignUp} />
           <Route path='/signin' exact component={SignIn} />
+          <Route path='/signin_email' exact component={EmailSignIn} />
+          <Route path='/signin_findpwd' exact component={FindPwd} />
           <Route path='/admin' exact component={Admin} />
           <Route path='/userpage' exact component={Setting} />
           <Route path='/useredit' exact component={ProfileEdit} />
