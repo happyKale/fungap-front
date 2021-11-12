@@ -12,7 +12,7 @@ const createKakaoButton = value => {
         title: value.title, // 공유제목
         description: `#mbti #fungap #${value.desc ? value.desc : value.title}`,
         imageUrl:
-          'https://fungap-img.s3.ap-northeast-2.amazonaws.com/logo_share.png', // i.e. process.env.FETCH_URL + '/logo.png'
+          'https://fungap-img.s3.ap-northeast-2.amazonaws.com/kakako_share_bg1636738291738.jpg', // i.e. process.env.FETCH_URL + '/logo.png'
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,
