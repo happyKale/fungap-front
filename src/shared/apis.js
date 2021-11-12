@@ -2,8 +2,8 @@ import axios from 'axios';
 import { getToken } from './token';
 
 const instance = axios.create({
-  baseURL: 'http://nyannyan.shop',
-  // withCredentials: true,
+  baseURL: 'https://stravinest.shop',
+  withCredentials: true,
   // https://stravinest.shop,
   // http://nyannyan.shop
   // http://ozam.shop
