@@ -17,6 +17,8 @@ import TermsofUse from './TermsofUse';
 import Chatting from './Chatting';
 import ChatRoom from './ChatRoom';
 import Search from './Search';
+import EmailSignIn from './EmailSignIn';
+import FindPwd from './FindPwd';
 
 export {
   SignIn,
@@ -38,4 +40,6 @@ export {
   Chatting,
   ChatRoom,
   Search,
+  EmailSignIn,
+  FindPwd,
 };
