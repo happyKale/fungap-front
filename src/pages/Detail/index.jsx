@@ -21,10 +21,6 @@ const Detail = props => {
       board_title: title,
       board_desc: desc,
       board_content: content,
-      comment_count,
-      like_count,
-      like_state,
-      view_count,
     } = post;
     const mbtiList = content && Object.entries(content);
 
@@ -40,14 +36,7 @@ const Detail = props => {
           <div className={style.contents}>
             <MbtiDescList list={mbtiList} />
           </div>
-          <ContentFt //
-            commentCount={comment_count}
-            viewCount={view_count}
-            likeCount={like_count}
-            likeState={like_state}
-            boardId={id}
-            postId={postId}
-          />
+          <ContentFt post={post} />
           <Comments boardId={id} />
         </div>
       </>
