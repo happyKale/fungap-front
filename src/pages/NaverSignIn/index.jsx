@@ -7,7 +7,7 @@ import style from './naver.module.css';
 const NaverSignIn = () => {
   const { naver } = window;
   const dispatch = useDispatch();
-  const NAVER_CALLBACK_URL = 'http://localhost:3000/signin';
+  const NAVER_CALLBACK_URL = 'http://fungap.shop/signin';
   const NAVER_CLIENT_ID = 'cfGvQRAUw4xlsdgrxGLI';
 
   const initializeNaverLogin = () => {
