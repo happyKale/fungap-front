@@ -109,6 +109,7 @@ const getMorePostDB = sort => {
     let _start = getState().post.start;
 
     dispatch(setLoading(true));
+
     if (_start === 1) {
       dispatch(clearList());
     }
@@ -116,7 +117,7 @@ const getMorePostDB = sort => {
     // 최신순 무한스크롤
     if (sort === 'date') {
       try {
-        const response = await apis.getMorePost(sort, _start);
+        const response = await apis.getMorePost('date', _start);
         const boardlistDB = response.data.board_list;
         const hasMore = boardlistDB.length !== 0 ? true : false;
         const next = boardlistDB.length !== 0 ? _start + 1 : 1;
@@ -127,7 +128,7 @@ const getMorePostDB = sort => {
       }
     }
     // 인기순 무한스크롤
-    if (sort === 'like') {
+    else if (sort === 'like') {
       try {
         const response = await apis.getMorePost('popularity', _start);
         const boardlistDB = response.data.board_list;
@@ -140,9 +141,9 @@ const getMorePostDB = sort => {
       }
     }
     // // 조회순 무한스크롤
-    if (sort === 'view') {
+    else if (sort === 'view') {
       try {
-        const response = await apis.getMorePost(sort, _start);
+        const response = await apis.getMorePost('view', _start);
         const boardlistDB = response.data.board_list;
         const hasMore = boardlistDB.length !== 0 ? true : false;
         const next = boardlistDB.length !== 0 ? _start + 1 : 1;
@@ -333,6 +334,9 @@ export default handleActions(
     //
     [GET_MORE_POST]: (state, action) =>
       produce(state, draft => {
+        if (draft.sort !== action.payload.sort) {
+          draft.list = [];
+        }
         draft.list.push(...action.payload.posts);
         draft.start = action.payload.page;
         draft.hasMore = action.payload.hasMore;
