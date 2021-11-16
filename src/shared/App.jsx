@@ -27,7 +27,7 @@ import {
   Compatibility,
   CompatibilityResult,
 } from '../pages';
-import { Navigation } from '../components';
+import { Navigation, ScrollRestoration } from '../components';
 import style from './App.module.css';
 import logo from '../assets/logo_yellow.png';
 
@@ -53,6 +53,7 @@ function App() {
       <div>
         <Navigation />
         <ConnectedRouter history={history}>
+          <ScrollRestoration></ScrollRestoration>
           <Route path='/' exact component={Home} />
           <Route path='/search' exact component={Search} />
           <Route path='/contents' exact component={Contents} />
