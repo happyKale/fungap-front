@@ -258,7 +258,7 @@ export default [
     id: 'INTP-수학자-8',
     options: [
       { value: 1, label: '응 좋아!', trigger: 'INTP-10' },
-      { value: 2, label: '아니~ 괜찮아!', trigger: 'INTP-10' },
+      { value: 2, label: '아니~ 괜찮아!', end: true },
     ],
   },
 
