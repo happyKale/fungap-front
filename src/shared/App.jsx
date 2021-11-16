@@ -3,6 +3,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Route } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { Canvas } from '../shared/canvas';
 import { userActions } from '../redux/modules/user';
 import { history } from '../redux/configureStore';
 import {
@@ -37,6 +38,13 @@ function App() {
 
   useEffect(() => {
     dispatch(userActions.signinCheckDB());
+
+    function handleCanvas() {
+      new Canvas();
+    }
+
+    window.addEventListener('load', handleCanvas);
+    return () => window.removeEventListener('load', handleCanvas);
   }, []);
 
   return (
