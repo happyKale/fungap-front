@@ -10,7 +10,9 @@ const ProfileEdit = () => {
   const userInfo = JSON.parse(sessionStorage.getItem('user'));
   const user_image = useSelector(state => state.user.uploadImage);
   const [nickname, setNickname] = React.useState(userInfo?.nickname);
-  const [user_mbti, setUser_mbti] = React.useState(userInfo.user_mbti);
+  const [user_mbti, setUser_mbti] = React.useState(
+    userInfo.user_mbti ? userInfo.user_mbti : '',
+  );
   const [change, setChange] = React.useState(false);
 
   const changeNickname = e => {
