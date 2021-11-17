@@ -42,8 +42,10 @@ function App() {
     function handleCanvas() {
       new Canvas();
     }
+    window.addEventListener('load', () => {
+      if (window.innerWidth > 1024) handleCanvas();
+    });
 
-    window.addEventListener('load', handleCanvas);
     return () => window.removeEventListener('load', handleCanvas);
   }, []);
 
