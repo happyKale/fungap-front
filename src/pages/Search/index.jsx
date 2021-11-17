@@ -7,16 +7,11 @@ import style from './search.module.css';
 
 const Search = props => {
   const dispatch = useDispatch();
-  const is_searching = useSelector(state => state.post.is_searching);
-
   const searchList = useSelector(state => state.post.postList);
   const hotPostList = useSelector(state => state.post.topList);
-
   const top6 = hotPostList.slice(0, 6);
-  const searchResult = searchList.slice(0, 6);
 
   useEffect(() => {
-    dispatch(postActions.getPostDB());
     dispatch(postActions.getHomePostDB());
   }, []);
 
@@ -24,14 +19,14 @@ const Search = props => {
     <>
       <Goback page='/'>검색</Goback>
       <SearchBar />
-
-      {searchList.length < '20' ? (
+      {searchList.length > 0 && (
         <div className={style.grid}>
-          {searchResult.map((post, index) => {
+          {searchList.map((post, index) => {
             return <Post direction='column' key={post.board_id} {...post} />;
           })}
         </div>
-      ) : (
+      )}
+      {searchList.length < 7 && (
         <>
           <h3>펀캡 추천 검색어</h3>
           <div>
@@ -80,7 +75,6 @@ const Search = props => {
         <p>펀갭에 있는 재미있는 이야기를 모두 살펴보세요.</p>
       </div>
       <h2>인기 콘텐츠</h2>
-
       <div className={style.grid}>
         {top6.map((post, index) => {
           return <Post direction='column' key={post.board_id} {...post} />;

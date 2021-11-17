@@ -21,6 +21,7 @@ import KakaoShareButton from './KakaoShareButton';
 import Scenario from './Scenario';
 import EmailSignIn from './EmailSignIn';
 import EmailSignUp from './EmailSignUp';
+import ScrollRestoration from './ScrollRestoration';
 
 export {
   TypeOfMbti,
@@ -46,4 +47,5 @@ export {
   Scenario,
   EmailSignIn,
   EmailSignUp,
+  ScrollRestoration,
 };
