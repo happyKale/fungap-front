@@ -8,6 +8,7 @@ import style from './comment.module.css';
 import { elapsedMin, elapsedHour, elapsedDate } from '../../shared/elapsed';
 import MbtiTag from '../MbtiTag';
 import { Modal } from '../../components';
+import defatulImg from '../../assets/profileplaceholder.png';
 
 const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
   const { nickname, user_image, user_mbti, user_id } = User;
@@ -62,9 +63,9 @@ const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
     <li className={style.item}>
       <div className={style.profileImg}>
         {user_image ? (
-          <img src={user_image} alt='임시' />
+          <img src={user_image} alt='프로필사진' />
         ) : (
-          <img src='http://placehold.it/40x40' alt='임시' />
+          <img src={defatulImg} alt='기본이미지' />
         )}
       </div>
       <div>
