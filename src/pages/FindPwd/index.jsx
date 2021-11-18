@@ -10,6 +10,8 @@ import { userActions } from '../../redux/modules/user';
 const FindPwd = () => {
   const dispatch = useDispatch();
   const [checkAuthEmail, setCheckAuthEmail] = useState(true);
+  const [checkCorrectEmail, setCheckCorrectEmail] = useState(true);
+  const [checkSendCode, setCheckSendCode] = useState(true);
   const [checkPwd, setCheckPwd] = useState(true);
   const [checkPwd2, setCheckPwd2] = useState(true);
   const [authCodeDB, setAuthCodeDB] = useState('');
@@ -42,9 +44,13 @@ const FindPwd = () => {
     try {
       const response = await apis.authEmail(auth_email);
       const auth_code = response.data.auth_code;
-
       setAuthCodeDB(auth_code);
+      setCheckCorrectEmail(true);
+      setCheckSendCode(false);
     } catch (error) {
+      if (error.response.data.errormessage === '존재하지 않는 이메일입니다.') {
+        setCheckCorrectEmail(false);
+      }
       console.log(error);
     }
   };
@@ -86,6 +92,15 @@ const FindPwd = () => {
         setCheckPwd2(true);
       }
     }
+
+    //인증번호 확인
+    if (classList.contains('authCode')) {
+      if (e.target.value.length > 0) {
+        setCheckSendCode(true);
+      } else {
+        setCheckSendCode(false);
+      }
+    }
   };
 
   const handleSubmit = e => {
@@ -120,6 +135,7 @@ const FindPwd = () => {
               className={classnames(
                 'authEmail',
                 !checkAuthEmail && style.error,
+                !checkCorrectEmail && style.error,
               )}
               onBlur={handleBlur}
             />
@@ -130,9 +146,14 @@ const FindPwd = () => {
           >
             전송
           </button>
-          {!checkAuthEmail && (
+          {!checkAuthEmail && checkCorrectEmail && (
             <span className={classnames(style.errorMeg, style.checkAuth)}>
               올바른 이메일 형식을 입력해주세요.
+            </span>
+          )}
+          {!checkCorrectEmail && (
+            <span className={classnames(style.errorMeg, style.checkAuth)}>
+              등록되지 않은 이메일입니다.
             </span>
           )}
         </div>
@@ -144,7 +165,14 @@ const FindPwd = () => {
             type='text'
             placeholder='인증번호를 입력하세요.'
             defaultValue={authCode}
+            className={classnames('authCode', !checkSendCode && style.confirm)}
+            onBlur={handleBlur}
           />
+          {!checkSendCode && (
+            <span className={style.confirmMeg}>
+              인증번호를 보냈습니다. 이메일을 확인해주세요.
+            </span>
+          )}
         </p>
         <p className={style.inputBox}>
           <label htmlFor='pwd'>새로운 비밀번호 입력</label>

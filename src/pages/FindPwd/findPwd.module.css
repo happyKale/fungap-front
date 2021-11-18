@@ -44,13 +44,20 @@
   font-size: 17px;
   color: #a5a5a5;
   transition: background-color 0.3s ease-in;
+  cursor: pointer;
 }
 .inputBox > .error {
   border: 1px solid red;
   background: url('../../assets/icon_error.png') no-repeat 95% center;
 }
+.inputBox > .confirm {
+  border: 1px solid blue;
+}
 .errorMeg {
   color: red;
+}
+.confirmMeg {
+  color: blue;
 }
 .checkAuth {
   position: absolute;
