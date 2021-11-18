@@ -7,12 +7,14 @@ import { commentActions } from '../../redux/modules/comment';
 import style from './comment.module.css';
 import { elapsedMin, elapsedHour, elapsedDate } from '../../shared/elapsed';
 import MbtiTag from '../MbtiTag';
+import { Modal } from '../../components';
 
 const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
   const { nickname, user_image, user_mbti, user_id } = User;
   const dispatch = useDispatch();
   const newComment = useRef();
   const [editBox, setEditBox] = useState(false);
+  const [visible, setVisible] = useState(null);
 
   // 댓글 작성 분,시간,일 계산
   const min = elapsedMin(createdAt) < 0 ? 0 : elapsedMin(createdAt);
@@ -46,7 +48,14 @@ const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
     );
   };
   const deleteComment = () => {
-    dispatch(commentActions.deleteCommentDB(board_id, comment_id));
+    // 삭제 하기전에 modal 컴포넌트로 확인하고 삭제하기
+    // modal 컴포넌트를 보이게 하고
+    // modal clickBtnRight속성에 dispatch 실행시킴.
+    setVisible(true);
+  };
+
+  const closeModal = () => {
+    setVisible(false);
   };
 
   return (
@@ -85,6 +94,20 @@ const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
           <DeleteIcon style={{ color: '#999999' }} onClick={deleteComment} />
           <EditIcon style={{ color: '#999999' }} onClick={toggleEditBox} />
         </div>
+      )}
+      {visible && (
+        <Modal
+          title='정말로 댓글을 삭제하시겠어요?'
+          btnLeft='아니요'
+          btnRight='예'
+          clickBtnRight={() => {
+            dispatch(commentActions.deleteCommentDB(board_id, comment_id));
+            closeModal();
+          }}
+          visible={visible}
+          maskClosable
+          onClose={closeModal}
+        />
       )}
     </li>
   );
