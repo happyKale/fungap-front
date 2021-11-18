@@ -39,14 +39,22 @@ function App() {
   useEffect(() => {
     dispatch(userActions.signinCheckDB());
 
-    function handleCanvas() {
-      new Canvas();
-    }
-    window.addEventListener('load', () => {
-      if (window.innerWidth > 1024) handleCanvas();
-    });
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(
+      window.navigator.userAgent,
+    );
 
-    return () => window.removeEventListener('load', handleCanvas);
+    function handleCanvas() {
+      return new Canvas();
+    }
+
+    if (!isMobile) handleCanvas();
+
+    return () =>
+      window.removeEventListener('load', () => {
+        if (isMobile) {
+          handleCanvas();
+        }
+      });
   }, []);
 
   return (
