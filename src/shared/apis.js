@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getToken } from './token';
 
 const instance = axios.create({
-  baseURL: 'https://stravinest.shop',
+  baseURL: 'http://54.180.157.153',
   withCredentials: true,
   // https://stravinest.shop,
   // http://nyannyan.shop
@@ -66,6 +66,10 @@ const apis = {
 
   //궁합 페이지
   getTestResult: info => instance.post('/mbti/test', info),
+
+  //소켓 로그데이터
+  getChatLogDate: roomname =>
+    instance.get(`/chat/chatlog?roomname=${roomname}`),
 };
 
 export default apis;
