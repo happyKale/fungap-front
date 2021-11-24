@@ -1,12 +1,16 @@
 import React, { useRef, useState } from 'react';
+import moment from 'moment';
+import 'moment/locale/ko';
+// redux
 import { useDispatch } from 'react-redux';
+import { commentActions } from '@redux/modules/comment';
+// components
+import { MbtiTag } from '@components';
+// icon
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
-import { commentActions } from '../../redux/modules/comment';
+// css
 import style from './comment.module.css';
-import { elapsedMin, elapsedHour, elapsedDate } from '../../shared/elapsed';
-import MbtiTag from '../MbtiTag';
 
 const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
   const { nickname, user_image, user_mbti, user_id } = User;
@@ -15,15 +19,7 @@ const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
   const [editBox, setEditBox] = useState(false);
 
   // 댓글 작성 분,시간,일 계산
-  const min = elapsedMin(createdAt) < 0 ? 0 : elapsedMin(createdAt);
-  const hour = elapsedHour(createdAt);
-  const date = elapsedDate(createdAt);
-  const elapsed =
-    min < 60
-      ? `${min === 0 ? '조금전' : `${min}분전`}`
-      : hour < 24
-      ? `${hour}시간전`
-      : `${date}일전`;
+  const timeFormat = moment(createdAt).fromNow();
 
   const userId =
     sessionStorage.getItem('user') &&
@@ -78,7 +74,7 @@ const Comment = ({ User, board_id, comment_id, comment, createdAt }) => {
         ) : (
           <p className={style.desc}>{comment}</p>
         )}
-        <span className={style.date}>{elapsed}</span>
+        <span className={style.date}>{timeFormat}</span>
       </div>
       {userId !== user_id ? null : (
         <div className={style.handleComment}>
