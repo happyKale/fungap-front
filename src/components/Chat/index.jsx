@@ -49,10 +49,16 @@ const Chat = ({ chat, image, name, message, category, chatId }) => {
         <div
           className={style.chatContent}
           onClick={() => {
-            if (category === '준비중') {
-              window.alert('아직 준비중인 컨텐츠입니다~!');
-            } else {
+            if (category === '진로상담 #챗봇') {
               history.push(`/chatroom/${chatId}`);
+            } else if (name === '[E모임] 외향형 모여라') {
+              history.push('/channele');
+            } else if (name === '[I모임] 내향형 모여라') {
+              history.push('/channeli');
+            } else if (name === '[F모임] 감정형 모여라') {
+              history.push('/channelf');
+            } else if (name === '[T모임] 사고형 모여라') {
+              history.push('/channelt');
             }
           }}
         >
