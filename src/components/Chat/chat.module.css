@@ -40,9 +40,9 @@
 }
 
 .userImage {
-  min-width: 82px;
+  max-width: 82px;
   height: 82px;
-  border-radius: 41px;
+  border-radius: 50%;
   object-fit: cover;
   margin-right: 20px;
 }
