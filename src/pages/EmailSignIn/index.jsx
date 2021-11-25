@@ -77,7 +77,7 @@ const EmailSignIn = () => {
             id='email'
             name='email'
             type='text'
-            placeholder='아이디로 설정할 이메일을 입력해주세요'
+            placeholder='이메일을 입력해주세요'
             defaultValue={email}
             className={classnames(
               'email',
