@@ -19,9 +19,13 @@ import ChatRoom from './ChatRoom';
 import Search from './Search';
 import EmailSignIn from './EmailSignIn';
 import FindPwd from './FindPwd';
-
 import Compatibility from './Compatibility';
 import CompatibilityResult from './CompatibilityResult';
+import GameWrite from './GameWrite';
+import GameList from './GameList';
+import GameDetail from './GameDetail';
+import GameResult from './GameResult';
+
 export {
   SignIn,
   SignUp,
@@ -46,4 +50,8 @@ export {
   FindPwd,
   Compatibility,
   CompatibilityResult,
+  GameWrite,
+  GameList,
+  GameDetail,
+  GameResult,
 };
