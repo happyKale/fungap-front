@@ -81,7 +81,8 @@
   cursor: pointer;
 }
 
-.bottomBanner {
+.bottomBanner1,
+.bottomBanner2 {
   width: calc(100% + 40px);
   height: 116px;
 
@@ -95,8 +96,12 @@
   cursor: pointer;
 }
 
-.bottomBanner > span {
+.bottomBanner1 > span {
   font-weight: bolder;
   font-size: 20px;
   line-height: 116px;
+}
+
+.bottomBanner2 {
+  background: url('../../assets/bottomBanner2.png') no-repeat center;
 }
