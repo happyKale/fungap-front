@@ -1,0 +1,35 @@
+.container {
+  display: none;
+  height: 40px;
+  background-color: rgba(41, 42, 44, 0.85);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin: auto;
+  position: fixed;
+  top: 380px;
+  animation: fadeout 0.3s;
+  animation-delay: 1.4s;
+}
+@media screen and (max-width: 429px) {
+  .container {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 430px) {
+  .container {
+    width: 390px;
+  }
+}
+@keyframes fadeout {
+  from {
+    display: block;
+    opacity: 0.85;
+  }
+  to {
+    display: block;
+    opacity: 0;
+  }
+}
