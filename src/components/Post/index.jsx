@@ -26,12 +26,16 @@ const Post = ({
   return (
     <React.Fragment>
       <div className={direction === 'row' ? style.rowFlex : style.columnFlex}>
-        <img
-          className={direction === 'row' ? style.rowImg : style.columnImg}
-          src={board_image}
-          alt='임시이미지'
-          onClick={movePostDetail}
-        />
+        <div
+          className={direction === 'row' ? style.rowImgBox : style.columnImgBox}
+        >
+          <img
+            className={direction === 'row' ? style.rowImg : style.columnImg}
+            src={board_image}
+            alt='임시이미지'
+            onClick={movePostDetail}
+          />
+        </div>
         <div className={style.textContent}>
           <p className={style.title} onClick={movePostDetail}>
             {board_title}
