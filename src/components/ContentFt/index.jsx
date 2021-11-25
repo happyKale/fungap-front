@@ -8,6 +8,7 @@ const ContentFt = ({ post }) => {
   const commentCount = useSelector(state => state.comment.list)?.length;
 
   const {
+    mode: modeState,
     view_count: viewCount,
     board_id: boardId,
     like_count: likeCount,
@@ -29,6 +30,7 @@ const ContentFt = ({ post }) => {
       </div>
       <div className={style.buttons}>
         <LikeButton
+          mode={modeState}
           board_id={boardId}
           like_count={likeCount}
           like_state={likeState}
