@@ -22,6 +22,8 @@ import Scenario from './Scenario';
 import EmailSignIn from './EmailSignIn';
 import EmailSignUp from './EmailSignUp';
 import ScrollRestoration from './ScrollRestoration';
+import ChatLog from './ChatLog';
+import ChatInput from './ChatInput';
 
 export {
   TypeOfMbti,
@@ -48,4 +50,6 @@ export {
   EmailSignIn,
   EmailSignUp,
   ScrollRestoration,
+  ChatLog,
+  ChatInput,
 };
