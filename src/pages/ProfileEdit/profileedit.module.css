@@ -1,157 +1,45 @@
-.wrap {
-  height: 100vh;
+/* goback component 높이 수정 */
+.wrap > div {
+  background-position: 20px 52%;
+}
+.wrap > div > h2 {
+  padding: 40px 0;
 }
 
-.editImage > input {
-  display: none;
-}
-
-.editImage {
-  width: 30px;
-  height: 30px;
-  display: block;
-  margin: auto;
-  position: relative;
-  left: 40px;
-  top: 15px;
-}
-
-.editImage > label {
-  cursor: pointer;
-}
-
-.editImage > label > img {
-  width: 30px;
-  border-radius: 50%;
-  background-color: #c4c4c4;
-  position: relative;
-  z-index: 1;
-}
-
-.background {
-  width: calc(100% + 40px);
-  height: 105px;
-
-  background-color: #f7de6f;
-
-  position: relative;
-
-  right: 20px;
-
-  z-index: 1;
-}
-
-.background > Goback {
-  z-index: 2;
-}
-
-.background > div:nth-child(1) {
-  background: url(../../assets/btn_left.png) no-repeat center;
-  background-size: contain;
-  width: 32px;
-  height: 32px;
-
-  position: relative;
-  right: 30px;
-
-  cursor: pointer;
-}
-
-.background > div:nth-child(3) {
-  width: 32px;
-}
-
-.background > p {
-  font-size: 19px;
-  font-weight: 700;
-
-  line-height: 32px;
-  margin: 0px;
-}
-
-.userImage {
-  width: 112px;
-  height: 112px;
-  border-radius: 56px;
-  display: block;
-  margin: auto;
-  position: relative;
-  bottom: 94px;
-}
-
-.inputContent > input {
-  width: 96%;
-  height: 32px;
-
-  padding: 5px;
-  margin-bottom: 21px;
-
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 400;
-}
-
-.inputContent > p {
-  font-weight: 600;
-  margin-bottom: 9px;
-}
-
-.inputContent > select {
-  width: 100%;
-  height: 46px;
-  border-radius: 12px;
-  font-size: 16px;
-
-  padding: 10px;
-}
-
-.onEditBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin: auto;
-  width: 100%;
-  height: 45px;
-
-  font-size: 16px;
-
-  border-radius: 100px;
-  background-color: #f7de6f;
-
-  position: relative;
-  top: 60px;
-
-  cursor: pointer;
-}
-
-.offEditBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin: auto;
-  width: 100%;
-  height: 45px;
-
-  font-size: 16px;
-
-  border-radius: 100px;
-  background-color: #c2c2c2;
-
-  position: relative;
-  top: 60px;
-
-  cursor: pointer;
-}
-
-.inputContent {
+.editBox {
   padding-top: 50px;
 }
+.editBox > p {
+  font-size: 15px;
+  margin: 0 0 5px 0;
+}
+.editBox > input:nth-of-type(1) {
+  margin-bottom: 40px;
+}
+.input {
+  width: 100%;
+  border: 1px solid #dfdfdf;
+  border-radius: 12px;
+  padding: 15px 0 15px 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
 
-.goback {
-  position: relative;
-  bottom: 80px;
-
-  z-index: 2;
+.btnEdit {
+  width: 100%;
+  margin-top: 100px;
+  border: none;
+  border-radius: 100px;
+  padding: 15px 0;
+  font-size: 15px;
+  cursor: pointer;
+  color: #a5a5a5;
+  text-align: center;
+}
+.btnEditOn {
+  background-color: #f7de6f;
+  color: #333;
+}
+.btnEditOff {
+  background-color: #dfdfdf;
 }
