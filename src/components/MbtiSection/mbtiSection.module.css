@@ -21,40 +21,8 @@
   position: relative;
   margin-top: 70px;
 }
-.mbtiContentBox {
-  padding: 16px;
-  padding-bottom: 0;
-}
-.mbtiContentBox:last-child > div {
-  border-bottom: none;
-}
-.mbtiBox {
-  width: 100%;
-  border-bottom: 1px solid #dfdfdf;
-  padding-bottom: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-}
-.mbtiBox:nth-child(5n) {
-  border: none;
-  padding-bottom: 15px;
-  margin-bottom: 10px;
-}
-.mbtiName {
-  width: 50px;
-  font-weight: 700;
-  font-size: 20px;
-  text-align: center;
-  box-sizing: border-box;
-  line-height: 30px;
-}
-.mbtiDesc {
-  width: calc(100% - 60px);
-  font-size: 15px;
-  box-sizing: border-box;
-}
+
+/* box title color */
 .green {
   background-color: #daebe3;
 }
