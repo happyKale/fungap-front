@@ -1,10 +1,14 @@
 import React from 'react';
-import pinkheart from '../../assets/heart_pink.png';
-import heart from '../../assets/heart.png';
+// redux
+import { useDispatch } from 'react-redux';
+import { postActions } from '@redux/modules/post';
+// route
+import { history } from '@redux/configureStore';
+// css
 import style from './post.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { postActions } from '../../redux/modules/post';
-import { history } from '../../redux/configureStore';
+// images
+import pinkheart from '@assets/heart_pink.png';
+import heart from '@assets/heart.png';
 
 const Post = ({
   isAdmin,
@@ -17,22 +21,41 @@ const Post = ({
   like_state,
   direction,
 }) => {
-  const movePostDetail = () => {
-    history.push(`/detail/${board_id}`);
+  const dispatch = useDispatch();
+
+  const handleClick = () => history.push(`/detail/${board_id}`);
+
+  const editPost = () => {
+    dispatch(postActions.setEditPost(board_id));
+
+    history.push(`/admin_write/${board_id}`);
   };
 
-  const dispatch = useDispatch();
+  const deletePost = () => {
+    const result = window.confirm(
+      `'${board_title}' 게시글을 삭제하시겠습니까?`,
+    );
+
+    if (!result) return false;
+
+    dispatch(postActions.deletePostDB(board_id));
+  };
+
   return (
-    <React.Fragment>
+    <>
       <div className={direction === 'row' ? style.rowFlex : style.columnFlex}>
-        <img
-          className={direction === 'row' ? style.rowImg : style.columnImg}
-          src={board_image}
-          alt='임시이미지'
-          onClick={movePostDetail}
-        />
+        <div
+          className={direction === 'row' ? style.rowImgBox : style.columnImgBox}
+        >
+          <img
+            className={direction === 'row' ? style.rowImg : style.columnImg}
+            src={board_image}
+            alt='임시이미지'
+            onClick={handleClick}
+          />
+        </div>
         <div className={style.textContent}>
-          <p className={style.title} onClick={movePostDetail}>
+          <p className={style.title} onClick={handleClick}>
             {board_title}
           </p>
           <div className={style.content}>
@@ -48,37 +71,18 @@ const Post = ({
             <span>{like_count}</span>
           </button>
         </div>
+        {isAdmin && (
+          <div className={style.buttonBox}>
+            <button className={style.button} onClick={editPost}>
+              수정
+            </button>
+            <button className={style.button} onClick={deletePost}>
+              삭제
+            </button>
+          </div>
+        )}
       </div>
-      {isAdmin && (
-        <div className={style.buttonBox}>
-          <button
-            className={style.button}
-            onClick={() => {
-              console.log('수정함');
-              dispatch(postActions.setEditPost(board_id));
-              history.push(`/admin_write/${board_id}`);
-            }}
-          >
-            수정
-          </button>
-          <button
-            className={style.button}
-            onClick={() => {
-              const result = window.confirm(
-                `'${board_title}' 게시글을 삭제하시겠습니까?`,
-              );
-              if (result) {
-                dispatch(postActions.deletePostDB(board_id));
-              } else {
-                return;
-              }
-            }}
-          >
-            삭제
-          </button>
-        </div>
-      )}
-    </React.Fragment>
+    </>
   );
 };
 
