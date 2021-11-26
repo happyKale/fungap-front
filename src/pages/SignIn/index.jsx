@@ -1,7 +1,13 @@
 import React from 'react';
-
-import { GoogleSignIn, KakaoSignIn, NaverSignIn } from '../';
-import { EmailSignIn, EmailSignUp } from '../../components';
+// components
+import {
+  GoogleSignIn,
+  KakaoSignIn,
+  NaverSignIn,
+  SignInButton,
+  SignUpButton,
+} from '@components/';
+// css
 import style from './signin.module.css';
 
 const SignIn = props => {
@@ -14,8 +20,8 @@ const SignIn = props => {
         <NaverSignIn />
         <GoogleSignIn />
         <p className={style.or}>또는</p>
-        <EmailSignIn />
-        <EmailSignUp />
+        <SignInButton />
+        <SignUpButton />
       </div>
     </div>
   );

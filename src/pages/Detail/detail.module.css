@@ -1,3 +1,11 @@
+.image > img {
+  position: relative;
+  left: -20px;
+  top: 0;
+  width: calc(100% + 40px);
+  height: auto;
+}
+
 .title {
   text-align: center;
   font-size: 18px;
@@ -6,46 +14,9 @@ h3.title {
   text-align: left;
   font-size: 20px;
 }
-.title > span {
-  display: inline-block;
-  width: 250px;
-  padding: 0 5px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
-  /* 멀티라인 글자 수 제한 */
-  /* overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 10; 라인수
-  -webkit-box-orient: vertical;
-  word-wrap: break-word; */
-}
-
-.image > img {
-  position: relative;
-  left: -20px;
-  top: 0;
-  width: calc(100% + 40px);
-  height: auto;
-}
 .desc {
   font-size: 16px;
-}
-.heart {
-  display: inline-block;
-  margin-bottom: 20px;
-  border: 1px solid #333;
-  border-radius: 20px;
-  padding: 5px 5px 5px 25px;
-  cursor: pointer;
-}
-.like {
-  background: url('../../assets/heart_pink.png') no-repeat 8px center;
-}
-.unlike {
-  background: url('../../assets/heart.png') no-repeat 8px center;
 }
 
 .contents {
