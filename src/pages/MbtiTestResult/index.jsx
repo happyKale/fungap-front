@@ -35,7 +35,7 @@ const MbtiTestResult = props => {
       kakaoBtn.click();
     }
     if (id === 'reset') {
-      history.replace('/compatibility');
+      history.replace('/mbti/test');
     }
   };
 
