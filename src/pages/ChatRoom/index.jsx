@@ -1,49 +1,47 @@
 import React from 'react';
-import style from './chatRoom.module.css';
-import { Goback, Scenario } from '../../components';
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+// css
+import style from './chatRoom.module.css';
+// components
+import { Goback, Scenario } from '@components';
+// images
+import profile from '@assets/profileplaceholder.png';
+import jinro from '@assets/friend_jinro.png';
 
-import profile from '../../assets/profileplaceholder.png';
-import jinro from '../../assets/friend_jinro.png';
+const mbtiList = [
+  'INFJ',
+  'INFP',
+  'ENFJ',
+  'ENFP',
+  'ISTP',
+  'ISFP',
+  'ESTP',
+  'ESFP',
+  'INTP',
+  'INTJ',
+  'ENTJ',
+  'ENTP',
+  'ISTJ',
+  'ISFJ',
+  'ESTJ',
+  'ESFJ',
+];
+
+const OTHER_FONT_THEME = {
+  background: '#f5f8fb',
+  fontFamily: 'Helvetica Neue',
+  headerBgColor: '#3441EC',
+  headerFontColor: '#fff',
+  headerFontSize: '16px',
+  botBubbleColor: '#F3F3F3',
+  botFontColor: '#000',
+  userBubbleColor: '#F7DE6F',
+  userFontColor: '#4a4a4a',
+};
 
 const ChatRoom = props => {
-  const dispatch = useDispatch();
-  const chatId = props.match.params.id;
-  // Goback의 children은 친구들 리스트에서 chatId에 해당하는 친구의 이름을 가져오면 될 듯.
   const userImg = JSON.parse(sessionStorage.getItem('user'));
-  const mbtiList = [
-    'INFJ',
-    'INFP',
-    'ENFJ',
-    'ENFP',
-    'ISTP',
-    'ISFP',
-    'ESTP',
-    'ESFP',
-    'INTP',
-    'INTJ',
-    'ENTJ',
-    'ENTP',
-    'ISTJ',
-    'ISFJ',
-    'ESTJ',
-    'ESFJ',
-  ];
-
-  const list = [0];
-  const otherFontTheme = {
-    background: '#f5f8fb',
-    fontFamily: 'Helvetica Neue',
-    headerBgColor: '#3441EC',
-    headerFontColor: '#fff',
-    headerFontSize: '16px',
-    botBubbleColor: '#F3F3F3',
-    botFontColor: '#000',
-    userBubbleColor: '#F7DE6F',
-    userFontColor: '#4a4a4a',
-  };
 
   const steps = [
     {
@@ -81,42 +79,41 @@ const ChatRoom = props => {
   ];
 
   return (
-    <React.Fragment>
-      <Goback page='/chatting'>캐릭터</Goback>
-      <ThemeProvider theme={otherFontTheme}>
+    <>
+      <Goback>캐릭터</Goback>
+      <ThemeProvider theme={OTHER_FONT_THEME}>
         <div className={style.chatBox}>
-          {list.map(item => {
-            return (
-              <ChatBot
-                bubbleStyle={{ borderRadius: '8px', marginBottom: '10px' }}
-                contentStyle={{
-                  height: 'calc(100% - 70px)',
-                  width: 'calc(100%)',
-                  boxsizing: 'border-box',
-                  border: 'none',
-                  padding: '0px 20px 0px 0px',
-                  border: 'none',
-                }}
-                footerStyle={{
-                  margin: '0px 20px 0px 0px',
-                  borderTop: 'none',
-                  borderColor: 'white',
-                }}
-                botAvatar={jinro}
-                userAvatar={userImg?.user_image ? userImg?.user_image : profile}
-                steps={steps}
-                customStyle={{
-                  boxShadow: 'none',
-                  padding: '0px',
-                  margin: '0px 0px 0px 0px',
-                  display: 'block',
-                }}
-              ></ChatBot>
-            );
-          })}
+          <ChatBot
+            bubbleStyle={{ borderRadius: '8px', marginBottom: '10px' }}
+            contentStyle={{
+              height: 'calc(100% - 60px)',
+              width: 'calc(100%)',
+              boxsizing: 'border-box',
+              border: 'none',
+              padding: '0px 20px 0px 0px',
+            }}
+            inputStyle={{
+              border: '3px solid rgb(245, 211, 59)',
+            }}
+            placeholder='ex) INFP'
+            footerStyle={{
+              margin: '0px 20px 0px 0px',
+              borderTop: 'none',
+              borderColor: 'white',
+            }}
+            botAvatar={jinro}
+            userAvatar={userImg?.user_image ? userImg?.user_image : profile}
+            steps={steps}
+            customStyle={{
+              boxShadow: 'none',
+              padding: '0px',
+              margin: '0px 0px 0px 0px',
+              display: 'block',
+            }}
+          ></ChatBot>
         </div>
       </ThemeProvider>
-    </React.Fragment>
+    </>
   );
 };
 
