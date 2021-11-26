@@ -39,8 +39,6 @@ const LikeButton = ({ board_id, like_count, like_state, mode }) => {
     } else {
       apis.clikeLikeButton(board_id, { likeState });
     }
-
-    apis.clikeLikeButton(board_id, { likeState });
   };
 
   useEffect(() => {
