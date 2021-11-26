@@ -31,6 +31,7 @@ const apis = {
 
   //게시물
   getPost: () => instance.get('/board'),
+  getMorePost: (sort, page) => instance.get(`/board?sort=${sort}&page=${page}`),
   searchPost: keyword => instance.post(`/board/search?keyword=${keyword}`),
 
   // 게시물 - 관리자
