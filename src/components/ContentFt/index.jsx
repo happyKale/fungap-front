@@ -1,20 +1,21 @@
 import React from 'react';
+// redux
 import { useSelector } from 'react-redux';
-
-import { LikeButton, KakaoShareButton } from '..';
+// components
+import { LikeButton, KakaoShareButton } from '@components';
+// css
 import style from './contentFt.module.css';
 
 const ContentFt = ({ post }) => {
   const commentCount = useSelector(state => state.comment.list)?.length;
-
   const {
+    mode: modeState,
     view_count: viewCount,
     board_id: boardId,
     like_count: likeCount,
     like_state: likeState,
     board_title: boardTitle,
   } = post;
-
   const data = {
     title: boardTitle,
     likeCount,
@@ -29,6 +30,7 @@ const ContentFt = ({ post }) => {
       </div>
       <div className={style.buttons}>
         <LikeButton
+          mode={modeState}
           board_id={boardId}
           like_count={likeCount}
           like_state={likeState}
