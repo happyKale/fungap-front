@@ -19,9 +19,17 @@ import ChatRoom from './ChatRoom';
 import Search from './Search';
 import EmailSignIn from './EmailSignIn';
 import FindPwd from './FindPwd';
-
 import Compatibility from './Compatibility';
 import CompatibilityResult from './CompatibilityResult';
+import RoomI from './SocketChatroom/RoomI';
+import RoomE from './SocketChatroom/RoomE';
+import RoomF from './SocketChatroom/RoomF';
+import RoomT from './SocketChatroom/RoomT';
+import ChannelI from './SocketChannel/ChannelI';
+import ChannelE from './SocketChannel/ChannelE';
+import ChannelF from './SocketChannel/ChannelF';
+import ChannelT from './SocketChannel/ChannelT';
+
 export {
   SignIn,
   SignUp,
@@ -46,4 +54,12 @@ export {
   FindPwd,
   Compatibility,
   CompatibilityResult,
+  RoomI,
+  RoomE,
+  RoomF,
+  RoomT,
+  ChannelI,
+  ChannelE,
+  ChannelT,
+  ChannelF,
 };
