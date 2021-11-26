@@ -26,6 +26,14 @@ import {
   Search,
   Compatibility,
   CompatibilityResult,
+  RoomI,
+  RoomE,
+  RoomF,
+  RoomT,
+  ChannelI,
+  ChannelE,
+  ChannelF,
+  ChannelT,
 } from '../pages';
 import { Navigation, ScrollRestoration } from '../components';
 import style from './App.module.css';
@@ -80,6 +88,14 @@ function App() {
             exact
             component={CompatibilityResult}
           />
+          <Route path='/roomi' exact component={RoomI} />
+          <Route path='/roome' exact component={RoomE} />
+          <Route path='/roomf' exact component={RoomF} />
+          <Route path='/roomt' exact component={RoomT} />
+          <Route path='/channeli' exact component={ChannelI} />
+          <Route path='/channele' exact component={ChannelE} />
+          <Route path='/channelf' exact component={ChannelF} />
+          <Route path='/channelt' exact component={ChannelT} />
         </ConnectedRouter>
       </div>
     </div>
