@@ -5,6 +5,7 @@ import style from './post.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { postActions } from '../../redux/modules/post';
 import { history } from '../../redux/configureStore';
+import { LikeButton } from '../../components';
 
 const Post = ({
   isAdmin,
@@ -39,14 +40,20 @@ const Post = ({
             <p className={style.viewCount}>조회수 {view_count}</p>
             <p className={style.commentCount}>댓글 {comment_count}</p>
           </div>
-          <button className={style.heartButton}>
+          {/* <button className={style.heartButton}>
             {JSON.parse(like_state) ? (
               <img className={style.heartImage} src={pinkheart} alt='좋아요' />
             ) : (
               <img className={style.heartImage} src={heart} alt='좋아요' />
             )}
             <span>{like_count}</span>
-          </button>
+          </button> */}
+          <LikeButton
+            post
+            board_id={board_id}
+            like_count={like_count}
+            like_state={like_state}
+          />
         </div>
       </div>
       {isAdmin && (

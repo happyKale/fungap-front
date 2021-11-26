@@ -9,6 +9,7 @@ import unlikeImage from '../../assets/heart.png';
 import likeImage from '../../assets/heart_pink.png';
 
 const LikeButton = props => {
+  const status = props.post ? true : false;
   const postId = props?.board_id;
   const isLogin = useSelector(state => state.user.is_login);
 
@@ -45,7 +46,10 @@ const LikeButton = props => {
 
   return (
     <>
-      <button className={style.heartButton} onClick={clickLikeButton}>
+      <button
+        className={status ? style.postHeartButton : style.heartButton}
+        onClick={clickLikeButton}
+      >
         <img
           className={style.heartImage}
           alt='하트이미지'

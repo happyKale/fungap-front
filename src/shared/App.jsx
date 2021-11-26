@@ -3,6 +3,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Route } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { Canvas } from '../shared/canvas';
 import { userActions } from '../redux/modules/user';
 import { history } from '../redux/configureStore';
 import {
@@ -45,6 +46,23 @@ function App() {
 
   useEffect(() => {
     dispatch(userActions.signinCheckDB());
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(
+      window.navigator.userAgent,
+    );
+
+    function handleCanvas() {
+      return new Canvas();
+    }
+
+    if (!isMobile) handleCanvas();
+
+    return () =>
+      window.removeEventListener('load', () => {
+        if (isMobile) {
+          handleCanvas();
+        }
+      });
   }, []);
 
   return (
