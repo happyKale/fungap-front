@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getToken } from './token';
 
 const instance = axios.create({
-  baseURL: 'https://stravinest.shop',
+  baseURL: process.env.REACT_APP_API_BASE_URL,
   withCredentials: true,
   // https://stravinest.shop,
   // http://nyannyan.shop
