@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
-
-import { userActions } from '../../redux/modules/user';
-import { Goback, TypeOfMbti } from '../../components';
+// redux
+import { useDispatch, useSelector } from 'react-redux';
+import { userActions } from '@redux/modules/user';
+// components
+import { Goback, SelectMbti } from '@components';
+// css
 import style from './signup.module.css';
+// util
+import { idRegExp, pwdRegExp } from '@shared/validation';
 
 const SignUp = props => {
   const dispatch = useDispatch();
@@ -34,19 +38,15 @@ const SignUp = props => {
     });
 
     // select box 폰트 컬로 변경
-    if (name === 'mbti' && e.target.value !== null) {
-      setTextColor('#000000');
-    }
+    if (name === 'mbti' && e.target.value !== null) setTextColor('#000000');
   };
 
   const handleBlur = e => {
     const { classList } = e.target;
 
-    // 아아디
+    // 아이디
     if (classList.contains('email')) {
-      const regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
-      if (!regExp.test(email)) {
+      if (!idRegExp.test(email)) {
         setCheckEmail(false);
         return false;
       } else {
@@ -62,10 +62,7 @@ const SignUp = props => {
 
     // 비밀번호
     if (classList.contains('pwd')) {
-      // 비밀번호 형식 체크(8이상의 영문 숫자 조합)
-      const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
-      if (!regExp.test(pwd)) {
+      if (!pwdRegExp.test(pwd)) {
         setCheckPwd(false);
         return false;
       } else {
@@ -165,7 +162,7 @@ const SignUp = props => {
             id='nickname'
             name='nickname'
             type='text'
-            placeholder='닉네임'
+            placeholder='닉네임을 입력해주세요'
             defaultValue={nickname}
             className={classnames(
               'nickname',
@@ -179,7 +176,7 @@ const SignUp = props => {
         </p>
         <p className={style.inputBox}>
           <label htmlFor='mbti'>MBTI유형</label>
-          <TypeOfMbti
+          <SelectMbti
             id='mbti'
             name='mbti'
             color={textColor}

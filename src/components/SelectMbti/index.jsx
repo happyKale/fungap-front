@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-
-import style from './typeofmbti.module.css';
+import React from 'react';
+// css
+import style from './selectMbti.module.css';
 
 const mbtiList = [
   'MBTI를 선택해주세요',
@@ -22,14 +22,14 @@ const mbtiList = [
   'ESFP',
 ];
 
-const TypeOfMbti = ({ id, name, color, ...rest }) => {
+const SelectMbti = ({ id, name, color, ...rest }) => {
   return (
     <>
       <select
         id={id}
         name={name}
         className={style.select}
-        style={{ color: color }}
+        style={{ color }}
         {...rest}
       >
         {mbtiList.map((mbti, index) => {
@@ -40,4 +40,4 @@ const TypeOfMbti = ({ id, name, color, ...rest }) => {
   );
 };
 
-export default TypeOfMbti;
+export default SelectMbti;
