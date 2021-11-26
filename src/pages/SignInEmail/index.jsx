@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
+// redux
+import { useDispatch, useSelector } from 'react-redux';
+import { userActions } from '@redux/modules/user';
+// route
+import { history } from '@redux/configureStore';
+// components
+import { Goback } from '@components';
+// util
+import { idRegExp, pwdRegExp } from '@shared/validation';
+// css
+import style from './signinEmail.module.css';
 
-import { history } from '../../redux/configureStore';
-import { userActions } from '../../redux/modules/user';
-import { Goback } from '../../components';
-import style from './emailSignIn.module.css';
-
-const EmailSignIn = () => {
+const SignInEmail = () => {
   const dispatch = useDispatch();
   // email 중복 체크(중복 된 이메일 있으면 true, 없으면 false)
   const emailCheckStatus = useSelector(state => state.user.is_email);
@@ -32,11 +37,9 @@ const EmailSignIn = () => {
   const handleBlur = e => {
     const { classList } = e.target;
 
-    // 아아디
+    // 아이디
     if (classList.contains('email')) {
-      const regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
-      if (!regExp.test(email)) {
+      if (!idRegExp.test(email)) {
         setCheckEmail(false);
         return false;
       } else {
@@ -46,10 +49,7 @@ const EmailSignIn = () => {
 
     // 비밀번호
     if (classList.contains('pwd')) {
-      // 비밀번호 형식 체크(8이상의 영문 숫자 조합)
-      const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
-      if (!regExp.test(pwd)) {
+      if (!pwdRegExp.test(pwd)) {
         setCheckPwd(false);
         return false;
       } else {
@@ -62,6 +62,8 @@ const EmailSignIn = () => {
     e.preventDefault();
     dispatch(userActions.signinDB(email, pwd));
   };
+
+  const handleClick = () => history.push('./signin_findpwd');
 
   return (
     <div>
@@ -77,7 +79,7 @@ const EmailSignIn = () => {
             id='email'
             name='email'
             type='text'
-            placeholder='아이디로 설정할 이메일을 입력해주세요'
+            placeholder='이메일을 입력해주세요'
             defaultValue={email}
             className={classnames(
               'email',
@@ -111,12 +113,7 @@ const EmailSignIn = () => {
             </span>
           )}
         </p>
-        <span
-          onClick={() => {
-            history.push('./signin_findpwd');
-          }}
-          className={style.pwdcheck}
-        >
+        <span onClick={handleClick} className={style.pwdcheck}>
           비밀번호를 잊었어요
         </span>
         <button
@@ -129,4 +126,4 @@ const EmailSignIn = () => {
   );
 };
 
-export default EmailSignIn;
+export default SignInEmail;
