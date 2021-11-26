@@ -1,10 +1,12 @@
 import React from 'react';
-
-import { history } from '../../redux/configureStore';
+// route
+import { history } from '@redux/configureStore';
+// css
 import style from './navigation.module.css';
-import home from '../../assets/home.svg';
-import chat from '../../assets/chat.svg';
-import user from '../../assets/user.svg';
+// images
+import home from '@assets/home.svg';
+import chat from '@assets/chat.svg';
+import user from '@assets/user.svg';
 
 const Navigation = props => {
   const handleClick = e => {
