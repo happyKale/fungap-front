@@ -1,0 +1,12 @@
+.recommendList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+.recommendList > div {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  background: url(../../assets/icon_search.png) no-repeat center;
+}
