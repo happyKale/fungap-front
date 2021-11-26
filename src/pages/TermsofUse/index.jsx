@@ -2,7 +2,7 @@ import React from 'react';
 // components
 import { Goback } from '@components';
 
-const TermsofUse = () => {
+const TermsOfUse = () => {
   return (
     <div>
       <Goback>약관 안내</Goback>
@@ -166,4 +166,4 @@ const TermsofUse = () => {
   );
 };
 
-export default TermsofUse;
+export default TermsOfUse;
