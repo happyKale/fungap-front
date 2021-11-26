@@ -7,7 +7,13 @@ import { history } from '../../redux/configureStore';
 
 const Goback = ({ children, page, color }) => {
   const handleClick = () => {
-    history.goBack();
+    if (page) {
+      console.log('페이지: ', page);
+      history.push(page);
+    } else {
+      console.log('페이지: ', page);
+      history.goBack();
+    }
   };
 
   return (

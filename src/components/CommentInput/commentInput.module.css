@@ -8,6 +8,7 @@
   height: 40px;
   margin-right: 10px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .form {
   position: relative;
@@ -17,7 +18,7 @@
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 12px;
-  padding: 15px 0 15px 10px;
+  padding: 15px 70px 15px 10px;
   font-size: 15px;
   box-sizing: border-box;
   outline: none;

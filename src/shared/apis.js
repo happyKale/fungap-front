@@ -66,6 +66,25 @@ const apis = {
 
   //궁합 페이지
   getTestResult: info => instance.post('/mbti/test', info),
+
+  // 게임
+  getGames: () => instance.get('/games'),
+  getGame: game_id => instance.get(`/games/${game_id}`),
+  addGame: game => instance.post('/games/write', game),
+  editGame: (game_id, game) => instance.patch(`/games/${game_id}/edit`, game),
+  deleteGame: game_id => instance.delete(`/games/${game_id}/delete`),
+  participateGame: (game_id, game_quest) =>
+    instance.post(`/games/${game_id}`, game_quest),
+  clickGameLikeButton: game_id => instance.post(`/games/${game_id}/like`),
+  getGameComment: game_id => instance.get(`/games/${game_id}/comment`),
+  addGameComment: (game_id, comment) =>
+    instance.post(`/games/${game_id}/comment`, comment),
+  deleteGameComment: (game_id, game_comment_id) =>
+    instance.delete(`/games/${game_id}/comment/${game_comment_id}`),
+  editGameComment: (game_id, game_comment_id, comment) =>
+    instance.patch(`/games/${game_id}/comment/${game_comment_id}`, comment),
+  getOrderPopularGame: () => instance.get(`/games/popularity`),
+  getOrderViewGame: () => instance.get(`/games/view`),
 };
 
 export default apis;

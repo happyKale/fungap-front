@@ -13,7 +13,7 @@ const KakaoShareButton = ({ kakaoData }) => {
         className={style.btnKakaoShare}
         onClick={() => createKakaoButton(kakaoData)}
       >
-        <img src={btn_kakao_share} alt='카카카오 공유하기' />
+        <img src={btn_kakao_share} alt='카카오 공유하기' />
       </button>
     </>
   );

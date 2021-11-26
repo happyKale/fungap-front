@@ -37,7 +37,7 @@ const Detail = props => {
             <MbtiDescList list={mbtiList} />
           </div>
           <ContentFt post={post} />
-          <Comments boardId={id} />
+          <Comments boardId={id} mode={'board'} />
         </div>
       </>
     );

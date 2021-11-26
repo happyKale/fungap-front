@@ -27,6 +27,10 @@ import {
   Search,
   Compatibility,
   CompatibilityResult,
+  GameWrite,
+  GameDetail,
+  GameList,
+  GameResult,
 } from '../pages';
 import { Navigation, ScrollRestoration } from '../components';
 import style from './App.module.css';
@@ -39,22 +43,22 @@ function App() {
   useEffect(() => {
     dispatch(userActions.signinCheckDB());
 
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(
-      window.navigator.userAgent,
-    );
+    // const isMobile = /iPhone|iPad|iPod|Android/i.test(
+    //   window.navigator.userAgent,
+    // );
 
-    function handleCanvas() {
-      return new Canvas();
-    }
+    // function handleCanvas() {
+    //   return new Canvas();
+    // }
 
-    if (!isMobile) handleCanvas();
+    // if (!isMobile) handleCanvas();
 
-    return () =>
-      window.removeEventListener('load', () => {
-        if (isMobile) {
-          handleCanvas();
-        }
-      });
+    // return () =>
+    //   window.removeEventListener('load', () => {
+    //     if (isMobile) {
+    //       handleCanvas();
+    //     }
+    //   });
   }, []);
 
   return (
@@ -93,6 +97,11 @@ function App() {
           <Route path='/chatting' exact component={Chatting} />
           <Route path='/chatroom/:id' exact component={ChatRoom} />
           <Route path='/compatibility' exact component={Compatibility} />
+          <Route path='/game_write' exact component={GameWrite} />
+          <Route path='/game_write/:id' exact component={GameWrite} />
+          <Route path='/games' exact component={GameList} />
+          <Route path='/game/:id' exact component={GameDetail} />
+          <Route path='/game/:id/result' exact component={GameResult} />
           <Route
             path='/compatibility/result/:id'
             exact

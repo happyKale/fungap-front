@@ -90,13 +90,17 @@ const ChatRoom = props => {
               <ChatBot
                 bubbleStyle={{ borderRadius: '8px', marginBottom: '10px' }}
                 contentStyle={{
-                  height: 'calc(100% - 70px)',
+                  height: 'calc(100% - 60px)',
                   width: 'calc(100%)',
                   boxsizing: 'border-box',
                   border: 'none',
                   padding: '0px 20px 0px 0px',
                   border: 'none',
                 }}
+                inputStyle={{
+                  border: '3px solid rgb(245, 211, 59)',
+                }}
+                placeholder='ex) INFP'
                 footerStyle={{
                   margin: '0px 20px 0px 0px',
                   borderTop: 'none',

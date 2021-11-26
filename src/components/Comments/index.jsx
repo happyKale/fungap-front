@@ -6,17 +6,21 @@ import { commentActions } from '../../redux/modules/comment';
 import { Comment, CommentInput } from '../';
 import style from './comments.module.css';
 
-const Comments = ({ boardId }) => {
+const Comments = ({ boardId, mode }) => {
   const postId = parseInt(history.location.pathname.split('/')[2]);
   const dispatch = useDispatch();
   const [commentVisible, setCommentVisible] = useState(false);
   const comments = useSelector(state => state.comment.list);
-  const comment = comments.filter(item => {
-    return item.board_id === boardId;
+  let comment = comments.filter(item => {
+    if (mode === 'game') {
+      return item.game_id === boardId;
+    } else {
+      return item.board_id === boardId;
+    }
   });
 
   useEffect(() => {
-    dispatch(commentActions.getCommentDB(postId));
+    dispatch(commentActions.getCommentDB(postId, mode));
   }, []);
 
   const showTotalComment = () => {
@@ -25,14 +29,14 @@ const Comments = ({ boardId }) => {
 
   return (
     <div>
-      <CommentInput boardId={boardId} />
+      <CommentInput boardId={boardId} mode={mode} />
       <ul className={style.list}>
         {!commentVisible
           ? comment.slice(0, 5).map((item, index) => {
-              return <Comment key={index} {...item} />;
+              return <Comment key={index} {...item} mode={mode} />;
             })
           : comment.map((item, index) => {
-              return <Comment key={index} {...item} />;
+              return <Comment key={index} {...item} mode={mode} />;
             })}
       </ul>
       <div className={style.btnTotal}>

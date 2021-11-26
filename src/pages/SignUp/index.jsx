@@ -165,7 +165,7 @@ const SignUp = props => {
             id='nickname'
             name='nickname'
             type='text'
-            placeholder='닉네임'
+            placeholder='닉네임을 입력해주세요'
             defaultValue={nickname}
             className={classnames(
               'nickname',

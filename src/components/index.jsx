@@ -22,6 +22,10 @@ import Scenario from './Scenario';
 import EmailSignIn from './EmailSignIn';
 import EmailSignUp from './EmailSignUp';
 import ScrollRestoration from './ScrollRestoration';
+import ActionCompleteMessage from './ActionCompleteMessage';
+import GameMbtiChart from './GameMbtiChart';
+import GameParticipateChart from './GameParticipateChart';
+import GameChartBox from './GameChartBox';
 
 export {
   TypeOfMbti,
@@ -48,4 +52,8 @@ export {
   EmailSignIn,
   EmailSignUp,
   ScrollRestoration,
+  ActionCompleteMessage,
+  GameMbtiChart,
+  GameParticipateChart,
+  GameChartBox,
 };

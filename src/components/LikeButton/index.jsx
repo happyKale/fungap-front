@@ -12,6 +12,7 @@ const LikeButton = props => {
   const status = props.post ? true : false;
   const postId = props?.board_id;
   const isLogin = useSelector(state => state.user.is_login);
+  const mode = props?.mode;
 
   const [likeCount, setLikeCount] = useState(null);
   const [likeState, setLikeState] = useState(null);
@@ -38,7 +39,11 @@ const LikeButton = props => {
         setLikeCount(likeCount - 1);
         setLikeState('false');
       }
-      apis.clikeLikeButton(postId, { likeState });
+      if (mode === 'game') {
+        apis.clickGameLikeButton(postId);
+      } else {
+        apis.clikeLikeButton(postId, { likeState });
+      }
     } else {
       openModal();
     }

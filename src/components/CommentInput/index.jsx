@@ -7,7 +7,7 @@ import { Modal } from '../';
 import style from './commentInput.module.css';
 import defatulImg from '../../assets/profileplaceholder.png';
 
-const CommentInput = ({ boardId }) => {
+const CommentInput = ({ boardId, mode }) => {
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.user.is_login);
   const { user_image, nickname } =
@@ -44,7 +44,7 @@ const CommentInput = ({ boardId }) => {
       return false;
     }
 
-    dispatch(commentActions.addCommentDB(boardId, comment));
+    dispatch(commentActions.addCommentDB(boardId, comment, mode));
     setInput({
       comment: '',
     });
