@@ -1,17 +1,20 @@
 import React from 'react';
-
-import { createKakaoButton } from '../../shared/kakaoShare';
-import style from './kakao.module.css';
-import btn_kakao_share from '../../assets/btn_kakao_share.png';
+// util
+import { createKakaoButton } from '@shared/kakaoShare';
+// css
+import style from './kakaoShare.module.css';
+// images
+import btn_kakao_share from '@assets/btn_kakao_share.png';
 
 const KakaoShareButton = ({ kakaoData }) => {
+  const handleClick = () => createKakaoButton(kakaoData);
+
   return (
     <>
-      {/* Kakao share button */}
       <button
         id='kakao-link-btn'
         className={style.btnKakaoShare}
-        onClick={() => createKakaoButton(kakaoData)}
+        onClick={handleClick}
       >
         <img src={btn_kakao_share} alt='카카카오 공유하기' />
       </button>
