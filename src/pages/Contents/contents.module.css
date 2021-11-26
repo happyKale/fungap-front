@@ -7,3 +7,16 @@
 .commentCount {
   font-size: 14px;
 }
+.sortWrap {
+  margin: 0;
+}
+.sortWrap > label {
+  position: absolute;
+  left: -9999em;
+}
+.sortWrap > select {
+  border: none;
+  padding: 5px;
+  font-size: 14px;
+  outline: none;
+}
