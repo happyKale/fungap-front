@@ -1,18 +1,17 @@
 import React from 'react';
+// redux
 import { useDispatch } from 'react-redux';
+import { postActions } from '@redux/modules/post';
+// css
+import style from './sortContents.module.css';
 
-import { postActions } from '../../redux/modules/post';
-import style from './sortcontents.module.css';
-
-const SortContents = props => {
+const SortContents = ({ mode }) => {
   const dispatch = useDispatch();
 
   const handleChange = e => {
     const { value } = e.target;
 
-    // API 하나로 무한스크롤 (query이용)
-    // 1차 배포 무한스크롤 제외
-    if (value === 'date' || value === '') {
+    if (value === 'date') {
       dispatch(postActions.getPostDB());
     }
     if (value === 'like') {
