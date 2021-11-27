@@ -21,7 +21,6 @@ const createKakaoButton = value => {
       social: {
         likeCount: value.like_count ? value.like_count : 0,
         commentCount: value.comment_count ? value.comment_count : 0,
-        sharedCount: 333,
       },
       buttons: [
         {

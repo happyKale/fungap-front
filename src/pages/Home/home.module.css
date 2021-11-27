@@ -6,102 +6,24 @@
   grid-template-columns: 200px 200px;
   grid-template-columns: 1fr 1fr;
   position: relative;
-  padding-bottom: 130px;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 102px;
-  margin-bottom: 20px;
-}
-
-.logo {
-  background: url('../../assets/logo_yellow.png') no-repeat;
-  width: 100%;
-  height: 36px;
-}
-
-.icon {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: right;
-}
-
-.searchIcon {
-  background: url('../../assets/icon_search.png') no-repeat center;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-}
-
-.alramIcon {
-  background: url('../../assets/alram.png') no-repeat center;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-}
-
-.titleContent {
-  width: 100%;
-  margin: 20px 0px 5px 0px;
-
+.subTitle {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
+  margin: 20px 0px 5px 0px;
 }
-
-.titleContent > h2 {
+.subTitle > h2 {
   font-size: 20px;
   font-weight: 700;
 }
-
-.titleContent > span {
+.subTitle > span {
   vertical-align: text-bottom;
   margin: 28px 0px 0px 0px;
   font-weight: bold;
   font-size: 13px;
   cursor: pointer;
   color: #a5a5a5;
-}
-
-.middleBanner {
-  width: calc(100% + 40px);
-  height: 116px;
-
-  background: url('../../assets/middleBanner.png') no-repeat center;
-  background-size: contain;
-
-  position: absolute;
-  bottom: 0px;
-  left: -20px;
-
-  cursor: pointer;
-}
-
-.bottomBanner1,
-.bottomBanner2 {
-  width: calc(100% + 40px);
-  height: 116px;
-
-  background: url('../../assets/bottomBanner.png') no-repeat center;
-  background-size: contain;
-
-  position: absolute;
-  bottom: 0px;
-  left: -20px;
-
-  cursor: pointer;
-}
-
-.bottomBanner1 > span {
-  font-weight: bolder;
-  font-size: 20px;
-  line-height: 116px;
-}
-
-.bottomBanner2 {
-  background: url('../../assets/bottomBanner2.png') no-repeat center;
 }

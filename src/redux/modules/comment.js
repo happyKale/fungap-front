@@ -1,7 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import { produce } from 'immer';
-
-import apis from '../../shared/apis';
+import apis from '@shared/apis';
 
 // action type
 const SET_COMMENT = 'SET_COMMENT';
@@ -23,8 +22,6 @@ const editComment = createAction(EDIT_COMMENT, (comment_id, comment, mode) => ({
 // middleware
 const getCommentDB = (boardId, mode) => {
   return async (dispatch, getState, { history }) => {
-    // console.log('댓글 전체조회', boardId);
-
     try {
       if (mode === 'game') {
         const response = await apis.getGameComment(boardId);
@@ -50,8 +47,6 @@ const addCommentDB = (boardId, comment, mode) => {
       comment,
     };
 
-    // console.log('댓글 추가', boardId, commentData);
-
     try {
       if (mode === 'game') {
         const response = await apis.addGameComment(boardId, commentData);
@@ -72,8 +67,6 @@ const addCommentDB = (boardId, comment, mode) => {
 
 const editCommentDB = (boardId, commentId, comment, mode) => {
   return async (dispatch, getState, { history }) => {
-    // console.log('댓글 수정', boardId, commentId, comment);
-
     const commentData = { comment };
 
     try {
@@ -92,8 +85,6 @@ const editCommentDB = (boardId, commentId, comment, mode) => {
 
 const deleteCommentDB = (boardId, commentId, mode) => {
   return async (dispatch, getState, { history }) => {
-    // console.log('댓글 삭제', boardId, commentId);
-
     try {
       if (mode === 'game') {
         const response = await apis.deleteGameComment(boardId, commentId);

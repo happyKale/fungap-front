@@ -1,31 +1,25 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { Post } from '../../components';
-import { postActions } from '../../redux/modules/post';
+import React from 'react';
+// components
+import { Post } from '@components';
+// customhook
+import usePostList from '@hook/usePostList';
 
 const PostList = ({ isAdmin }) => {
-  const dispatch = useDispatch();
-  const list = useSelector(state => state.post.postList);
+  const { postList: list } = usePostList();
 
-  useEffect(() => {
-    dispatch(postActions.getPostDB());
-  }, []);
-
-  console.log('관리자 리스트: ', list);
   return (
-    <div>
+    <>
       {list?.map((post, index) => {
         return (
           <Post
-            isAdmin={isAdmin ? isAdmin : null}
             key={index}
+            isAdmin={isAdmin ? isAdmin : null}
             direction='row'
             {...post}
           />
         );
       })}
-    </div>
+    </>
   );
 };
 

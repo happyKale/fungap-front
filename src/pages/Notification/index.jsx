@@ -1,5 +1,6 @@
 import React from 'react';
-import { Goback } from '../../components';
+// components
+import { Goback } from '@components';
 
 const Notification = () => {
   return (

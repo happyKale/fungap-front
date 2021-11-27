@@ -1,17 +1,22 @@
 .wrap {
-  background: url('../../assets/btn_left.png') no-repeat 10px 65%;
+  position: relative;
+  left: -20px;
+  width: calc(100% + 40px);
+  background: url('../../assets/btn_left.png') no-repeat 20px 60%;
   background-size: auto;
   text-align: center;
   cursor: pointer;
 }
+.adminWrap {
+  left: 0px;
+  width: 100%;
+}
 .colorWrap {
-  background: #f7de70 url('../../assets/btn_left.png') no-repeat 10px 65%;
+  background: #f7de70 url('../../assets/btn_left.png') no-repeat 20px 60%;
   background-size: auto;
 }
-
 .title {
   margin: 0;
-  /* border-bottom: 1px solid #ccc; */
   padding: 30px 0 20px 0;
   font-size: 18px;
   font-weight: bold;

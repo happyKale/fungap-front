@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { Comments, ContentFt, Goback, MbtiDescList } from '../../components';
-import { postActions } from '../../redux/modules/post';
+import React from 'react';
+// components
+import { Comments, ContentFt, Goback, MbtiDescList } from '@components';
+// customhook
+import usePostList from '@hook/usePostList';
+// css
 import style from './detail.module.css';
 
 const Detail = props => {
-  const dispatch = useDispatch();
+  const { postList } = usePostList();
   const postId = parseInt(props.match.params.id);
-  const post = useSelector(state => state.post.board);
-
-  useEffect(() => {
-    dispatch(postActions.getDetailPostDB(postId));
-  }, []);
+  const post = postList?.find(item => item.board_id === postId);
 
   if (post) {
     const {
@@ -27,7 +24,7 @@ const Detail = props => {
     return (
       <>
         <div className={style.detail}>
-          <Goback page='/contents'>{title}</Goback>
+          <Goback>{title}</Goback>
           <div className={style.image}>
             <img src={img} alt={title} />
           </div>

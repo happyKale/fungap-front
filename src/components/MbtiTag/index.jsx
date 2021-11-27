@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-
+// css
 import style from './mbtiTag.module.css';
 
 const MbtiTag = ({ children, mbti }) => {
