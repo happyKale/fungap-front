@@ -126,13 +126,17 @@ const GameMbtiChart = props => {
         <span className={style.block} />
         <span className={style.questMsg}>{game?.game_quest1}</span>
         <div className={style.blank} />
-        <span className={style.count}>{quest1?.count}표</span>
+        <span className={style.count}>
+          {quest1?.count ? quest1?.count : 0}표
+        </span>
       </div>
       <div className={style.gameQuest2}>
         <span className={style.block} />
         <span className={style.questMsg}>{game?.game_quest2}</span>
         <div className={style.blank} />
-        <span className={style.count}>{quest2?.count}표</span>
+        <span className={style.count}>
+          {quest2?.count ? quest2?.count : 0}표
+        </span>
       </div>
       <div className={style.gameCountBox}>
         <span>총 참여수: </span>
