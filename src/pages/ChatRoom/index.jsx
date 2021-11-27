@@ -80,7 +80,7 @@ const ChatRoom = props => {
 
   return (
     <>
-      <Goback>캐릭터</Goback>
+      <Goback use='chatbot'>캐릭터</Goback>
       <ThemeProvider theme={OTHER_FONT_THEME}>
         <div className={style.chatBox}>
           <ChatBot
@@ -97,7 +97,6 @@ const ChatRoom = props => {
             }}
             placeholder='ex) INFP'
             footerStyle={{
-              margin: '0px 20px 0px 0px',
               borderTop: 'none',
               borderColor: 'white',
             }}

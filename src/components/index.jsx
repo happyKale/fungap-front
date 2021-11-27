@@ -28,6 +28,8 @@ import Scenario from './Scenario';
 import SignInButton from './SignInButton';
 import SignUpButton from './SignUpButton';
 import ScrollRestoration from './ScrollRestoration';
+import ChatLog from './ChatLog';
+import ChatInput from './ChatInput';
 import ActionCompleteMessage from './ActionCompleteMessage';
 import GameMbtiChart from './GameMbtiChart';
 import GameParticipateChart from './GameParticipateChart';
@@ -75,6 +77,8 @@ export {
   SignInButton,
   SignUpButton,
   ScrollRestoration,
+  ChatLog,
+  ChatInput,
   ActionCompleteMessage,
   GameMbtiChart,
   GameParticipateChart,

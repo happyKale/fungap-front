@@ -32,6 +32,14 @@ import {
   GameDetail,
   GameList,
   GameResult,
+  RoomI,
+  RoomE,
+  RoomF,
+  RoomT,
+  ChannelI,
+  ChannelE,
+  ChannelF,
+  ChannelT,
 } from '@pages';
 // components
 import { Navigation, ScrollRestoration } from '@components';
@@ -105,6 +113,14 @@ function App() {
           <Route path='/games' exact component={GameList} />
           <Route path='/game/:id' exact component={GameDetail} />
           <Route path='/game/:id/result' exact component={GameResult} />
+          <Route path='/roomi' exact component={RoomI} />
+          <Route path='/roome' exact component={RoomE} />
+          <Route path='/roomf' exact component={RoomF} />
+          <Route path='/roomt' exact component={RoomT} />
+          <Route path='/channeli' exact component={ChannelI} />
+          <Route path='/channele' exact component={ChannelE} />
+          <Route path='/channelf' exact component={ChannelF} />
+          <Route path='/channelt' exact component={ChannelT} />
         </ConnectedRouter>
       </div>
       <div className={style.bg}></div>

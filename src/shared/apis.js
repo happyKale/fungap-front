@@ -61,6 +61,10 @@ const apis = {
   //궁합 페이지
   getTestResult: info => instance.post('/mbti/test', info),
 
+  //소켓 로그데이터
+  getChatLogDate: roomname =>
+    instance.get(`/chat/chatlog?roomname=${roomname}`),
+
   // 게임
   getGames: () => instance.get('/games'),
   getGame: game_id => instance.get(`/games/${game_id}`),
