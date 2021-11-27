@@ -1,0 +1,60 @@
+.gameResultContainer {
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 1px 4px;
+  padding: 20px;
+  margin: 20px 0px 50px;
+  overflow: hidden;
+  height: auto;
+  transition: height 0.4s ease-out;
+  border-radius: 10px;
+}
+
+.gameResultTitle > span {
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 15px;
+  position: relative;
+  bottom: 5px;
+  left: 3px;
+}
+.gameResultTitle > button {
+  cursor: pointer;
+}
+
+.resultBtn {
+  font-size: 14px;
+  background-color: white;
+  margin-right: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px 5px;
+  position: relative;
+  transition: 0.1s ease-out;
+}
+.resultBtn:nth-child(2) {
+  border: 3px solid rgba(249, 201, 255, 0.6);
+  border-bottom: none;
+  top: 3px;
+  color: rgb(135, 67, 144);
+  font-weight: 700;
+  /* background-color: rgb(255, 250, 255); */
+}
+.resultBtn:nth-child(3) {
+  border: 3px solid rgba(255, 186, 179, 0.6);
+  border-bottom: none;
+  color: rgb(228, 86, 71);
+  font-weight: 700;
+  /* background-color: rgb(255, 251, 250); */
+}
+
+.gameResultInnerContainer {
+  border: 3px solid rgba(249, 201, 255, 0.6);
+  padding: 20px 10px;
+  border-radius: 10px;
+  /* background-color: rgb(255, 250, 255); */
+  overflow: hidden;
+  height: auto;
+  transition: height 0.4s ease-out;
+}
+.mbtiChartBorder {
+  border: 3px solid rgba(255, 186, 179, 0.6);
+}

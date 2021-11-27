@@ -1,12 +1,15 @@
 import React from 'react';
+// components
+import { Chat } from '@components';
+// css
 import style from './chatting.module.css';
-import { history } from '../../redux/configureStore';
-import { Chat } from '../../components';
-import jinro from '../../assets/friend_jinro.png';
-import Eimage from '../../assets/Eimage.png';
-import Iimage from '../../assets/Iimage.png';
-import Fimage from '../../assets/Fimage.png';
-import Timage from '../../assets/Timage.png';
+// images
+import jinro from '@assets/friend_jinro.png';
+import Eimage from '@assets/Eimage.png';
+import Iimage from '@assets/Iimage.png';
+import Fimage from '@assets/Fimage.png';
+import Timage from '@assets/Timage.png';
+
 const Chatting = () => {
   const friend = {
     name: '상담이',
@@ -43,15 +46,15 @@ const Chatting = () => {
   ];
 
   return (
-    <React.Fragment>
-      <p className={style.title}>채팅</p>
+    <>
+      <p className={style.title}>친구들</p>
       <div className={style.container}>
         <Chat key={friend.chatId} chat {...friend} />
         {socketChattingList.map((Chatting, index) => {
           return <Chat key={index} chat {...Chatting} />;
         })}
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

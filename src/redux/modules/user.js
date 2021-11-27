@@ -1,8 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 import { produce } from 'immer';
-
-import apis from '../../shared/apis';
-import { setToken, delToken } from '../../shared/token';
+import { setToken, delToken } from '@shared/token';
+import apis from '@shared/apis';
 
 // action type
 const SET_USER = 'SET_USER';
@@ -48,7 +47,7 @@ const isEmailDB = email => {
     try {
       const response = await apis.checkEmail({ email });
       const isEmail = response.data.is_Email;
-      console.log(response);
+
       response && console.log('중복된 아이디가 없습니다.');
       dispatch(checkDuplEmail(isEmail));
     } catch (error) {
@@ -78,8 +77,6 @@ const isNicknameDB = nickname => {
 
 const signupDB = userinfo => {
   return async (dispatch, getState, { history }) => {
-    console.log('DB 회원가입', userinfo);
-
     const userData = {
       email: userinfo.email,
       nickname: userinfo.nickname,
@@ -100,8 +97,6 @@ const signupDB = userinfo => {
 
 const signinDB = (id, pwd) => {
   return async (dispatch, getState, { history }) => {
-    console.log('DB 로그인', id, pwd);
-
     const userData = {
       email: id,
       password: pwd,
@@ -115,7 +110,8 @@ const signinDB = (id, pwd) => {
       dispatch(setUser(_token, user));
       history.push('/');
     } catch (error) {
-      console.log(error);
+      alert('아이디와 비밀번호를 확인해주세요.');
+      console.dir(error.response.data.errorMessage);
     }
   };
 };
@@ -125,8 +121,6 @@ const signinKakaoDB = auth => {
     const token = {
       access_token: auth.access_token,
     };
-
-    console.log('DB 카카오 로그인', token);
 
     try {
       const response = await apis.signinKakao(token);
@@ -147,8 +141,6 @@ const signinGoogleDB = auth => {
       access_token: auth,
     };
 
-    console.log('DB 구글 로그인', token);
-
     try {
       const response = await apis.signinGoogle(token);
       const _token = response.data.token;
@@ -167,8 +159,6 @@ const signinNaverDB = auth => {
     const token = {
       access_token: auth,
     };
-
-    console.log('DB 네이버 로그인', token);
 
     if (!auth) return false;
 
@@ -201,7 +191,6 @@ const updateUserInfoDB = newinfo => {
     try {
       const response = await apis.updateUserInfo(newinfo);
       const oldUserinfo = getState().user.user;
-
       const newUserInfo = { ...oldUserinfo, ...response.data.user };
 
       dispatch(updateUserInfo(newUserInfo));
@@ -216,8 +205,8 @@ const deleteUserInfoDB = () => {
   return async (dispatch, getState, { history }) => {
     try {
       const response = await apis.deleteUserInfo();
-      console.log(response);
-      dispatch(userActions.logout());
+
+      response && dispatch(userActions.logout());
       history.push('/');
     } catch (error) {
       console.log(error);

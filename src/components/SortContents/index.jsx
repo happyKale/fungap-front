@@ -1,25 +1,38 @@
 import React from 'react';
+// redux
 import { useDispatch } from 'react-redux';
+import { postActions } from '@redux/modules/post';
+import { gameActions } from '@redux/modules/game';
+// css
+import style from './sortContents.module.css';
 
-import { postActions } from '../../redux/modules/post';
-import style from './sortcontents.module.css';
-
-const SortContents = props => {
+const SortContents = ({ mode }) => {
   const dispatch = useDispatch();
+  const mode = props.mode;
 
   const handleChange = e => {
     const { value } = e.target;
 
-    // API 하나로 무한스크롤 (query이용)
-    // 1차 배포 무한스크롤 제외
-    if (value === 'date' || value === '') {
-      dispatch(postActions.getPostDB());
-    }
-    if (value === 'like') {
-      dispatch(postActions.getPopularPostDB());
-    }
-    if (value === 'view') {
-      dispatch(postActions.getViewPostDB());
+    if (mode === 'game') {
+      if (value === 'date' || value === '') {
+        dispatch(gameActions.getGamesDB());
+      }
+      if (value === 'like') {
+        dispatch(gameActions.getPopularGameDB());
+      }
+      if (value === 'view') {
+        dispatch(gameActions.getViewGameDB());
+      }
+    } else {
+      if (value === 'date' || value === '') {
+        dispatch(postActions.getPostDB());
+      }
+      if (value === 'like') {
+        dispatch(postActions.getPopularPostDB());
+      }
+      if (value === 'view') {
+        dispatch(postActions.getViewPostDB());
+      }
     }
   };
 

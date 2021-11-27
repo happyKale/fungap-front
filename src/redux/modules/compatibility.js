@@ -1,7 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import { produce } from 'immer';
-
-import apis from '../../shared/apis';
+import apis from '@shared/apis';
 
 //action type
 const GET_RESULT = 'GET_RESULT';
@@ -14,7 +13,6 @@ const setMbti = createAction(SET_MBTI, mbti => ({ mbti }));
 //middleware
 const getCompatibilityResultDB = info => {
   return async (dispatch, getState, { history }) => {
-    console.log('궁합페이지 결과가져오기', info);
     try {
       const response = await apis.getTestResult(info);
       dispatch(setMbti(info));

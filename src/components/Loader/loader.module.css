@@ -1,0 +1,28 @@
+.container {
+  position: fixed;
+  top: 50%;
+  left: 61%;
+  width: 430px;
+  height: 100vh;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 20;
+}
+.loadBox {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 60%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.image {
+  width: 100%;
+}
+.text {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  color: #fff;
+  transform: translateX(-50%);
+}

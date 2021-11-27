@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import apis from './apis';
 
-const useFetch = page => {
+const useFetch = (sort, page) => {
   const [list, setList] = useState([]);
   const [hasMore, setHasMore] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -11,7 +11,7 @@ const useFetch = page => {
   const sendQuery = useCallback(async () => {
     try {
       setIsLoading(true);
-      const response = await apis.getMorePost(page);
+      const response = await apis.getMorePost(sort, page);
       const boardList = response?.data.board_list;
 
       if (!boardList) {
@@ -29,7 +29,7 @@ const useFetch = page => {
 
   useEffect(() => {
     sendQuery();
-  }, [sendQuery, page]);
+  }, [sendQuery, page, sort]);
 
   return { hasMore, list, isLoading };
 };

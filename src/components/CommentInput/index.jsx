@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
+// redux
 import { useDispatch, useSelector } from 'react-redux';
-
-import { commentActions } from '../../redux/modules/comment';
-import { history } from '../../redux/configureStore';
-import { Modal } from '../';
+import { commentActions } from '@redux/modules/comment';
+// route
+import { history } from '@redux/configureStore';
+// components
+import { Modal } from '@components';
+// css
 import style from './commentInput.module.css';
-import defatulImg from '../../assets/profileplaceholder.png';
+// images
+import defatulImg from '@assets/profileplaceholder.png';
 
-const CommentInput = ({ boardId }) => {
+const CommentInput = ({ boardId, mode }) => {
   const dispatch = useDispatch();
+
   const isLogin = useSelector(state => state.user.is_login);
   const { user_image, nickname } =
     isLogin && JSON.parse(sessionStorage.getItem('user'));
+
   const [visible, setVisible] = useState(null);
   const [input, setInput] = useState({ comment: '' });
   const { comment } = input;
-  //
+
   const handleChange = e => {
     const { value, name } = e.target;
 
@@ -23,6 +29,7 @@ const CommentInput = ({ boardId }) => {
       ...input,
       [name]: value,
     });
+
     if (value.length >= 100) {
       alert('댓글 작성은 100글자 까지 가능합니다.');
       return false;
@@ -32,27 +39,18 @@ const CommentInput = ({ boardId }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (e.target.tagName !== 'BUTTON') {
-      return false;
-    }
-
+    if (e.target.tagName !== 'BUTTON') return false;
     if (!isLogin) {
       setVisible(!isLogin);
-      setInput({
-        comment: '',
-      });
+      setInput({ comment: '' });
       return false;
     }
 
-    dispatch(commentActions.addCommentDB(boardId, comment));
-    setInput({
-      comment: '',
-    });
+    dispatch(commentActions.addCommentDB(boardId, comment, mode));
+    setInput({ comment: '' });
   };
 
-  const closeModal = () => {
-    setVisible(false);
-  };
+  const closeModal = () => setVisible(false);
 
   return (
     <div className={style.wrap}>
@@ -64,9 +62,10 @@ const CommentInput = ({ boardId }) => {
       <form className={style.form} onClick={handleSubmit}>
         <label //
           className={style.label}
-          htmlFor=''
+          htmlFor='comment'
         ></label>
         <input
+          id='comment'
           name='comment'
           value={comment}
           className={style.input}
@@ -87,10 +86,10 @@ const CommentInput = ({ boardId }) => {
           desc='로그인하러 가시겠어요?'
           btnLeft='닫기'
           btnRight='로그인하기'
-          clickBtnRight={() => history.replace('/signin')}
           visible={visible}
           maskClosable
           onClose={closeModal}
+          clickBtnRight={() => history.replace('/signin')}
         />
       )}
     </div>

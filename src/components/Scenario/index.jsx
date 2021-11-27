@@ -1,21 +1,20 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import style from './scenario.module.css';
 import ChatBot from 'react-simple-chatbot';
 import data from './data.js';
-import { history } from '../../redux/configureStore';
-
-import profile from '../../assets/profileplaceholder.png';
-import jinro from '../../assets/friend_jinro.png';
+// route
+import { history } from '@redux/configureStore';
+// css
+import style from './scenario.module.css';
+// images
+import profile from '@assets/profileplaceholder.png';
+import jinro from '@assets/friend_jinro.png';
 
 const Scenario = props => {
   const mbti = props.previousStep.message.toUpperCase();
   const list = data.filter(item => item.id.split('-')[0] === mbti);
-  // imgPosition-1 인덱스가 직업 선택하는 option있는 인덱스.
   const imgPosition = list.findIndex(item => item.id.split('-').length === 3);
   const imgPositionList = [];
   const jobList = [];
-  console.log(list, imgPosition);
 
   list[imgPosition - 1].options.forEach(item => {
     jobList.push(item.label);
@@ -30,13 +29,13 @@ const Scenario = props => {
     list.splice(imgPositionList[i] + i, 0, {
       id: jobList[i] + 'img',
       component: (
-        <React.Fragment>
+        <>
           <img
             className={style.jobImg}
             src={require(`../../assets/chatbot/${mbti}-${i + 1}.png`).default}
             alt={jobList[i]}
           />
-        </React.Fragment>
+        </>
       ),
       trigger: mbti + '-' + jobList[i] + '-' + 1,
     });
@@ -53,6 +52,7 @@ const Scenario = props => {
       });
     }
   });
+
   // 새로 추가한 step
   const lastStep = [
     {
@@ -63,7 +63,7 @@ const Scenario = props => {
     {
       id: 'link',
       component: (
-        <React.Fragment>
+        <>
           <button
             className={style.button}
             onClick={() => {
@@ -80,7 +80,7 @@ const Scenario = props => {
           >
             뒤로가기
           </button>
-        </React.Fragment>
+        </>
       ),
       end: true,
     },
@@ -97,7 +97,7 @@ const Scenario = props => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <div theme={otherFontTheme} className={style.chatBox} id='innerchatBox'>
         <ChatBot
           bubbleStyle={{ borderRadius: '8px', marginBottom: '10px' }}
@@ -122,7 +122,7 @@ const Scenario = props => {
           steps={list}
         ></ChatBot>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

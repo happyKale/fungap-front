@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "~/*": ["./*"],
+      "@assets/*": ["assets/*", "assets"],
+      "@components/*": ["components/*", "components"],
+      "@hook/*": ["hook/*", "hook"],
+      "@pages/*": ["pages/*", "pages"],
+      "@redux/*": ["redux/*", "redux"],
+      "@shared/*": ["shared/*", "shared"],
+      "@styles/*": ["styles/*", "styles"]
+    }
+  }
+}

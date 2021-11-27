@@ -3,7 +3,7 @@
   bottom: 0;
   left: 50%;
   width: 100%;
-  padding: 20px 0 10px 0;
+  padding: 9px 0 7px 0;
   background-color: #fff;
   transform: translateX(-50%);
   z-index: 10;
@@ -19,18 +19,45 @@
 .btn {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 .btn > img {
-  width: 25px;
+  width: 16px;
   height: auto;
+  margin-bottom: 2px;
 }
 .btn > .btnUser {
-  width: 30px;
+  width: 25px;
 }
 
 .btn > span {
-  margin-top: 10px;
+  font-size: 10px;
+}
+@media screen and (min-width: 430px) and (max-width: 1023px) {
+  .nav {
+    padding: 12px 0 10px 0;
+  }
+  .btn > img {
+    width: 18px;
+    margin-bottom: 4px;
+  }
+
+  .btn > span {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .nav {
+    padding: 12px 0 10px 0;
+  }
+  .btn > img {
+    width: 20px;
+    margin-bottom: 4px;
+  }
+
+  .btn > span {
+    font-size: 16px;
+  }
 }
