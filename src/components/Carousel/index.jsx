@@ -4,6 +4,7 @@ import './slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import { history } from '../../redux/configureStore';
+import classNames from 'classnames';
 
 const Carousel = () => {
   const settings = {
@@ -25,7 +26,7 @@ const Carousel = () => {
             history.push('/compatibility');
           }}
         >
-          <div className={style.img} />
+          <div className={classNames(style.img, style.img1)} />
         </div>
         <div
           className={style.imageBox}
@@ -33,7 +34,7 @@ const Carousel = () => {
             history.push('/detail/33');
           }}
         >
-          <div className={style.img2} />
+          <div className={classNames(style.img, style.img2)} />
         </div>
         <div
           className={style.imageBox}
@@ -41,7 +42,7 @@ const Carousel = () => {
             history.push('/detail/11');
           }}
         >
-          <div className={style.img3} />
+          <div className={classNames(style.img, style.img3)} />
         </div>
         <div
           className={style.imageBox}
@@ -49,7 +50,7 @@ const Carousel = () => {
             history.push('/detail/32');
           }}
         >
-          <div className={style.img4} />
+          <div className={classNames(style.img, style.img4)} />
         </div>
         <div
           className={style.imageBox}
@@ -57,7 +58,7 @@ const Carousel = () => {
             history.push('/detail/35');
           }}
         >
-          <div className={style.img5} />
+          <div className={classNames(style.img, style.img5)} />
         </div>
         <div
           className={style.imageBox}
@@ -65,7 +66,15 @@ const Carousel = () => {
             history.push('/detail/16');
           }}
         >
-          <div className={style.img6} />
+          <div className={classNames(style.img, style.img6)} />
+        </div>
+        <div
+          className={style.imageBox}
+          onClick={() => {
+            history.push('/games');
+          }}
+        >
+          <div className={classNames(style.img, style.img7)} />
         </div>
       </Slider>
     </div>
