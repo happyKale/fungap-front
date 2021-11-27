@@ -8,7 +8,7 @@ import usePostList from '@hook/usePostList';
 const Contents = props => {
   const { postNums } = usePostList();
   const currentSort = sessionStorage.getItem('sort');
-  const [sort, setSort] = useState(currentSort);
+  const [sort, setSort] = useState(currentSort ? currentSort : 'date');
 
   const handleChange = e => {
     const { value } = e.target;
