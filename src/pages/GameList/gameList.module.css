@@ -34,15 +34,9 @@
   margin: 4px 12px 0px 12px;
 }
 .likeButton {
-  width: 50px;
-  height: 20px;
   position: absolute;
   top: 3px;
   right: 0px;
-}
-.likeButton > button {
-  height: 20px;
-  width: 50px;
 }
 .makeGameButton {
   width: 50px;

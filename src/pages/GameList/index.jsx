@@ -64,7 +64,6 @@ const GameList = () => {
                 </div>
                 <div className={style.likeButton}>
                   <LikeButton
-                    post
                     mode='game'
                     board_id={game?.game_id}
                     like_count={game?.like_count}
