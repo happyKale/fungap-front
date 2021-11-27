@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 // route
 import { history } from '@redux/configureStore';
 // css
@@ -9,7 +10,7 @@ const SliderItem = ({ page, image }) => {
 
   return (
     <div className={style.imageBox} onClick={handleClick}>
-      <div className={style[image]} />
+      <div className={classNames(style[image], style.img)} />
     </div>
   );
 };

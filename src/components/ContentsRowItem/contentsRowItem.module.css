@@ -1,0 +1,143 @@
+.contentImage {
+  width: 130px;
+  max-height: 112px;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+}
+
+.columnContent {
+  box-shadow: rgba(151, 153, 156, 0.25) 0px 3px 6px -2px,
+    rgba(146, 151, 160, 0.08) 0px 0px 0px 1px;
+  min-height: 190px;
+  padding: 10px 0px;
+  margin: 10px;
+  border-radius: 15px;
+}
+.postContent {
+  min-height: 150px;
+  max-height: 190px;
+}
+.postContent > .contentTitle {
+  width: 85%;
+  margin: 10px auto 0px;
+  font-size: 13px;
+}
+.contentViewcount {
+  display: inline-block;
+  margin: 6px auto 0px;
+  padding: 0px 5px;
+  border-radius: 5px;
+  font-size: 11px;
+  color: rgb(93, 93, 93);
+  background-color: rgb(240, 240, 240);
+}
+.contentTitle {
+  width: 88%;
+  margin: 6px auto 0px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+.contentDesc {
+  width: 88%;
+  margin: 7px auto 0px;
+  font-size: 12px;
+  color: rgb(93, 93, 93);
+}
+
+.gameContent {
+  width: 96%;
+  height: 350px;
+  margin: 10px auto 20px;
+}
+.gameInnerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: rgba(65, 65, 65, 0.2) 1px 2px 5px 0px;
+  background-color: rgb(255, 232, 129);
+}
+.gameContentTitle {
+  display: inline-block;
+  margin: 10px 0px 0px 0px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.gameContentItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 95%;
+  height: 100px;
+  margin: 0px 0px 10px 0px;
+  padding: 6px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: rgb(255, 232, 129);
+}
+
+.gameContentQuest {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  height: 100%;
+  padding: 10px;
+  border: 2px solid rgb(185, 185, 185);
+  box-shadow: rgba(65, 65, 65, 0.2) 1px 2px 5px 0px;
+  background-color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.vs {
+  height: 50px;
+  width: 59.4px;
+  background: url('../../assets/vs_light.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media screen and (max-width: 410px) {
+  .contentImage {
+    width: 120px;
+  }
+  .content {
+    width: 140px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .contentImage {
+    width: 115px;
+  }
+  .content {
+    width: 130px;
+  }
+  .contentTitle {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .contentImage {
+    width: 130px;
+  }
+  .content {
+    width: 150px;
+  }
+  .contentTitle {
+    font-size: 13px;
+  }
+}

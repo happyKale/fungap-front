@@ -34,6 +34,10 @@ import ActionCompleteMessage from './ActionCompleteMessage';
 import GameMbtiChart from './GameMbtiChart';
 import GameParticipateChart from './GameParticipateChart';
 import GameChartBox from './GameChartBox';
+import ContentsRow from './ContentsRow';
+import ContentsRowItem from './ContentsRowItem';
+import ContentsRowTitle from './ContentsRowTitle';
+import GameQuestBox from './GameQuestBox';
 import Header from './Header';
 import NewContents from './NewContents';
 import TopContents from './TopContents';
@@ -83,6 +87,10 @@ export {
   GameMbtiChart,
   GameParticipateChart,
   GameChartBox,
+  ContentsRow,
+  ContentsRowItem,
+  ContentsRowTitle,
+  GameQuestBox,
   Header,
   NewContents,
   TopContents,

@@ -8,8 +8,8 @@ import 'slick-carousel/slick/slick-theme.css';
 
 const items = [
   {
-    page: '/compatibility',
-    image: 'img',
+    page: '/mbti/test',
+    image: 'img1',
   },
   {
     page: '/detail/33',
@@ -30,6 +30,10 @@ const items = [
   {
     page: '/detail/16',
     image: 'img6',
+  },
+  {
+    page: '/games',
+    image: 'img7',
   },
 ];
 

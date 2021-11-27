@@ -15,6 +15,8 @@ const RESET_EDIT_POST = 'RESET_EDIT_POST';
 const SET_EDIT_POST = 'SET_EDIT_POST';
 const ADD_EDIT_POST = 'ADD_EDIT_POST';
 
+const SET_ALLCONTENT = 'SET_ALLCONTENT';
+
 // action creator
 const getPosts = createAction(GET_POST, posts => ({ posts }));
 const setPosts = createAction(SET_POST, posts => ({ posts }));
@@ -37,6 +39,8 @@ const addEditPost = createAction(ADD_EDIT_POST, (title, img, desc, mbti) => ({
   desc,
   mbti,
 }));
+
+const setAllContent = createAction(SET_ALLCONTENT, data => ({ data }));
 
 // initial state
 const initialState = {
@@ -143,6 +147,20 @@ const editPostDB = (postId, data) => {
   };
 };
 
+const getAllContentDB = () => {
+  return (dispatch, getState, { history }) => {
+    apis
+      .getAllContent()
+      .then(res => {
+        console.log(res.data);
+        dispatch(setAllContent(res.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
 // reducer
 export default handleActions(
   {
@@ -215,6 +233,10 @@ export default handleActions(
         draft.editPost.board_desc = action.payload.desc;
         draft.editPost.board_content = action.payload.mbti;
       }),
+    [SET_ALLCONTENT]: (state, action) =>
+      produce(state, draft => {
+        draft.allContent = action.payload.data;
+      }),
   },
   initialState,
 );
@@ -235,4 +257,5 @@ export const postActions = {
   addPostDB,
   deletePostDB,
   editPostDB,
+  getAllContentDB,
 };
