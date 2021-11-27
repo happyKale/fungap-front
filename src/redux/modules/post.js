@@ -20,6 +20,7 @@ const ADD_EDIT_POST = 'ADD_EDIT_POST';
 const GET_MORE_POST = 'GET_MORE_POST';
 const SET_LOADING = 'SET_LOADING';
 const CLEAR_LIST = 'CLEAR_LIST';
+const SET_ALLCONTENT = 'SET_ALLCONTENT';
 
 // action creator
 const getPosts = createAction(GET_POST, posts => ({ posts }));
@@ -61,6 +62,7 @@ const getMorePost = createAction(
 );
 const setLoading = createAction(SET_LOADING, isLoading => ({ isLoading }));
 const clearList = createAction(CLEAR_LIST, () => ({}));
+const setAllContent = createAction(SET_ALLCONTENT, data => ({ data }));
 
 // initial state
 const initialState = {
@@ -302,6 +304,7 @@ const editPostDB = (
     apis
       .editPost(postId, result)
       .then(res => {
+        console.log('결과다!!!!!', result);
         dispatch(editPost(postId, result));
         history.push('/admin');
       })
@@ -317,6 +320,20 @@ const getAdminPostDB = () => {
       .getPosts()
       .then(res => {
         dispatch(setPosts(res.data.board_list));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
+const getAllContentDB = () => {
+  return (dispatch, getState, { history }) => {
+    apis
+      .getAllContent()
+      .then(res => {
+        console.log(res.data);
+        dispatch(setAllContent(res.data));
       })
       .catch(err => {
         console.log(err);
@@ -384,7 +401,7 @@ export default handleActions(
           post => post.board_id === action.payload.postId,
         );
         draft.postList[idx] = {
-          ...draft.list[idx],
+          ...draft.postList[idx],
           ...action.payload.post,
         };
       }),
@@ -422,6 +439,10 @@ export default handleActions(
         draft.editPost.board_desc = action.payload.desc;
         draft.editPost.board_content = action.payload.mbti;
       }),
+    [SET_ALLCONTENT]: (state, action) =>
+      produce(state, draft => {
+        draft.allContent = action.payload.data;
+      }),
   },
   initialState,
 );
@@ -447,4 +468,5 @@ export const postActions = {
   editPostDB,
   getAdminPostDB,
   getMorePostDB,
+  getAllContentDB,
 };

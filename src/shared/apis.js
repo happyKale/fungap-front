@@ -85,6 +85,9 @@ const apis = {
     instance.patch(`/games/${game_id}/comment/${game_comment_id}`, comment),
   getOrderPopularGame: () => instance.get(`/games/popularity`),
   getOrderViewGame: () => instance.get(`/games/view`),
+
+  // 둘러보기 페이지
+  getAllContent: () => instance.get('/allcontent'),
 };
 
 export default apis;
