@@ -37,7 +37,6 @@ import GameChartBox from './GameChartBox';
 import ContentsRow from './ContentsRow';
 import ContentsRowItem from './ContentsRowItem';
 import ContentsRowTitle from './ContentsRowTitle';
-import GameQuestBox from './GameQuestBox';
 import Header from './Header';
 import NewContents from './NewContents';
 import TopContents from './TopContents';
@@ -90,7 +89,6 @@ export {
   ContentsRow,
   ContentsRowItem,
   ContentsRowTitle,
-  GameQuestBox,
   Header,
   NewContents,
   TopContents,
