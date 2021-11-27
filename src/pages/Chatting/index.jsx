@@ -1,8 +1,9 @@
 import React from 'react';
-import style from './chatting.module.css';
-import { history } from '../../redux/configureStore';
+// components
 import { Chat } from '../../components';
-
+// css
+import style from './chatting.module.css';
+// images
 import jinro from '../../assets/friend_jinro.png';
 
 const Chatting = () => {
@@ -45,14 +46,14 @@ const Chatting = () => {
   ];
 
   return (
-    <React.Fragment>
+    <>
       <p className={style.title}>친구들</p>
       <div className={style.container}>
         {friendList.map(friend => {
           return <Chat key={friend.chatId} chat {...friend} />;
         })}
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

@@ -1,0 +1,52 @@
+.content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+.notificationIcon {
+  width: 32px;
+  height: 32px;
+  background: url(../../assets/notification.png);
+}
+.alramIcon {
+  width: 32px;
+  height: 32px;
+  background: url(../../assets/alram.png);
+}
+.contractIcon {
+  width: 32px;
+  height: 32px;
+  background: url(../../assets/contract.png);
+}
+.reviewIcon {
+  background: url(../../assets/mailIcon.png);
+  width: 32px;
+  height: 32px;
+}
+.logoutIcon {
+  background: url(../../assets/logOutIcon.png);
+  width: 32px;
+  height: 32px;
+}
+.withdrawalIcon {
+  background: url(../../assets/withdrawalIcon.png);
+  width: 32px;
+  height: 32px;
+}
+.adminIcon {
+  width: 32px;
+  height: 32px;
+  background: url(../../assets/adminicon.png) no-repeat center;
+}
+
+.title {
+  margin: 0px;
+  font-size: 16px;
+  cursor: pointer;
+}

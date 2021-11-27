@@ -1,0 +1,16 @@
+.banner {
+  position: relative;
+  bottom: 0px;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: 116px;
+  cursor: pointer;
+}
+.middleBanner {
+  background: url('../../assets/middleBanner.png') no-repeat center;
+  background-size: contain;
+}
+.bottomBanner {
+  background: url('../../assets/bottomBanner.png') no-repeat center;
+  background-size: contain;
+}

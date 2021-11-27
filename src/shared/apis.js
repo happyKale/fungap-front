@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getToken } from './token';
 
 const instance = axios.create({
-  baseURL: 'https://stravinest.shop',
+  baseURL: process.env.REACT_APP_API_BASE_URL,
   withCredentials: true,
   // https://stravinest.shop,
   // http://nyannyan.shop
@@ -32,19 +32,13 @@ const apis = {
   //게시물
   getPost: () => instance.get('/board'),
   getMorePost: (sort, page) => instance.get(`/board?sort=${sort}&page=${page}`),
-  getHomePost: () => instance.get('/board/home'),
-  getDetailPost: board_id => instance.get(`/board/${board_id}`),
-  getOroderPopularPost: page => instance.get(`/board/popularity?page=${page}`),
-  getOrderViewPost: page => instance.get(`/board/view?page=${page}`),
   searchPost: keyword => instance.post(`/board/search?keyword=${keyword}`),
 
   // 게시물 - 관리자
-  getPosts: () => instance.get('/admin/board'),
   addPost: board_info => instance.post('/admin/board/write', board_info),
-  editPost: (board_id, board_info) =>
+  updatePost: (board_id, board_info) =>
     instance.patch(`/admin/board/${board_id}/edit`, board_info),
   deletePost: board_id => instance.delete(`/admin/board/${board_id}/delete`),
-  detailPost: board_id => instance.get(`/admin/board/${board_id}/detail`),
 
   //댓글
   getComment: board_id => instance.get(`/comment/${board_id}`),

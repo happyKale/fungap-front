@@ -1,13 +1,10 @@
 import { createAction, handleActions } from 'redux-actions';
 import { produce } from 'immer';
-
-import apis from '../../shared/apis';
+import apis from '@shared/apis';
 
 // action type
 const GET_POST = 'GET_POST';
-const GET_DETAIL_POST = 'GET_DETAIL_POST';
 const SET_POST = 'SET_POST';
-const SET_HOME_POST = 'SET_HOME_POST';
 const SEARCH_POST = 'SEARCH_POST';
 const ADD_POST = 'ADD_POST';
 const DELETE_POST = 'DELETE_POST';
@@ -17,21 +14,12 @@ const RESET_POST = 'RESET_POST';
 const RESET_EDIT_POST = 'RESET_EDIT_POST';
 const SET_EDIT_POST = 'SET_EDIT_POST';
 const ADD_EDIT_POST = 'ADD_EDIT_POST';
-const GET_MORE_POST = 'GET_MORE_POST';
-const SET_LOADING = 'SET_LOADING';
-const CLEAR_LIST = 'CLEAR_LIST';
+
 const SET_ALLCONTENT = 'SET_ALLCONTENT';
 
 // action creator
 const getPosts = createAction(GET_POST, posts => ({ posts }));
-const getDetailPost = createAction(GET_DETAIL_POST, board => ({
-  board,
-}));
 const setPosts = createAction(SET_POST, posts => ({ posts }));
-const setHomePosts = createAction(SET_HOME_POST, (new_posts, top_posts) => ({
-  new_posts,
-  top_posts,
-}));
 const searchPost = createAction(SEARCH_POST, posts => ({ posts }));
 const addPost = createAction(ADD_POST, (title, img, desc, mbti) => ({
   title,
@@ -51,17 +39,7 @@ const addEditPost = createAction(ADD_EDIT_POST, (title, img, desc, mbti) => ({
   desc,
   mbti,
 }));
-const getMorePost = createAction(
-  GET_MORE_POST,
-  (posts, hasMore, page, sort) => ({
-    posts,
-    hasMore,
-    page,
-    sort,
-  }),
-);
-const setLoading = createAction(SET_LOADING, isLoading => ({ isLoading }));
-const clearList = createAction(CLEAR_LIST, () => ({}));
+
 const setAllContent = createAction(SET_ALLCONTENT, data => ({ data }));
 
 // initial state
@@ -80,91 +58,12 @@ const initialState = {
     mbti: '',
   },
   postList: [],
-  newList: [],
-  topList: [],
-  isSearching: false,
-  sort: 'date',
-  list: [],
-  start: 1,
-  isLoading: false,
-  hasMore: true,
-  board: {},
+  searchList: [],
 };
 
 // middleware
-const getDetailPostDB = board_id => {
-  return async (dispatch, getState, { history }) => {
-    try {
-      const response = await apis.getDetailPost(board_id);
-      const board = response.data.board;
-      const comments = response.data.comments;
-
-      dispatch(getDetailPost(board, comments));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
-
-//무한스크롤 1차 배포 제외
-const getMorePostDB = sort => {
-  return async (dispatch, getState, { history }) => {
-    let _start = getState().post.start;
-    const prevSort = getState().post.sort;
-    const curSort = sort;
-
-    dispatch(setLoading(true));
-
-    if (prevSort !== curSort) {
-      _start = 1;
-      dispatch(clearList());
-    }
-
-    // 최신순 무한스크롤
-    if (sort === 'date') {
-      try {
-        const response = await apis.getMorePost('date', _start);
-        const boardlistDB = response.data.board_list;
-        const hasMore = boardlistDB.length !== 0 ? true : false;
-        const next = boardlistDB.length !== 0 ? _start + 1 : 1;
-
-        dispatch(getMorePost(boardlistDB, hasMore, next, sort));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    // 인기순 무한스크롤
-    else if (sort === 'like') {
-      try {
-        const response = await apis.getMorePost('popularity', _start);
-        const boardlistDB = response.data.board_list;
-        const hasMore = boardlistDB.length !== 0 ? true : false;
-        const next = boardlistDB.length !== 0 ? _start + 1 : 1;
-
-        dispatch(getMorePost(boardlistDB, hasMore, next, sort));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    // // 조회순 무한스크롤
-    else if (sort === 'view') {
-      try {
-        const response = await apis.getMorePost('view', _start);
-        const boardlistDB = response.data.board_list;
-        const hasMore = boardlistDB.length !== 0 ? true : false;
-        const next = boardlistDB.length !== 0 ? _start + 1 : 1;
-
-        dispatch(getMorePost(boardlistDB, hasMore, next, sort));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
-};
-
 const getPostDB = () => {
   return async (dispatch, getState, { history }) => {
-    console.log('DB 메인페이지 포스트 가져오기');
     try {
       const response = await apis.getPost();
       const boardlistDB = response.data.board_list;
@@ -172,65 +71,11 @@ const getPostDB = () => {
       dispatch(getPosts(boardlistDB));
     } catch (error) {
       console.log(error);
-    }
-  };
-};
 
-const getHomePostDB = () => {
-  return async (dispatch, getState, { history }) => {
-    console.log('DB 메인페이지 포스트 가져오기');
-    try {
-      const response = await apis.getHomePost();
-      const new_list = response.data.new_board_list;
-      const popularity_list = response.data.popularity_board_list;
-
-      dispatch(setHomePosts(new_list, popularity_list));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
-
-const getPopularPostDB = () => {
-  return async (dispatch, getState, { history }) => {
-    try {
-      const response = await apis.getPost();
-      const boardlistDB = response.data.board_list;
-      const boardList = boardlistDB.sort((a, b) => {
-        if (a.like_count > b.like_count) {
-          return -1;
-        }
-        if (a.like_count < b.like_count) {
-          return 1;
-        }
-        return 0;
-      });
-
-      dispatch(getPosts(boardList));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
-
-const getViewPostDB = () => {
-  return async (dispatch, getState, { history }) => {
-    try {
-      const response = await apis.getPost();
-      const boardlistDB = response.data.board_list;
-      const boardList = boardlistDB.sort((a, b) => {
-        if (a.view_count > b.view_count) {
-          return -1;
-        }
-        if (a.view_count < b.view_count) {
-          return 1;
-        }
-        return 0;
-      });
-
-      dispatch(getPosts(boardList));
-    } catch (error) {
-      console.log(error);
+      if (error.response.status === 403) {
+        alert('로그인 유지시간이 지났습니다. 다시 로그인해주세요.');
+        history.push('/signin');
+      }
     }
   };
 };
@@ -251,79 +96,54 @@ const searchPostDB = word => {
 };
 
 const addPostDB = () => {
-  return (dispatch, getState, { history }) => {
+  return async (dispatch, getState, { history }) => {
     const post = getState().post.post;
     const image = getState().post.postImg;
-    apis
-      .addPost({
-        board_title: post.title,
-        board_desc: post.desc,
-        board_image: image,
-        board_content: post.mbti,
-      })
-      .then(res => {
-        history.push('/admin');
-        dispatch(resetPost());
-      })
-      .catch(error => {
-        console.log(error);
-      });
+
+    const newPost = {
+      board_title: post.title,
+      board_desc: post.desc,
+      board_image: image,
+      board_content: post.mbti,
+    };
+
+    try {
+      const response = await apis.addPost(newPost);
+
+      response && dispatch(resetPost());
+      history.push('/admin');
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
 const deletePostDB = postId => {
-  return (dispatch, getState, { history }) => {
+  return async (dispatch, getState, { history }) => {
     const postList = getState().post.postList;
-    const resultList = postList.filter(post => post.board_id !== postId);
+    const delPost = postList.filter(post => post.board_id !== postId);
 
-    apis
-      .deletePost(postId)
-      .then(res => {
-        dispatch(deletePost(resultList));
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    try {
+      const response = await apis.deletePost(postId);
+
+      response && dispatch(deletePost(delPost));
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
-const editPostDB = (
-  postId,
-  board_title,
-  board_image,
-  board_desc,
-  board_content,
-) => {
-  return (dispatch, getState, { history }) => {
-    const result = {
-      board_title,
-      board_image,
-      board_desc,
-      board_content,
-    };
-    apis
-      .editPost(postId, result)
-      .then(res => {
-        console.log('결과다!!!!!', result);
-        dispatch(editPost(postId, result));
-        history.push('/admin');
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-};
+const editPostDB = (postId, data) => {
+  return async (dispatch, getState, { history }) => {
+    // console.log(postId, data);
+    try {
+      const response = await apis.updatePost(postId, data);
 
-const getAdminPostDB = () => {
-  return (dispatch, getState, { history }) => {
-    apis
-      .getPosts()
-      .then(res => {
-        dispatch(setPosts(res.data.board_list));
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      response && dispatch(editPost(postId, data));
+      history.push('/admin');
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
@@ -344,45 +164,17 @@ const getAllContentDB = () => {
 // reducer
 export default handleActions(
   {
-    [CLEAR_LIST]: (state, action) =>
-      produce(state, draft => {
-        draft.list = [];
-      }),
-    [SET_LOADING]: (state, action) =>
-      produce(state, draft => {
-        draft.isLoading = action.payload.isLoading;
-      }),
-    //
-    [GET_MORE_POST]: (state, action) =>
-      produce(state, draft => {
-        draft.list.push(...action.payload.posts);
-        draft.start = action.payload.page;
-        draft.hasMore = action.payload.hasMore;
-        draft.sort = action.payload.sort;
-        draft.isLoading = false;
-      }),
-    //
     [GET_POST]: (state, action) =>
       produce(state, draft => {
         draft.postList = action.payload.posts;
-      }),
-    [GET_DETAIL_POST]: (state, action) =>
-      produce(state, draft => {
-        draft.board = action.payload.board;
       }),
     [SET_POST]: (state, action) =>
       produce(state, draft => {
         draft.list = action.payload.posts;
       }),
-    [SET_HOME_POST]: (state, action) =>
-      produce(state, draft => {
-        draft.newList = action.payload.new_posts;
-        draft.topList = action.payload.top_posts;
-      }),
     [SEARCH_POST]: (state, action) =>
       produce(state, draft => {
-        draft.postList = action.payload.posts;
-        draft.isSearching = true;
+        draft.searchList = action.payload.posts;
       }),
     [ADD_POST]: (state, action) =>
       produce(state, draft => {
@@ -400,6 +192,7 @@ export default handleActions(
         let idx = draft.postList.findIndex(
           post => post.board_id === action.payload.postId,
         );
+
         draft.postList[idx] = {
           ...draft.postList[idx],
           ...action.payload.post,
@@ -428,6 +221,7 @@ export default handleActions(
         let idx = draft.postList.findIndex(
           post => post.board_id === action.payload.postId,
         );
+
         draft.editPost = {
           ...draft.postList[idx],
         };
@@ -449,12 +243,9 @@ export default handleActions(
 
 export const postActions = {
   getPosts,
-  getDetailPostDB,
-  getHomePostDB,
-  getPopularPostDB,
-  getViewPostDB,
   setPosts,
   searchPostDB,
+  searchPost,
   editPost,
   addPost,
   addImage,
@@ -466,7 +257,5 @@ export const postActions = {
   addPostDB,
   deletePostDB,
   editPostDB,
-  getAdminPostDB,
-  getMorePostDB,
   getAllContentDB,
 };

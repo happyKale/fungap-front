@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './contentsAll.module.css';
-import { ContentsRow, Carousel, ContentsRowTitle } from '../../components';
+import { ContentsRow, SliderBanner, ContentsRowTitle } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { postActions } from '../../redux/modules/post';
 import { history } from '../../redux/configureStore';
@@ -53,7 +53,7 @@ const ContentsAll = () => {
       <div className={style.header}>
         <div className={style.logo} />
       </div>
-      <Carousel />
+      <SliderBanner />
       <div className={style.gameContainer}>
         <ContentsRowTitle
           title='밸런스 게임'
@@ -84,7 +84,7 @@ const ContentsAll = () => {
           <p className={style.title}>MBTI 궁합</p>
           <div
             onClick={() => {
-              history.push('/compatibility');
+              history.push('/mbti/test');
             }}
             className={style.compatibility}
           />

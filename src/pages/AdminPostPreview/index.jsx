@@ -1,20 +1,35 @@
 import React from 'react';
-import style from './adminPostPreview.module.css';
-import { Goback, MbtiDescList } from '../../components';
+// redux
 import { useDispatch, useSelector } from 'react-redux';
-import { postActions } from '../../redux/modules/post';
+import { postActions } from '@redux/modules/post';
+// components
+import { Goback, MbtiDescList } from '@components';
+// css
+import style from './adminPreview.module.css';
 
 const AdminPostPreview = props => {
-  const dispatch = useDispatch();
   const postId = props.match.params.id;
-  const post = useSelector(state => state.post.post);
-  const editPost = useSelector(state => state.post.editPost);
-  const image = useSelector(state => state.post.postImg);
+  const dispatch = useDispatch();
+  const { post, editPost, postImg: image } = useSelector(state => state.post);
   const mbtiList = Object.entries(post?.mbti);
   const editMbtiList = Object.entries(editPost?.board_content);
 
+  const handleClick = () => {
+    if (postId) {
+      const data = {
+        board_title: editPost.board_title,
+        board_image: image,
+        board_desc: editPost.board_desc,
+        board_content: editPost.board_content,
+      };
+      dispatch(postActions.editPostDB(postId, data));
+    } else {
+      dispatch(postActions.addPostDB());
+    }
+  };
+
   return (
-    <React.Fragment>
+    <>
       {postId ? (
         <Goback page={`/admin_write/${postId}`}>게시글 미리보기</Goback>
       ) : (
@@ -35,29 +50,15 @@ const AdminPostPreview = props => {
           <MbtiDescList list={mbtiList} />
         )}
         <div className={style.buttonBox}>
-          <button
+          <button //
             className={style.button}
-            onClick={() => {
-              if (postId) {
-                dispatch(
-                  postActions.editPostDB(
-                    postId,
-                    editPost.board_title,
-                    image,
-                    editPost.board_desc,
-                    editPost.board_content,
-                  ),
-                );
-              } else {
-                dispatch(postActions.addPostDB());
-              }
-            }}
+            onClick={handleClick}
           >
             {postId ? '수정하기' : '저장하기'}
           </button>
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import classnames from 'classnames';
-
+// css
 import style from './modal.module.css';
 
 const Modal = ({
@@ -13,26 +13,27 @@ const Modal = ({
   maskClosable,
   onClose,
 }) => {
+  const onMaskClick = e => {
+    if (e.target !== e.currentTarget) return false;
+
+    onClose(e);
+  };
+
+  const closeModal = e => {
+    if (!onClose) return false;
+
+    onClose(e);
+  };
+
   useEffect(() => {
     document.body.style.cssText = `position: fixed; top: -${window.scrollY}px; width:100%;`;
+
     return () => {
       const scrollY = document.body.style.top;
       document.body.style.cssText = `position: ""; top: "";`;
       window.scrollTo(0, parseInt(scrollY || '0') * -1);
     };
   }, []);
-
-  const onMaskClick = e => {
-    if (e.target === e.currentTarget) {
-      onClose(e);
-    }
-  };
-
-  const closeModal = e => {
-    if (onClose) {
-      onClose(e);
-    }
-  };
 
   return (
     <>

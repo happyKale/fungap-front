@@ -1,27 +1,56 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-
-import style from './findPwd.module.css';
-import { Goback } from '../../components';
-import apis from '../../shared/apis';
+// api
+import apis from '@shared/apis';
+// redux
 import { useDispatch } from 'react-redux';
-import { userActions } from '../../redux/modules/user';
+import { userActions } from '@redux/modules/user';
+// components
+import { Goback } from '@components';
+// util
+import { idRegExp, pwdRegExp } from '@shared/validation';
+// css
+import style from './findPwd.module.css';
 
 const FindPwd = () => {
   const dispatch = useDispatch();
-  const [checkAuthEmail, setCheckAuthEmail] = useState(true);
+
   const [checkCorrectEmail, setCheckCorrectEmail] = useState(true);
-  const [checkSendCode, setCheckSendCode] = useState(true);
+  const [checkSendCode, setCheckSendCode] = useState(false);
+
+  const [checkAuthEmail, setCheckAuthEmail] = useState(true);
+  const [authCodeDB, setAuthCodeDB] = useState('');
   const [checkPwd, setCheckPwd] = useState(true);
   const [checkPwd2, setCheckPwd2] = useState(true);
-  const [authCodeDB, setAuthCodeDB] = useState('');
   const [input, setInput] = useState({
     authEmail: '',
-    authCode: '',
+    authCodeUser: '',
     pwd: '',
     pwdCheck: '',
   });
-  const { authEmail, authCode, pwd, pwdCheck } = input;
+  const { authEmail, authCodeUser, pwd, pwdCheck } = input;
+
+  const sendAuthCode = async e => {
+    e.preventDefault();
+
+    const auth_email = {
+      email: authEmail,
+    };
+
+    try {
+      const response = await apis.authEmail(auth_email);
+      const auth_code = response.data.auth_code;
+
+      auth_code && setCheckCorrectEmail(true);
+      auth_code && setCheckSendCode(true);
+      setAuthCodeDB(auth_code);
+      setCheckCorrectEmail(true);
+      setCheckSendCode(false);
+    } catch (error) {
+      error.response.data.errormessage && setCheckCorrectEmail(false);
+      console.log(error);
+    }
+  };
 
   const handleChange = e => {
     const { value, name } = e.target;
@@ -32,37 +61,12 @@ const FindPwd = () => {
     });
   };
 
-  const sendAuthCode = async e => {
-    e.preventDefault();
-
-    const auth_email = {
-      email: authEmail,
-    };
-
-    console.log(auth_email);
-
-    try {
-      const response = await apis.authEmail(auth_email);
-      const auth_code = response.data.auth_code;
-      setAuthCodeDB(auth_code);
-      setCheckCorrectEmail(true);
-      setCheckSendCode(false);
-    } catch (error) {
-      if (error.response.data.errormessage === '존재하지 않는 이메일입니다.') {
-        setCheckCorrectEmail(false);
-      }
-      console.log(error);
-    }
-  };
-
   const handleBlur = e => {
-    const { classList } = e.target;
+    const { classList, value } = e.target;
 
-    // 아아디
+    // 아이디
     if (classList.contains('authEmail')) {
-      const regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
-      if (!regExp.test(authEmail)) {
+      if (!idRegExp.test(authEmail)) {
         setCheckAuthEmail(false);
         return false;
       } else {
@@ -72,10 +76,7 @@ const FindPwd = () => {
 
     // 비밀번호
     if (classList.contains('pwd')) {
-      // 비밀번호 형식 체크(8이상의 영문 숫자 조합)
-      const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
-      if (!regExp.test(pwd)) {
+      if (!pwdRegExp.test(pwd)) {
         setCheckPwd(false);
         return false;
       } else {
@@ -93,9 +94,9 @@ const FindPwd = () => {
       }
     }
 
-    //인증번호 확인
+    // 인증코드 확인
     if (classList.contains('authCode')) {
-      if (e.target.value.length > 0) {
+      if (!value) {
         setCheckSendCode(true);
       } else {
         setCheckSendCode(false);
@@ -106,12 +107,11 @@ const FindPwd = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (authCodeDB !== authCode) {
+    if (authCodeDB !== authCodeUser) {
       alert('인증번호가 틀립니다. 다시 확인해주세요.');
       return false;
     }
 
-    // 바뀐 비밀번호를 서버로 전송.
     dispatch(userActions.changePwdDB(authEmail, pwd));
   };
 
@@ -146,11 +146,13 @@ const FindPwd = () => {
           >
             전송
           </button>
+          {/* 이메일 형식 체크 */}
           {!checkAuthEmail && checkCorrectEmail && (
             <span className={classnames(style.errorMeg, style.checkAuth)}>
               올바른 이메일 형식을 입력해주세요.
             </span>
           )}
+          {/* 등록된 이메일인지 체크 */}
           {!checkCorrectEmail && (
             <span className={classnames(style.errorMeg, style.checkAuth)}>
               등록되지 않은 이메일입니다.
@@ -158,17 +160,18 @@ const FindPwd = () => {
           )}
         </div>
         <p className={style.inputBox}>
-          <label htmlFor='authCode'>인증번호 입력</label>
+          <label htmlFor='authCodeUser'>인증번호 입력</label>
           <input
-            id='authCode'
-            name='authCode'
+            id='authCodeUser'
+            name='authCodeUser'
             type='text'
             placeholder='인증번호를 입력하세요.'
-            defaultValue={authCode}
-            className={classnames('authCode', !checkSendCode && style.confirm)}
+            defaultValue={authCodeUser}
+            className={classnames('authCode', checkSendCode && style.confirm)}
             onBlur={handleBlur}
           />
-          {!checkSendCode && (
+          {/* 인증번호 체크 */}
+          {checkSendCode && (
             <span className={style.confirmMeg}>
               인증번호를 보냈습니다. 이메일을 확인해주세요.
             </span>
@@ -211,7 +214,7 @@ const FindPwd = () => {
         <button
           className={classnames(
             style.btn,
-            authEmail && authCode && pwd && pwdCheck ? style.active : null,
+            authEmail && authCodeUser && pwd && pwdCheck ? style.active : null,
           )}
         >
           수정완료

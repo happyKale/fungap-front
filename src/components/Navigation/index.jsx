@@ -1,20 +1,24 @@
 import React from 'react';
-
-import { history } from '../../redux/configureStore';
-import style from './navigation.module.css';
-import chat from '../../assets/chat.svg';
-import chatClicked from '../../assets/chat_clicked.png';
-import home from '../../assets/home.png';
-import search from '../../assets/search.png';
-import ferris from '../../assets/ferriswheel.png';
-import homeClicked from '../../assets/home_clicked.png';
-import searchClicked from '../../assets/search_clicked.png';
-import ferrisClicked from '../../assets/ferriswheel_clicked.png';
-import user from '../../assets/user.png';
-import userClicked from '../../assets/user_clicked.png';
-import apps from '../../assets/apps.png';
-import appsClicked from '../../assets/apps_clicked.png';
+// redux
 import { useSelector } from 'react-redux';
+// route
+import { history } from '@redux/configureStore';
+// css
+import style from './navigation.module.css';
+
+// images
+import chatClicked from '@assets/chat_clicked.png';
+import search from '@assets/search.png';
+import ferris from '@assets/ferriswheel.png';
+import homeClicked from '@assets/home_clicked.png';
+import searchClicked from '@assets/search_clicked.png';
+import ferrisClicked from '@assets/ferriswheel_clicked.png';
+import userClicked from '@assets/user_clicked.png';
+import apps from '@assets/apps.png';
+import appsClicked from '@assets/apps_clicked.png';
+import home from '@assets/home.svg';
+import chat from '@assets/chat.svg';
+import user from '@assets/user.svg';
 
 const Navigation = props => {
   const isLogin = useSelector(state => state.user.is_login);

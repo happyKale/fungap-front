@@ -1,31 +1,23 @@
-.container {
-  border: 3px solid lightblue;
-  border-radius: 10px;
-  width: 80%;
-  padding: 20px;
-  margin-bottom: 50px;
-}
-
-.imgBox {
-  /* border: 3px solid red; */
-  width: 100%;
-  /* min-height: 400px; */
-  box-sizing: border-box;
-  margin-bottom: 30px;
-}
-
-.img {
-  width: 100%;
-}
-
-.editImage {
+.edit {
+  position: relative;
   width: 30px;
   height: 30px;
-  display: block;
   margin: auto;
-  position: relative;
-  left: 40px;
-  top: 15px;
+}
+.edit > label {
+  cursor: pointer;
+}
+.edit img {
+  position: absolute;
+  top: 115px;
+  left: 35px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #c4c4c4;
+  z-index: 1;
+}
+.edit > input {
+  display: none;
 }
 .userImage {
   width: 112px;
@@ -36,18 +28,20 @@
   position: relative;
   object-fit: cover;
 }
-.editImage > label {
-  cursor: pointer;
-}
 
-.editImage > label > img {
-  width: 30px;
-  border-radius: 50%;
-  background-color: #c4c4c4;
-  position: relative;
-  top: 100px;
-  z-index: 1;
+/* 관리자페이지 이미지 업로드 */
+.container {
+  width: 80%;
+  margin-bottom: 50px;
+  border: 3px solid lightblue;
+  border-radius: 10px;
+  padding: 20px;
 }
-.editImage > input {
-  display: none;
+.imgBox {
+  width: 100%;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+.postImage {
+  width: 100%;
 }

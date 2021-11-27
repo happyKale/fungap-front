@@ -1,26 +1,23 @@
-import SignIn from './SignIn';
-import SignUp from './SignUp';
-import GoogleSignIn from './GoogleSignIn';
-import KakaoSignIn from './KakaoSignIn';
-import NaverSignIn from './NaverSignIn';
 import Home from './Home';
+import Search from './Search';
 import Contents from './Contents';
 import Detail from './Detail';
-import Admin from './Admin';
-import AdminPostManage from './AdminPostManage';
-import AdminPostPreview from './AdminPostPreview';
-import Setting from './Setting';
+import Chatting from './Chatting';
+import ChatRoom from './ChatRoom';
+import MbtiTest from './MbtiTest';
+import MbtiTestResult from './MbtiTestResult';
+import UserPage from './UserPage';
 import ProfileEdit from './ProfileEdit';
 import Notification from './Notification';
 import Alarm from './Alarm';
-import TermsofUse from './TermsofUse';
-import Chatting from './Chatting';
-import ChatRoom from './ChatRoom';
-import Search from './Search';
-import EmailSignIn from './EmailSignIn';
+import TermsOfUse from './TermsOfUse';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+import SignInEmail from './SignInEmail';
 import FindPwd from './FindPwd';
-import Compatibility from './Compatibility';
-import CompatibilityResult from './CompatibilityResult';
+import Admin from './Admin';
+import AdminPostManage from './AdminPostManage';
+import AdminPostPreview from './AdminPostPreview';
 import GameWrite from './GameWrite';
 import GameList from './GameList';
 import GameDetail from './GameDetail';
@@ -28,29 +25,26 @@ import GameResult from './GameResult';
 import ContentsAll from './ContentsAll';
 
 export {
-  SignIn,
-  SignUp,
-  KakaoSignIn,
-  NaverSignIn,
-  GoogleSignIn,
   Home,
+  Search,
   Contents,
   Detail,
-  Admin,
-  AdminPostManage,
-  AdminPostPreview,
-  Setting,
+  Chatting,
+  ChatRoom,
+  MbtiTest,
+  MbtiTestResult,
+  UserPage,
   ProfileEdit,
   Notification,
   Alarm,
-  TermsofUse,
-  Chatting,
-  ChatRoom,
-  Search,
-  EmailSignIn,
+  TermsOfUse,
+  SignIn,
+  SignUp,
+  SignInEmail,
   FindPwd,
-  Compatibility,
-  CompatibilityResult,
+  Admin,
+  AdminPostManage,
+  AdminPostPreview,
   GameWrite,
   GameList,
   GameDetail,
