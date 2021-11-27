@@ -59,9 +59,9 @@ const RoomI = () => {
 
   return (
     <>
-      <div className={style.banner}>
-        <Goback>[I모임] 내향형 모여라({user ? user.length : 0}명)</Goback>
-      </div>
+      <Goback use='groupI'>
+        [I모임] 내향형 모여라({user ? user.length : 0}명)
+      </Goback>
       <div className={style.chatbox}>
         <ChatLog />
       </div>

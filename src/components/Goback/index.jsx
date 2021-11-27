@@ -5,7 +5,7 @@ import { history } from '@redux/configureStore';
 // css
 import style from './goback.module.css';
 
-const Goback = ({ page, children, color }) => {
+const Goback = ({ page, children, color, use }) => {
   const admin = history.location.pathname.includes('admin');
   const handleClick = () => {
     if (page) {
@@ -21,6 +21,7 @@ const Goback = ({ page, children, color }) => {
         style.wrap,
         color && style.colorWrap,
         admin && style.adminWrap,
+        use && style[use],
       )}
       onClick={handleClick}
     >

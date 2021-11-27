@@ -5,6 +5,7 @@ import { Goback, ChatLog, ChatInput } from '../../../components';
 import { ChatActions } from '../../../redux/modules/chat';
 import { socket } from '../../../shared/socket';
 import placeholder from '../../../assets/profileplaceholder.png';
+
 const RoomE = () => {
   const dispatch = useDispatch();
   const Room = 'E';
@@ -56,9 +57,9 @@ const RoomE = () => {
 
   return (
     <>
-      <div className={style.banner}>
-        <Goback>[E모임] 외향형 모여라({user ? user.length : 0}명)</Goback>
-      </div>
+      <Goback use='groupE'>
+        [E모임] 외향형 모여라({user ? user.length : 0}명)
+      </Goback>
       <div className={style.chatbox}>
         <ChatLog />
       </div>

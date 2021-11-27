@@ -58,9 +58,9 @@ const RoomF = () => {
 
   return (
     <>
-      <div className={style.banner}>
-        <Goback>[F모임] 감정형 모여라({user ? user.length : 0}명)</Goback>
-      </div>
+      <Goback use='groupF'>
+        [F모임] 감정형 모여라({user ? user.length : 0}명)
+      </Goback>
       <div className={style.chatbox}>
         <ChatLog />
       </div>
