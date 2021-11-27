@@ -8,7 +8,6 @@ import style from './sortContents.module.css';
 
 const SortContents = ({ mode }) => {
   const dispatch = useDispatch();
-  const mode = props.mode;
 
   const handleChange = e => {
     const { value } = e.target;
