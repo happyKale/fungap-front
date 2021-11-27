@@ -1,5 +1,6 @@
 import style from '../soketChannel.module.css';
 import React, { useEffect, useState } from 'react';
+import classnames from 'classnames';
 import { useSelector } from 'react-redux';
 import { Goback, Modal } from '../../../components';
 import { history } from '../../../redux/configureStore';
@@ -44,7 +45,7 @@ const ChannelE = () => {
   return (
     <>
       <Goback>MBTI채팅방</Goback>
-      <div className={style.image} />
+      <div className={classnames(style.image, style.image1)} />
       <h2>[E모임] 외향형 모여라</h2>
       <p className={style.text}>
         사람들 만나고 활동할 때 에너지 넘치는 편~ 다양한 친구들과 폭 넓은 관계를

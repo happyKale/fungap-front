@@ -1,5 +1,6 @@
 import style from '../soketChannel.module.css';
 import React, { useState, useEffect } from 'react';
+import classnames from 'classnames';
 import { useSelector } from 'react-redux';
 import { Goback, Modal } from '../../../components';
 import { history } from '../../../redux/configureStore';
@@ -44,7 +45,7 @@ const ChannelF = () => {
   return (
     <>
       <Goback>MBTI채팅방</Goback>
-      <div className={style.image} />
+      <div className={classnames(style.image, style.image2)} />
       <h2>[F모임] 감정형 모여라</h2>
       <p className={style.text}>
         사람의 관계에 주 관심이 있는 F ! 결과도 중요하지만 과정이 더 중요하지~
