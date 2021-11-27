@@ -11,7 +11,7 @@
 .chatBox > div > div {
   border-radius: 0px;
   width: 100%;
-  height: calc(100vh - 230px);
+  height: calc(100vh - 160px);
   border: none;
   box-shadow: none;
   background-color: white;
@@ -32,4 +32,9 @@
 .jobImg {
   width: 200px;
   border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+  .chatBox > div > div {
+    height: calc(100vh - 150px);
+  }
 }

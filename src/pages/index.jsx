@@ -23,6 +23,15 @@ import GameList from './GameList';
 import GameDetail from './GameDetail';
 import GameResult from './GameResult';
 import ContentsAll from './ContentsAll';
+import RoomI from './SocketChatroom/RoomI';
+import RoomE from './SocketChatroom/RoomE';
+import RoomF from './SocketChatroom/RoomF';
+import RoomT from './SocketChatroom/RoomT';
+import ChannelI from './SocketChannel/ChannelI';
+import ChannelE from './SocketChannel/ChannelE';
+import ChannelF from './SocketChannel/ChannelF';
+import ChannelT from './SocketChannel/ChannelT';
+
 
 export {
   Home,
@@ -50,4 +59,12 @@ export {
   GameDetail,
   GameResult,
   ContentsAll,
+  RoomI,
+  RoomE,
+  RoomF,
+  RoomT,
+  ChannelI,
+  ChannelE,
+  ChannelT,
+  ChannelF,
 };

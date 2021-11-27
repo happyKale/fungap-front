@@ -8,6 +8,7 @@ import User from './modules/user';
 import Post from './modules/post';
 import Comment from './modules/comment';
 import Compatibility from './modules/compatibility';
+import Chat from './modules/chat';
 import Game from './modules/game';
 
 export const history = createBrowserHistory();
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   comment: Comment,
   post: Post,
   compatibility: Compatibility,
+  chat: Chat,
   game: Game,
   router: connectRouter(history),
 });
