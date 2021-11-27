@@ -27,7 +27,7 @@ const Navigation = props => {
 
     if (!li) return false;
     if (page === 'home') history.push('/');
-    if (page === 'contents') history.push('/contents');
+    // if (page === 'contents') history.push('/contents_all');
     if (page === 'search') history.push('/search');
     if (page === 'chatting') history.push('/chatting');
     if (page === 'user') history.push('/userpage');
@@ -36,19 +36,19 @@ const Navigation = props => {
   return (
     <nav className={style.nav}>
       <ul className={style.btnList} onClick={handleClick}>
+        {/* <li data-name='home' className={style.btn}>
+          <img //
+            src={location === '/' ? homeClicked : home}
+            alt='홈'
+          />
+          <span>홈</span>
+        </li> */}
         <li data-name='home' className={style.btn}>
           <img //
             src={location === '/' ? homeClicked : home}
             alt='홈'
           />
           <span>홈</span>
-        </li>
-        <li data-name='contents' className={style.btn}>
-          <img //
-            src={ferris}
-            alt='둘러보기'
-          />
-          <span>둘러보기</span>
         </li>
         <li data-name='search' className={style.btn}>
           <img //
