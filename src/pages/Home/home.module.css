@@ -1,29 +1,56 @@
-.grid {
-  width: 100%;
+.header {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  grid-template-columns: 200px 200px;
-  grid-template-columns: 1fr 1fr;
-  position: relative;
+  align-items: center;
+  width: 100%;
+  height: 102px;
 }
 
-.subTitle {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.logo {
+  background: url('../../assets/logo_yellow.png') no-repeat;
   width: 100%;
-  margin: 20px 0px 5px 0px;
+  height: 36px;
 }
-.subTitle > h2 {
-  font-size: 20px;
+.gameContainer {
+  padding: 14px 0px 0px;
+  margin: 70px 0px 20px;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 16px;
   font-weight: 700;
+  padding-left: 16px;
+  margin: 15px 0px 10px 6px;
 }
-.subTitle > span {
-  vertical-align: text-bottom;
-  margin: 28px 0px 0px 0px;
-  font-weight: bold;
-  font-size: 13px;
+.compatibility {
+  background: url('@assets/compatibilityBanner.png') no-repeat top;
+  background-size: cover;
+  width: 80%;
+  height: 170px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 15px;
+  margin: auto;
   cursor: pointer;
-  color: #a5a5a5;
+}
+.lastBanner {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 20px 0px 0px;
+}
+.lastBannerLeft {
+  width: 50%;
+}
+.lastBannerRight {
+  width: 50%;
+}
+.review {
+  background: url('@assets/reviewBanner.png') no-repeat top;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-size: cover;
+  width: 80%;
+  height: 170px;
+  border-radius: 10px;
+  margin: auto;
+  cursor: pointer;
 }

@@ -11,6 +11,7 @@ const useFetch = (sort, page) => {
   const sendQuery = useCallback(async () => {
     try {
       setIsLoading(true);
+      console.log(page);
       const response = await apis.getMorePost(sort, page);
       const boardList = response?.data.board_list;
 

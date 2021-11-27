@@ -1,4 +1,4 @@
-import style from './channele.module.css';
+import style from '../soketChannel.module.css';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Goback, Modal } from '../../../components';

@@ -87,7 +87,7 @@ function App() {
         <Navigation />
         <ConnectedRouter history={history}>
           <ScrollRestoration />
-          <Route path='/' exact component={ContentsAll} />
+          <Route path='/' exact component={Home} />
           <Route path='/search' exact component={Search} />
           <Route path='/contents' exact component={Contents} />
           <Route path='/detail/:id' exact component={Detail} />
