@@ -7,11 +7,10 @@
 .img {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   background-size: cover;
 }
-
 .img1 {
   background: url('@assets/topBanner1.png') no-repeat center;
 }
