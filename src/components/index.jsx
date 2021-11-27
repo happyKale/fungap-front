@@ -26,6 +26,10 @@ import ActionCompleteMessage from './ActionCompleteMessage';
 import GameMbtiChart from './GameMbtiChart';
 import GameParticipateChart from './GameParticipateChart';
 import GameChartBox from './GameChartBox';
+import ContentsRow from './ContentsRow';
+import ContentsRowItem from './ContentsRowItem';
+import ContentsRowTitle from './ContentsRowTitle';
+import GameQuestBox from './GameQuestBox';
 
 export {
   TypeOfMbti,
@@ -56,4 +60,8 @@ export {
   GameMbtiChart,
   GameParticipateChart,
   GameChartBox,
+  ContentsRow,
+  ContentsRowItem,
+  ContentsRowTitle,
+  GameQuestBox,
 };

@@ -25,6 +25,7 @@ import GameWrite from './GameWrite';
 import GameList from './GameList';
 import GameDetail from './GameDetail';
 import GameResult from './GameResult';
+import ContentsAll from './ContentsAll';
 
 export {
   SignIn,
@@ -54,4 +55,5 @@ export {
   GameList,
   GameDetail,
   GameResult,
+  ContentsAll,
 };

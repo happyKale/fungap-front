@@ -31,6 +31,7 @@ import {
   GameDetail,
   GameList,
   GameResult,
+  ContentsAll,
 } from '../pages';
 import { Navigation, ScrollRestoration } from '../components';
 import style from './App.module.css';
@@ -76,7 +77,8 @@ function App() {
         <Navigation />
         <ConnectedRouter history={history}>
           <ScrollRestoration></ScrollRestoration>
-          <Route path='/' exact component={Home} />
+          <Route path='/' exact component={ContentsAll} />
+          {/* <Route path='/' exact component={Home} /> */}
           <Route path='/search' exact component={Search} />
           <Route path='/contents' exact component={Contents} />
           <Route path='/detail/:id' exact component={Detail} />
@@ -107,6 +109,7 @@ function App() {
             exact
             component={CompatibilityResult}
           />
+          {/* <Route path='/contents_all' exact component={ContentsAll} /> */}
         </ConnectedRouter>
       </div>
     </div>
