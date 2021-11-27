@@ -1,4 +1,4 @@
-import style from './roomt.module.css';
+import style from '../socketChatroom.module.css';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Goback, ChatLog, ChatInput } from '../../../components';

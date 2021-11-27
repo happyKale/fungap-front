@@ -1,4 +1,4 @@
-import style from './roome.module.css';
+import style from '../socketChatroom.module.css';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Goback, ChatLog, ChatInput } from '../../../components';
@@ -40,7 +40,13 @@ const RoomE = () => {
     return () => {
       socket.emit('user_left', Room, userName, userId);
       socket.emit('left_room', Room);
-      socket.off('join_room', 'notice_user_left', 'notice_user_join');
+      socket.off(
+        'join_room',
+        'notice_user_left',
+        'notice_user_join',
+        'join_chat',
+        'current_usercount',
+      );
     };
   }, []);
 
