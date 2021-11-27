@@ -15,7 +15,7 @@ import vs from '../../assets/vs.png';
 import classNames from 'classnames';
 
 const GameResult = props => {
-  const gameId = props.match.params.id; // 투표 게시글 아이디
+  const gameId = parseInt(props.match.params.id); // 투표 게시글 아이디
   const dispatch = useDispatch();
   const game = useSelector(state => state.game.game);
   const [visible, setVisible] = useState(false); // modal 컴포넌트 보이는 여부
@@ -86,7 +86,7 @@ const GameResult = props => {
             board_title: game?.game_title,
           }}
         />
-        <Comments boardId={game?.game_id} mode={'game'} />
+        <Comments boardId={gameId} mode={'game'} />
       </div>
       {visible && (
         <Modal

@@ -19,7 +19,7 @@ import defaultImg from '../../assets/profileplaceholder.png';
 
 const GameDetail = props => {
   const dispatch = useDispatch();
-  const gameId = props.match.params.id; // 투표 게시글 아이디
+  const gameId = parseInt(props.match.params.id); // 투표 게시글 아이디
   const [visible, setVisible] = useState(false); // modal 컴포넌트 보이는 여부
   const [modalTitle, setModalTitle] = useState(''); // modal 컴포넌트 제목
   const isLogin = useSelector(state => state.user.is_login); // 로그인 여부
@@ -163,7 +163,7 @@ const GameDetail = props => {
             board_title: game?.game_title,
           }}
         />
-        <Comments boardId={game?.game_id} mode={'game'} />
+        <Comments boardId={gameId} mode={'game'} />
       </div>
       {visible && (
         <Modal
