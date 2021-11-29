@@ -14,11 +14,11 @@ import {
 // css
 import style from './home.module.css';
 // images
-import I from '@assets/chatting_I.png';
-import E from '@assets/chatting_E.png';
-import F from '@assets/chatting_F.png';
-import T from '@assets/chatting_T.png';
-import C from '@assets/chatting_Career.png';
+import I from '@assets/background/chat_i.webp';
+import E from '@assets/background/chat_e.webp';
+import F from '@assets/background/chat_f.webp';
+import T from '@assets/background/chat_t.webp';
+import C from '@assets/chatbot/carrer.webp';
 
 const CHATTING_LIST = [
   {
@@ -62,10 +62,18 @@ const ContentsAll = () => {
     dispatch(postActions.getAllContentDB());
   }, []);
 
-  const handleClick = () =>
-    window.open(
-      'https://docs.google.com/forms/d/e/1FAIpQLSdwWd9teNf4ZqF4wY9D51QDfYCsioT6QfTXomrVP4vg7A8ezw/viewform',
-    );
+  const handleClick = e => {
+    const { id } = e.target;
+
+    if (id === 'test') {
+      history.push('/mbti/test');
+    }
+    if (id === 'review') {
+      window.open(
+        'https://docs.google.com/forms/d/e/1FAIpQLSdwWd9teNf4ZqF4wY9D51QDfYCsioT6QfTXomrVP4vg7A8ezw/viewform',
+      );
+    }
+  };
 
   return (
     <div>
@@ -100,15 +108,15 @@ const ContentsAll = () => {
         <div className={style.lastBannerLeft}>
           <p className={style.title}>MBTI 궁합</p>
           <div
-            onClick={() => {
-              history.push('/mbti/test');
-            }}
+            id='test'
+            onClick={handleClick}
             className={style.compatibility}
           />
         </div>
         <div className={style.lastBannerRight}>
           <p className={style.title}>리뷰작성하기</p>
           <div //
+            id='review'
             className={style.review}
             onClick={handleClick}
           />
