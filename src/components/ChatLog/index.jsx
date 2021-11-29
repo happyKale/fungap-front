@@ -1,7 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { socket } from '../../shared/socket';
-import style from './chatLog.module.css';
+//redux
 import { useSelector } from 'react-redux';
+//components
+import { MbtiTag } from '..';
+//css
+import style from './chatLog.module.css';
+//images
 import placeholder from '../../assets/profileplaceholder.png';
 
 const ChatLog = props => {
@@ -20,8 +25,8 @@ const ChatLog = props => {
   useEffect(() => {
     socket.on(
       'receive_message',
-      (roomname, name, userId, message, userImage) => {
-        setChat([...chat, { name, message, userImage }]);
+      (roomname, name, userId, message, userImage, userMbti) => {
+        setChat([...chat, { name, message, userImage, userMbti }]);
       },
     );
 
@@ -38,7 +43,7 @@ const ChatLog = props => {
   return (
     <>
       <div ref={scrollRef}>
-        {chat.map((msg, index) =>
+        {chat?.map((msg, index) =>
           msg.name === userNickname ? (
             <div className={style.myMessageBox} key={index}>
               <p className={style.myMessage}>{msg.message}</p>
@@ -52,9 +57,16 @@ const ChatLog = props => {
                 />
               </div>
               <div className={style.chatBox}>
-                <>
-                  <span className={style.name}>{msg.name}</span>
-                </>
+                <section className={style.userInfo}>
+                  <span className={style.name}>
+                    {msg.name}
+                    {msg.userMbti ? (
+                      <MbtiTag mbti={msg.userMbti}>{msg.userMbti}</MbtiTag>
+                    ) : (
+                      ''
+                    )}
+                  </span>
+                </section>
                 <p className={style.message}>{msg.message}</p>
               </div>
             </div>
