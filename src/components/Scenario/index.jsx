@@ -7,7 +7,7 @@ import { history } from '@redux/configureStore';
 import style from './scenario.module.css';
 // images
 import profile from '@assets/profileplaceholder.png';
-import jinro from '@assets/friend_jinro.png';
+import jinro from '@assets/chatbot/friend_carrer.webp';
 
 const Scenario = props => {
   const mbti = props.previousStep.message.toUpperCase();

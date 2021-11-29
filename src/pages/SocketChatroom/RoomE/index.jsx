@@ -1,9 +1,13 @@
-import style from '../socketChatroom.module.css';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Goback, ChatLog, ChatInput } from '../../../components';
-import { ChatActions } from '../../../redux/modules/chat';
 import { socket } from '../../../shared/socket';
+//redux
+import { useDispatch } from 'react-redux';
+import { ChatActions } from '../../../redux/modules/chat';
+//conponents
+import { Goback, ChatLog, ChatInput, MbtiTag } from '../../../components';
+//css
+import style from '../socketChatroom.module.css';
+//images
 import placeholder from '../../../assets/profileplaceholder.png';
 
 const RoomE = () => {
@@ -86,6 +90,11 @@ const RoomE = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
+                {list.user_mbti ? (
+                  <MbtiTag mbti={list.user_mbti}>{list.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })
@@ -98,6 +107,11 @@ const RoomE = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
+                {list.user_mbti ? (
+                  <MbtiTag mbti={list.user_mbti}>{list.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })}

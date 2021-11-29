@@ -1,14 +1,18 @@
-import style from '../soketChannel.module.css';
 import React, { useEffect, useState } from 'react';
-import classnames from 'classnames';
-import { useSelector } from 'react-redux';
-import { Goback, Modal } from '../../../components';
-import { history } from '../../../redux/configureStore';
 import { socket } from '../../../shared/socket';
+import classnames from 'classnames';
+//redux
+import { useSelector } from 'react-redux';
+//route
+import { history } from '../../../redux/configureStore';
+//components
+import { Goback, Modal, MbtiTag } from '../../../components';
+//css
+import style from '../soketChannel.module.css';
+//images
 import placeholder from '../../../assets/profileplaceholder.png';
 
 const ChannelI = () => {
-  const [userCount, setUserCount] = useState();
   const [userList, setUserList] = useState();
   const [btnVisible, setBtnVisible] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -65,6 +69,11 @@ const ChannelI = () => {
                   className={style.userImage}
                 />
                 <p>{item?.nickname}</p>
+                {item.user_mbti ? (
+                  <MbtiTag mbti={item.user_mbti}>{item.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })
@@ -77,6 +86,11 @@ const ChannelI = () => {
                   className={style.userImage}
                 />
                 <p>{item?.nickname}</p>
+                {item.user_mbti ? (
+                  <MbtiTag mbti={item.user_mbti}>{item.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })}

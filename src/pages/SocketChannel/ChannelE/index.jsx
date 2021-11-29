@@ -1,14 +1,18 @@
-import style from '../soketChannel.module.css';
 import React, { useEffect, useState } from 'react';
-import classnames from 'classnames';
-import { useSelector } from 'react-redux';
-import { Goback, Modal } from '../../../components';
-import { history } from '../../../redux/configureStore';
 import { socket } from '../../../shared/socket';
+import classnames from 'classnames';
+//redux
+import { useSelector } from 'react-redux';
+//route
+import { history } from '../../../redux/configureStore';
+//components
+import { Goback, Modal, MbtiTag } from '../../../components';
+//css
+import style from '../soketChannel.module.css';
+//images
 import placeholder from '../../../assets/profileplaceholder.png';
 
 const ChannelE = () => {
-  const [userCount, setUserCount] = useState();
   const [userList, setUserList] = useState();
   const [btnVisible, setBtnVisible] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -24,7 +28,7 @@ const ChannelE = () => {
     });
     return () => {
       socket.emit('left_room', roomName);
-      socket.off('current_usercount');
+      socket.off('current_usercount', 'join_room');
     };
   }, []);
 
@@ -56,27 +60,37 @@ const ChannelE = () => {
       </div>
       <h3>참여자({userList ? userList.length : 0}명)</h3>
       {btnVisible
-        ? userList?.slice(0, 5).map((list, index) => {
+        ? userList?.slice(0, 5).map((item, index) => {
             return (
               <div className={style.content} key={index}>
                 <img
-                  src={list?.user_image ? list.user_image : placeholder}
+                  src={item?.user_image ? item.user_image : placeholder}
                   alt='유저이미지'
                   className={style.userImage}
                 />
-                <p>{list?.nickname}</p>
+                <p>{item?.nickname}</p>
+                {item.user_mbti ? (
+                  <MbtiTag mbti={item.user_mbti}>{item.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })
-        : userList?.map((list, index) => {
+        : userList?.map((item, index) => {
             return (
               <div className={style.content} key={index}>
                 <img
-                  src={list?.user_image ? list.user_image : placeholder}
+                  src={item?.user_image ? item.user_image : placeholder}
                   alt='유저이미지'
                   className={style.userImage}
                 />
-                <p>{list?.nickname}</p>
+                <p>{item?.nickname}</p>
+                {item.user_mbti ? (
+                  <MbtiTag mbti={item.user_mbti}>{item.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })}

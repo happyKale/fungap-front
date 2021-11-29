@@ -3,8 +3,6 @@ import React from 'react';
 import { history } from '@redux/configureStore';
 // css
 import style from './chat.module.css';
-// images
-import friendDefault from '@assets/friend_default.png';
 
 const Chat = ({ image, name, message, category, chatId }) => {
   return (
@@ -25,11 +23,7 @@ const Chat = ({ image, name, message, category, chatId }) => {
           }
         }}
       >
-        <img
-          src={image ? image : friendDefault}
-          className={style.chatUserImage}
-          alt='캐릭터'
-        />
+        <img src={image} className={style.chatUserImage} alt='캐릭터' />
         <div className={style.chatDesc}>
           <h3 className={style.chatName}>
             {name} <span className={style.chatCategory}>{category}</span>
