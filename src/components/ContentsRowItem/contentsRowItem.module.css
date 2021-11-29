@@ -1,6 +1,14 @@
 .contentImage {
   width: 130px;
+  height: 98px;
   max-height: 112px;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.chattingImage {
+  width: 130px;
+  height: 111px;
   object-fit: contain;
   border-radius: 8px;
   cursor: pointer;
@@ -54,8 +62,8 @@
 
 .gameContent {
   width: 96%;
-  height: 350px;
-  margin: 10px auto 20px;
+  height: 300px;
+  margin: 10px auto 30px;
 }
 .gameInnerContent {
   display: flex;
@@ -69,10 +77,10 @@
 }
 .gameContentTitle {
   display: inline-block;
-  margin: 10px 0px 0px 0px;
+  margin: 6px 0px 0px 0px;
   padding: 5px 15px;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
 }
 .gameContentItem {
@@ -81,7 +89,7 @@
   align-items: center;
   position: relative;
   width: 95%;
-  height: 100px;
+  height: 85px;
   margin: 0px 0px 10px 0px;
   padding: 6px;
   box-sizing: border-box;
