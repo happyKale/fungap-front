@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { socket } from '../../../shared/socket';
 //redux
 import { useDispatch } from 'react-redux';
-import { ChatActions } from '../../../redux/modules/chat';
+import { ChatActions } from '@redux/modules/chat';
 //components
-import { Goback, ChatLog, ChatInput, MbtiTag } from '../../../components';
+import { Goback, ChatLog, ChatInput, MbtiTag } from '@components';
+//util
+import { socket } from '@shared/socket';
 //css
 import style from '../socketChatroom.module.css';
 //images
-import placeholder from '../../../assets/profileplaceholder.png';
+import placeholder from '@assets/profileplaceholder.png';
 
 const RoomT = () => {
   const dispatch = useDispatch();
