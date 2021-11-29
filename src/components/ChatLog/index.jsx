@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 // redux
 import { useSelector } from 'react-redux';
+//components
+import { MbtiTag } from '@components';
 // util
 import { socket } from '@shared/socket';
 // css
@@ -24,7 +26,6 @@ const ChatLog = props => {
   useEffect(() => {
     socket.on('receive_message', (name, message, userImage) => {
       setChat([...chat, { name, message, userImage }]);
-    });
 
     scrollToBottom();
     return () => {
@@ -39,7 +40,7 @@ const ChatLog = props => {
   return (
     <>
       <div ref={scrollRef}>
-        {chat.map((msg, index) =>
+        {chat?.map((msg, index) =>
           msg.name === userNickname ? (
             <div className={style.myMessageBox} key={index}>
               <p className={style.myMessage}>{msg.message}</p>
@@ -53,9 +54,16 @@ const ChatLog = props => {
                 />
               </div>
               <div className={style.chatBox}>
-                <>
-                  <span className={style.name}>{msg.name}</span>
-                </>
+                <section className={style.userInfo}>
+                  <span className={style.name}>
+                    {msg.name}
+                    {msg.userMbti ? (
+                      <MbtiTag mbti={msg.userMbti}>{msg.userMbti}</MbtiTag>
+                    ) : (
+                      ''
+                    )}
+                  </span>
+                </section>
                 <p className={style.message}>{msg.message}</p>
               </div>
             </div>

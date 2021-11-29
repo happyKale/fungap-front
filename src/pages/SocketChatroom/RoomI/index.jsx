@@ -1,9 +1,13 @@
-import style from '../socketChatroom.module.css';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Goback, ChatLog, ChatInput } from '../../../components';
-import { ChatActions } from '../../../redux/modules/chat';
 import { socket } from '../../../shared/socket';
+//redux
+import { useDispatch } from 'react-redux';
+import { ChatActions } from '../../../redux/modules/chat';
+//components
+import { Goback, ChatLog, ChatInput, MbtiTag } from '../../../components';
+//css
+import style from '../socketChatroom.module.css';
+//images
 import placeholder from '../../../assets/profileplaceholder.png';
 
 const RoomI = () => {
@@ -15,7 +19,6 @@ const RoomI = () => {
   const [entryUser, setEntryUser] = useState();
   const [user, setUser] = useState();
   const [visible, setVisible] = useState(false);
-  const [alramVisible, setAlramVisible] = useState(true);
   useEffect(() => {
     socket.emit('join_room', Room);
     socket.emit('join_chat', Room, userName, userId);
@@ -83,6 +86,11 @@ const RoomI = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
+                {list.user_mbti ? (
+                  <MbtiTag mbti={list.user_mbti}>{list.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })
@@ -95,6 +103,11 @@ const RoomI = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
+                {list.user_mbti ? (
+                  <MbtiTag mbti={list.user_mbti}>{list.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })}
