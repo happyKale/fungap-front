@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 // redux
 import { useSelector } from 'react-redux';
 // route
@@ -7,22 +8,21 @@ import { history } from '@redux/configureStore';
 import style from './navigation.module.css';
 
 // images
-import chatClicked from '@assets/chat_clicked.png';
-import search from '@assets/search.png';
-import ferris from '@assets/ferriswheel.png';
-import homeClicked from '@assets/home_clicked.png';
-import searchClicked from '@assets/search_clicked.png';
-import ferrisClicked from '@assets/ferriswheel_clicked.png';
-import userClicked from '@assets/user_clicked.png';
-import apps from '@assets/apps.png';
-import appsClicked from '@assets/apps_clicked.png';
-import home from '@assets/home.svg';
-import chat from '@assets/chat.svg';
-import user from '@assets/user.svg';
+import home from '@assets/icon/home.webp';
+import homeClicked from '@assets/icon/home_c.webp';
+import search from '@assets/icon/search.webp';
+import searchClicked from '@assets/icon/search_c.webp';
+import chat from '@assets/icon/chat.webp';
+import chatClicked from '@assets/icon/chat_c.webp';
+import user from '@assets/icon/user.webp';
+import userClicked from '@assets/icon/user_c.webp';
+import more from '@assets/icon/more.webp';
+import moreClicked from '@assets/icon/more_c.webp';
 
 const Navigation = props => {
   const isLogin = useSelector(state => state.user.is_login);
   const location = window.location.pathname;
+
   const handleClick = e => {
     if (e.target === e.currentTarget) return false;
 
@@ -31,7 +31,6 @@ const Navigation = props => {
 
     if (!li) return false;
     if (page === 'home') history.push('/');
-    // if (page === 'contents') history.push('/contents_all');
     if (page === 'search') history.push('/search');
     if (page === 'chatting') history.push('/chatting');
     if (page === 'user') history.push('/userpage');
@@ -40,13 +39,6 @@ const Navigation = props => {
   return (
     <nav className={style.nav}>
       <ul className={style.btnList} onClick={handleClick}>
-        {/* <li data-name='home' className={style.btn}>
-          <img //
-            src={location === '/' ? homeClicked : home}
-            alt='홈'
-          />
-          <span>홈</span>
-        </li> */}
         <li data-name='home' className={style.btn}>
           <img //
             src={location === '/' ? homeClicked : home}
@@ -71,18 +63,18 @@ const Navigation = props => {
         <li data-name='user' className={style.btn}>
           {isLogin ? (
             <img //
-              className={style.btn}
+              className={classnames(style.btn, style.iconMy)}
               src={location === '/userpage' ? userClicked : user}
-              alt='마이페이지'
+              alt='MY'
             />
           ) : (
             <img //
               className={style.btn}
-              src={location === '/userpage' ? appsClicked : apps}
+              src={location === '/userpage' ? moreClicked : more}
               alt='더보기'
             />
           )}
-          <span>{isLogin ? '마이페이지' : '더보기'}</span>
+          <span>{isLogin ? 'MY' : '더보기'}</span>
         </li>
       </ul>
     </nav>

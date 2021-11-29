@@ -1,25 +1,29 @@
 .image {
+  position: relative;
+  right: 20px;
+  top: -20px;
   width: 100%;
   height: 368px;
   padding: 20px;
-  position: relative;
-  right: 20px;
 }
 .image1 {
-  background: url('@assets/Ebanner.png') no-repeat center;
+  background: url('@assets/background/chat_e.webp') no-repeat center;
   background-size: contain;
 }
 .image2 {
-  background: url('@assets/Fbanner.png') no-repeat center;
+  background: url('@assets/background/chat_f.webp') no-repeat center;
   background-size: contain;
 }
 .image3 {
-  background: url('@assets/Ibanner.png') no-repeat center;
+  background: url('@assets/background/chat_i.webp') no-repeat center;
   background-size: contain;
 }
 .image4 {
-  background: url('@assets/Tbanner.png') no-repeat center;
+  background: url('@assets/background/chat_t.webp') no-repeat center;
   background-size: contain;
+}
+.image ~ h2 {
+  margin-top: 0;
 }
 
 .text {

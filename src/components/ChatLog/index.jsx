@@ -1,19 +1,20 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { socket } from '../../shared/socket';
-//redux
+// redux
 import { useSelector } from 'react-redux';
 //components
-import { MbtiTag } from '..';
-//css
+import { MbtiTag } from '@components';
+// util
+import { socket } from '@shared/socket';
+// css
 import style from './chatLog.module.css';
-//images
-import placeholder from '../../assets/profileplaceholder.png';
+// images
+import placeholder from '@assets/background/profile_default.webp';
 
 const ChatLog = props => {
-  const scrollRef = useRef();
-  const chatLogDB = useSelector(state => state.chat.logfromDB);
-  const [chat, setChat] = useState([]);
   const userNickname = JSON.parse(sessionStorage.getItem('user')).nickname;
+  const chatLogDB = useSelector(state => state.chat.logfromDB);
+  const scrollRef = useRef();
+  const [chat, setChat] = useState([]);
 
   const scrollToBottom = () => {
     scrollRef.current.scrollIntoView({
@@ -23,12 +24,8 @@ const ChatLog = props => {
   };
 
   useEffect(() => {
-    socket.on(
-      'receive_message',
-      (roomname, name, userId, message, userImage, userMbti) => {
-        setChat([...chat, { name, message, userImage, userMbti }]);
-      },
-    );
+    socket.on('receive_message', (name, message, userImage) => {
+      setChat([...chat, { name, message, userImage }]);
 
     scrollToBottom();
     return () => {

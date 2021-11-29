@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
-import style from './gameResult.module.css';
+import classNames from 'classnames';
+//redux
+import { useDispatch, useSelector } from 'react-redux';
+import { history } from '../../redux/configureStore';
+import { gameActions } from '../../redux/modules/game';
+//components
 import {
   Goback,
   GameChartBox,
   ContentFt,
   Comments,
   Modal,
+  MbtiTag,
 } from '../../components';
-import { history } from '../../redux/configureStore';
-import { gameActions } from '../../redux/modules/game';
-import { useDispatch, useSelector } from 'react-redux';
-import defaultImg from '../../assets/profileplaceholder.png';
+//css
+import style from './gameResult.module.css';
+//image
 import vs from '../../assets/vs.png';
-import classNames from 'classnames';
+import defaultImg from '../../assets/profileplaceholder.png';
 
 const GameResult = props => {
   const gameId = parseInt(props.match.params.id); // 투표 게시글 아이디
@@ -20,6 +25,7 @@ const GameResult = props => {
   const game = useSelector(state => state.game.game);
   const [visible, setVisible] = useState(false); // modal 컴포넌트 보이는 여부
   const isLogin = useSelector(state => state.user.is_login); // 로그인 여부
+  const userMbti = useSelector(state => state.user.user?.user_mbti);
   const [modalTitle, setModalTitle] = useState(''); // modal 컴포넌트 제목
 
   React.useEffect(() => {
@@ -42,7 +48,9 @@ const GameResult = props => {
               alt='프로필이미지'
             />
             <div>
-              <span>{game?.nickname}</span>
+              <span className={style.userName}>
+                {game?.nickname} <MbtiTag mbti={userMbti}>{userMbti}</MbtiTag>
+              </span>
               <span>2021.11.20</span>
             </div>
           </div>

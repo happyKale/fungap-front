@@ -23,7 +23,7 @@
   margin: 15px 0px 10px 6px;
 }
 .compatibility {
-  background: url('@assets/compatibilityBanner.png') no-repeat top;
+  background: url('@assets/background/compatibility.webp') no-repeat top;
   background-size: cover;
   width: 80%;
   height: 170px;
@@ -36,7 +36,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  margin: 20px 0px 0px;
+  margin: 20px 0px;
 }
 .lastBannerLeft {
   width: 50%;
@@ -45,7 +45,7 @@
   width: 50%;
 }
 .review {
-  background: url('@assets/reviewBanner.png') no-repeat top;
+  background: url('@assets/background/review.webp') no-repeat top;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   background-size: cover;
   width: 80%;

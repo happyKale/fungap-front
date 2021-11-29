@@ -17,7 +17,7 @@
   width: 32px;
   height: 32px;
   margin-right: 10px;
-  background: url(../../assets/notification.png) no-repeat center;
+  background: url('@assets/icon/notice.webp') no-repeat center;
 }
 
 .banner {
@@ -27,7 +27,7 @@
   height: 116px;
   margin-top: 20px;
   padding: 20px;
-  background: url(../../assets/backgroundimage.png) no-repeat right center;
+  background: url('@assets/background/content_all.webp') no-repeat right center;
   background-size: auto 116px;
   cursor: pointer;
   box-sizing: border-box;
