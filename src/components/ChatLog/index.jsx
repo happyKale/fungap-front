@@ -24,10 +24,12 @@ const ChatLog = props => {
   };
 
   useEffect(() => {
-    socket.on('receive_message', (name, message, userImage) => {
-      setChat([...chat, { name, message, userImage }]);
-    });
-
+    socket.on(
+      'receive_message',
+      (roomname, name, userId, message, userImage, userMbti) => {
+        setChat([...chat, { name, message, userImage, userMbti }]);
+      },
+    );
     scrollToBottom();
     return () => {
       socket.off('receive_message');
