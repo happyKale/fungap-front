@@ -8,16 +8,16 @@ import { history } from '@redux/configureStore';
 import style from './navigation.module.css';
 
 // images
-import home from '@assets/icon/home.png';
-import homeClicked from '@assets/icon/home_c.png';
-import search from '@assets/icon/search.png';
-import searchClicked from '@assets/icon/search_c.png';
-import chat from '@assets/icon/chat.png';
-import chatClicked from '@assets/icon/chat_c.png';
-import user from '@assets/icon/user.png';
-import userClicked from '@assets/icon/user_c.png';
-import more from '@assets/icon/more.png';
-import moreClicked from '@assets/icon/more_c.png';
+import home from '@assets/icon/home.webp';
+import homeClicked from '@assets/icon/home_c.webp';
+import search from '@assets/icon/search.webp';
+import searchClicked from '@assets/icon/search_c.webp';
+import chat from '@assets/icon/chat.webp';
+import chatClicked from '@assets/icon/chat_c.webp';
+import user from '@assets/icon/user.webp';
+import userClicked from '@assets/icon/user_c.webp';
+import more from '@assets/icon/more.webp';
+import moreClicked from '@assets/icon/more_c.webp';
 
 const Navigation = props => {
   const isLogin = useSelector(state => state.user.is_login);
