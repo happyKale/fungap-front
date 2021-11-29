@@ -72,14 +72,14 @@ const ContentsRowItem = props => {
       <div className={classNames(style.content, style.columnContent)}>
         <img
           onClick={() => {
-            history.push(`/chatting`);
+            history.push(`/${item.page}`);
           }}
           src={item?.chatting_img}
           className={style.contentImage}
         ></img>
         <p
           onClick={() => {
-            history.push(`/chatting`);
+            history.push(`/${item.page}`);
           }}
           className={style.contentTitle}
         >

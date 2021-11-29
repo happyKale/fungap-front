@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { socket } from '../../../shared/socket';
+import classnames from 'classnames';
 //redux
 import { useSelector } from 'react-redux';
 //route
@@ -49,7 +50,7 @@ const ChannelI = () => {
   return (
     <>
       <Goback>MBTI채팅방</Goback>
-      <div className={style.image} />
+      <div className={classnames(style.image, style.image3)} />
       <h2>[I모임] 내향형 모여라</h2>
       <p className={style.text}>
         혼자 있음으로써 에너지가 충전되는 편~ 조용히 혼자있는 것을 선호하는

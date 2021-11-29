@@ -25,26 +25,31 @@ const CHATTING_LIST = [
     chatting_img: I,
     chatting_title: '[I모임] 내향형 모여라',
     chatting_desc: 'I유형의 사용자들이 모인 채팅방입니다.',
+    page: 'channeli',
   },
   {
     chatting_img: E,
     chatting_title: '[E모임] 내향형 모여라',
     chatting_desc: 'E유형의 사용자들이 모인 채팅방입니다.',
+    page: 'channele',
   },
   {
     chatting_img: F,
     chatting_title: '[F모임] 내향형 모여라',
     chatting_desc: 'F유형의 사용자들이 모인 채팅방입니다.',
+    page: 'channelf',
   },
   {
     chatting_img: T,
     chatting_title: '[T모임] 내향형 모여라',
     chatting_desc: 'T유형의 사용자들이 모인 채팅방입니다.',
+    page: 'channelt',
   },
   {
     chatting_img: C,
     chatting_title: 'MBTI별 추천 직업',
     chatting_desc: '상담이 챗봇이 MBTI별로 직업을 추천해줍니다.',
+    page: 'chatroom/1',
   },
 ];
 

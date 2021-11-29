@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { socket } from '../../../shared/socket';
+import classnames from 'classnames';
 //redux
 import { useSelector } from 'react-redux';
 //route
@@ -49,7 +50,7 @@ const ChannelT = () => {
   return (
     <>
       <Goback>MBTI채팅방</Goback>
-      <div className={style.image} />
+      <div className={classnames(style.image, style.image4)} />
       <h2>[T모임] 사고형 모여라</h2>
       <p className={style.text}>
         진실과 사실에 주 관심이 있는 T ! 과저어도 중요하지만 결과가 더 중요하지~
