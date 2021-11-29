@@ -4,16 +4,16 @@ import { Chat } from '@components';
 // css
 import style from './chatting.module.css';
 // images
-import jinro from '@assets/friend_jinro.png';
-import Eimage from '@assets/Eimage.png';
-import Iimage from '@assets/Iimage.png';
-import Fimage from '@assets/Fimage.png';
-import Timage from '@assets/Timage.png';
+import carrer from '@assets/chatbot/friend_carrer.webp';
+import Eimage from '@assets/background/friend_e.webp';
+import Iimage from '@assets/background/friend_i.webp';
+import Fimage from '@assets/background/friend_f.webp';
+import Timage from '@assets/background/friend_t.webp';
 
 const Chatting = () => {
   const friend = {
     name: '상담이',
-    image: jinro,
+    image: carrer,
     category: '진로상담 #챗봇',
     message: 'mbti유형에 따라 직업을 추천해줄게!',
     chatId: '1',

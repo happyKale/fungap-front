@@ -32,7 +32,6 @@ import {
   GameDetail,
   GameList,
   GameResult,
-  ContentsAll,
   RoomI,
   RoomE,
   RoomF,
@@ -44,8 +43,6 @@ import {
 } from '@pages';
 // components
 import { Navigation, ScrollRestoration } from '@components';
-// shared
-import { Canvas } from '@shared/canvas';
 // css
 import style from './App.module.css';
 // images
@@ -57,19 +54,6 @@ function App() {
 
   useEffect(() => {
     dispatch(userActions.signinCheckDB());
-
-    // const isMobile = /iPhone|iPad|iPod|Android/i.test(
-    //   window.navigator.userAgent,
-    // );
-
-    // function handleCanvas() {
-    //   return new Canvas();
-    // }
-
-    // if (!isMobile && pathname === '/') handleCanvas();
-    // else return () => window.removeEventListener('load', handleCanvas);
-
-    // return () => window.removeEventListener('load', handleCanvas);
   }, []);
 
   return (

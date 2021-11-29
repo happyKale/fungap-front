@@ -6,8 +6,8 @@ import style from './chatRoom.module.css';
 // components
 import { Goback, Scenario } from '@components';
 // images
-import profile from '@assets/profileplaceholder.png';
-import jinro from '@assets/friend_jinro.png';
+import defaultImage from '@assets/background/profile_default.webp';
+import carrer from '@assets/chatbot/friend_carrer.webp';
 
 const mbtiList = [
   'INFJ',
@@ -100,8 +100,10 @@ const ChatRoom = props => {
               borderTop: 'none',
               borderColor: 'white',
             }}
-            botAvatar={jinro}
-            userAvatar={userImg?.user_image ? userImg?.user_image : profile}
+            botAvatar={carrer}
+            userAvatar={
+              userImg?.user_image ? userImg?.user_image : defaultImage
+            }
             steps={steps}
             customStyle={{
               boxShadow: 'none',

@@ -5,7 +5,7 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  background: url('../../assets/btn_naver.png') no-repeat center;
+  background: url('@assets/button/naver.webp') no-repeat center;
   background-size: contain;
 }
 .fake {

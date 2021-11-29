@@ -2,7 +2,7 @@
   position: relative;
   left: -20px;
   width: calc(100% + 40px);
-  background: url('../../assets/btn_left.png') no-repeat 20px 60%;
+  background: url('../../assets/btn_left.png') no-repeat 20px 50%;
   background-size: auto;
   text-align: center;
   cursor: pointer;
@@ -13,32 +13,32 @@
 }
 
 .chatbot {
-  background: #d2e4ff url('../../assets/btn_left.png') no-repeat 20px 60%;
+  background: #d2e4ff url('../../assets/btn_left.png') no-repeat 20px 50%;
   background-size: auto;
 }
 .groupE {
-  background: #fdf8e2 url('../../assets/btn_left.png') no-repeat 20px 60%;
+  background: #fdf8e2 url('../../assets/btn_left.png') no-repeat 20px 50%;
   background-size: auto;
 }
 .groupF {
-  background: #ebfafa url('../../assets/btn_left.png') no-repeat 20px 60%;
+  background: #ebfafa url('../../assets/btn_left.png') no-repeat 20px 50%;
   background-size: auto;
 }
 .groupI {
-  background: #fbf1f7 url('../../assets/btn_left.png') no-repeat 20px 60%;
+  background: #fbf1f7 url('../../assets/btn_left.png') no-repeat 20px 50%;
   background-size: auto;
 }
 .groupT {
-  background: #e1efe8 url('../../assets/btn_left.png') no-repeat 20px 60%;
+  background: #e1efe8 url('../../assets/btn_left.png') no-repeat 20px 50%;
   background-size: auto;
 }
 .colorWrap {
-  background: #f7de70 url('../../assets/btn_left.png') no-repeat 20px 60%;
+  background: #f7de70 url('../../assets/btn_left.png') no-repeat 20px 50%;
   background-size: auto;
 }
 .title {
   margin: 0;
-  padding: 30px 0 20px 0;
+  padding: 25px 0;
   font-size: 18px;
   font-weight: bold;
   line-height: 22px;

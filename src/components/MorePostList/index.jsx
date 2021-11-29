@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 // components
 import { Post, Loader } from '@components';
 // util
-import useFetch from '@shared/useFetch';
+import useFetch from '@hook/useFetch';
 
 const MorePostList = ({ sort }) => {
   const [pageNum, setPageNum] = useState(1);
