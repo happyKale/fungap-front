@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 //route
 import { history } from '../../../redux/configureStore';
 //components
-import { Goback, Modal } from '../../../components';
+import { Goback, Modal, MbtiTag } from '../../../components';
 //css
 import style from '../soketChannel.module.css';
 //images
@@ -69,6 +69,11 @@ const ChannelF = () => {
                   className={style.userImage}
                 />
                 <p>{item?.nickname}</p>
+                {item.user_mbti ? (
+                  <MbtiTag mbti={item.user_mbti}>{item.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })
@@ -81,6 +86,11 @@ const ChannelF = () => {
                   className={style.userImage}
                 />
                 <p>{item?.nickname}</p>
+                {item.user_mbti ? (
+                  <MbtiTag mbti={item.user_mbti}>{item.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })}

@@ -4,7 +4,7 @@ import { socket } from '../../../shared/socket';
 import { useDispatch } from 'react-redux';
 import { ChatActions } from '../../../redux/modules/chat';
 //components
-import { Goback, ChatLog, ChatInput } from '../../../components';
+import { Goback, ChatLog, ChatInput, MbtiTag } from '../../../components';
 //css
 import style from '../socketChatroom.module.css';
 //images
@@ -87,6 +87,11 @@ const RoomI = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
+                {list.user_mbti ? (
+                  <MbtiTag mbti={list.user_mbti}>{list.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })
@@ -99,6 +104,11 @@ const RoomI = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
+                {list.user_mbti ? (
+                  <MbtiTag mbti={list.user_mbti}>{list.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })}

@@ -4,7 +4,7 @@ import { socket } from '../../../shared/socket';
 import { useDispatch } from 'react-redux';
 import { ChatActions } from '../../../redux/modules/chat';
 //components
-import { Goback, ChatLog, ChatInput } from '../../../components';
+import { Goback, ChatLog, ChatInput, MbtiTag } from '../../../components';
 //css
 import style from '../socketChatroom.module.css';
 //images
@@ -55,6 +55,7 @@ const RoomF = () => {
   useEffect(() => {
     socket.on('current_usercount', (userlist, usercount) => {
       const userArray = userlist.flat();
+      console.log(userArray);
       // console.log('I방 현재접속중인 유저', userArray);
       setUser(userArray);
     });
@@ -85,6 +86,11 @@ const RoomF = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
+                {list.user_mbti ? (
+                  <MbtiTag mbti={list.user_mbti}>{list.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })
@@ -97,6 +103,11 @@ const RoomF = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
+                {list.user_mbti ? (
+                  <MbtiTag mbti={list.user_mbti}>{list.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })}

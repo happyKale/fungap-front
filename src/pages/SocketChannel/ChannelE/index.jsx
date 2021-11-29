@@ -16,7 +16,6 @@ const ChannelE = () => {
   const [userList, setUserList] = useState();
   const [btnVisible, setBtnVisible] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  // const userMbti = JSON.parse(sessionStorage.getItem('user')).user_mbti
   const isLogin = useSelector(state => state.user.is_login);
   const roomName = 'E';
 
@@ -61,28 +60,37 @@ const ChannelE = () => {
       </div>
       <h3>참여자({userList ? userList.length : 0}명)</h3>
       {btnVisible
-        ? userList?.slice(0, 5).map((list, index) => {
+        ? userList?.slice(0, 5).map((item, index) => {
             return (
               <div className={style.content} key={index}>
                 <img
-                  src={list?.user_image ? list.user_image : placeholder}
+                  src={item?.user_image ? item.user_image : placeholder}
                   alt='유저이미지'
                   className={style.userImage}
                 />
-                <p>{list?.nickname}</p>
+                <p>{item?.nickname}</p>
+                {item.user_mbti ? (
+                  <MbtiTag mbti={item.user_mbti}>{item.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })
-        : userList?.map((list, index) => {
+        : userList?.map((item, index) => {
             return (
               <div className={style.content} key={index}>
                 <img
-                  src={list?.user_image ? list.user_image : placeholder}
+                  src={item?.user_image ? item.user_image : placeholder}
                   alt='유저이미지'
                   className={style.userImage}
                 />
-                <p>{list?.nickname}</p>
-                
+                <p>{item?.nickname}</p>
+                {item.user_mbti ? (
+                  <MbtiTag mbti={item.user_mbti}>{item.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })}

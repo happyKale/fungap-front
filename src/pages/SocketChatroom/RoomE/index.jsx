@@ -58,7 +58,6 @@ const RoomE = () => {
   useEffect(() => {
     socket.on('current_usercount', (userlist, usercount) => {
       const userArray = userlist.flat();
-      console.log(userArray);
       // console.log('I방 현재접속중인 유저', userArray);
       setUser(userArray);
       return () => {
@@ -92,7 +91,11 @@ const RoomE = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
-                {userMbti ? <MbtiTag mbti={userMbti}>{userMbti}</MbtiTag> : ''}
+                {list.user_mbti ? (
+                  <MbtiTag mbti={list.user_mbti}>{list.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })
@@ -105,7 +108,11 @@ const RoomE = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
-                {userMbti ? <MbtiTag mbti={userMbti}>{userMbti}</MbtiTag> : ''}
+                {list.user_mbti ? (
+                  <MbtiTag mbti={list.user_mbti}>{list.user_mbti}</MbtiTag>
+                ) : (
+                  ''
+                )}
               </div>
             );
           })}
