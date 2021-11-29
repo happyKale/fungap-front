@@ -26,6 +26,7 @@ const ChatLog = props => {
   useEffect(() => {
     socket.on('receive_message', (name, message, userImage) => {
       setChat([...chat, { name, message, userImage }]);
+    });
 
     scrollToBottom();
     return () => {
