@@ -83,6 +83,7 @@ canvas {
     left: 6%;
     top: 30px;
     width: 80px;
+    z-index: 1;
   }
 }
 

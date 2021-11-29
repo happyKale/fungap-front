@@ -1,15 +1,26 @@
 .wrap {
-  position: relative;
-  left: -20px;
-  width: calc(100% + 40px);
-  background: url('../../assets/btn_left.png') no-repeat 20px 50%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 430px;
+  background: #fff url('../../assets/btn_left.png') no-repeat 20px 50%;
   background-size: auto;
   text-align: center;
   cursor: pointer;
+  z-index: 10;
+  transform: translateX(-50%);
+  box-shadow: rgb(151 153 156 / 5%) 0px 3px 6px -2px,
+    rgb(146 151 160 / 8%) 0px 0px 0px 1px;
 }
 .adminWrap {
+  position: relative;
   left: 0px;
   width: 100%;
+  background: #fff url('../../assets/btn_left.png') no-repeat 20px 50%;
+  background-size: auto;
+  text-align: center;
+  cursor: pointer;
+  transform: none;
 }
 
 .chatbot {
@@ -43,4 +54,17 @@
   font-weight: bold;
   line-height: 22px;
   letter-spacing: -0.6px;
+}
+@media screen and (max-width: 430px) {
+  .wrap {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .wrap {
+    margin-left: 11%;
+  }
+  .adminWrap {
+    margin-left: 0;
+  }
 }
