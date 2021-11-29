@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-import apis from './apis';
+import apis from '@shared/apis';
 
 const useFetch = (sort, page) => {
   const [list, setList] = useState([]);
@@ -11,7 +11,6 @@ const useFetch = (sort, page) => {
   const sendQuery = useCallback(async () => {
     try {
       setIsLoading(true);
-      console.log(page);
       const response = await apis.getMorePost(sort, page);
       const boardList = response?.data.board_list;
 
