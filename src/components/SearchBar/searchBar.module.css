@@ -22,4 +22,5 @@
   transform: translateY(-50%);
   text-indent: -9999em;
   background: transparent url('@assets/icon/search.webp') no-repeat center;
+  cursor: pointer;
 }
