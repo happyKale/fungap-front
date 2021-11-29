@@ -22,7 +22,7 @@ const ProfileEdit = () => {
   const newInfo = { user_mbti, nickname, user_image };
 
   const handleChange = e => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
 
     setInput({
       ...input,
@@ -39,6 +39,11 @@ const ProfileEdit = () => {
   };
 
   const handleClick = () => {
+    if (user_mbti === 'MBTI를 선택해주세요') {
+      alert('MBTI를 다시 선택해주세요.');
+      return false;
+    }
+
     if (change !== true) {
       window.alert('프로필이 변경되지 않았습니다.');
       return false;
