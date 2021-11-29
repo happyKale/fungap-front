@@ -1,9 +1,13 @@
-import style from '../socketChatroom.module.css';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Goback, ChatLog, ChatInput } from '../../../components';
-import { ChatActions } from '../../../redux/modules/chat';
 import { socket } from '../../../shared/socket';
+//redux
+import { useDispatch } from 'react-redux';
+import { ChatActions } from '../../../redux/modules/chat';
+//conponents
+import { Goback, ChatLog, ChatInput, MbtiTag } from '../../../components';
+//css
+import style from '../socketChatroom.module.css';
+//images
 import placeholder from '../../../assets/profileplaceholder.png';
 
 const RoomE = () => {
@@ -11,6 +15,7 @@ const RoomE = () => {
   const Room = 'E';
   const userName = JSON.parse(sessionStorage.getItem('user')).nickname;
   const userId = JSON.parse(sessionStorage.getItem('user')).user_id;
+  const userMbti = JSON.parse(sessionStorage.getItem('user')).user_mbti;
   const [exitUser, setExitUser] = useState();
   const [entryUser, setEntryUser] = useState();
   const [user, setUser] = useState();
@@ -53,6 +58,7 @@ const RoomE = () => {
   useEffect(() => {
     socket.on('current_usercount', (userlist, usercount) => {
       const userArray = userlist.flat();
+      console.log(userArray);
       // console.log('I방 현재접속중인 유저', userArray);
       setUser(userArray);
       return () => {
@@ -86,6 +92,7 @@ const RoomE = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
+                {userMbti ? <MbtiTag mbti={userMbti}>{userMbti}</MbtiTag> : ''}
               </div>
             );
           })
@@ -98,6 +105,7 @@ const RoomE = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
+                {userMbti ? <MbtiTag mbti={userMbti}>{userMbti}</MbtiTag> : ''}
               </div>
             );
           })}

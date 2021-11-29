@@ -1,9 +1,14 @@
-import style from '../soketChannel.module.css';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Goback, Modal } from '../../../components';
-import { history } from '../../../redux/configureStore';
 import { socket } from '../../../shared/socket';
+//redux
+import { useSelector } from 'react-redux';
+//route
+import { history } from '../../../redux/configureStore';
+//components
+import { Goback, Modal, MbtiTag } from '../../../components';
+//css
+import style from '../soketChannel.module.css';
+//images
 import placeholder from '../../../assets/profileplaceholder.png';
 
 const ChannelE = () => {
@@ -11,6 +16,7 @@ const ChannelE = () => {
   const [userList, setUserList] = useState();
   const [btnVisible, setBtnVisible] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  // const userMbti = JSON.parse(sessionStorage.getItem('user')).user_mbti
   const isLogin = useSelector(state => state.user.is_login);
   const roomName = 'E';
 
@@ -23,7 +29,7 @@ const ChannelE = () => {
     });
     return () => {
       socket.emit('left_room', roomName);
-      socket.off('current_usercount');
+      socket.off('current_usercount', 'join_room');
     };
   }, []);
 
@@ -76,6 +82,7 @@ const ChannelE = () => {
                   className={style.userImage}
                 />
                 <p>{list?.nickname}</p>
+                
               </div>
             );
           })}

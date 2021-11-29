@@ -1,9 +1,14 @@
-import style from '../soketChannel.module.css';
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Goback, Modal } from '../../../components';
-import { history } from '../../../redux/configureStore';
 import { socket } from '../../../shared/socket';
+//redux
+import { useSelector } from 'react-redux';
+//route
+import { history } from '../../../redux/configureStore';
+//components
+import { Goback, Modal } from '../../../components';
+//css
+import style from '../soketChannel.module.css';
+//images
 import placeholder from '../../../assets/profileplaceholder.png';
 const ChannelT = () => {
   const [userCount, setUserCount] = useState();
