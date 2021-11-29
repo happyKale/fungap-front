@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import style from './gameDetail.module.css';
 import classNames from 'classnames';
-
+// redux
+import { useDispatch, useSelector } from 'react-redux';
+import { history } from '../../redux/configureStore';
+import { gameActions } from '../../redux/modules/game';
+//components
 import {
   Goback,
   Modal,
   ContentFt,
   Comments,
   ActionCompleteMessage,
+  MbtiTag,
 } from '../../components';
-
-import { history } from '../../redux/configureStore';
-import { gameActions } from '../../redux/modules/game';
-import { useDispatch, useSelector } from 'react-redux';
-
+//css
+import style from './gameDetail.module.css';
+//images
 import vs from '../../assets/vs.png';
 import defaultImg from '../../assets/profileplaceholder.png';
 
@@ -27,15 +29,10 @@ const GameDetail = props => {
   const userMbti = useSelector(state => state.user.user.user_mbti);
   const game = useSelector(state => state.game.game);
 
-  // 투표를 안 한 상태 false,  quest1에 투표한 상태 'left'
-  // quest2에 투표한 상태 'right'
-  const [gameState, setGameState] = React.useState('false');
-
   const [alarm, setAlarm] = React.useState(false);
 
   React.useEffect(() => {
     dispatch(gameActions.getGameDB(gameId));
-    setGameState(game?.game_state);
   }, []);
 
   // 게임 수정
@@ -63,7 +60,7 @@ const GameDetail = props => {
     }
   };
 
-  const choiceQuest = (event, state) => {
+  const choiceQuest = () => {
     // 로그인 안 되어 있으면 하도록
     if (isLogin === false) {
       setVisible(true);
@@ -91,7 +88,9 @@ const GameDetail = props => {
                 alt='프로필이미지'
               />
               <div>
-                <span>{game?.nickname}</span>
+                <span className={style.userName}>
+                  {game?.nickname} <MbtiTag mbti={userMbti}>{userMbti}</MbtiTag>
+                </span>
                 <span>2021.11.20</span>
               </div>
             </div>
@@ -116,7 +115,7 @@ const GameDetail = props => {
                 game?.game_state === '1' ? style.checked : '',
               )}
               onClick={event => {
-                choiceQuest(event, '1');
+                choiceQuest();
                 dispatch(
                   gameActions.participateGameDB(
                     gameId,
@@ -135,7 +134,7 @@ const GameDetail = props => {
                 game?.game_state === '2' ? style.checked : '',
               )}
               onClick={event => {
-                choiceQuest(event, '2');
+                choiceQuest();
                 dispatch(
                   gameActions.participateGameDB(
                     gameId,

@@ -32,6 +32,11 @@
   object-fit: cover;
   margin-right: 10px;
 }
+.userName > span {
+  font-size: 12px;
+  padding: 0px 10px;
+  margin-left: 4px;
+}
 .gameButtonBox > button {
   border: none;
   padding: 6px 12px;
@@ -81,9 +86,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.gameButton:hover {
-  border: 4px solid rgb(255, 192, 91);
 }
 .checked {
   border: 4px solid tomato;
