@@ -1,6 +1,14 @@
 .contentImage {
   width: 130px;
+  height: 98px;
   max-height: 112px;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.chattingImage {
+  width: 130px;
+  height: 111px;
   object-fit: contain;
   border-radius: 8px;
   cursor: pointer;

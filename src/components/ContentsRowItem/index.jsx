@@ -75,7 +75,7 @@ const ContentsRowItem = props => {
             history.push(`/${item.page}`);
           }}
           src={item?.chatting_img}
-          className={style.contentImage}
+          className={style.chattingImage}
         ></img>
         <p
           onClick={() => {
