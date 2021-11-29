@@ -24,11 +24,7 @@ const ContentsRowItem = ({ item, mode }) => {
     return (
       <div
         id='post'
-        className={classNames(
-          style.content,
-          style.columnContent,
-          style.postContent,
-        )}
+        className={classNames(style.content, style.postContent)}
         onClick={handleClick}
       >
         <img
@@ -69,7 +65,7 @@ const ContentsRowItem = ({ item, mode }) => {
     return (
       <div
         id='chatting'
-        className={classNames(style.content, style.columnContent)}
+        className={classNames(style.content, style.chattingContent)}
         onClick={handleClick}
       >
         <img
