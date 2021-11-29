@@ -19,7 +19,6 @@ const RoomI = () => {
   const [entryUser, setEntryUser] = useState();
   const [user, setUser] = useState();
   const [visible, setVisible] = useState(false);
-  const [alramVisible, setAlramVisible] = useState(true);
   useEffect(() => {
     socket.emit('join_room', Room);
     socket.emit('join_chat', Room, userName, userId);

@@ -13,7 +13,6 @@ import style from '../soketChannel.module.css';
 import placeholder from '../../../assets/profileplaceholder.png';
 
 const ChannelE = () => {
-  const [userCount, setUserCount] = useState();
   const [userList, setUserList] = useState();
   const [btnVisible, setBtnVisible] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);

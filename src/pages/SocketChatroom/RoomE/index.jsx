@@ -15,7 +15,6 @@ const RoomE = () => {
   const Room = 'E';
   const userName = JSON.parse(sessionStorage.getItem('user')).nickname;
   const userId = JSON.parse(sessionStorage.getItem('user')).user_id;
-  const userMbti = JSON.parse(sessionStorage.getItem('user')).user_mbti;
   const [exitUser, setExitUser] = useState();
   const [entryUser, setEntryUser] = useState();
   const [user, setUser] = useState();
