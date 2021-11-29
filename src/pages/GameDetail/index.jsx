@@ -93,7 +93,7 @@ const GameDetail = props => {
 
   return (
     <div>
-      <Goback page='/games'>MBTI 밸런스 게임</Goback>
+      <Goback>MBTI 밸런스 게임</Goback>
       <div>
         <div className={style.gameInfoContainer}>
           <div className={style.userInfo}>

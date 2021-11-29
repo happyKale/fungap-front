@@ -26,11 +26,13 @@ const UserPageHeader = props => {
 
   return (
     <div className={style.userInfo}>
-      <img
-        className={style.image}
-        alt='유저이미지'
-        src={userInfo?.user_image ? userInfo.user_image : profileImg}
-      />
+      <div className={style.imageBox}>
+        <img
+          className={style.image}
+          alt='유저이미지'
+          src={userInfo?.user_image ? userInfo.user_image : profileImg}
+        />
+      </div>
       {isLogin ? (
         <div
           className={classnames('edit', style.content)}

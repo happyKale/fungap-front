@@ -74,7 +74,7 @@ const ContentsRowItem = ({ item, mode }) => {
       >
         <img
           src={item?.chatting_img}
-          className={style.contentImage}
+          className={style.chattingImage}
           alt='이미지'
         ></img>
         <p className={style.contentTitle}>{item?.chatting_title}</p>
