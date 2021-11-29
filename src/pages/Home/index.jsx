@@ -29,19 +29,19 @@ const CHATTING_LIST = [
   },
   {
     chatting_img: E,
-    chatting_title: '[E모임] 내향형 모여라',
+    chatting_title: '[E모임] 외향형 모여라',
     chatting_desc: 'E유형의 사용자들이 모인 채팅방입니다.',
     page: 'channele',
   },
   {
     chatting_img: F,
-    chatting_title: '[F모임] 내향형 모여라',
+    chatting_title: '[F모임] 감정형 모여라',
     chatting_desc: 'F유형의 사용자들이 모인 채팅방입니다.',
     page: 'channelf',
   },
   {
     chatting_img: T,
-    chatting_title: '[T모임] 내향형 모여라',
+    chatting_title: '[T모임] 사고형 모여라',
     chatting_desc: 'T유형의 사용자들이 모인 채팅방입니다.',
     page: 'channelt',
   },
@@ -108,7 +108,10 @@ const ContentsAll = () => {
         </div>
         <div className={style.lastBannerRight}>
           <p className={style.title}>리뷰작성하기</p>
-          <div onClick={handleClick} className={style.review} />
+          <div //
+            className={style.review}
+            onClick={handleClick}
+          />
         </div>
       </div>
     </div>
