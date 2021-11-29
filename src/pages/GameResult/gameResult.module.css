@@ -86,3 +86,8 @@
 .checked {
   border: 4px solid tomato;
 }
+.userName > span {
+  font-size: 12px;
+  padding: 0px 10px;
+  margin-left: 4px;
+}
