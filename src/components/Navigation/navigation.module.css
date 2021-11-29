@@ -32,6 +32,11 @@
 .btn > span {
   font-size: 10px;
 }
+
+.yellow {
+  color: rgb(254, 194, 36);
+}
+
 @media screen and (min-width: 430px) and (max-width: 1023px) {
   .nav {
     padding: 10px 0;

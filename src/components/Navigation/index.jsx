@@ -44,21 +44,25 @@ const Navigation = props => {
             src={location === '/' ? homeClicked : home}
             alt='홈'
           />
-          <span>홈</span>
+          <span className={location === '/' ? style.yellow : ''}>홈</span>
         </li>
         <li data-name='search' className={style.btn}>
           <img //
             src={location === '/search' ? searchClicked : search}
             alt='검색'
           />
-          <span>검색</span>
+          <span className={location === '/search' ? style.yellow : ''}>
+            검색
+          </span>
         </li>
         <li data-name='chatting' className={style.btn}>
           <img //
             src={location === '/chatting' ? chatClicked : chat}
             alt='채팅'
           />
-          <span>채팅</span>
+          <span className={location === '/chatting' ? style.yellow : ''}>
+            채팅
+          </span>
         </li>
         <li data-name='user' className={style.btn}>
           {isLogin ? (
@@ -74,7 +78,9 @@ const Navigation = props => {
               alt='더보기'
             />
           )}
-          <span>{isLogin ? 'MY' : '더보기'}</span>
+          <span className={location === '/userpage' ? style.yellow : ''}>
+            {isLogin ? 'MY' : '더보기'}
+          </span>
         </li>
       </ul>
     </nav>
