@@ -24,6 +24,7 @@ const GameDetail = props => {
   const gameId = parseInt(props.match.params.id); // 투표 게시글 아이디
   const [visible, setVisible] = useState(false); // modal 컴포넌트 보이는 여부
   const [modalTitle, setModalTitle] = useState(''); // modal 컴포넌트 제목
+  const [modalDesc, setModalDesc] = useState('');
   const isLogin = useSelector(state => state.user.is_login); // 로그인 여부
   const userName = useSelector(state => state.user.user.nickname); // 사용자 닉네임
   const userMbti = useSelector(state => state.user.user.user_mbti);
@@ -64,14 +65,29 @@ const GameDetail = props => {
     // 로그인 안 되어 있으면 하도록
     if (isLogin === false) {
       setVisible(true);
+      setModalDesc('로그인하러 가시겠습니까?');
       setModalTitle('게임 참여는 로그인 후 이용 가능합니다.');
       return;
     }
     // mbti 등록이 안 되어 있으면 하도록
-    if (userMbti == null) {
+    if (userMbti == null || userMbti === '') {
       setVisible(true);
-      setModalTitle('mbti가 등록되지 않았습니다. mbti를 설정해주세요.');
+      setModalDesc('mbti를 설정하러 가시겠습니까?');
+      setModalTitle('mbti가 등록되지 않았습니다.');
       return;
+    }
+  };
+
+  const modalMsg = () => {
+    if (!isLogin) {
+      history.push('/signin');
+      setVisible(false);
+    } else if (userMbti == null || userMbti === '') {
+      history.push('/useredit');
+      setVisible(false);
+    } else {
+      history.push(`/games`);
+      dispatch(gameActions.deleteGameDB(gameId));
     }
   };
 
@@ -88,9 +104,7 @@ const GameDetail = props => {
                 alt='프로필이미지'
               />
               <div>
-                <span className={style.userName}>
-                  {game?.nickname} <MbtiTag mbti={userMbti}>{userMbti}</MbtiTag>
-                </span>
+                <span className={style.userName}>{game?.nickname}</span>
                 <span>2021.11.20</span>
               </div>
             </div>
@@ -169,17 +183,9 @@ const GameDetail = props => {
           title={modalTitle}
           btnLeft='아니요'
           btnRight='예'
+          desc={modalDesc}
           clickBtnRight={() => {
-            if (!isLogin) {
-              history.push('/signin');
-              setVisible(false);
-            } else if (userMbti == null) {
-              history.push('/useredit');
-              setVisible(false);
-            } else {
-              history.push(`/games`);
-              dispatch(gameActions.deleteGameDB(gameId));
-            }
+            modalMsg();
           }}
           visible={visible}
           maskClosable
