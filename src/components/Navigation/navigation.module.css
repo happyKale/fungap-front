@@ -3,7 +3,6 @@
   bottom: 0;
   left: 50%;
   width: 100%;
-  padding: 9px 0 7px 0;
   background-color: #fff;
   transform: translateX(-50%);
   z-index: 10;
@@ -35,11 +34,11 @@
 }
 @media screen and (min-width: 430px) and (max-width: 1023px) {
   .nav {
-    padding: 12px 0 10px 0;
+    padding: 10px 0;
   }
   .btn > img {
-    width: 18px;
-    margin-bottom: 4px;
+    width: 19px;
+    margin-bottom: 3px;
   }
 
   .btn > span {
