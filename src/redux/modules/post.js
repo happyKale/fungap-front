@@ -88,6 +88,9 @@ const searchPostDB = word => {
       const response = await apis.searchPost(keyword);
       const boardlistDB = response.data.search_board_list;
 
+      if (boardlistDB.length === 0) {
+        alert('검색 결과가 없습니다.');
+      }
       dispatch(searchPost(boardlistDB));
     } catch (error) {
       console.log(error);
