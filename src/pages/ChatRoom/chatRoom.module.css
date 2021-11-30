@@ -3,6 +3,7 @@
   justify-content: center;
   height: 90%;
   position: relative;
+  margin-top: 72px;
 }
 .chatBox > div {
   width: 100%;

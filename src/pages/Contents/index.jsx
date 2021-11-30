@@ -36,6 +36,7 @@ const Contents = props => {
           <label htmlFor='sort'>게시글 분류</label>
           <select //
             id='sort'
+            className={style.select}
             defaultValue={currentSort}
             onChange={handleChange}
           >

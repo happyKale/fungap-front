@@ -77,7 +77,7 @@ const ImageUpload = ({ profile, url }) => {
   return (
     <>
       {isProfile ? (
-        <div>
+        <div className={style.wrap}>
           <div className={style.edit}>
             <label htmlFor='upload'>
               <img src={iconImgUpload} alt='수정아이콘' />
