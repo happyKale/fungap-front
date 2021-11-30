@@ -25,6 +25,7 @@ const GameDetail = props => {
   const [visible, setVisible] = useState(false); // modal 컴포넌트 보이는 여부
   const [modalTitle, setModalTitle] = useState(''); // modal 컴포넌트 제목
   const [modalDesc, setModalDesc] = useState('');
+  const [modalRightColor, setModalRightColor] = useState('');
   const isLogin = useSelector(state => state.user.is_login); // 로그인 여부
   const userName = useSelector(state => state.user.user.nickname); // 사용자 닉네임
   const userMbti = useSelector(state => state.user.user.user_mbti);
@@ -44,6 +45,8 @@ const GameDetail = props => {
   const deleteGame = () => {
     setVisible(true);
     setModalTitle('게임을 삭제하시겠습니까?');
+    setModalDesc('삭제 한 게임은 복구가 불가합니다.');
+    setModalRightColor('leave');
   };
 
   const resultSubmit = () => {
@@ -67,6 +70,7 @@ const GameDetail = props => {
       setVisible(true);
       setModalDesc('로그인하러 가시겠습니까?');
       setModalTitle('게임 참여는 로그인 후 이용 가능합니다.');
+      setModalRightColor(null);
       return;
     }
     // mbti 등록이 안 되어 있으면 하도록
@@ -74,6 +78,7 @@ const GameDetail = props => {
       setVisible(true);
       setModalDesc('mbti를 설정하러 가시겠습니까?');
       setModalTitle('mbti가 등록되지 않았습니다.');
+      setModalRightColor(null);
       return;
     }
   };
@@ -183,6 +188,7 @@ const GameDetail = props => {
           title={modalTitle}
           btnLeft='아니요'
           btnRight='예'
+          btnRightType={modalRightColor}
           desc={modalDesc}
           clickBtnRight={() => {
             modalMsg();
