@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 90px 0px 20px;
+  margin: 92px 0 20px 0;
 }
 .commentCount {
   font-size: 14px;
@@ -15,6 +15,7 @@
   left: -9999em;
 }
 .sortWrap > select {
+  width: 60px;
   border: none;
   padding: 5px;
   font-size: 14px;

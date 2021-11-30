@@ -19,10 +19,10 @@ const ChatInput = ({ roomname }) => {
   const sendMessage = e => {
     const { text, name, userImage } = message;
 
-    if (message.message === '') {
+    if (message.text === '') {
       window.alert('메시지를 입력하세요');
     } else {
-      socket.emit('send_message', roomname, text, name, userImage, userId);
+      socket.emit('send_message', roomname, name, userId, text, userImage);
     }
 
     setMessage({
@@ -35,8 +35,8 @@ const ChatInput = ({ roomname }) => {
 
   const onMessageChange = e => {
     setMessage({
-      text: e.target.value,
       name: userInfo.nickname,
+      text: e.target.value,
       userImage:
         userInfo?.user_image === '' ? defaultImage : userInfo.user_image,
     });
@@ -44,7 +44,6 @@ const ChatInput = ({ roomname }) => {
 
   const pressEnter = e => {
     if (e.key !== 'Enter') return false;
-
     sendMessage();
   };
 
