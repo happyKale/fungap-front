@@ -108,10 +108,10 @@ const GameWrite = props => {
               setTitleCnt(titleRef.current.value.length);
             }}
             type='text'
-            maxLength='30'
+            maxLength='20'
             defaultValue={isEdit ? gameInfo?.game_title : ''}
           />
-          <span>{titleCnt} / 30</span>
+          <span>{titleCnt} / 20</span>
         </div>
 
         {/* 설명 */}
@@ -137,10 +137,10 @@ const GameWrite = props => {
               setQuest1Cnt(quest1Ref.current.value.length);
             }}
             type='text'
-            maxLength='30'
+            maxLength='20'
             defaultValue={isEdit ? gameInfo?.game_quest1 : ''}
           />
-          <span>{quest1Cnt} / 30</span>
+          <span>{quest1Cnt} / 20</span>
           <input
             placeholder='선택지2'
             ref={quest2Ref}
@@ -148,10 +148,10 @@ const GameWrite = props => {
               setQuest2Cnt(quest2Ref.current.value.length);
             }}
             type='text'
-            maxLength='30'
+            maxLength='20'
             defaultValue={isEdit ? gameInfo?.game_quest2 : ''}
           />
-          <span>{quest2Cnt} / 30</span>
+          <span>{quest2Cnt} / 20</span>
         </div>
         <button
           onClick={isEdit ? editVote : makeVote}
@@ -167,6 +167,7 @@ const GameWrite = props => {
       {visible && (
         <Modal
           title='게임 정보를 모두 입력해야합니다.'
+          desc='비어있는 정보들도 입력해주시기 바랍니다.'
           btnLeft='아니요'
           btnRight='예'
           clickBtnRight={() => {
