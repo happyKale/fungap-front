@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Goback, Modal, LikeButton, SortContents } from '../../components';
 import { gameActions } from '../../redux/modules/game';
-import classNames from 'classnames';
 
 const GameList = () => {
   const dispatch = useDispatch();
@@ -42,9 +41,9 @@ const GameList = () => {
         </div>
         <div className={style.listContainer}>
           {/* 투표 */}
-          {gameList?.map(game => {
+          {gameList?.map((game, index) => {
             return (
-              <div key={game.game_id} className={style.gameContainer}>
+              <div key={index} className={style.gameContainer}>
                 <div
                   onClick={() => {
                     history.push(`/game/${game.game_id}`);

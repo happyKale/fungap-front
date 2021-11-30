@@ -6,6 +6,7 @@
   left: -9999em;
 }
 .sortWrap > select {
+  width: 60px;
   border: none;
   padding: 5px;
   font-size: 14px;
