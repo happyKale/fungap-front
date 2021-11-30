@@ -1,5 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import { produce } from 'immer';
+import { checkCodeStatus } from '@shared/checkCodeStatus';
 import apis from '@shared/apis';
 
 // action type
@@ -72,10 +73,7 @@ const getPostDB = () => {
     } catch (error) {
       console.log(error);
 
-      if (error.response.status === 403) {
-        alert('로그인 유지시간이 지났습니다. 다시 로그인해주세요.');
-        history.push('/signin');
-      }
+      checkCodeStatus(error.response.status, 403);
     }
   };
 };
@@ -138,7 +136,6 @@ const deletePostDB = postId => {
 
 const editPostDB = (postId, data) => {
   return async (dispatch, getState, { history }) => {
-    // console.log(postId, data);
     try {
       const response = await apis.updatePost(postId, data);
 
@@ -151,16 +148,17 @@ const editPostDB = (postId, data) => {
 };
 
 const getAllContentDB = () => {
-  return (dispatch, getState, { history }) => {
-    apis
-      .getAllContent()
-      .then(res => {
-        console.log(res.data);
-        dispatch(setAllContent(res.data));
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  return async (dispatch, getState, { history }) => {
+    try {
+      const response = await apis.getAllContent();
+      const data = response.data;
+
+      dispatch(setAllContent(data));
+    } catch (error) {
+      console.log(error);
+
+      checkCodeStatus(error.response.status, 403);
+    }
   };
 };
 

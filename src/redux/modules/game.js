@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 import { produce } from 'immer';
-
-import apis from '../../shared/apis';
+import { checkCodeStatus } from '@shared/checkCodeStatus';
+import apis from '@shared/apis';
 
 // action type
 const GET_GAMES = 'GET_GAMES';
@@ -11,7 +11,6 @@ const EDIT_GAME = 'EDIT_GAME';
 const DELETE_GAME = 'DELETE_GAME';
 const ADD_QUEST = 'ADD_QUEST';
 const PARTICIPATE_GAME = 'PARTICIPATE_GAME';
-const LIKE = 'LIKE';
 
 // action creator
 const getGames = createAction(GET_GAMES, game => ({ game }));
@@ -36,132 +35,116 @@ const participateGame = createAction(
     state,
   }),
 );
-const like = createAction(LIKE, gameId => ({ gameId }));
 
 // initial state
 const initialState = {};
 
 // middleware
 const getGamesDB = () => {
-  return (dispatch, getState, { history }) => {
-    apis
-      .getGames()
-      .then(res => {
-        dispatch(getGames(res.data.game_list));
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  return async (dispatch, getState, { history }) => {
+    try {
+      const response = await apis.getGames();
+      const gameList = response.data.game_list;
+
+      dispatch(getGames(gameList));
+    } catch (error) {
+      console.log(error);
+
+      checkCodeStatus(error.response.status, 403);
+    }
   };
 };
 
 const getGameDB = gameId => {
-  return (dispatch, getState, { history }) => {
-    apis
-      .getGame(gameId)
-      .then(res => {
-        dispatch(
-          getGame(
-            res.data.game,
-            res.data.game_quest1,
-            res.data.game_quest2,
-            res.data.comments,
-          ),
-        );
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  return async (dispatch, getState, { history }) => {
+    try {
+      const response = await apis.getGame(gameId);
+      const { game, game_quest1, game_quest2, comments } = response.data;
+
+      dispatch(getGame(game, game_quest1, game_quest2, comments));
+    } catch (error) {
+      console.log(error);
+
+      checkCodeStatus(error.response.status, 403);
+    }
   };
 };
 
 const addGameDB = game => {
-  return (dispatch, getState, { history }) => {
-    apis
-      .addGame(game)
-      .then(res => {
-        dispatch(addGame(game));
-        history.push('/games');
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  return async (dispatch, getState, { history }) => {
+    try {
+      const response = await apis.addGame(game);
+
+      response && dispatch(addGame(game));
+      history.push('/games');
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 const editGameDB = (gameId, game) => {
-  return (dispatch, getState, { history }) => {
-    apis
-      .editGame(gameId, game)
-      .then(res => {
-        dispatch(editGame(gameId, game));
-        history.push('/games');
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  return async (dispatch, getState, { history }) => {
+    try {
+      const reponse = await apis.editGame(gameId, game);
+
+      reponse && dispatch(editGame(gameId, game));
+      history.push('/games');
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 const deleteGameDB = gameId => {
-  return (dispatch, getState, { history }) => {
-    apis
-      .deleteGame(gameId)
-      .then(res => {
-        dispatch(deleteGame(gameId));
-        history.push('/games');
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  return async (dispatch, getState, { history }) => {
+    try {
+      const response = await apis.deleteGame(gameId);
+
+      response && dispatch(deleteGame(gameId));
+      history.push('/games');
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
+
 const participateGameDB = (game_id, game_quest, user_mbti) => {
-  return (dispatch, getState, { history }) => {
+  return async (dispatch, getState, { history }) => {
     const state = getState().game.game.game_state;
-    apis
-      .participateGame(game_id, game_quest)
-      .then(res => {
+
+    try {
+      const response = await apis.participateGame(game_id, game_quest);
+
+      response &&
         dispatch(participateGame(game_quest.game_quest, user_mbti, state));
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
-// 좋아요
-const likeDB = game_id => {
-  return (dispatch, getState, { history }) => {
-    apis
-      .participateGame(game_id)
-      .then(res => {
-        dispatch(like(game_id));
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-};
+
 const getPopularGameDB = () => {
-  return (dispatch, getState, { history }) => {
-    apis
-      .getOrderPopularGame()
-      .then(res => {
-        dispatch(getGames(res.data.game_list));
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  return async (dispatch, getState, { history }) => {
+    try {
+      const response = await apis.getOrderPopularGame();
+      const gameList = response.data.game_list;
+
+      dispatch(getGames(gameList));
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
+
 const getViewGameDB = () => {
-  return (dispatch, getState, { history }) => {
-    apis
-      .getOrderViewGame()
-      .then(res => {
-        dispatch(getGames(res.data.game_list));
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  return async (dispatch, getState, { history }) => {
+    try {
+      const response = await apis.getOrderViewGame();
+      const gameList = response.data.game_list;
+
+      dispatch(getGames(gameList));
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
@@ -191,7 +174,7 @@ export default handleActions(
     [EDIT_GAME]: (state, action) =>
       produce(state, draft => {
         const idx = draft.gameList.findIndex(
-          vote => vote.id === action.payload.gameId,
+          game => game.game_id === action.payload.gameId,
         );
         draft.gameList[idx] = {
           ...draft.gameList[idx],
@@ -200,10 +183,9 @@ export default handleActions(
       }),
     [DELETE_GAME]: (state, action) =>
       produce(state, draft => {
-        const idx = draft.gameList.findIndex(
-          vote => vote.id === action.payload.gameId,
+        draft.gameList = draft.gameList.filter(
+          game => game.game_id !== action.payload.gameId,
         );
-        draft.gameList.splice(idx, 1);
       }),
     [PARTICIPATE_GAME]: (state, action) =>
       produce(state, draft => {
@@ -225,13 +207,6 @@ export default handleActions(
           }
         }
       }),
-    [LIKE]: (state, action) =>
-      produce(state, draft => {
-        const idx = draft.gameList.findIndex(
-          vote => vote.id === action.payload.gameId,
-        );
-        draft.gameList.splice(idx, 1);
-      }),
   },
   initialState,
 );
@@ -243,8 +218,6 @@ export const gameActions = {
   deleteGame,
   addQuest,
   participateGame,
-  like,
-  likeDB,
   participateGameDB,
   getGamesDB,
   getGameDB,
