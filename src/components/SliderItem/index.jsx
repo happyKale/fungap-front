@@ -5,8 +5,15 @@ import { history } from '@redux/configureStore';
 // css
 import style from './sliderItem.module.css';
 
-const SliderItem = ({ page, image }) => {
-  const handleClick = () => history.push(`${page}`);
+const SliderItem = ({ page, image, dragging }) => {
+  const handleClick = e => {
+    if (dragging) {
+      e.preventDefault();
+      return false;
+    }
+
+    history.push(`${page}`);
+  };
 
   return (
     <div className={style.imageBox} onClick={handleClick}>

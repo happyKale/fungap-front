@@ -5,9 +5,14 @@ import { history } from '@redux/configureStore';
 // css
 import style from './contentsRowItem.module.css';
 
-const ContentsRowItem = ({ item, mode }) => {
+const ContentsRowItem = ({ item, mode, dragging }) => {
   const handleClick = (e, gameId) => {
     const { id } = e.currentTarget;
+
+    if (dragging) {
+      e.preventDefault();
+      return false;
+    }
 
     if (id === 'post') {
       history.push(`/detail/${item?.board_id}`);

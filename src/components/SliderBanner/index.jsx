@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 // components
 import { SliderItem } from '@components';
@@ -38,21 +38,24 @@ const items = [
 ];
 
 const SliderBanner = () => {
+  const [dragging, setDragging] = useState(false);
   const settings = {
     dots: true,
     infinite: true,
-    autoplay: true,
+    autoplay: false,
     speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     draggable: true,
+    beforeChange: () => setDragging(true),
+    afterChange: () => setDragging(false),
   };
 
   return (
     <div>
       <Slider {...settings}>
         {items.map((item, index) => {
-          return <SliderItem key={index} {...item} />;
+          return <SliderItem key={index} {...item} dragging={dragging} />;
         })}
       </Slider>
     </div>
