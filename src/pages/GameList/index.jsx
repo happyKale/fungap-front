@@ -76,6 +76,7 @@ const GameList = () => {
         {visible && (
           <Modal
             title='투표 작성은 로그인 후 이용 가능합니다.'
+            desc='로그인하러 가시겠습니까?'
             btnLeft='아니요'
             btnRight='예'
             clickBtnRight={() => {
