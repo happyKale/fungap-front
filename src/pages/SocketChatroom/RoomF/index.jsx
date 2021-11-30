@@ -56,7 +56,6 @@ const RoomF = () => {
   useEffect(() => {
     socket.on('current_usercount', (userlist, usercount) => {
       const userArray = userlist.flat();
-      console.log(userArray);
       // console.log('I방 현재접속중인 유저', userArray);
       setUser(userArray);
     });
