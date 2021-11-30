@@ -11,3 +11,10 @@
   cursor: pointer;
   text-indent: -9999em;
 }
+
+@media screen and (max-width: 430px) {
+  .btn {
+    height: 50px;
+    margin-bottom: 10px;
+  }
+}
