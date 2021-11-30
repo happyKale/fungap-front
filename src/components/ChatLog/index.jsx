@@ -18,7 +18,6 @@ const ChatLog = props => {
 
   const scrollToBottom = () => {
     scrollRef.current.scrollIntoView({
-      behavior: 'smooth',
       block: 'end',
     });
   };
@@ -52,7 +51,13 @@ const ChatLog = props => {
             <div key={index} className={style.container}>
               <div className={style.userImage}>
                 <img
-                  src={msg.userImage === null ? placeholder : msg.userImage}
+                  src={
+                    msg?.userImage === null
+                      ? placeholder
+                      : msg?.userImage === ''
+                      ? placeholder
+                      : msg?.userImage
+                  }
                   alt='유저이미지'
                 />
               </div>
