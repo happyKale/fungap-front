@@ -6,7 +6,7 @@ import { postActions } from '@redux/modules/post';
 import { userActions } from '@redux/modules/user';
 // images
 import profilePlaceholer from '@assets/profileplaceholder.png';
-import iconImgUpload from '@assets/camera.png';
+import iconImgUpload from '@assets/icon/camera.webp';
 // css
 import style from './imageUpload.module.css';
 

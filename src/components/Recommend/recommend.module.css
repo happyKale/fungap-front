@@ -9,4 +9,5 @@
   height: 32px;
   margin-right: 10px;
   background: url('@assets/icon/search.webp') no-repeat center;
+  background-size: auto 18px;
 }

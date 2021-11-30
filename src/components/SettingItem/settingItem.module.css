@@ -11,24 +11,31 @@
 }
 .adminIcon {
   background: url('@assets/icon/admin.webp') no-repeat center;
+  background-size: auto 20px;
 }
 .notificationIcon {
   background: url('@assets/icon/notice.webp') no-repeat center;
+  background-size: auto 20px;
 }
 .alramIcon {
   background: url('@assets/icon/alarm.webp') no-repeat center;
+  background-size: auto 20px;
 }
 .contractIcon {
   background: url('@assets/icon/condition.webp') no-repeat center;
+  background-size: auto 20px;
 }
 .reviewIcon {
   background: url('@assets/icon/review.webp') no-repeat center;
+  background-size: auto 17px;
 }
 .logoutIcon {
   background: url('@assets/icon/logout.webp') no-repeat center;
+  background-size: auto 20px;
 }
 .withdrawalIcon {
   background: url('@assets/icon/withdrawal.webp') no-repeat center;
+  background-size: auto 20px;
 }
 
 .title {

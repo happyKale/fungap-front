@@ -18,6 +18,7 @@
   height: 32px;
   margin-right: 10px;
   background: url('@assets/icon/notice.webp') no-repeat center;
+  background-size: auto 20px;
 }
 
 .banner {
