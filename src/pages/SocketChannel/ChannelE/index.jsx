@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { socket } from '../../../shared/socket';
 import classnames from 'classnames';
 //redux
 import { useSelector } from 'react-redux';
 //route
-import { history } from '../../../redux/configureStore';
+import { history } from '@redux/configureStore';
 //components
-import { Goback, Modal, MbtiTag } from '../../../components';
+import { Goback, Modal, MbtiTag } from '@components';
+//util
+import { socket } from '@shared/socket';
 //css
 import style from '../soketChannel.module.css';
 //images
-import placeholder from '../../../assets/profileplaceholder.png';
+import placeholder from '@assets/profileplaceholder.png';
 
 const ChannelE = () => {
   const [userList, setUserList] = useState();

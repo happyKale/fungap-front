@@ -2,23 +2,31 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-
   margin: auto;
 }
 
 .chatbox {
   width: 96%;
   height: 430px;
-
   margin: auto;
   padding: 6px;
-
+  margin-top: 78px;
   overflow-y: scroll;
   -ms-overflow-style: none;
 }
 
 .chatbox::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+  height: 10px;
+  padding-left: 3px;
+}
+.chatbox::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  border-radius: 8px;
+  box-shadow: inset 0px 0px 10px white;
+}
+.chatbox::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255);
 }
 
 .banner {
