@@ -21,7 +21,9 @@ const useFetch = (sort, page) => {
 
       setList(prev => [...prev, ...boardList]);
       setHasMore(boardList.length > 0);
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 400);
     } catch (e) {
       throw new Error(`오류입니다. ${e.message}`);
     }

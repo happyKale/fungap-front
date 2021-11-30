@@ -28,6 +28,7 @@ const Comment = ({
   const { nickname, user_image, user_mbti, user_id } = User;
   const dispatch = useDispatch();
   const newComment = useRef();
+  const [isEditing, setIsEditing] = useState(false);
   const [editBox, setEditBox] = useState(false);
   const [visible, setVisible] = useState(null);
   if (mode === 'game') {
@@ -76,9 +77,14 @@ const Comment = ({
     setVisible(false);
   };
 
-  const toggleEditBox = () => setEditBox(!editBox);
-
-  const openModal = () => setVisible(true);
+  const toggleEditBox = () => {
+    setEditBox(!editBox);
+    setIsEditing(true);
+  };
+  const openModal = () => {
+    if (isEditing) return false;
+    setVisible(true);
+  };
   const closeModal = () => setVisible(!visible);
 
   return (

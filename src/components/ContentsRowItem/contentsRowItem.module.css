@@ -1,51 +1,17 @@
-.contentImage {
-  width: 130px;
-  height: 98px;
-  max-height: 112px;
-  object-fit: contain;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.chattingImage {
-  width: 130px;
-  height: 111px;
-  object-fit: contain;
-  border-radius: 8px;
-  cursor: pointer;
-}
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 150px;
 }
+.contentImage {
+  width: 130px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
-.columnContent {
-  box-shadow: rgba(151, 153, 156, 0.25) 0px 3px 6px -2px,
-    rgba(146, 151, 160, 0.08) 0px 0px 0px 1px;
-  min-height: 190px;
-  padding: 10px 0px;
-  margin: 10px;
-  border-radius: 15px;
-}
-.postContent {
-  min-height: 150px;
-  max-height: 190px;
-}
-.postContent > .contentTitle {
-  width: 85%;
-  margin: 10px auto 0px;
-  font-size: 13px;
-}
-.contentViewcount {
-  display: inline-block;
-  margin: 6px auto 0px;
-  padding: 0px 5px;
-  border-radius: 5px;
-  font-size: 11px;
-  color: rgb(93, 93, 93);
-  background-color: rgb(240, 240, 240);
-}
 .contentTitle {
   width: 88%;
   margin: 6px auto 0px;
@@ -118,13 +84,54 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.postContent {
+  height: 160px;
+  padding: 10px 0px;
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: rgba(151, 153, 156, 0.25) 0px 3px 6px -2px,
+    rgba(146, 151, 160, 0.08) 0px 0px 0px 1px;
+}
+.postContent > .contentTitle {
+  width: 85%;
+  margin: 10px auto 0px;
+  font-size: 13px;
+}
+
+.chattingImage {
+  width: 130px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.chattingContent {
+  box-shadow: rgba(151, 153, 156, 0.25) 0px 3px 6px -2px,
+    rgba(146, 151, 160, 0.08) 0px 0px 0px 1px;
+  height: 190px;
+  padding: 10px 0px 15px;
+  margin: 10px;
+  border-radius: 15px;
+}
 
 @media screen and (max-width: 410px) {
   .contentImage {
     width: 120px;
+    height: 90px;
+    border-radius: 8px;
   }
   .content {
     width: 140px;
+    height: 150px;
+  }
+  .chattingContent {
+    height: 190px;
+  }
+  .chattingImage {
+    width: 120px;
+    height: 105px;
   }
 }
 @media screen and (max-width: 360px) {
@@ -133,19 +140,35 @@
   }
   .content {
     width: 130px;
+    height: 150px;
+  }
+  .chattingContent {
+    height: 175px;
   }
   .contentTitle {
     font-size: 13px;
   }
+  .chattingImage {
+    width: 110px;
+    height: 95px;
+  }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 319px) {
   .contentImage {
     width: 130px;
+    height: 95px;
   }
   .content {
     width: 150px;
   }
   .contentTitle {
     font-size: 13px;
+  }
+  .chattingContent {
+    height: 175px;
+  }
+  .chattingImage {
+    width: 130px;
+    height: 110px;
   }
 }
