@@ -6,7 +6,7 @@ import { history } from '@redux/configureStore';
 // css
 import style from './scenario.module.css';
 // images
-import profile from '@assets/profileplaceholder.png';
+import defaultImg from '@assets/background/profile_default.webp';
 import jinro from '@assets/chatbot/friend_carrer.webp';
 
 const Scenario = props => {
@@ -111,7 +111,7 @@ const Scenario = props => {
             overflow: 'hidden',
           }}
           botAvatar={jinro}
-          userAvatar={userImg?.user_image ? userImg?.user_image : profile}
+          userAvatar={userImg?.user_image ? userImg?.user_image : defaultImg}
           customStyle={{
             width: 'auto',
             boxShadow: 'none',

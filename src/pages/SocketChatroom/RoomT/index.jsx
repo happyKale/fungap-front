@@ -9,7 +9,7 @@ import { socket } from '@shared/socket';
 //css
 import style from '../socketChatroom.module.css';
 //images
-import placeholder from '@assets/profileplaceholder.png';
+import defaultImg from '@assets/background/profile_default.webp';
 
 const RoomT = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,6 @@ const RoomT = () => {
     socket.emit('join_chat', Room, userName, userId);
     socket.emit('current_usercount', Room);
     socket.on('notice_user_left', (roomname, exitUserName, userId) => {
-      // console.log(roomname + '방나감', exitUserName, userId);
       setExitUser(exitUserName + '님이 퇴장하셨습니다.');
       setTimeout(function() {
         setExitUser('');
@@ -34,7 +33,6 @@ const RoomT = () => {
     });
 
     socket.on('notice_user_join', (entryUserName, userList, userCount) => {
-      // console.log('방들어옴', entryUserName, userList, userCount);
       setEntryUser(entryUserName + '님이 입장하셨습니다.');
       setTimeout(function() {
         setEntryUser('');
@@ -56,7 +54,7 @@ const RoomT = () => {
   useEffect(() => {
     socket.on('current_usercount', (userlist, usercount) => {
       const userArray = userlist.flat();
-      // console.log('I방 현재접속중인 유저', userArray);
+
       setUser(userArray);
     });
   }, [user]);
@@ -81,7 +79,7 @@ const RoomT = () => {
             return (
               <div className={style.content} key={index}>
                 <img
-                  src={list?.user_image ? list.user_image : placeholder}
+                  src={list?.user_image ? list.user_image : defaultImg}
                   alt='유저이미지'
                   className={style.userImage}
                 />
@@ -98,7 +96,7 @@ const RoomT = () => {
             return (
               <div className={style.content} key={index}>
                 <img
-                  src={list?.user_image ? list.user_image : placeholder}
+                  src={list?.user_image ? list.user_image : defaultImg}
                   alt='유저이미지'
                   className={style.userImage}
                 />

@@ -9,8 +9,8 @@ import { Modal } from '@components';
 // css
 import style from './likeBtn.module.css';
 // images
-import unlikeImage from '@assets/heart.png';
-import likeImage from '@assets/heart_pink.png';
+import unlikeImage from '@assets/icon/like_off.webp';
+import likeImage from '@assets/icon/like_on.webp';
 
 const LikeButton = ({ board_id, like_count, like_state, mode }) => {
   const isLogin = useSelector(state => state.user.is_login);

@@ -49,7 +49,7 @@
   color: white;
   cursor: pointer;
   position: fixed;
-  background-image: url('../../assets/feather.png');
+  background-image: url('@assets/button/create.webp');
   background-size: 24px;
   background-repeat: no-repeat;
   background-position: center;

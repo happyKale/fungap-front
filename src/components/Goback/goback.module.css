@@ -3,8 +3,8 @@
   top: 0;
   left: 50%;
   width: 430px;
-  background: #fff url('../../assets/btn_left.png') no-repeat 20px 50%;
-  background-size: auto;
+  background: #fff url('@assets/icon/left.webp') no-repeat 20px 50%;
+  background-size: auto 16px;
   text-align: center;
   cursor: pointer;
   z-index: 10;
@@ -16,36 +16,36 @@
   position: relative;
   left: 0px;
   width: 100%;
-  background: #fff url('../../assets/btn_left.png') no-repeat 20px 50%;
-  background-size: auto;
+  background: #fff url('@assets/icon/left.webp') no-repeat 20px 50%;
+  background-size: auto 16px;
   text-align: center;
   cursor: pointer;
   transform: none;
 }
 
 .chatbot {
-  background: #d2e4ff url('../../assets/btn_left.png') no-repeat 20px 50%;
-  background-size: auto;
+  background: #d2e4ff url('@assets/icon/left.webp') no-repeat 20px 50%;
+  background-size: auto 16px;
 }
 .groupE {
-  background: #fdf8e2 url('../../assets/btn_left.png') no-repeat 20px 50%;
-  background-size: auto;
+  background: #fdf8e2 url('@assets/icon/left.webp') no-repeat 20px 50%;
+  background-size: auto 16px;
 }
 .groupF {
-  background: #ebfafa url('../../assets/btn_left.png') no-repeat 20px 50%;
-  background-size: auto;
+  background: #ebfafa url('@assets/icon/left.webp') no-repeat 20px 50%;
+  background-size: auto 16px;
 }
 .groupI {
-  background: #fbf1f7 url('../../assets/btn_left.png') no-repeat 20px 50%;
-  background-size: auto;
+  background: #fbf1f7 url('@assets/icon/left.webp') no-repeat 20px 50%;
+  background-size: auto 16px;
 }
 .groupT {
-  background: #e1efe8 url('../../assets/btn_left.png') no-repeat 20px 50%;
-  background-size: auto;
+  background: #e1efe8 url('@assets/icon/left.webp') no-repeat 20px 50%;
+  background-size: auto 16px;
 }
 .colorWrap {
-  background: #f7de70 url('../../assets/btn_left.png') no-repeat 20px 50%;
-  background-size: auto;
+  background: #f7de70 url('@assets/icon/left.webp') no-repeat 20px 50%;
+  background-size: auto 16px;
 }
 .title {
   margin: 0;

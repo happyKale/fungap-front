@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { postActions } from '@redux/modules/post';
 import { userActions } from '@redux/modules/user';
 // images
-import profilePlaceholer from '@assets/profileplaceholder.png';
+import defaultImg from '@assets/background/profile_default.webp';
 import iconImgUpload from '@assets/icon/camera.webp';
 // css
 import style from './imageUpload.module.css';
@@ -26,7 +26,7 @@ const ImageUpload = ({ profile, url }) => {
         ? dispatch(userActions.setUploadImage(url))
         : dispatch(postActions.addImage(url));
     } else {
-      isProfile && setImgUrl(profilePlaceholer);
+      isProfile && setImgUrl(defaultImg);
     }
   }, []);
 

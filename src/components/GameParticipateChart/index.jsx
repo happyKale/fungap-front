@@ -2,7 +2,6 @@ import React from 'react';
 import style from './gameParticipateChart.module.css';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
-import vs from '../../assets/vs.png';
 
 const GameParticipateChart = props => {
   const gameState = props.gameState;

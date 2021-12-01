@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { history } from '../../redux/configureStore';
-import { gameActions } from '../../redux/modules/game';
+import { history } from '@redux/configureStore';
+import { gameActions } from '@redux/modules/game';
 //components
 import {
   Goback,
@@ -12,12 +12,12 @@ import {
   Comments,
   Modal,
   MbtiTag,
-} from '../../components';
+} from '@components';
 //css
 import style from './gameResult.module.css';
 //image
-import vs from '../../assets/vs.png';
-import defaultImg from '../../assets/profileplaceholder.png';
+import vs from '@assets/background/vs.webp';
+import defaultImg from '@assets/background/profile_default.webp';
 
 const GameResult = props => {
   const gameId = parseInt(props.match.params.id); // 투표 게시글 아이디

@@ -46,24 +46,24 @@
     margin: auto;
   }
   .img1 {
-    background: url('@assets/banner1_m.png') no-repeat center;
+    background: url('@assets/banner/mb_banner1.webp') no-repeat center;
   }
   .img2 {
-    background: url('@assets/banner2_m.png') no-repeat center;
+    background: url('@assets/banner/mb_banner2.webp') no-repeat center;
   }
   .img3 {
-    background: url('@assets/banner3_m.png') no-repeat center;
+    background: url('@assets/banner/mb_banner3.webp') no-repeat center;
   }
   .img4 {
-    background: url('@assets/banner4_m.png') no-repeat center;
+    background: url('@assets/banner/mb_banner4.webp') no-repeat center;
   }
   .img5 {
-    background: url('@assets/banner5_m.png') no-repeat center;
+    background: url('@assets/banner/mb_banner5.webp') no-repeat center;
   }
   .img6 {
-    background: url('@assets/banner6_m.png') no-repeat center;
+    background: url('@assets/banner/mb_banner6.webp') no-repeat center;
   }
   .img7 {
-    background: url('@assets/banner7_m.png') no-repeat center;
+    background: url('@assets/banner/mb_banner7.webp') no-repeat center;
   }
 }

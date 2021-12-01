@@ -24,7 +24,8 @@
 }
 .inputBox > .error {
   border: 1px solid red;
-  background: url('../../assets/icon_error.png') no-repeat 95% center;
+  background: url('@assets/icon/error.webp') no-repeat 95% center;
+  background-size: auto 15px;
 }
 .errorMeg {
   color: red;

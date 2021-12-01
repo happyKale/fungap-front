@@ -82,7 +82,7 @@
   top: 43px;
   height: 46px;
   width: 55px;
-  background: url('../../assets/vs_light.png');
+  background: url('@assets/background/vs_light.webp');
   background-repeat: no-repeat;
   background-size: cover;
 }

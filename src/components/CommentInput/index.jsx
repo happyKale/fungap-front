@@ -9,7 +9,7 @@ import { Modal } from '@components';
 // css
 import style from './commentInput.module.css';
 // images
-import defatulImg from '@assets/profileplaceholder.png';
+import defaultImg from '@assets/background/profile_default.webp';
 
 const CommentInput = ({ boardId, mode }) => {
   const dispatch = useDispatch();
@@ -56,7 +56,7 @@ const CommentInput = ({ boardId, mode }) => {
     <div className={style.wrap}>
       <img
         className={style.img}
-        src={user_image ? user_image : defatulImg}
+        src={user_image ? user_image : defaultImg}
         alt={nickname ? `${nickname}님의 프로필 이미지` : '기본 이미지'}
       />
       <form className={style.form} onClick={handleSubmit}>

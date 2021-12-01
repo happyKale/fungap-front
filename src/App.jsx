@@ -46,7 +46,7 @@ import { Navigation, ScrollRestoration } from '@components';
 // css
 import style from './App.module.css';
 // images
-import logo from '@assets/logo_yellow.png';
+import logo from '@assets/background/logo_yellow.webp';
 
 function App() {
   const dispatch = useDispatch();

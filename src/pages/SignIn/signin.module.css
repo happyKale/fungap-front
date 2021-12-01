@@ -6,7 +6,7 @@
   left: -40px;
   width: calc(100% + 80px);
   height: 400px;
-  background: url('../../assets/bg_login.png') no-repeat center;
+  background: url('@assets/background/signin.webp') no-repeat center;
   background-size: contain;
 }
 .logo {
@@ -14,7 +14,8 @@
   height: 40px;
   background-color: #ccc;
   text-indent: -9999em;
-  background: url('../../assets/logo_black.png') no-repeat center;
+  background: url('@assets/background/logo_black.webp') no-repeat center;
+  background-size: auto 30px;
 }
 .or {
   text-align: center;

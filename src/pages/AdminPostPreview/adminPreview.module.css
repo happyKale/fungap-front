@@ -26,12 +26,13 @@ h3.title {
   width: 100%;
 }
 .like {
+  width: 20px;
   border: 1px solid #333;
   border-radius: 20px;
   padding: 5px 5px 5px 25px;
-  background: url('../../assets/heart_pink.png') no-repeat 8px center;
+  background: url('@assets/icon/like_on.webp') no-repeat 8px center;
+  background-size: auto 12px;
   cursor: pointer;
-  width: 20px;
 }
 .contents {
   width: 100%;

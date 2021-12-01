@@ -1,4 +1,6 @@
 .heartButton {
+  display: flex;
+  align-items: center;
   border-radius: 24px;
   border: 1px solid #dfdfdf;
   font-size: 14px;
@@ -6,6 +8,8 @@
   cursor: pointer;
 }
 .postHeartButton {
+  display: flex;
+  align-items: center;
   border-radius: 24px;
   padding: 2px 10px;
   border: 1px solid #dfdfdf;
@@ -15,7 +19,7 @@
 }
 
 .heartImage {
-  position: relative;
+  height: 11px;
   margin-bottom: -2px;
   margin-right: 5px;
 }

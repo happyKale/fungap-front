@@ -11,7 +11,8 @@ import { socket } from '@shared/socket';
 //css
 import style from '../soketChannel.module.css';
 //images
-import placeholder from '@assets/profileplaceholder.png';
+import defaultImg from '@assets/background/profile_default.webp';
+
 const ChannelT = () => {
   const [userList, setUserList] = useState();
   const [btnVisible, setBtnVisible] = useState(false);
@@ -65,7 +66,7 @@ const ChannelT = () => {
             return (
               <div className={style.content} key={index}>
                 <img
-                  src={item?.user_image ? item.user_image : placeholder}
+                  src={item?.user_image ? item.user_image : defaultImg}
                   alt='유저이미지'
                   className={style.userImage}
                 />
@@ -82,7 +83,7 @@ const ChannelT = () => {
             return (
               <div className={style.content} key={index}>
                 <img
-                  src={item?.user_image ? item.user_image : placeholder}
+                  src={item?.user_image ? item.user_image : defaultImg}
                   alt='유저이미지'
                   className={style.userImage}
                 />

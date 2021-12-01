@@ -7,7 +7,7 @@ import { history } from '@redux/configureStore';
 // css
 import style from './userpageHeader.module.css';
 // images
-import profileImg from '@assets/profileplaceholder.png';
+import defaultImg from '@assets/background/profile_default.webp';
 
 const UserPageHeader = props => {
   const isLogin = useSelector(state => state.user.is_login);
@@ -30,7 +30,7 @@ const UserPageHeader = props => {
         <img
           className={style.image}
           alt='유저이미지'
-          src={userInfo?.user_image ? userInfo.user_image : profileImg}
+          src={userInfo?.user_image ? userInfo.user_image : defaultImg}
         />
       </div>
       {isLogin ? (

@@ -12,7 +12,7 @@ import EditIcon from '@mui/icons-material/Edit';
 // css
 import style from './comment.module.css';
 // images
-import defatulImg from '@assets/profileplaceholder.png';
+import defaultImg from '@assets/background/profile_default.webp';
 
 const Comment = ({
   User,
@@ -93,7 +93,7 @@ const Comment = ({
         {user_image ? (
           <img src={user_image} alt='프로필사진' />
         ) : (
-          <img src={defatulImg} alt='기본이미지' />
+          <img src={defaultImg} alt='기본이미지' />
         )}
       </div>
       <div>
