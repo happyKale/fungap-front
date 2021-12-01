@@ -42,7 +42,7 @@ const SliderBanner = () => {
   const settings = {
     dots: true,
     infinite: true,
-    autoplay: false,
+    autoplay: true,
     speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
