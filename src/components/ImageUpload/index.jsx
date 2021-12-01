@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AWS from 'aws-sdk';
+import imageCompression from 'browser-image-compression';
 // redux
 import { useDispatch } from 'react-redux';
 import { postActions } from '@redux/modules/post';
@@ -42,36 +43,37 @@ const ImageUpload = ({ profile, url }) => {
   });
 
   // 사진 업로드
-  function addPhoto() {
+  async function addPhoto(e) {
     const date = new Date();
-    const files = document.getElementById('upload').files;
-    const file = files[0];
-    const fileName = file.name.split('.')[0];
+    const imageFile = e.target.files[0];
+    const options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true,
+    };
 
-    const upload = new AWS.S3.ManagedUpload({
-      params: {
-        Bucket: albumBucketName,
-        Key: fileName + date.getTime() + '.jpg', // 파일이름 중복 제거
-        Body: file,
-        ContentType: file.type,
-      },
-    });
-
-    const promise = upload.promise();
-
-    // 업로드 이후 프리뷰
-    promise
-      .then(function(data) {
-        const url = data.Location;
-
-        setImgUrl(url);
-        isProfile
-          ? dispatch(userActions.setUploadImage(url))
-          : dispatch(postActions.addImage(url));
-      })
-      .catch(err => {
-        return alert('There was an error uploading your photo: ', err.message);
+    try {
+      const compressedFile = await imageCompression(imageFile, options);
+      const compressedFileName = compressedFile.name.split('.')[0];
+      const upload = new AWS.S3.ManagedUpload({
+        params: {
+          Bucket: albumBucketName,
+          Key: compressedFileName + date.getTime() + '.jpg', // 파일이름 중복 제거
+          Body: compressedFile,
+          ContentType: compressedFile.type,
+        },
       });
+      const data = await upload.promise();
+      const url = data.Location;
+
+      setImgUrl(url);
+
+      isProfile
+        ? dispatch(userActions.setUploadImage(url))
+        : dispatch(postActions.addImage(url));
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -82,7 +84,12 @@ const ImageUpload = ({ profile, url }) => {
             <label htmlFor='upload'>
               <img src={iconImgUpload} alt='수정아이콘' />
             </label>
-            <input type='file' id='upload' onChange={addPhoto} />
+            <input
+              type='file'
+              accept='image/*'
+              id='upload'
+              onChange={addPhoto}
+            />
           </div>
           <img src={imgUrl} alt='유저이미지' className={style.userImage} />
         </div>
@@ -95,7 +102,7 @@ const ImageUpload = ({ profile, url }) => {
               alt='게시글 이미지'
             ></img>
           </div>
-          <input type='file' id='upload' onChange={addPhoto} />
+          <input type='file' accept='image/*' id='upload' onChange={addPhoto} />
         </div>
       )}
     </>
