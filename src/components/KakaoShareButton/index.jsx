@@ -4,7 +4,7 @@ import { createKakaoButton } from '@shared/kakaoShare';
 // css
 import style from './kakaoShare.module.css';
 // images
-import btn_kakao_share from '@assets/btn_kakao_share.png';
+import btn_kakao_share from '@assets/icon/share.webp';
 
 const KakaoShareButton = ({ kakaoData }) => {
   const handleClick = () => createKakaoButton(kakaoData);

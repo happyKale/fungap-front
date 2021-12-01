@@ -6,5 +6,6 @@
   cursor: pointer;
 }
 .btnKakaoShare > img {
-  width: 100%;
+  width: auto;
+  height: 17px;
 }
