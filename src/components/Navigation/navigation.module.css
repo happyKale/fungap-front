@@ -27,7 +27,7 @@
 }
 .btn > img {
   width: 19px;
-  height: auto;
+  height: 19px;
   margin-bottom: 2px;
 }
 .btn > span {
@@ -44,6 +44,7 @@
   }
   .btn > img {
     width: 19px;
+    height: 19px;
     margin-bottom: 3px;
   }
 
