@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import style from './mbtiTag.module.css';
 
 const MbtiTag = ({ children, mbti }) => {
-  const userMbti = mbti.toLowerCase();
+  const userMbti = mbti?.toLowerCase();
 
   return (
     <>
