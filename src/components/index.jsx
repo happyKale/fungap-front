@@ -48,6 +48,7 @@ import SettingList from './SettingList';
 import SettingItem from './SettingItem';
 import UserPageHeader from './UserPageHeader';
 import TestHeader from './TestHeader';
+import ErrorBoundary from './ErrorBoundary';
 
 export {
   KakaoSignIn,
@@ -100,4 +101,5 @@ export {
   SettingItem,
   UserPageHeader,
   TestHeader,
+  ErrorBoundary,
 };
