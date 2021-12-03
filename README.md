@@ -30,11 +30,13 @@
   * aws cloudfront(Https 적용)
 * 통신
   * axios
-  * postcss
+  * soket-io
 * 에러로깅
   * sentry
 * 이미지 리사이징
   * browser-image-compression
+* 스타일
+  * postcss
 * PWA
   * workbox-cli(서비스 워커 커스텀)
 * 라이브러리 & 패키지
